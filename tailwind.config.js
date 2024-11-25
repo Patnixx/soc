@@ -24,8 +24,19 @@ export default {
           300: '#e3e5e8',
           200: '#ebedef',
           100: '#f2f3f5',
-        }
+        },
+        'm-red': '#C8102E',
+        'm-darkblue': '#1C3F94',
+        'm-blue': '#3994D0',
+        'm-purple': '#6A0DAD',
       },
+
+      spacing: {
+        112: '28rem',
+        128: '32rem',
+        144: '36rem',
+        160: '40rem',
+      }
     },
   },
   plugins: [],
