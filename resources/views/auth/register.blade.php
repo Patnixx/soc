@@ -8,7 +8,7 @@
             <x-input-div :name="'l_name'" :type="'text'" :placeholder="'Last Name'" :id="'l_name'" :value="''" :label="'Last name'" :icon="'bi bi-envelope'"/>
             <x-input-div :name="'email'" :type="'email'" :placeholder="'Email'" :id="'email'" :value="''" :label="'Email'" :icon="'bi bi-envelope'"/>
             <x-input-div :name="'password'" :type="'password'" :placeholder="'Password'" :id="'password'" :value="''" :label="'Password'" :icon="'bi bi-incognito'"/>
-            <x-input-div :name="'c_password'" :type="'password'" :placeholder="'Confirm Password'" :id="'c_pass'" :value="''" :label="'Confirm Password'" :icon="'bi bi-envelope'"/>
+            <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'Confirm Password'" :id="'c_pass'" :value="''" :label="'Confirm Password'" :icon="'bi bi-envelope'"/>
             <button type="submit">Register</button>
             <a href="{{route('home')}}">Back to Homepage</a>
         </form>

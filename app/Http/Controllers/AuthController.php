@@ -25,9 +25,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role == 'Admin') {
-                return redirect()->intended('/')->withSuccess('Signed in');
+                return redirect()->route('home')->withSuccess('Signed in'); //TODO - ZMENIT NA ADMIN PANEL KED BUDE VYTVORENY
             }
-            return redirect()->intended('login')->withSuccess('Signed in');
+            return redirect()->route('home')->withSuccess('Signed in');
         }
         $validator['emailPassword'] = 'Email is missing';
         $validator['password'] = 'Password is missing';
@@ -55,7 +55,7 @@ class AuthController extends Controller
         $check = $this->create($data);
 
         if(Auth::attempt($request->only('email', 'password'))){
-            return redirect('/')->withSuccess('You have signed-in');
+            return redirect()->route('home')->withSuccess('You have signed-in');
         }
 
         return redirect('/')->withSuccess('You have signed-in');
@@ -76,6 +76,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return redirect('login');
+        return redirect()->route('home');
     }
 }
