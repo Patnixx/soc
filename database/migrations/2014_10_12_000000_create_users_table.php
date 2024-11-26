@@ -25,12 +25,20 @@ return new class extends Migration
         });
 
         // Insert some stuff
-        DB::table('users')->insert([
-            'f_name' => 'John',
-            'l_name' => 'Doe',
-            'role' => 'Admin',
-            'email' => 'admin@nixxy.com',
-            'password' => bcrypt('Jebemboha'),
+        DB::table('users')->insert([[
+                'f_name' => 'John',
+                'l_name' => 'Doe',
+                'role' => 'Admin',
+                'email' => 'admin@nixxy.com',
+                'password' => bcrypt('Jebemboha'),
+            ],
+            [
+                'f_name' => 'Jane',
+                'l_name' => 'Doe',
+                'role' => 'User',
+                'email' => 'user@nixxy.com',
+                'password' => bcrypt('Jebembohynu'),
+            ]
         ]);
     }
 

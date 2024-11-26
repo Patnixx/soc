@@ -9,11 +9,12 @@
                 <x-icon-div :icon="'bi- bi-android'" :text="'Android'" :route="'#'"/>
             </div>
             <div class="justify-self-end">
-                @if(!(Auth::check()))
+                @if((!Auth::check()))
                 <x-icon-div :icon="'bi bi-person-fill-up'" :text="'Login'" :route="'login'"/>
-                <x-icon-div :icon="'bi bi-person-plus-fill'" :text="'Register'" :route="'#'"/>
+                <x-icon-div :icon="'bi bi-person-plus-fill'" :text="'Register'" :route="'register'"/>
                 @else
-                <x-icon-div :icon="'bi bi-person-fill-gear'" :text="'Profile'" :route="'#'"/>
+                <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'#'"/>
+                <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log Out'" :route="'logout'"/>
                 @endif
             </div>
             

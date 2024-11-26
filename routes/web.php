@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [HomeController::class, 'homeIndex'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
-
-ROute::get('/login', [AuthController::class, 'loginIndex'])->name('login');
+Route::get('/login', [AuthController::class, 'loginIndex'])->name('login');
+Route::post('/custom-login', [AuthController::class, 'loginAuth'])->name('custom.login');
+Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
+Route::post('/custom-register', [AuthController::class, 'registerAuth'])->name('custom.register');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
