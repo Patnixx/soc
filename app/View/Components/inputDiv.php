@@ -17,17 +17,15 @@ class inputDiv extends Component
     public $placeholder;
     public $id;
     public $value;
-    public $label;
     public $icon;
 
-    public function __construct($name, $type, $placeholder, $id, $value, $label, $icon)
+    public function __construct($name, $type, $placeholder, $id, $value, $icon)
     {
         $this->name = $name;
         $this->type = $type;
         $this->placeholder = $placeholder;
         $this->id = $id;
         $this->value = $value;
-        $this->label = $label;
         $this->icon = $icon;
     }
 
