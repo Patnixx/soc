@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // FIXME - Ikony v icon componente nechcu robit dynamicke cesty, ale staticke
 Route::get('/login/home', [HomeController::class, 'homeIndex']);
 Route::get('/register/home', [HomeController::class, 'homeIndex']);
+
+Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
