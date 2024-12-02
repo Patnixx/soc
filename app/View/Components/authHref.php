@@ -25,6 +25,6 @@ class authHref extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.auth-href');
+        return view('components.auth.auth-href');
     }
 }

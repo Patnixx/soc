@@ -28,6 +28,6 @@ class authIconDiv extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.auth-icon-div');
+        return view('components.auth.auth-icon-div');
     }
 }

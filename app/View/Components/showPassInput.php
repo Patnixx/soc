@@ -28,6 +28,6 @@ class showPassInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.show-pass-input');
+        return view('components.auth.show-pass-input');
     }
 }

@@ -4,10 +4,11 @@
                 <!-- //NOTE - Upper sidebar icons -->
                 @if(!((Auth::check()) && $user->role == 'Admin'))
                     <x-icon-div :icon="'bi bi-house'" :text="'Home'" :route="'/'"/>
-                    <x-icon-div :icon="'bi bi-fire'" :text="'Fire'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-apple'" :text="'Apple'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-lightning'" :text="'Lightning'" :route="'#'"/>
-                    <x-icon-div :icon="'bi- bi-android'" :text="'Android'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-info-circle'" :text="'Info'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-people'" :text="'Personel'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-car-front-fill'" :text="'Cars'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-images'" :text="'Gallery'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-telephone'" :text="'Contact'" :route="'#'"/>
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')
                     <x-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'#'"/>
