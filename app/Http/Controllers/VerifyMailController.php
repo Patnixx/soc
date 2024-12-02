@@ -9,7 +9,7 @@ class VerifyMailController extends Controller
 {
     //
     public function verifyNotice() {
-        return view('verify.notice');
+        return view('auth.notice');
     }
 
     public function verifyHandler(EmailVerificationRequest $request) {

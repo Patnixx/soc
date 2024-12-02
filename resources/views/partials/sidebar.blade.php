@@ -41,7 +41,7 @@
                     <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log out'" :route="'logout'"></x-icon-div>
                 @endif
                 @if(Auth::check() && $user->role != 'Admin')
-                    <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'profile'"/>
                     <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log out'" :route="'logout'"></x-icon-div>
                 @endif
             </div>

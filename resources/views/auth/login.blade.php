@@ -6,6 +6,7 @@
             @csrf
             <x-input-div :name="'email'" :type="'email'" :placeholder="'Email'" :id="'email'" :value="''" :icon="'bi bi-envelope'"/>
             <x-input-div :name="'password'" :type="'password'" :placeholder="'Password'" :id="'password'" :value="''" :icon="'bi bi-incognito'"/>
+            <x-show-pass-input :name="'show_pass'" :id="'show_pass'" />
             <button type="submit" class="bg-secondary text-white py-3 px-6 rounded-lg font-bold hover:bg-m-blue transition duration-300">Log In</button>
             <div class="flex justify-between items-center w-full text-sm text-gray-400 pr-2 pl-2">
                 <x-auth-href :route="'register'" :text="'Create an account'"/>
