@@ -38,6 +38,20 @@ return new class extends Migration
                 'role' => 'User',
                 'email' => 'user@nixxy.com',
                 'password' => bcrypt('Jebembohynu'),
+            ],
+            [
+                'f_name' => 'Patrik',
+                'l_name' => 'Nemčok',
+                'role' => 'Teacher',
+                'email' => 'patkonemcok@gmail.com',
+                'password' => bcrypt('picus123'),
+            ],
+            [
+                'f_name' => 'Fabián',
+                'l_name' => 'Vojár',
+                'role' => 'Student',
+                'email' => 'fabvoj@gmail.com',
+                'password' => bcrypt('kokot123'),
             ]
         ]);
     }

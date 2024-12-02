@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VerifyMailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::post('/custom-login', [AuthController::class, 'loginAuth'])->name('custom
 Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
 Route::post('/custom-register', [AuthController::class, 'registerAuth'])->name('custom.register');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/email/verify', [VerifyMailController::class, 'verifyNotice'])->middleware('auth')->name('verify.notice');
+Route::get('/email/verify/{id}/{hash}', [VerifyMailController::class, 'verifyNotice'])->middleware(['auth', 'singed'])->name('verification.verify');
+Route::post('/email/verification-notification', [VerifyMailController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 // FIXME - Ikony v icon componente nechcu robit dynamicke cesty, ale staticke
 Route::get('/login/home', [HomeController::class, 'homeIndex']);
