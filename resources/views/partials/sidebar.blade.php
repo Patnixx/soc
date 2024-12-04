@@ -13,14 +13,14 @@
                 @if((Auth::check()) && $user->role == 'Admin')
                     <x-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'#'"/>
                     <x-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'progress'"/>
                     <x-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'#'"/>
                 @endif
 
                 <!-- //NOTE - Middle sidebar icons -->
                 @if(Auth::check() && $user->role == 'Student')
                     <br>
-                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/'"/>
                 @endif
@@ -29,8 +29,13 @@
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'#'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'#'"/>
-                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
                 @endif
+                @if(Auth::check() && $user->role == 'User')
+                    <br>
+                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
+                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/'"/>
+                @endif  
             </div>
             <div class="justify-self-end">
                 <!-- //NOTE - Lower sidebar icons -->

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
@@ -37,3 +38,9 @@ Route::post('/email/verification-notification', [VerifyMailController::class, 'r
 Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
 
 Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
+
+Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');
+route::get('/course/form', [CourseController::class, 'courseForm'])->name('course.form');
+route::get('/course/create', [CourseController::class, 'courseCreate'])->name('course.create');
+Route::post('/course/custom-form', [CourseController::class, 'sendForm'])->name('custom.course');
+Route::post('/course/custom-create', [CourseController::class, 'sendCreate'])->name('custom.newcourse');
