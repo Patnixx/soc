@@ -27,9 +27,8 @@
                 @if(Auth::check() && $user->role == 'Teacher')
                     <br>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
-                    <x-auth-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'#'"/>
+                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Courses'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'#'"/>
-                    <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'User')
                     <br>

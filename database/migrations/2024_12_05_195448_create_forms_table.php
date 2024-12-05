@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_forms', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email');
@@ -25,7 +25,10 @@ return new class extends Migration
             $table->string('length');
             $table->string('class');
             $table->string('reason');
+            $table->boolean('approval')->default(false);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

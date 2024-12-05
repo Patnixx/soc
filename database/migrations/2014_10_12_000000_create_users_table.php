@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('role')->default('User');
-            $table->string('course')->nullable();
+            
             //auth stuff
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

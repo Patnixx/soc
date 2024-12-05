@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\CourseForm;
+use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Form;
 
 class CourseController extends Controller
 {
@@ -15,15 +16,26 @@ class CourseController extends Controller
 
         if(Auth::user()->role == 'Admin'){
             $courses = Course::all();
-            $forms = CourseForm::all();
+            $forms = Form::all();
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
-        $id = $user->id;
-        //$course = Course::with('users')->get();
-        $courses = Course::whereHas('users', function($query) use ($id){
-            $query->where('user_id', $id);
-        })->get();
-        return view('course.progress', compact('user', 'courses'));
+
+        if(Auth::user()->role == 'Teacher'){
+            $courses = Course::where('teacher_id', $user->id)->get();
+            $forms = Form::all();
+            return view('course.progress', compact('user', 'courses', 'forms'));
+        }
+        
+        if(Auth::user()->role == 'Student'){
+            $forms = Form::where('user_id', $user->id)->get();
+            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
+            /*$kurz_id = CourseUser::where('user_id', $user->id)->get();
+            $courses = Course::where('id', $kurz_id->course_id)->get();*/
+            return view('course.progress', compact('user', 'courses', 'forms'));
+        }
+        if(Auth::user()->role == 'User'){
+            return redirect('/');
+        }
     }
 
     public function courseForm(){
@@ -44,7 +56,7 @@ class CourseController extends Controller
         ]);
 
         $id = Auth::id();
-        CourseForm::create([
+        Form::create([
             'user_id' => $id,
             'f_name' => $request->f_name,
             'l_name' => $request->l_name,
@@ -73,7 +85,13 @@ class CourseController extends Controller
             'class' => 'required',
         ]);
 
+        if(Auth::user()->role == 'Teacher'){
+            $id = Auth::id();
+        } else {
+            $id = null;
+        }
         Course::create([
+            'teacher_id' => $id,
             'name' => $request->name,
             'description' => $request->desc,
             'season' => $request->season,

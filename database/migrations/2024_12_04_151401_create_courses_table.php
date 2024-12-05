@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('teacher_id')->nullable();
             $table->string('name');
             $table->string('description');
             $table->string('class');
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->string('season');
             $table->string('status');
             $table->timestamps();
+
+            $table->foreign('teacher_id')->references('id')->on('users');
         });
     }
 
