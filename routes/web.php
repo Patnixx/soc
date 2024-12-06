@@ -51,6 +51,7 @@ Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progr
 Route::get('/course/form', [CourseController::class, 'courseForm'])->name('course.form');
 Route::get('course/form/{id}/detail', [CourseController::class, 'detailForm'])->name('form.detail');
 Route::get('course/form/{id}/edit', [CourseController::class, 'editForm'])->name('form.edit');
+Route::post('course/form/{id}/update', [CourseController::class, 'updateForm'])->name('form.update');
 Route::post('course/form/{id}/delete', [CourseController::class, 'deleteForm'])->name('form.delete');
 Route::post('/course/custom-form', [CourseController::class, 'sendForm'])->name('custom.form');
 //NOTE - Course

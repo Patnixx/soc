@@ -6,12 +6,11 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class formDiv extends Component
+class formInputDiv extends Component
 {
     /**
      * Create a new component instance.
      */
-
     public $fname;
     public $lname;
     public $email;
@@ -27,8 +26,10 @@ class formDiv extends Component
     public $hclass;
     public $pclass;
     public $sclass;
+    public $selclass;
+    public $iptclass;
     
-    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='')
+    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='', $selclass='', $iptclass='')
     {
         $this->fname = $fname;
         $this->lname = $lname;
@@ -40,11 +41,12 @@ class formDiv extends Component
         $this->reason = $reason;
         $this->approval = $approval;
         $this->id = $id;
-        $this->courseid = $courseid;
         $this->divclass = $divclass;
         $this->hclass = $hclass;
         $this->pclass = $pclass;
         $this->sclass = $sclass;
+        $this->selclass = $selclass;
+        $this->iptclass = $iptclass;
     }
 
     /**
@@ -52,6 +54,6 @@ class formDiv extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.progress.form-div');
+        return view('components.progress.form-input-div');
     }
 }

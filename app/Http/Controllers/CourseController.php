@@ -74,18 +74,47 @@ class CourseController extends Controller
 
     public function detailForm($id){
         $user = Auth::user();
-        $form = Form::where('id',$id)->get();
+        $form = Form::where('id',$id)->first();
         return view('course.forms.detail', compact('user', 'form'));
     }
 
     public function editForm($id){
         $user = Auth::user();
-        $form = Form::where('id',$id)->get();
+        $form = Form::where('id',$id)->first();
         return view('course.forms.edit', compact('user', 'form'));
     }
 
+    public function updateForm(Request $request, $id)
+    {
+        $request->validate([
+            'f_name' => 'required',
+            'l_name' => 'required',
+            'email' => 'required',
+            'birthday' => 'required',
+            'season' => 'required',
+            'length' => 'required',
+            'class' => 'required',
+            'reason' => 'required',
+            'approval' => 'required',
+        ]);
+
+        Form::where('id', $id)->update([
+            'f_name' => $request->f_name,
+            'l_name' => $request->l_name,
+            'email' => $request->email,
+            'birthday' => $request->birthday,
+            'season' => $request->season,
+            'length' => $request->length,
+            'class' => $request->class,
+            'reason' => $request->reason,
+            'approval' => $request->approval,
+        ]);
+
+        return redirect()->route('progress');
+    }
+
     public function deleteForm($id){
-        $form = Form::where('id',$id)->delete();
+        Form::where('id',$id)->delete();
         return redirect()->route('progress');
     }
 
