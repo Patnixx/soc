@@ -19,6 +19,7 @@
                 :students="'?'"
                 :id="''.$course->id.''"
                 :pclass="'text-white'"
+                :sclass="'text-m-blue'"
                 />                
             @endforeach
             <a class="text-blue-500 hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
@@ -39,6 +40,8 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''" 
+                :pclass="'text-white'"
+                :sclass="'text-m-blue'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
             <a class="text-green-500 hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
@@ -60,7 +63,9 @@
                 :length="''.$course->length.''" 
                 :status="''.$course->status.''" 
                 :season="''.$course->season.''"
-                :students="''.$course->students.''" 
+                :students="''.$course->students.''"
+                :pclass="'text-white'"
+                :sclass="'text-m-blue'" 
                 :id="''.$course->id.''"/>                
             @endforeach
             <a class="text-blue-500 hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
@@ -81,7 +86,9 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''" 
-                :approval="''.$form->approval.''"></x-form-div>
+                :approval="''.$form->approval.''"
+                :pclass="'text-white'"
+                :sclass="'text-m-blue'" />
             @endforeach
             @if($user->role == 'Student')
                 <a class="text-green-500 hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
@@ -105,6 +112,8 @@
                 :status="''.$course->course->status.''" 
                 :season="''.$course->course->season.''"
                 :students="'?'"
+                :pclass="'text-white'"
+                :sclass="'text-m-blue'"
                 :id="''.$course->id.''"/>                
             @endforeach
         </section>
@@ -124,6 +133,8 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''"
+                :pclass="'text-white'"
+                :sclass="'text-m-blue'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
             @if($user->role == 'Student')

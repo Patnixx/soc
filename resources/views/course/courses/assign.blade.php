@@ -31,6 +31,8 @@
             :reason="''.$form->reason.''" 
             :id="''.$form->user_id.''" 
             :courseid="''.$course->id.''" 
+            :pclass="'text-white'"
+            :sclass="'text-m-blue'"
             :approval="''.$form->approval.''" />
         @endforeach
     </section>

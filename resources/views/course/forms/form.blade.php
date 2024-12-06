@@ -13,7 +13,9 @@
         <div id="course"">
             <select name="season" id="season">
                 <option value="" selected>Select a season</option>
+                <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>
+                <option value="Autumn">Autumn</option>
                 <option value="Winter">Winter</option>
             </select>
             <select name="length" id="length">

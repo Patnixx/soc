@@ -10,7 +10,7 @@
             <button type="submit" class="bg-secondary text-white py-3 px-6 rounded-lg font-bold hover:bg-m-blue transition duration-300">Log In</button>
             <div class="flex justify-between items-center w-full text-sm text-gray-400 pr-2 pl-2">
                 <x-auth-href :route="'register'" :text="'Create an account'"/>
-                <x-auth-href :route="'#'" :text="'Forgot password?'"/>
+                <x-auth-href :route="'/'" :text="'Forgot password?'"/>
             </div>
         </form>
         <x-icon-div :icon="'bi bi-house'" :text="''" :route="'home'" class="absolute bottom-4 right-4"/>
