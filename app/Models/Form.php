@@ -10,8 +10,6 @@ class Form extends Model
     use HasFactory;
     
     protected $fillable = [
-        /*'course_id',
-        'user_id',*/ //ANCHOR - m-m relationship columns for another table
         'user_id',
         'f_name',
         'l_name',

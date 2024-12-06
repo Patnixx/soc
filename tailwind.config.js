@@ -31,6 +31,10 @@ export default {
         'm-purple': '#6A0DAD',
       },
 
+      height: {
+        140: '35rem',
+      },
+
       spacing: {
         112: '28rem',
         120: '30rem',

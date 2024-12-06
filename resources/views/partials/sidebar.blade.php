@@ -4,17 +4,17 @@
                 <!-- //NOTE - Upper sidebar icons -->
                 @if(!((Auth::check()) && $user->role == 'Admin'))
                     <x-icon-div :icon="'bi bi-house'" :text="'Home'" :route="'/'"/>
-                    <x-icon-div :icon="'bi bi-info-circle'" :text="'Info'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-people'" :text="'Personel'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-car-front-fill'" :text="'Cars'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-images'" :text="'Gallery'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-telephone'" :text="'Contact'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-info-circle'" :text="'Info'" :route="'/'"/>
+                    <x-icon-div :icon="'bi bi-people'" :text="'Personel'" :route="'/'"/>
+                    <x-icon-div :icon="'bi bi-car-front-fill'" :text="'Cars'" :route="'/'"/>
+                    <x-icon-div :icon="'bi bi-images'" :text="'Gallery'" :route="'/'"/>
+                    <x-icon-div :icon="'bi bi-telephone'" :text="'Contact'" :route="'/'"/>
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')
-                    <x-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'#'"/>
-                    <x-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'/'"/>
+                    <x-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'progress'"/>
-                    <x-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'#'"/>
+                    <x-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
                 @endif
 
                 <!-- //NOTE - Middle sidebar icons -->
@@ -28,7 +28,7 @@
                     <br>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Courses'" :route="'progress'"/>
-                    <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'#'"/>
+                    <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'User')
                     <br>

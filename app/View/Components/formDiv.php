@@ -20,11 +20,11 @@ class formDiv extends Component
     public $length;
     public $class;
     public $reason;
-    public $dtlroute;
-    public $editroute;
-    public $delroute;
+    public $approval;
+    public $id;
+    public $courseid;
     
-    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $dtlroute, $editroute, $delroute)
+    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $approval, $id, $courseid='')
     {
         $this->fname = $fname;
         $this->lname = $lname;
@@ -34,9 +34,9 @@ class formDiv extends Component
         $this->length = $length;
         $this->class = $class;
         $this->reason = $reason;
-        $this->dtlroute = $dtlroute;
-        $this->editroute = $editroute;
-        $this->delroute = $delroute;
+        $this->approval = $approval;
+        $this->id = $id;
+        $this->courseid = $courseid;
     }
 
     /**

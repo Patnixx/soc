@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('length');
             $table->string('class');
             $table->string('reason');
-            $table->boolean('approval')->default(false);
+            $table->string('approval')->default('Waiting');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

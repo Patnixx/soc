@@ -7,6 +7,7 @@ use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
+use App\Models\User;
 
 class CourseController extends Controller
 {
@@ -40,7 +41,7 @@ class CourseController extends Controller
 
     public function courseForm(){
         $user = Auth::user();
-        return view('course.form', compact('user'));
+        return view('course.forms.form', compact('user'));
     }
 
     public function sendForm(Request $request){
@@ -71,9 +72,28 @@ class CourseController extends Controller
         return redirect()->route('progress');
     }
 
+    public function detailForm($id){
+        $user = Auth::user();
+        $form = Form::where('id',$id)->get();
+        return view('course.forms.detail', compact('user', 'form'));
+    }
+
+    public function editForm($id){
+        $user = Auth::user();
+        $form = Form::where('id',$id)->get();
+        return view('course.forms.edit', compact('user', 'form'));
+    }
+
+    public function deleteForm($id){
+        $form = Form::where('id',$id)->delete();
+        return redirect()->route('progress');
+    }
+
+    /* -------------------------------------------- */
+
     public function courseCreate(){
         $user = Auth::user();
-        return view('course.course', compact('user'));
+        return view('course.courses.course', compact('user'));
     }
 
     public function sendCreate(Request $request){
@@ -104,5 +124,79 @@ class CourseController extends Controller
 
         return redirect()->route('progress');
 
+    }
+
+    public function assignCourse($id){
+        $user = Auth::user();
+        if(Auth::user()->role == 'Teacher' || Auth::user()->role == 'Admin'){
+            $course = Course::where('id',$id)->first();
+            $forms = Form::where('approval', "Waiting")->get();
+            $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
+            return view('course.courses.assign', compact('user', 'course', 'students', 'forms'));
+        } 
+        else {
+            return redirect()->route('progress');
+        }
+    }
+
+    public function userAssign($id, $courseid){
+        CourseUser::create([
+            'user_id' => $id,
+            'course_id' => $courseid,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Form::where('user_id', $id)->update([
+            'approval' => 'Approved',
+        ]);
+
+        return redirect('/progress');
+    }
+    
+
+    public function detailCourse($id){
+        $user = Auth::user();
+        $course = Course::where('id',$id)->first();
+        $teacher = User::where('id', $course->teacher_id)->first();
+        $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
+        return view('course.courses.detail', compact('user', 'course', 'students', 'teacher'));
+    }
+
+    public function editCourse($id){
+        $user = Auth::user();
+        $course = Course::where('id',$id)->first();
+        $teacher = User::where('id', $course->teacher_id)->first();
+        $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
+        return view('course.courses.edit', compact('user', 'course', 'teacher', 'students'));
+    }
+
+    public function updateCourse(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'desc' => 'required',
+            'season' => 'required',
+            'length' => 'required',
+            'class' => 'required',
+            'status' => 'required',
+        ]);
+
+        Course::where('id', $id)->update([
+            'name' => $request->name,
+            'description' => $request->desc,
+            'season' => $request->season,
+            'length' => $request->length,
+            'class' => $request->class,
+            'status' => $request->status,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('progress');
+    }
+
+    public function deleteCourse($id){
+        Course::where('id',$id)->delete();
+        CourseUser::where('course_id',$id)->delete();
+        return redirect()->route('progress');
     }
 }
