@@ -1,14 +1,14 @@
 <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
-<div class="card bg-gray-900 w-4/5 m-12 p-4 pl-12 rounded-lg shadow-lg grid grid-cols-[0.9fr,0.1fr] {{$divclass}}">
+<div class="card duration-300 transition-all ease-linear bg-white dark:bg-gray-900 w-4/5 m-12 p-4 pl-12 rounded-lg shadow-lg grid grid-cols-[0.9fr,0.1fr] {{$divclass}}">
     <form method="POST" action="{{route('course.update', $id)}}" class="card-body space-y-4">
         @csrf
-        <h1 class="font-semibold text-white mb-4 {{$hclass}}">Name: 
+        <h1 class="mb-4 {{$hclass}}">Name: 
             <input class="{{$iptclass}}" type="text" name="name" id="name" placeholder="{{$name}}" required>
         </h1>
         @if(request()->routeIs('course.detail'))
             <h3 class="font-semibold text-white mb-4 {{$tclass}}">Teacher: {{$teacher}}</h3>
         @endif
-        <p class="{{$pclass}}">Description:
+        <p class="{{$sclass}}">Description:
             <input type="text" placeholder="{{$description}}" name="desc" id="desc" class="{{$iptclass}}" required>
         </p>
         <span class="{{$sclass}}">Class:
@@ -56,10 +56,10 @@
                 <option value="Winter">Winter</option>
             </select>
         </span>
-        <button type="submit" class="bg-gray-800 text-white p-2 rounded-lg hover:bg-gray-700">Update</button>
+        <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white dark:hover:bg-m-darkblue p-2 rounded-lg duration-300 transition-all ease-linear">Update</button>
     </form>
     <div class="flex flex-col justify-end">
-        <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-gray-800 text-red-500 hover:bg-red-500 hover:text-gray-800 rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('progress')}}"">
+        <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-red-500 hover:bg-red-500 hover:text-gray-800 rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('progress')}}"">
             <i class="bi bi-box-arrow-right"></i>
                 <span class="absolute w-auto p-2 m-2 min-w-max {{--right-14 /left-14 meni poziciu spanu--}} right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
                     Back

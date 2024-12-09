@@ -3,7 +3,7 @@
 <div class="grid grid-cols-[1fr,1fr]">
     @if($user->role == 'Admin')
         <section id="left">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Courses</h1>
             @if($courses->isEmpty())
                 <h1 class="text-red-500">No courses found</h1>
             @endif
@@ -18,14 +18,14 @@
                 :season="''.$course->season.''" 
                 :students="'?'"
                 :id="''.$course->id.''"
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'"
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'"
                 />                
             @endforeach
-            <a class="text-blue-500 hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">Vytvoriť kurz</a>
         </section>
         <section id="right">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
             @if($forms->isEmpty())
                 <h1 class="text-red-500">No forms found</h1>
             @endif
@@ -39,18 +39,19 @@
                 :class="''.$form->class.''" 
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
-                :id="''.$form->id.''" 
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'"
+                :id="''.$form->id.''"
+                :hclass="'dark:text-white text-m-blue'" 
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
-            <a class="text-green-500 hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
         </section>
     @endif
 
     @if($user->role == 'Teacher')
         <section id="left">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
             @if($courses->isEmpty())
                 <h1 class="text-red-500 text-xl">No courses</h1>
             @endif
@@ -64,14 +65,14 @@
                 :status="''.$course->status.''" 
                 :season="''.$course->season.''"
                 :students="''.$course->students.''"
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'" 
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
             @endforeach
-            <a class="text-blue-500 hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
         </section>
         <section id="right">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
             @if($forms->isEmpty())
                 <h1 class="text-red-500">No forms found</h1>
             @endif
@@ -87,18 +88,18 @@
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''" 
                 :approval="''.$form->approval.''"
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'" />
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'" />
             @endforeach
             @if($user->role == 'Student')
-                <a class="text-green-500 hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
+                <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
             @endif
         </section>
     @endif
 
     @if($user->role == 'Student')
         <section id="left">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
             @if($courses->isEmpty())
                 <h1 class="text-red-500 text-xl">No courses</h1>
             @endif
@@ -112,13 +113,13 @@
                 :status="''.$course->course->status.''" 
                 :season="''.$course->course->season.''"
                 :students="'?'"
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'"
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'"
                 :id="''.$course->id.''"/>                
             @endforeach
         </section>
         <section id="right">
-            <h1 class="text-m-blue bg-gray-900 ml-12 px-4 py-2 rounded-md inline-block">My Forms</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Forms</h1>
             @if($forms->isEmpty())
                 <h1 class="text-red-500">No forms found</h1>
             @endif
@@ -133,12 +134,12 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''"
-                :pclass="'text-white'"
-                :sclass="'text-m-blue'"
+                :pclass="'dark:text-white text-m-blue'"
+                :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
             @if($user->role == 'Student')
-                <a class="text-green-500 hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
+                <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
             @endif
         </section>
     @endif

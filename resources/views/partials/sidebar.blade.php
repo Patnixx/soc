@@ -1,5 +1,5 @@
     <div class="flex">
-        <div class="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col justify-between bg-gray-900 text-white shadow-lg">
+        <div class="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col justify-between bg-white dark:bg-gray-900 duration-300 transition-all ease-linear shadow-lg">
             <div class="justify-self-start">
                 <!-- //NOTE - Upper sidebar icons -->
                 @if(!((Auth::check()) && $user->role == 'Admin'))
@@ -11,6 +11,7 @@
                     <x-icon-div :icon="'bi bi-telephone'" :text="'Contact'" :route="'/'"/>
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')
+                    <x-icon-div :icon="'bi bi-gear'" :text="'Admin'" :route="'admin'"/>
                     <x-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'/'"/>
                     <x-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'progress'"/>
@@ -49,6 +50,7 @@
                     <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'profile'"/>
                     <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log out'" :route="'logout'"></x-icon-div>
                 @endif
+                <x-theme-div :spanSide="'left-14'"/>
             </div>
             
         </div>

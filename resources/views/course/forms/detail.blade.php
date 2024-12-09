@@ -14,9 +14,9 @@
         :approval="''.$form->approval.''" 
         :id="''.$form->id.''" 
         :divclass="'h-96'"
-        :hclass="'text-3xl font-semibold text-white mb-4'"
-        :pclass="'text-white text-lg'"
-        :sclass="'text-m-blue'"
+        :hclass="'text-3xl font-semibold dark:text-white text-gray-900 mb-4'"
+        :pclass="'dark:text-white text-m-blue text-lg'"
+        :sclass="'dark:text-m-blue text-gray-900'"
         />
     </section>
 </div>

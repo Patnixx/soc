@@ -13,10 +13,10 @@
         :id="''.$course->id.''" 
         :students="''.$students.''"
         :divclass="'h-96'"
-        :hclass="'text-3xl font-semibold text-white mb-4'"
-        :pclass="'text-white text-lg'"
-        :sclass="'text-m-blue'"
-        :tclass="'text-xl font-semibold text-white mb-4'"
+        :hclass="'text-3xl font-semibold text-m-blue dark:text-white mb-4'"
+        :pclass="'dark:text-white text-m-blue'"
+        :sclass="'dark:text-m-blue text-gray-900'"
+        :tclass="'text-xl font-semibold mb-4 text-m-blue dark:text-white'"
         />
     </section>
 </div>

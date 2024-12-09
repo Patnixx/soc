@@ -14,11 +14,11 @@
         :approval="''.$form->approval.''" 
         :id="''.$form->id.''" 
         :divclass="'h-96'"
-        :hclass="'text-3xl font-semibold text-white mb-4'"
-        :pclass="'text-white text-lg'"
-        :sclass="'text-white'"
-        :selclass="'bg-gray-800 text-white'"
-        :iptclass="'bg-gray-800 text-white'"
+        :hclass="'text-3xl font-semibold mb-4 dark:text-white text-m-blue'"
+        :pclass="'dark:text-white text-m-blue'"
+        :sclass="'dark:text-white text-m-blue'"
+        :selclass="'dark:bg-gray-800 dark:text-m-blue bg-slate-200 text-gray-900'"
+        :iptclass="'dark:bg-gray-800 dark:text-m-blue bg-slate-200 text-gray-900'"
         />
     </section>
 </div>

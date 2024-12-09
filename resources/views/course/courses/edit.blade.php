@@ -13,12 +13,12 @@
         :id="''.$course->id.''" 
         :students="''.$students.''"
         :divclass="'h-96'"
-        :hclass="'text-3xl font-semibold text-white mb-4'"
-        :pclass="'text-white text-lg'"
-        :sclass="'text-white'"
-        :selclass="'bg-gray-800 text-white'"
+        :hclass="'text-3xl font-semibold mb-4 dark:text-white text-gray-900'"
+        :pclass="'dark:text-white text-m-blue'"
+        :sclass="'dark:text-white text-gray-900'"
+        :selclass="'dark:bg-gray-800 dark:text-white bg-slate-200 text-m-blue'"
         :tclass="'text-xl font-semibold text-white mb-4'"
-        :iptclass="'bg-gray-800 text-white'"
+        :iptclass="'dark:bg-gray-800 dark:text-white bg-slate-200 text-m-blue'"
         />
     </section>
 </div>
