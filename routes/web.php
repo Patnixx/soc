@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
 use Illuminate\Support\Facades\Route;
@@ -63,3 +64,8 @@ route::get('/course/{id}/edit', [CourseController::class, 'editCourse'])->name('
 route::post('/course/{id}/update', [CourseController::class, 'updateCourse'])->name('course.update');
 route::post('/course/{id}/delete', [CourseController::class, 'deleteCourse'])->name('course.delete');
 Route::post('/course/custom-create', [CourseController::class, 'sendCreate'])->name('custom.course');
+
+//!SECTION Inbox
+Route::get('/inbox', [InboxController::class, 'inboxIndex'])->name('inbox');
+Route::get('/inbox/new', [InboxController::class, 'newIndex'])->name('new.message');
+Route::post('/inbox/new/send', [InboxController::class, 'createMessage'])->name('custom.message');

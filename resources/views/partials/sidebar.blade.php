@@ -23,18 +23,19 @@
                     <br>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'inbox'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'Teacher')
                     <br>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Courses'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'inbox'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'User')
                     <br>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'progress'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'inbox'"/>
                 @endif  
             </div>
             <div class="justify-self-end">
