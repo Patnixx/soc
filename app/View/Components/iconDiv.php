@@ -15,13 +15,17 @@ class iconDiv extends Component
     public $icon;
     public $text;
     public $route;
+    public $class;
+    public $sclass;
 
-    public function __construct($icon, $text, $route)
+    public function __construct($icon, $text, $route, $class="", $sclass="")
     {
         //
         $this->icon = $icon;
         $this->text = $text;
         $this->route = $route;
+        $this->class = $class;
+        $this->sclass = $sclass;
     }
 
     /**

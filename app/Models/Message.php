@@ -14,10 +14,12 @@ class Message extends Model
         'receiver_id',
         'title',
         'content',
+        'is_read',
+        'is_deleted',
     ];
 
-    public function users()
+    public function sender()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class, 'sender_id');
     }
 }

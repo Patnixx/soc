@@ -31,6 +31,7 @@
             :reason="''.$form->reason.''" 
             :id="''.$form->user_id.''" 
             :courseid="''.$course->id.''" 
+            :hclass="'text-m-blue dark:text-white'"
             :pclass="'dark:text-white text-m-blue'"
             :sclass="'dark:text-m-blue text-gray-900'"
             :approval="''.$form->approval.''" />

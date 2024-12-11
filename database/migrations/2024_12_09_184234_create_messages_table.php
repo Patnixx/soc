@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('receiver_id');
             $table->string('title');
             $table->string('content');
+            $table->boolean('is_read')->default(false);
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }

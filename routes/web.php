@@ -69,3 +69,14 @@ Route::post('/course/custom-create', [CourseController::class, 'sendCreate'])->n
 Route::get('/inbox', [InboxController::class, 'inboxIndex'])->name('inbox');
 Route::get('/inbox/new', [InboxController::class, 'newIndex'])->name('new.message');
 Route::post('/inbox/new/send', [InboxController::class, 'createMessage'])->name('custom.message');
+Route::post('/inbox/{id}/delete', [InboxController::class, 'deleteMessage'])->name('message.delete');
+Route::get('/inbox/deleted', [InboxController::class, 'deletedIndex'])->name('deleted.messages');
+Route::post('/inbox/{id}/restore', [InboxController::class, 'restoreMessage'])->name('message.restore');
+Route::post('/inbox/bin', [InboxController::class, 'binClear'])->name('clear.bin');
+
+
+//FIXME - This route is not existing
+Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->name('message.detail');
+Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
+Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
+
