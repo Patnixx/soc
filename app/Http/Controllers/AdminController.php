@@ -19,4 +19,17 @@ class AdminController extends Controller
         }
         return redirect('/');
     }
+
+    public function usersIndex(){
+        if(Auth::check()){
+            if(Auth::user()->role=="Admin"){
+                $user = Auth::user();
+                return view('admin.users.users', compact('user'));
+            }
+            else{
+                return redirect('/');
+            }
+        }
+        return redirect('/');
+    }
 }

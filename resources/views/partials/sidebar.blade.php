@@ -12,7 +12,7 @@
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')
                     <x-auth-icon-div :icon="'bi bi-gear'" :text="'Admin'" :route="'admin'"/>
-                    <x-auth-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'/'"/>
+                    <x-auth-icon-div :icon="'bi bi-person'" :text="'Users'" :route="'users'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-book'" :text="'Courses'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
@@ -26,7 +26,7 @@
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'Calendar'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Courses'" :route="'progress'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'inbox'"/>
+                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/inbox'"/>
                 @endif
             </div>
                 <!-- //NOTE - Middle sidebar icons -->

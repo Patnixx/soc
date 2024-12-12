@@ -19,15 +19,8 @@ class courseInputDiv extends Component
     public $status;
     public $season;
     public $id;
-    public $divclass;
-    public $hclass;
-    public $pclass;
-    public $sclass;
-    public $tclass;
-    public $selclass;
-    public $iptclass;
     
-    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id, $divclass="", $hclass="", $pclass="", $sclass="", $tclass="", $selclass="", $iptclass="")
+    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id)
     {
         //
         $this->name = $name;
@@ -38,13 +31,6 @@ class courseInputDiv extends Component
         $this->status = $status;
         $this->season = $season;
         $this->id = $id;
-        $this->divclass = $divclass;
-        $this->hclass = $hclass;
-        $this->pclass = $pclass;
-        $this->sclass = $sclass;
-        $this->tclass = $tclass;
-        $this->selclass = $selclass;
-        $this->iptclass = $iptclass;
         
     }
 

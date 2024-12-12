@@ -2,10 +2,7 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen p-6">
-    <form 
-        action="{{route('custom.message', $user->id)}}" 
-        method="post" 
-        class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
+    <form action="{{route('custom.message', $user->id)}}" method="post" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">Send a Message</h2>
 

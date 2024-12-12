@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/#', function() {
-    return redirect()->route('home');
-});
-
 //!SECTION Home/Default routes
 Route::get('/', [HomeController::class, 'homeIndex'])->name('/');
 Route::get('/home', [HomeController::class, 'homeIndex'])->name('home');
@@ -45,6 +41,7 @@ Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profil
 
 //!SECTION Admin routes
 Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
+Route::get('users', [AdminController::class, 'usersIndex'])->name('users');
 
 //!SECTION Course/Progress routes for CRUD courses & forms
 Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');
