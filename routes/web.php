@@ -46,12 +46,12 @@ Route::get('users', [AdminController::class, 'usersIndex'])->name('users');
 //!SECTION Course/Progress routes for CRUD courses & forms
 Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');
 //NOTE - Form
-Route::get('/course/form', [CourseController::class, 'courseForm'])->name('course.form');
-Route::get('course/form/{id}/detail', [CourseController::class, 'detailForm'])->name('form.detail');
-Route::get('course/form/{id}/edit', [CourseController::class, 'editForm'])->name('form.edit');
-Route::post('course/form/{id}/update', [CourseController::class, 'updateForm'])->name('form.update');
-Route::post('course/form/{id}/delete', [CourseController::class, 'deleteForm'])->name('form.delete');
-Route::post('/course/custom-form', [CourseController::class, 'sendForm'])->name('custom.form');
+Route::get('/form', [CourseController::class, 'courseForm'])->name('course.form');
+Route::get('/form/{id}/detail', [CourseController::class, 'detailForm'])->name('form.detail');
+Route::get('/form/{id}/edit', [CourseController::class, 'editForm'])->name('form.edit');
+Route::post('/form/{id}/update', [CourseController::class, 'updateForm'])->name('form.update');
+Route::post('/form/{id}/delete', [CourseController::class, 'deleteForm'])->name('form.delete');
+Route::post('/custom-form', [CourseController::class, 'sendForm'])->name('custom.form');
 //NOTE - Course
 route::get('/course/create', [CourseController::class, 'courseCreate'])->name('course.create');
 route::get('/course/{id}/detail', [CourseController::class, 'detailCourse'])->name('course.detail');

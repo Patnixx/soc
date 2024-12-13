@@ -1,6 +1,6 @@
 <!-- Simplicity is an acquired taste. - Katharine Gerould -->
 <div class="card duration-300 transition-all ease-linear bg-white dark:bg-gray-900 w-4/5 m-12 p-4 pl-12 rounded-lg shadow-lg grid grid-cols-[0.9fr,0.1fr] {{$divclass}}">
-    <div class="card-body space-y-4">
+    <div class="card-body space-y-4 pt-4">
         <h1 class="font-semibold text-m-blue dark:text-white mb-4 {{$hclass}}">Name: {{$name}}</h1>
         @if(request()->routeIs('course.detail'))
             <h3 class="{{$tclass}}">Teacher: {{$teacher}}</h3>
@@ -10,7 +10,9 @@
         <p class="{{$pclass}}">Length: <span class="{{$sclass}}">{{$length}}</span></p>
         <p class="{{$pclass}}">Status: <span class="{{$sclass}}">{{$status}}</span></p>
         <p class="{{$pclass}}">Season: <span class="{{$sclass}}">{{$season}}</span></p>
-        <p class="{{$pclass}}">Students: <span class="{{$sclass}}">{{$students}}</span></p>
+        @if(!(request()->routeIs('progress')))
+            <p class="{{$pclass}}">Students: <span class="{{$sclass}}">{{$students}}</span></p>
+        @endif
     </div>
     <div class="flex flex-col justify-end">
         @if(Auth::user()->role == 'Admin' || Auth::user()->role == 'Teacher')

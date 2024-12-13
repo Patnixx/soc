@@ -27,7 +27,7 @@ class courseDiv extends Component
     public $sclass;
     public $tclass;
     
-    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id, $students, $divclass="", $hclass="", $pclass="", $sclass="", $tclass="")
+    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id, $students="", $divclass="", $hclass="", $pclass="", $sclass="", $tclass="")
     {
         //
         $this->name = $name;

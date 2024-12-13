@@ -1,6 +1,6 @@
 @extends('structures.main')
 @section('content')
-<div class="ml-[10%] mt-[10%]">
+<div class="ml-[10%] mt-[1.5%]">
     <section id="left" class="">
         <x-form-input-div 
         :fname="''.$form->f_name.''" 

@@ -1,13 +1,17 @@
 <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
-<div class="card duration-300 transition-all ease-linear bg-white dark:bg-gray-900 w-4/5 m-12 p-4 rounded-lg shadow-lg grid grid-cols-[0.9fr,0.1fr]">
-    <div class="card-body space-y-3">
+<div class="card duration-300 transition-all ease-linear bg-white dark:bg-gray-900 w-4/5 m-12 p-4 pl-12 rounded-lg shadow-lg grid grid-cols-[0.9fr,0.1fr] {{$divclass}}">
+    <div class="card-body space-y-4 pt-4">
         <h1 class="font-semibold {{$hclass}} mb-4 {{$hclass}}">{{$fname}} {{$lname}}</h1>
         <p class="{{$pclass}}">Email: <span class="{{$sclass}}">{{$email}}</span></p>
-        <p class="{{$pclass}}">Birthday: <span class="{{$sclass}}">{{$birthday}}</span></p>
+        @if(!(request()->routeIs('progress')))
+            <p class="{{$pclass}}">Birthday: <span class="{{$sclass}}">{{$birthday}}</span></p>
+        @endif
         <p class="{{$pclass}}">Length: <span class="{{$sclass}}">{{$length}}</span></p>
         <p class="{{$pclass}}">Class: <span class="{{$sclass}}">{{$class}}</span></p>
         <p class="{{$pclass}}">Season: <span class="{{$sclass}}">{{$season}}</span></p>
-        <p class="{{$pclass}}">Reason: <span class="{{$sclass}}">{{$reason}}</span></p>
+        @if(!(request()->routeIs('progress')))
+            <p class="{{$pclass}}">Reason: <span class="{{$sclass}}">{{$reason}}</span></p>
+        @endif
         <p class="{{$pclass}}">Approval: <span class="{{$sclass}}">{{$approval}}</span></p>
     </div>
     

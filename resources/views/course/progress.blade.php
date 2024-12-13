@@ -16,7 +16,6 @@
                 :length="''.$course->length.''" 
                 :status="''.$course->status.''" 
                 :season="''.$course->season.''" 
-                :students="'?'"
                 :id="''.$course->id.''"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
@@ -63,8 +62,7 @@
                 :class="''.$course->class.''" 
                 :length="''.$course->length.''" 
                 :status="''.$course->status.''" 
-                :season="''.$course->season.''"
-                :students="''.$course->students.''"
+                :season="''.$course->season.''"course->students.''"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
@@ -113,7 +111,6 @@
                 :length="''.$course->course->length.''" 
                 :status="''.$course->course->status.''" 
                 :season="''.$course->course->season.''"
-                :students="'?'"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
                 :id="''.$course->id.''"/>                

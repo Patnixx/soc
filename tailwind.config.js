@@ -33,6 +33,8 @@ export default {
 
       height: {
         29: '7.25rem',
+        30: '7.5rem',
+        30.5: '7.67rem',
         140: '35rem',
       },
 
