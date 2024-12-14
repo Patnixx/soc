@@ -41,7 +41,13 @@ Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profil
 
 //!SECTION Admin routes
 Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
-Route::get('users', [AdminController::class, 'usersIndex'])->name('users');
+    //*STUB - User CRUD routes
+    Route::get('/users', [AdminController::class, 'usersIndex'])->name('users');
+    Route::get('/users/create', [AdminController::class, 'usersCreate'])->name('users.create');
+    Route::post('/create-user', [AdminController::class, 'usersStore'])->name('users.store');
+    Route::get('/users/{id}/edit', [AdminController::class, 'usersEdit'])->name('users.edit');
+    Route::post('/users/{id}/update-user', [AdminController::class, 'usersUpdate'])->name('users.update');
+    Route::post('/users/{id}/delete', [AdminController::class, 'usersDelete'])->name('users.delete');
 
 //!SECTION Course/Progress routes for CRUD courses & forms
 Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');

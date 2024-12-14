@@ -62,11 +62,13 @@
                 :class="''.$course->class.''" 
                 :length="''.$course->length.''" 
                 :status="''.$course->status.''" 
-                :season="''.$course->season.''"course->students.''"
+                :season="''.$course->season.''"
+                :students="''.$course->students.''"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
-            @endforeach        </section>
+            @endforeach        
+        </section>
         <section id="right">
             <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
             @if($forms->isEmpty())
@@ -83,6 +85,7 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''" 
+                :courseid="''" :formid="''" :divclass="''"
                 :approval="''.$form->approval.''"
                 :hclass="'text-m-blue dark:text-white'"
                 :pclass="'dark:text-white text-m-blue'"
@@ -119,6 +122,7 @@
             @if($forms->isEmpty())
                 <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No forms found</h1>
             @endif
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
             @foreach($forms as $form)
                 <x-form-div 
                 :fname="''.$form->f_name.''" 
@@ -130,13 +134,12 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''"
+                :courseid="''" :formid="''" :divclass="''"
+                :hclass="'text-m-blue dark:text-white'"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
-            @if($user->role == 'Student')
-                <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
-            @endif
         </section>
     @endif
 </div>

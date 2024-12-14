@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('role')->default('User');
+            $table->date('birthday');
+            $table->string('tel_number');
             
             //auth stuff
             $table->string('email')->unique();
@@ -25,35 +27,17 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        // Insert some stuff
+        
         DB::table('users')->insert([[
                 'f_name' => 'John',
                 'l_name' => 'Doe',
                 'role' => 'Admin',
+                'birthday' => '2006-01-23',
+                'tel_number' => '0123 456 789',
                 'email' => 'admin@nixxy.com',
                 'password' => bcrypt('Jebemboha'),
-            ],
-            [
-                'f_name' => 'Jane',
-                'l_name' => 'Doe',
-                'role' => 'User',
-                'email' => 'user@nixxy.com',
-                'password' => bcrypt('Jebembohynu'),
-            ],
-            [
-                'f_name' => 'Patrik',
-                'l_name' => 'Nemčok',
-                'role' => 'Teacher',
-                'email' => 'patkonemcok@gmail.com',
-                'password' => bcrypt('picus123'),
-            ],
-            [
-                'f_name' => 'Fabián',
-                'l_name' => 'Vojár',
-                'role' => 'Student',
-                'email' => 'fabvoj@gmail.com',
-                'password' => bcrypt('kokot123'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }
