@@ -14,7 +14,8 @@
                     name="f_name" 
                     id="f_name" 
                     placeholder="{{$fname}}" 
-                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+                    value="{{$fname}}">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
                 <label for="l_name" class="text-sm font-medium dark:text-white text-gray-900">Last Name</label>
@@ -23,7 +24,8 @@
                     name="l_name" 
                     id="l_name" 
                     placeholder="{{$lname}}" 
-                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+                    value="{{$lname}}">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
                 <label for="email" class="text-sm font-medium dark:text-white text-gray-900">Email</label>
@@ -31,7 +33,8 @@
                     type="email" 
                     name="email" 
                     id="email" 
-                    placeholder="{{$email}}" 
+                    placeholder="{{$email}}"
+                    value="{{$email}}" 
                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
@@ -40,7 +43,8 @@
                     type="date" 
                     name="birthday" 
                     id="birthday" 
-                    placeholder="{{$birthday}}" 
+                    placeholder="{{$birthday}}"
+                    value="{{$birthday}}"
                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
@@ -99,8 +103,8 @@
                 <textarea 
                     name="reason" 
                     id="reason" 
-                    placeholder="{{$reason}}" 
-                    class="w-full h-30.5 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
+                    placeholder="{{$reason}}"
+                    class="w-full h-30.5 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$reason}}</textarea>
             </div>
         </div>
         <div class="flex justify-center items-center space-x-4 col-span-2">

@@ -27,8 +27,9 @@ class formDiv extends Component
     public $hclass;
     public $pclass;
     public $sclass;
+    public $formid;
     
-    public function __construct($fname, $lname, $email, $birthday="", $season, $length, $class, $reason="", $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='')
+    public function __construct($fname, $lname, $email, $birthday="", $season, $length, $class, $reason="", $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='', $formid)
     {
         $this->fname = $fname;
         $this->lname = $lname;
@@ -45,6 +46,7 @@ class formDiv extends Component
         $this->hclass = $hclass;
         $this->pclass = $pclass;
         $this->sclass = $sclass;
+        $this->formid = $formid;
     }
 
     /**

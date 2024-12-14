@@ -1,9 +1,6 @@
 <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
 <div class="container mx-auto max-w-[70%] rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear"> 
-    <!-- Heading -->
     <h2 class="text-2xl font-bold dark:text-white text-gray-900 mb-6">Edit Course:</h2>
-
-    <!-- Form Section -->
     <form method="POST" action="{{route('course.update', $id)}}" class="grid grid-cols-2 gap-6 mb-6">
         @csrf
         <div class="left">
@@ -14,6 +11,7 @@
                     name="name" 
                     id="name" 
                     placeholder="{{$name}}" 
+                    value="{{$name}}"
                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
@@ -22,7 +20,8 @@
                     type="text" 
                     name="teacher" 
                     id="teacher" 
-                    placeholder="{{$teacher}}" 
+                    placeholder="{{$teacher}}"
+                    value="{{$teacher}}" 
                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
             <div class="flex flex-col space-y-2  mb-2">
@@ -31,7 +30,7 @@
                     name="desc" 
                     id="desc" 
                     placeholder="{{$description}}" 
-                    class="w-full h-29 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
+                    class="w-full h-29 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$description}}</textarea>
             </div>
         </div>
         <div class="right">

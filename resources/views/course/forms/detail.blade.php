@@ -12,10 +12,11 @@
         :class="''.$form->class.''" 
         :reason="''.$form->reason.''"
         :approval="''.$form->approval.''" 
-        :id="''.$form->id.''" 
+        :id="''.$form->id.''"
+        :courseid="''" :formid="''" 
         :divclass="'h-96'"
-        :hclass="'text-3xl font-semibold dark:text-white text-gray-900 mb-4'"
-        :pclass="'dark:text-white text-m-blue text-lg'"
+        :hclass="'text-3xl font-semibold text-m-blue dark:text-white mb-4'"
+        :pclass="'dark:text-white text-m-blue'"
         :sclass="'dark:text-m-blue text-gray-900'"
         />
     </section>

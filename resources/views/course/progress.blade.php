@@ -7,10 +7,11 @@
             @if($courses->isEmpty())
                 <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No courses found</h1>
             @endif
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">Vytvoriť kurz</a>
             @foreach($courses as $course)
                 <x-course-div 
                 :name="''.$course->name.''" 
-                :teacher="''.$course->teacher_id.''" 
+                :teacher="''.$course->teacher->f_name.' '.$course->teacher->l_name.''" 
                 :description="''.$course->description.''" 
                 :class="''.$course->class.''" 
                 :length="''.$course->length.''" 
@@ -20,14 +21,13 @@
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
                 />                
-            @endforeach
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">Vytvoriť kurz</a>
-        </section>
+            @endforeach        </section>
         <section id="right">
             <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
             @if($forms->isEmpty())
                 <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No forms found</h1>
             @endif
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
             @foreach($forms as $form)
                 <x-form-div 
                 :fname="''.$form->f_name.''" 
@@ -39,12 +39,12 @@
                 :season="''.$form->season.''" 
                 :reason="''.$form->reason.''" 
                 :id="''.$form->id.''"
+                :courseid="''" :divclass="''" :formid="''"
                 :hclass="'dark:text-white text-m-blue'" 
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
         </section>
     @endif
 
@@ -66,9 +66,7 @@
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
-            @endforeach
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.create')}}">Vytvoriť kurz</a>
-        </section>
+            @endforeach        </section>
         <section id="right">
             <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
             @if($forms->isEmpty())

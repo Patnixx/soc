@@ -1,52 +1,121 @@
 @extends('structures.main')
 @section('content')
-<div class="">
-    <form action="{{route('custom.form')}}" method="post">
+<div class="container mx-auto max-w-[70%] rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear"> 
+    <h2 class="text-2xl font-bold dark:text-white text-gray-900 mb-6">Create Form:</h2>
+    <form action="{{route('custom.form')}}" method="post" class="grid grid-cols-2 gap-6 mb-6">
         @csrf
-        <div id="personal"">
-            <x-input-div :name="'f_name'" :type="'text'" :placeholder="'First Name ('.$user->f_name.')'" :id="'f_name'" :value="''" :icon="'bi bi-1-circle-fill'"/>
-            <x-input-div :name="'l_name'" :type="'text'" :placeholder="'Last Name ('.$user->l_name.')'" :id="'l_name'" :value="''" :icon="'bi bi-2-circle-fill'"/>
-            <x-input-div :name="'email'" :type="'email'" :placeholder="'Email ('.$user->email.')'" :id="'email'" :value="''" :icon="'bi bi-envelope'"/>
-            <x-input-div :name="'birthday'" :type="'date'" :placeholder="'Date of birth'" :id="'birthday'" :value="''" :icon="'bi bi-cake'"/>
-            {{--<x-input-div :name="'tel'" :type="'tel'" :placeholder="'Phone number'" :id="'tel'" :value="''" :icon="'bi bi-body-telephone'" pattern='[0-9]{4}-[0-9]{3}-][0-9]{3}'/>--}}
+        <div class="left">
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="f_name" class="text-sm font-medium dark:text-white text-gray-900">First name</label>
+                <input 
+                    type="text" 
+                    name="f_name" 
+                    id="f_name"
+                    placeholder="{{$user->f_name}}"
+                    value="{{$user->f_name}}" 
+                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            </div>
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="l_name" class="text-sm font-medium dark:text-white text-gray-900">Last name</label>
+                <input 
+                    type="text" 
+                    name="l_name" 
+                    id="l_name"
+                    placeholder="{{$user->l_name}}"
+                    value="{{$user->l_name}}" 
+                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            </div>
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="email" class="text-sm font-medium dark:text-white text-gray-900">Email</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    placeholder="{{$user->email}}"
+                    value="{{$user->email}}" 
+                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            </div>
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="birthday" class="text-sm font-medium dark:text-white text-gray-900">Birthday</label>
+                <input 
+                    type="date" 
+                    name="birthday" 
+                    id="birthday"
+                    value="{{$user->birthday}}"
+                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            </div>
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="telephone" class="text-sm font-medium dark:text-white text-gray-900">Telephone number</label>
+                <input 
+                    type="tel" 
+                    name="telephone" 
+                    id="telephone"
+                    value="{{$user->tel_number}}"
+                    placeholder="0123-456-789"
+                    pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"
+                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            </div>
         </div>
-        <div id="course"">
-            <select name="season" id="season">
-                <option value="" selected>Select a season</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Autumn">Autumn</option>
-                <option value="Winter">Winter</option>
-            </select>
-            <select name="length" id="length">
-                <option value="" selected>Select the length</option>
-                <option value="Classic">Classic (2-4 months)</option>
-                <option value="Turbo">Turbo (1-2 months)</option>
-            </select>
-            <select name="class" id="class">
-                <option value="" selected>Select the class</option>
-                <option value="AM">AM</option>
-                <option value="A1">A1</option>
-                <option value="A2">A2</option>
-                <option value="A">A</option>
-                <option value="B1">B1</option>
-                <option value="B">B</option>
-                <option value="BE">BE</option>
-                <option value="C1">C1</option>
-                <option value="C1E">C1E</option>
-                <option value="C">C</option>
-                <option value="CE">CE</option>
-                <option value="D1">D1</option>
-                <option value="D1E">D1E</option>
-                <option value="D">D</option>
-                <option value="DE">DE</option>
-                <option value="T">T</option>
-            </select>
-            <x-input-div :name="'reason'" :type="'text'" :placeholder="'Your reason'" :id="'reason'" :value="''" :icon="'bi bi-body-text'"/>
-            <button type="submit" class="bg-secondary text-white py-3 px-6 rounded-lg font-bold hover:bg-m-blue transition duration-300 col-span-2">Submit request</button>
+        <div class="right">
+            <div class="flex flex-col space-y-2  mb-2">
+                <label for="season" class="text-sm font-medium dark:text-white text-gray-900">Season</label>
+                <select name="season" id="season" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 h-11">
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Winter">Winter</option>
+                </select>
+            </div>
+            <div class="flex flex-col space-y-2  mb-2">
+                <label for="length" class="text-sm font-medium dark:text-white text-gray-900">Length</label>
+                <select name="length" id="length" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 h-11">
+                    <option value="Classic">Classic (2-4 months)</option>
+                    <option value="Turbo">Turbo (1-2 months)</option>
+                </select>
+            </div>
+            <div class="flex flex-col space-y-2  mb-2">
+                <label for="class" class="text-sm font-medium dark:text-white text-gray-900">Class</label>
+                <select name="class" id="class" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 h-11">
+                    <option value="AM">AM</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="A">A</option>
+                    <option value="B1">B1</option>
+                    <option value="B">B</option>
+                    <option value="BE">BE</option>
+                    <option value="C1">C1</option>
+                    <option value="C1E">C1E</option>
+                    <option value="C">C</option>
+                    <option value="CE">CE</option>
+                    <option value="D1">D1</option>
+                    <option value="D1E">D1E</option>
+                    <option value="D">D</option>
+                    <option value="DE">DE</option>
+                    <option value="T">T</option>
+                </select>
+            </div>
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="reason" class="text-sm font-medium dark:text-white text-gray-900">Reason</label>
+                <textarea 
+                    name="reason" 
+                    id="reason"
+                    placeholder="Reason"
+                    class="w-full px-4 py-2 h-31 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
+            </div>            
         </div>
-        <div class="">
-            <x-auth-href :route="'progress'" :text="'Back to progress'"/>
+        <div class="flex justify-center items-center space-x-4 col-span-2">
+            <button type="submit" class="relative flex items-center justify-center h-10 w-10 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">
+                <i class="bi bi-plus-circle"></i>
+                <span class="absolute w-auto p-2 m-2 min-w-max right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-300 scale-0 origin-left group-hover:scale-100">
+                    Create
+                </span>
+            </button>
+            <a href="{{route('progress')}}" class="relative flex items-center justify-center h-10 w-10 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">
+                <i class="bi bi-box-arrow-right"></i>
+                <span class="absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-300 scale-0 origin-left group-hover:scale-100">
+                    Back
+                </span>
+            </a>
         </div>
     </form>
 </div>

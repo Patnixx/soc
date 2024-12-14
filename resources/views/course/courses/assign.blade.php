@@ -2,7 +2,7 @@
 @section('content')
 <div class="grid grid-cols-[1fr,1fr]">
     <section id="left">
-        <h1 class="text-2xl ml-12 text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear w-min">Current_Course:</h1>
+        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Current course:</h1>
         <x-course-div 
         :name="''.$course->name.''" 
         :teacher="''.$course->teacher_id.''" 
@@ -18,7 +18,7 @@
         />
     </section>
     <section id="right">
-        <h1 class="text-2xl ml-12 text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear w-min">Forms</h1>
+        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
         @foreach($forms as $form)
             <x-form-div 
             :fname="''.$form->f_name.''" 
@@ -29,12 +29,14 @@
             :class="''.$form->class.''" 
             :season="''.$form->season.''" 
             :reason="''.$form->reason.''" 
-            :id="''.$form->user_id.''" 
+            :id="''.$form->user_id.''"
+            :formid="''.$form->id.''" 
             :courseid="''.$course->id.''" 
             :hclass="'text-m-blue dark:text-white'"
             :pclass="'dark:text-white text-m-blue'"
             :sclass="'dark:text-m-blue text-gray-900'"
-            :approval="''.$form->approval.''" />
+            :approval="''.$form->approval.''" 
+            :divclass="''"/>
         @endforeach
     </section>
 </div>

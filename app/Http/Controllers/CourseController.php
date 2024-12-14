@@ -16,7 +16,7 @@ class CourseController extends Controller
         $user = Auth::user();
 
         if(Auth::user()->role == 'Admin'){
-            $courses = Course::all();
+            $courses = Course::with('teacher')->get();
             $forms = Form::all();
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
@@ -122,12 +122,14 @@ class CourseController extends Controller
 
     public function courseCreate(){
         $user = Auth::user();
-        return view('course.courses.course', compact('user'));
+        $teachers = User::where('role', 'teacher')->get();
+        return view('course.courses.course', compact('user', 'teachers'));
     }
 
     public function sendCreate(Request $request){
         $request->validate([
             'name' => 'required',
+            'teacher' => 'required',
             'desc' => 'required',
             'season' => 'required',
             'length' => 'required',
@@ -140,7 +142,7 @@ class CourseController extends Controller
             $id = null;
         }
         Course::create([
-            'teacher_id' => $id,
+            'teacher_id' => $request->teacher,
             'name' => $request->name,
             'description' => $request->desc,
             'season' => $request->season,

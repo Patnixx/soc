@@ -39,14 +39,14 @@
             <div class="justify-self-end">
                 <!-- //NOTE - Lower sidebar icons -->
                 @if((!Auth::check()))
-                    <x-icon-div :icon="'bi bi-person-fill-up'" :text="'Login'" :route="'/login'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-person-plus-fill'" :text="'Register'" :route="'/register'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-person-fill-up'" :text="'Login'" :route="'login'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-person-plus-fill'" :text="'Register'" :route="'register'" :class="'mx-auto'" :sclass="'left-14'"/>
                 @endif
                 @if(((Auth::check()) && $user->role == 'Admin'))
                     <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log out'" :route="'logout'" :class="'mx-auto'" :sclass="'left-14'" />
                 @endif
                 @if(Auth::check() && $user->role != 'Admin')
-                    <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'/profile'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-person-fill-gear'" :text="''.$profile" :route="'profile'" :class="'mx-auto'" :sclass="'left-14'"/>
                     <x-icon-div :icon="'bi bi-box-arrow-right'" :text="'Log out'" :route="'logout'" :class="'mx-auto'" :sclass="'left-14'" />
                 @endif
                 <x-theme-div :spanSide="'left-14'"/>
