@@ -12,17 +12,8 @@
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-end">Filters:</h1>            
         </div>
             <div id="mails" class="flex flex-col divide-y divide-gray-300 dark:divide-gray-800 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">
-                <x-user-div :id="'User ID:'" :fname="'First Name:'" :lname="'Last Name:'" :role="'Role:'" :birthday="'Date of Birth:'" :telnum="'Telephone Number:'" :email="'Email'" :sclass="'font-medium text-sm text-gray-700 dark:text-gray-300 truncate'" :iclass="'bi bi-trash text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500'" />
+                <x-user-div :id="'User ID:'" :fname="'First Name:'" :lname="'Last Name:'" :role="'Role:'" :birthday="'Date of Birth:'" :telnum="'Telephone Number:'" :email="'Email'" :sclass="'font-medium text-sm text-gray-700 dark:text-gray-300 truncate'" :iclass="'hidden'" />
                 @foreach ($accounts as $account)
-                    <?php 
-                        $gradient = match ($account->role) {
-                            'Admin' => 'to-red-500',
-                            'Teacher' => 'to-blue-500',
-                            'Student' => 'to-green-500',
-                            'User' => 'to-yellow-500',
-                            default => 'to-gray-500', // Fallback gradient
-                        };
-                    ?>
                     <x-user-div 
                     :id="$account->id"
                     :fname="$account->f_name"
@@ -32,8 +23,7 @@
                     :telnum="$account->tel_number"
                     :email="$account->email"
                     :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
-                    :iclass="'bi bi-trash text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-500'"
-                    :gradient="$gradient"
+                    :iclass="'cursor-pointer'"
                     />
                 @endforeach
             </div>

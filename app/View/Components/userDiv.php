@@ -20,8 +20,7 @@ class userDiv extends Component
     public $telnum;
     public $iclass;
     public $sclass;
-    public $gradient;
-    public function __construct($id, $fname, $lname, $email, $role, $birthday, $telnum, $iclass="", $sclass="", $gradient="")
+    public function __construct($id, $fname, $lname, $email, $role, $birthday, $telnum, $iclass="", $sclass="")
     {
         $this->id = $id;
         $this->fname = $fname;
@@ -32,7 +31,6 @@ class userDiv extends Component
         $this->telnum = $telnum;
         $this->iclass = $iclass;
         $this->sclass = $sclass;
-        $this->gradient = $gradient;
     }
 
     /**
