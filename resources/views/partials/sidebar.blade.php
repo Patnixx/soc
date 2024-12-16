@@ -28,13 +28,13 @@
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'Materials'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/inbox'"/>
                 @endif
-            </div>
-                <!-- //NOTE - Middle sidebar icons -->
-            <div class="justify-self-center">
                 @if(Auth::check() && $user->role == 'User')
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'Progress'" :route="'/progress'"/>
                     <x-auth-icon-div :icon="'bi bi-envelope'" :text="'Inbox'" :route="'/inbox'"/>
                 @endif
+            </div>
+                <!-- //NOTE - Middle sidebar icons -->
+            <div class="justify-self-center">
             </div>
             <div class="justify-self-end">
                 <!-- //NOTE - Lower sidebar icons -->

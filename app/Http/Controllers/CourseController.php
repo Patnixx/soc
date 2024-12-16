@@ -30,8 +30,6 @@ class CourseController extends Controller
         if(Auth::user()->role == 'Student'){
             $forms = Form::where('user_id', $user->id)->get();
             $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
-            /*$kurz_id = CourseUser::where('user_id', $user->id)->get();
-            $courses = Course::where('id', $kurz_id->course_id)->get();*/
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
         if(Auth::user()->role == 'User'){

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -35,7 +36,7 @@ return new class extends Migration
                 'birthday' => '2006-01-23',
                 'tel_number' => '0123 456 789',
                 'email' => 'admin@nixxy.com',
-                'password' => bcrypt('Jebemboha'),
+                'password' => Hash::make('Jebemboha'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

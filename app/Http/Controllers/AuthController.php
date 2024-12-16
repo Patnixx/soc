@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -29,8 +30,8 @@ class AuthController extends Controller
             }
             return redirect()->route('/')->withSuccess('Signed in');
         }
-        $validator['emailPassword'] = 'Email is missing';
-        $validator['password'] = 'Password is missing';
+        $validator['email'] = 'Email is missing or incorrect!';
+        $validator['password'] = 'Password is missing or incorrect!';
         $validator['emailPassword'] = 'Email address or password is incorrect';
         return redirect('login')->withErrors($validator);
 
@@ -47,8 +48,15 @@ class AuthController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
             'c_pass' => 'required|same:password',
+            'birthday' => 'required',
+            'telephone' => 'required',
+        ], 
+        [
+            'pass.regex' => 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
+            'c_pass.same' => 'Passwords do not match.',
+            'pass.min' => 'Password must be at least 8 characters long.',
         ]);
 
         $data = $request->all();
@@ -67,7 +75,9 @@ class AuthController extends Controller
             'f_name' => $data['f_name'],
             'l_name' => $data['l_name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
+            'birthday' => $data['birthday'],
+            'tel_number' => $data['telephone'],
         ]);
 
     }

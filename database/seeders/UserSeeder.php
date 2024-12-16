@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class UserSeeder extends Seeder
                 'birthday' => '2006-01-23',
                 'tel_number' => '0123 456 789',
                 'email' => 'user@nixxy.com',
-                'password' => bcrypt('Jebembohynu'),
+                'password' => Hash::make('Jebembohynu'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -33,7 +34,7 @@ class UserSeeder extends Seeder
                 'birthday' => '2006-01-23',
                 'tel_number' => '0123 456 789',
                 'email' => 'patkonemcok@gmail.com',
-                'password' => bcrypt('picus123'),
+                'password' => Hash::make('picus123'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -44,7 +45,7 @@ class UserSeeder extends Seeder
                 'birthday' => '2006-01-23',
                 'tel_number' => '0123 456 789',
                 'email' => 'fabvoj@gmail.com',
-                'password' => bcrypt('kokot123'),
+                'password' => Hash::make('kokot123'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
