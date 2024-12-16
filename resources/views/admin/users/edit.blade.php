@@ -69,7 +69,7 @@
         </div>
         <div class="flex justify-center items-center space-x-4 col-span-2">
             <button type="submit" class="relative flex items-center justify-center h-10 w-10 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">
-                <i class="bi bi-plus-circle"></i>
+                <i class="bi bi-floppy"></i>
                 <span class="absolute w-auto p-2 m-2 min-w-max right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-300 scale-0 origin-left group-hover:scale-100">
                     Update
                 </span>

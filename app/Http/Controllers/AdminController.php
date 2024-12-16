@@ -55,30 +55,31 @@ class AdminController extends Controller
                 $request->validate([
                     'f_name' => 'required',
                     'l_name' => 'required',
-                    'email' => 'required',
-                    'password' => 'required',
+                    'email' => 'required|email|unique:users',
+                    'pass' => 'required|min:8',
+                    'c_pass' => 'required|same:pass',
                     'role' => 'required',
                     'birthday' => 'required',
                     'telephone' => 'required',
                 ]);
 
-                User::created([
+                User::create([
                     'f_name' => $request->f_name,
                     'l_name' => $request->l_name,
                     'email' => $request->email,
-                    'password' => bcrypt($request->password),
+                    'password' => bcrypt($request->pass),
                     'role' => $request->role,
                     'birthday' => $request->birthday,
-                    'telephone' => $request->telephone,
+                    'tel_number' => $request->telephone,
                 ]);
 
                 return redirect()->route('users');
             }
             else{
-                return redirect('/');
+                return redirect()->route('home');
             }
         }
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function usersEdit($id){

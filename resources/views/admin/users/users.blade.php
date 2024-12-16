@@ -1,18 +1,18 @@
 @extends('structures.main')
 @section('content')
-    {{--User
-    Student
-    Teacher
-    Admin
-    le users: (vsetko z db + na konci delete a edit)
-    nejak pekne to upravit a pujde to--}}
     <div class="p-6">
         <div class="flex flex-row justify-between">
-            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-start">Users</span>
-            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-end">Filters:</h1>            
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-start">Users</h1>
+            <div class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-end flex flex-row space-x-2 mr-2">
+                <button data-role="All" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">All</button>
+                <button data-role="Admin" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">Admin</button>
+                <button data-role="Teacher" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">Teacher</button>
+                <button data-role="Student" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">Student</button>
+                <button data-role="User" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">User</button>
+            </div>            
         </div>
-            <div id="mails" class="flex flex-col divide-y divide-gray-300 dark:divide-gray-800 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">
-                <x-user-div :id="'User ID:'" :fname="'First Name:'" :lname="'Last Name:'" :role="'Role:'" :birthday="'Date of Birth:'" :telnum="'Telephone Number:'" :email="'Email'" :sclass="'font-medium text-sm text-gray-700 dark:text-gray-300 truncate'" :iclass="'hidden'" />
+            <div id="userList" class="flex flex-col divide-y divide-gray-300 dark:divide-gray-800 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">
+                <x-user-div :id="'User ID:'" :fname="'First Name:'" :lname="'Last Name:'" :role="'Role:'" :birthday="'Date of Birth:'" :telnum="'Telephone Number:'" :email="'Email:'" :sclass="'font-medium text-sm text-gray-700 dark:text-gray-300 truncate'" :iclass="'hidden'" :aclass="''" />
                 @foreach ($accounts as $account)
                     <x-user-div 
                     :id="$account->id"
@@ -24,6 +24,7 @@
                     :email="$account->email"
                     :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
                     :iclass="'cursor-pointer'"
+                    :aclass="'user-card'"
                     />
                 @endforeach
             </div>

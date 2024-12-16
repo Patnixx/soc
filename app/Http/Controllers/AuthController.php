@@ -25,7 +25,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role == 'Admin') {
-                return redirect()->route('admin')->withSuccess('Signed in'); //TODO - ZMENIT NA ADMIN PANEL KED BUDE VYTVORENY
+                return redirect()->route('admin')->withSuccess('Signed in');
             }
             return redirect()->route('/')->withSuccess('Signed in');
         }

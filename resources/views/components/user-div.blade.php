@@ -1,5 +1,5 @@
 <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-<a class="grid grid-cols-8 w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all bg-gradient-to-br from-transparent via-transparent">
+<a data-role="{{$role}}" class="{{$aclass}} grid grid-cols-8 w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all bg-gradient-to-br from-transparent via-transparent">
     <div class="flex items-center truncate">
         <span class="{{$sclass}} font-medium text-gray-900 dark:text-white">{{$id}}</span>
     </div>
