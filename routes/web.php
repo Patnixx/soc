@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
@@ -51,14 +52,14 @@ Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
 
 //!SECTION Course/Progress routes for CRUD courses & forms
 Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');
-//NOTE - Form
+//?NOTE - Form
 Route::get('/form', [CourseController::class, 'courseForm'])->name('course.form');
 Route::get('/form/{id}/detail', [CourseController::class, 'detailForm'])->name('form.detail');
 Route::get('/form/{id}/edit', [CourseController::class, 'editForm'])->name('form.edit');
 Route::post('/form/{id}/update', [CourseController::class, 'updateForm'])->name('form.update');
 Route::post('/form/{id}/delete', [CourseController::class, 'deleteForm'])->name('form.delete');
 Route::post('/custom-form', [CourseController::class, 'sendForm'])->name('custom.form');
-//NOTE - Course
+//?NOTE - Course
 route::get('/course/create', [CourseController::class, 'courseCreate'])->name('course.create');
 route::get('/course/{id}/detail', [CourseController::class, 'detailCourse'])->name('course.detail');
 route::get('/course/{id}/assign', [CourseController::class, 'assignCourse'])->name('course.assign');
@@ -83,3 +84,6 @@ Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->nam
 Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
 Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
 
+//!SECTION Calendar
+Route::get('/calendar', [CalendarController::class, 'index']);
+Route::post('/calendar/action', [CalendarController::class, 'action']);
