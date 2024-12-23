@@ -9,13 +9,3 @@
 .display-none{
     @apply hidden;
 }
-
-/* !calendar css overwrite */
-.fc-toolbar .fc-center{
-    @apply dark:text-white;
-}
-
-.fc-prev-button .fc-button .fc-state-default .fc-corner-left{
-    @apply dark:text-white;
-    @apply dark:bg-gray-800;
-}
