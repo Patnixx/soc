@@ -1,4 +1,5 @@
 @extends('structures.main')
+@section('title', ''.__('title.profile').'')
 @section('content')
     <div class="w-full h-full flex flex-col justify-center items-center mt-12">
         <div class="w-160 h-160 bg-gray-900 shadow-lg rounded-3xl">

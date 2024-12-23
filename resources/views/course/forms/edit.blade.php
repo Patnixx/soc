@@ -1,4 +1,5 @@
 @extends('structures.main')
+@section('title', ''.__('title.form-edit').'')
 @section('content')
 <div class="ml-[10%] mt-[1.5%]">
     <section id="left" class="">

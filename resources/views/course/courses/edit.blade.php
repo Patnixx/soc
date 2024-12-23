@@ -1,4 +1,5 @@
 @extends('structures.main')
+@section('title', ''.__('title.course-edit').'')
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen">
         <x-course-input-div 

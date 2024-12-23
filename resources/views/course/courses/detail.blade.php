@@ -1,4 +1,5 @@
 @extends('structures.main')
+@section('title', ''.__('title.course-detail').'')
 @section('content')
 <div class="ml-[10%] mt-[10%]">
     <section id="left" class="">

@@ -1,0 +1,61 @@
+<?php
+
+return [
+
+    //courses
+    'courses' => 'Courses',
+    'no-courses' => 'No courses exist.',
+    'course-create' => 'Create course',
+    'course-edit' => 'Edit course',
+    'course-detail' => 'Course detail',
+    'course-assign' => 'Assign to course',
+    'course-current' => 'Current course',
+    'my-course' => 'My courses',
+    'no-course' => 'You have no courses.',
+    
+    'name' => 'Course name',
+    'teacher' => 'Teacher',
+    'students' => 'Students',
+    'class' => 'Class',
+    'length' => 'Length',
+    'status' => 'Status',
+    'season' => 'Season',
+    'description' => 'Course description',
+    'current' => 'Current',
+    'classic' => 'Classic (2-4 months)',
+    'turbo' => 'Turbo (1-2 months)',
+    'open' => 'Open',
+    'active' => 'Active',
+    'finished' => 'Finished',
+    'summer' => 'Summer',
+    'winter' => 'Winter',
+    'autumn' => 'Autumn',
+    'spring' => 'Spring',
+
+    //forms
+    'forms' => 'Forms',
+    'form-create' => 'Create form',
+    'no-forms' => 'No forms exist.',
+    'form-edit' => 'Edit form',
+    'form-detail' => 'Form detail',
+    'form-send' => 'Send form', 
+    'f-name' => 'First name',
+    'l-name' => 'Last name',
+    'email' => 'Email',
+    'birth' => 'Date of birth',
+    'tel' => 'Phone number',
+    'approval' => 'Approval',
+    'approved' => 'Approved',
+    'waiting' => 'Waiting',
+    'rejected' => 'Rejected',
+    'reason' => 'Reason',
+
+    //icons
+    'assign' => 'Assign',
+    'detail' => 'Detail',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'back' => 'Back',
+    'save' => 'Save',
+    'create' => 'Create',
+];

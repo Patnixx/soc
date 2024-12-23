@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'home' => 'Domov',
+    'login' => 'Prihlásiť sa',
+    'register' => 'Registrovať sa',
+    'profile' => 'Profil',
+    'admin' => 'Admin panel',
+    'users' => 'Užívatelia',
+    'users-create' => 'Vytvoriť užívateľa',
+    'users-edit' => 'Upraviť užívateľa',
+    'progress' => 'Pokrok',
+    'create-form' => 'Odoslať formulár',
+    'form-detail' => 'Detail formulára',
+    'form-edit' => 'Upraviť formulár',
+    'course-create' => 'Vytvoriť kurz',
+    'course-edit' => 'Upraviť kurz',
+    'course-detail' => 'Detail kurzu',
+    'course-assign' => 'Prideliť ku kurzu',
+    'course-unassign' => 'Odstrániť z kurzu',
+    'inbox' => 'Schránka',
+    'inbox-new' => 'Nová správa',
+    'inbox-deleted' => 'Vymazané správy',
+    'inbox-detail' => 'Detail správy',
+];

@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'home' => 'Home',
+    'login' => 'Login',
+    'register' => 'Register',
+    'profile' => 'Profile',
+    'admin' => 'Admin',
+    'users' => 'Users',
+    'users-create' => 'Create User',
+    'users-edit' => 'Edit User',
+    'progress' => 'Progress',
+    'create-form' => 'Send Form',
+    'form-detail' => 'Form Detail',
+    'form-edit' => 'Edit Form',
+    'course-create' => 'Create Course',
+    'course-edit' => 'Edit Course',
+    'course-detail' => 'Course Detail',
+    'course-assign' => 'Assign to Course',
+    'course-unassign' => 'Unassign from Course',
+    'inbox' => 'Inbox',
+    'inbox-new' => 'New Message',
+    'inbox-deleted' => 'Deleted Messages',
+    'inbox-detail' => 'Message Detail',
+];

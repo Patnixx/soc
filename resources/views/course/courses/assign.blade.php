@@ -1,8 +1,9 @@
 @extends('structures.main')
+@section('title', ''.__('title.course-assign').'')
 @section('content')
 <div class="grid grid-cols-[1fr,1fr]">
     <section id="left">
-        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Current course:</h1>
+        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.course-current')}}:</h1>
         <x-course-div 
         :name="''.$course->name.''" 
         :teacher="''.$course->teacher_id.''" 
@@ -18,7 +19,7 @@
         />
     </section>
     <section id="right">
-        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
+        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.forms')}}</h1>
         @foreach($forms as $form)
             <x-form-div 
             :fname="''.$form->f_name.''" 

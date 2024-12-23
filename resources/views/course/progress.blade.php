@@ -1,13 +1,14 @@
 @extends('structures.main')
+@section('title', ''.__('title.progress').'')
 @section('content')
 <div class="grid grid-cols-[1fr,1fr]">
     @if($user->role == 'Admin')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.courses')}}</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No courses found</h1>
+                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-courses')}}</h1>
             @endif
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">Vytvoriť kurz</a>
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">{{__('courses.course-create')}}</a>
             @foreach($courses as $course)
                 <x-course-div 
                 :name="''.$course->name.''" 
@@ -23,11 +24,11 @@
                 />                
             @endforeach        </section>
         <section id="right">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.forms')}}</h1>
             @if($forms->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No forms found</h1>
+                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-forms')}}</h1>
             @endif
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
+            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">{{__('courses.form-send')}}</a>
             @foreach($forms as $form)
                 <x-form-div 
                 :fname="''.$form->f_name.''" 
@@ -50,9 +51,9 @@
 
     @if($user->role == 'Teacher')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.my-course')}}</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 text-xl dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No courses</h1>
+                <h1 class="text-red-500 text-xl dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-course')}}</h1>
             @endif
             @foreach($courses as $course)
                 <x-course-div 
@@ -99,9 +100,9 @@
 
     @if($user->role == 'Student')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Courses</h1>
+            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.my-course')}}</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No courses</h1>
+                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-course')}}</h1>
             @endif
             @foreach($courses as $course)
                 <x-course-div 

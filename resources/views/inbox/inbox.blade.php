@@ -1,10 +1,10 @@
 @extends('structures.main')
-
+@section('title', ''.__('title.inbox').'')
 @section('content')
 <div class="p-6">
-    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">Inbox</h1>
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('inbox.inbox')}}</h1>
     @if($messages->isEmpty())
-        <h2 class="text-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ease-linear">Your inbox is empty</h2>
+        <h2 class="text-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ease-linear">{{__('inbox.inbox-empty')}}</h2>
     @else
         <div id="mails" class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">
             @foreach ($messages as $message)
@@ -25,7 +25,7 @@
         <x-icon-div 
         :route="'new.message'"
         :icon="'bi bi-plus-circle'"
-        :text="'New Message'"
+        :text="'msg-new'"
         :class="'justify-self-start'"
         :sclass="'right-14'"
         />
@@ -33,7 +33,7 @@
         <x-icon-div 
         :route="'deleted.messages'"
         :icon="'bi bi-trash'"
-        :text="'Deleted messages'"
+        :text="'msg-del'"
         :class="'justify-self-end'"
         :sclass="'left-14'"
         />

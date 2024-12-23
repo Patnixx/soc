@@ -3,6 +3,6 @@
     <i class="bi bi-sun text-xl sun group-hover:text-white text-m-blue ransition-all duration-300 ease-linear cursor-pointer"></i>
     <i class="bi bi-moon-stars text-xl moon group-hover:text-white text-gray-900 transition-all duration-300 ease-linear cursor-pointer dark:group-hover:bg-gray-900"></i>
     <span class="absolute w-auto p-2 m-2 min-w-max {{$spanSide}} rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
-        Theme
+        {{__('sidebar.theme')}}
     </span>
 </div>

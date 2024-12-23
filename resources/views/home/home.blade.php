@@ -1,4 +1,5 @@
 @extends('structures.main')
+@section('title', ''.__('title.home').'')
 @section('content')
     <div id="content" class="w-[90%] h-full flex flex-col justify-center items-center">
         <div id="logo" class="">
