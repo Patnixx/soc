@@ -36,6 +36,8 @@ export default {
         30: '7.5rem',
         30.5: '7.67rem',
         31: '7.75rem',
+        88: '22rem',
+        92: '23rem',
         140: '35rem',
       },
 
@@ -49,6 +51,10 @@ export default {
         160: '40rem',
         168: '42rem',
         176: '44rem',
+      },
+
+      backgroundImage: {
+        'turbo-pattern': "url('/public/assets/pattern/turbo-engine.png')"
       }
     },
   },

@@ -4,11 +4,11 @@
                 <!-- //NOTE - Upper sidebar icons -->
                 <x-icon-div :icon="'bi bi-house'" :text="'home'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
                 @if(!((Auth::check())))
-                    <x-icon-div :icon="'bi bi-info-circle'" :text="'info'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-people'" :text="'personel'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-car-front-fill'" :text="'cars'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-images'" :text="'gallery'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-telephone'" :text="'contact'" :route="'/'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-info-circle'" :text="'info'" :route="'#about'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-people'" :text="'personnel'" :route="'#personnel'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-car-front-fill'" :text="'cars'" :route="'#cars'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-images'" :text="'gallery'" :route="'#gallery'" :class="'mx-auto'" :sclass="'left-14'"/>
+                    <x-icon-div :icon="'bi bi-telephone'" :text="'contact'" :route="'#contact'" :class="'mx-auto'" :sclass="'left-14'"/>
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')
                     <x-auth-icon-div :icon="'bi bi-gear'" :text="'admin'" :route="'/admin'"/>

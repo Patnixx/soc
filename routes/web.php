@@ -22,7 +22,11 @@ use Illuminate\Support\Facades\Route;
 //!SECTION Home/Default routes
 Route::get('/', [HomeController::class, 'homeIndex'])->name('/');
 Route::get('/home', [HomeController::class, 'homeIndex'])->name('home');
-
+Route::get('/#about', [HomeController::class, 'homeIndex'])->name('#about');
+Route::get('/#personnel', [HomeController::class, 'homeIndex'])->name('#personnel');
+Route::get('/#cars', [HomeController::class, 'homeIndex'])->name('#cars');
+Route::get('/#gallery', [HomeController::class, 'homeIndex'])->name('#gallery');
+Route::get('/#contact', [HomeController::class, 'homeIndex'])->name('#contact');
 
 //!SECTION Auth routes for login, register & logout
 Route::get('/login', [AuthController::class, 'loginIndex'])->name('login');
