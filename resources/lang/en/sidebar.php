@@ -4,7 +4,7 @@ return [
     //non-personel icons
     'home' => 'Home',
     'info' => 'Info',
-    'personel' => 'Personel',
+    'personnel' => 'Personel',
     'cars' => 'Cars',
     'gallery' => 'Gallery',
     'contact' => 'Contact',

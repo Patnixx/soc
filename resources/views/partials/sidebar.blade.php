@@ -7,7 +7,6 @@
                     <x-icon-div :icon="'bi bi-info-circle'" :text="'info'" :route="'#about'" :class="'mx-auto'" :sclass="'left-14'"/>
                     <x-icon-div :icon="'bi bi-people'" :text="'personnel'" :route="'#personnel'" :class="'mx-auto'" :sclass="'left-14'"/>
                     <x-icon-div :icon="'bi bi-car-front-fill'" :text="'cars'" :route="'#cars'" :class="'mx-auto'" :sclass="'left-14'"/>
-                    <x-icon-div :icon="'bi bi-images'" :text="'gallery'" :route="'#gallery'" :class="'mx-auto'" :sclass="'left-14'"/>
                     <x-icon-div :icon="'bi bi-telephone'" :text="'contact'" :route="'#contact'" :class="'mx-auto'" :sclass="'left-14'"/>
                 @endif
                 @if((Auth::check()) && $user->role == 'Admin')

@@ -4,7 +4,7 @@ return [
     //non-personel icons
     'home' => 'Domov',
     'info' => 'Info',
-    'personel' => 'Personál',
+    'personnel' => 'Personál',
     'cars' => 'Auta',
     'gallery' => 'Galéria',
     'contact' => 'Kontakt',
