@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('cubage');
             $table->string('gearbox');
             $table->string('drive');
+            $table->string('mileage');
             $table->timestamps();
         });
     }

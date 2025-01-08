@@ -27,7 +27,7 @@ class AdminController extends Controller
         if(Auth::check()){
             if(Auth::user()->role=="Admin"){
                 $user = Auth::user();
-                $accounts = User::all();
+                $accounts = User::query()->simplePaginate(10);
                 return view('admin.users.users', compact('user', 'accounts'));
             }
             else{

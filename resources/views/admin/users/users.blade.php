@@ -69,6 +69,8 @@
                 :sclass="'right-14'"
                 />
             </div>
+            <br>
+            {{$accounts->links()}}
         </div>
     </div>
 </div>

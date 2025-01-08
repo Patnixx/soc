@@ -16,5 +16,6 @@ class Car extends Model
         'horsepower',
         'cubage',
         'gearbox',
+        'mileage',
     ];
 }

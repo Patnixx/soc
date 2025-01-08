@@ -48,11 +48,11 @@
                 <div class="bg-white shadow-lg rounded-lg p-4 bg-white-900 dark:bg-gray-900">
                     <img src="{{ asset('assets/img/motocycle.png') }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold text-gray-800 dark:text-m-blue">{{$car->brand}} {{$car->model}}</h3>
-                    <p class="text-gray-800 dark:text-m-blue">Horsepower: {{$car->horsepower}}</p>
+                    <p class="text-gray-800 dark:text-m-blue">Year: {{$car->year}}</p>
                 </div> 
             @endforeach
-            
         </div>
+        <h2 class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300 text-center pt-6"><a href="">Car Gallery</a></h2>
     </section>
 
     <!-- Gallery Section 
