@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
 use Illuminate\Support\Facades\Route;
@@ -80,8 +81,15 @@ Route::get('/inbox/deleted', [InboxController::class, 'deletedIndex'])->name('de
 Route::post('/inbox/{id}/restore', [InboxController::class, 'restoreMessage'])->name('message.restore');
 Route::post('/inbox/bin', [InboxController::class, 'binClear'])->name('clear.bin');
 
+//!EVENTS
+Route::get('/events', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/create', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/store', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/{id}/edit', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/{id}/update', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/{id}/delete', [OccasionController::class, 'index'])->name('events');
 
-//FIXME - This route is not existing
+//FIXME - Add this functions
 Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->name('message.detail');
 Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
 Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
