@@ -28,7 +28,7 @@ class OccasionController extends Controller
             {
                 $events = Occasion::with('course')->whereHas('course', function($q) use($user){
                     $q->where('teacher_id', $user->id);
-                })->simplePaginate(10);
+                })->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))')->simplePaginate(10);
                 return view('occasion.index', compact('user', 'events'));
             }
             if($user->role == 'Student')

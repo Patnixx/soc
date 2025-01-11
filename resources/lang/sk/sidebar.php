@@ -26,10 +26,14 @@ return [
     'logout' => 'Odhlásenie',
 
     'theme' => 'Farebná téma',
+    'back' => 'Späť',
 
     //users icons
     'create-usr' => 'Vytvoriť používateľa',
-    'create-event' => 'Vytvoriť udalosť',
+
+    //calendar icons
+    'create-theory' => 'Vytvoriť hodinu teórie',
+    'create-ride' => 'Vytvoriť jazdu',
 
     //inbox icons
     'msg-new' => 'Nová správa',

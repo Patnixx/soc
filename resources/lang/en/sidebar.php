@@ -24,10 +24,14 @@ return [
     'logout' => 'Logout',
 
     'theme' => 'Color mode',
+    'back' => 'Back',
 
     //users icons
     'create-usr' => 'Create user',
-    'create-event' => 'Create event',
+
+    //calendar icons
+    'create-theory' => 'Create theory lesson',
+    'create-ride' => 'Create ride lesson',
 
     //inbox icons
     'msg-new' => 'New message',
