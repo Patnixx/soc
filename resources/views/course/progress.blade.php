@@ -58,7 +58,7 @@
             @foreach($courses as $course)
                 <x-course-div 
                 :name="''.$course->name.''" 
-                :teacher="''.$course->teacher_id.''" 
+                :teacher="''.$course->teacher->f_name.' '.$course->teacher->l_name.''" 
                 :description="''.$course->description.''"
                 :class="''.$course->class.''" 
                 :length="''.$course->length.''" 

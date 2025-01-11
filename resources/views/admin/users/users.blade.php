@@ -64,7 +64,7 @@
                 <x-icon-div 
                 :route="'users.create'"
                 :icon="'bi bi-plus-circle'"
-                :text="'create'"
+                :text="'create-usr'"
                 :class="'justify-self-start'"
                 :sclass="'right-14'"
                 />

@@ -83,11 +83,14 @@ Route::post('/inbox/bin', [InboxController::class, 'binClear'])->name('clear.bin
 
 //!EVENTS
 Route::get('/events', [OccasionController::class, 'index'])->name('events');
-Route::get('/events/create', [OccasionController::class, 'index'])->name('events');
-Route::get('/events/store', [OccasionController::class, 'index'])->name('events');
-Route::get('/events/{id}/edit', [OccasionController::class, 'index'])->name('events');
-Route::get('/events/{id}/update', [OccasionController::class, 'index'])->name('events');
-Route::get('/events/{id}/delete', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/create-theory', [OccasionController::class, 'create_theory'])->name('events.create.theory');
+Route::get('/events/create-ride', [OccasionController::class, 'create_ride'])->name('events.create.ride');
+Route::post('/events/assign-ride', [OccasionController::class, 'assign_ride'])->name('events.assign.ride');
+Route::post('/events/store-theory', [OccasionController::class, 'store_theory'])->name('events.store.theory');
+Route::post('/events/{courseid}/store-ride', [OccasionController::class, 'store_ride'])->name('events.store.ride');
+Route::get('/events/{id}/edit', [OccasionController::class, 'edit'])->name('events.edit');
+Route::post('/events/{id}/update', [OccasionController::class, 'update'])->name('events.update');
+Route::post('/events/{id}/delete', [OccasionController::class, 'delete'])->name('events.delete');
 
 //FIXME - Add this functions
 Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->name('message.detail');

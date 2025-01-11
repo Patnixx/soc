@@ -28,7 +28,8 @@ return [
     'theme' => 'Farebná téma',
 
     //users icons
-    'create' => 'Vytvoriť používateľa',
+    'create-usr' => 'Vytvoriť používateľa',
+    'create-event' => 'Vytvoriť udalosť',
 
     //inbox icons
     'msg-new' => 'Nová správa',

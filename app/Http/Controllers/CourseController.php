@@ -22,7 +22,7 @@ class CourseController extends Controller
         }
 
         if(Auth::user()->role == 'Teacher'){
-            $courses = Course::where('teacher_id', $user->id)->get();
+            $courses = Course::with('teacher')->where('teacher_id', $user->id)->get();
             $forms = Form::all();
             return view('course.progress', compact('user', 'courses', 'forms'));
         }

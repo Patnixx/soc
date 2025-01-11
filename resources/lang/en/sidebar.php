@@ -26,7 +26,8 @@ return [
     'theme' => 'Color mode',
 
     //users icons
-    'create' => 'Create user',
+    'create-usr' => 'Create user',
+    'create-event' => 'Create event',
 
     //inbox icons
     'msg-new' => 'New message',

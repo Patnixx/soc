@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('occasions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('type');
             $table->string('name');
             $table->dateTime('start');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
