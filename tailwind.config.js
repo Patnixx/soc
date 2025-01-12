@@ -31,17 +31,24 @@ export default {
         'm-purple': '#6A0DAD',
       },
 
+      width: {
+        50: '12.5rem',
+      },
+
       height: {
         29: '7.25rem',
         30: '7.5rem',
         30.5: '7.67rem',
         31: '7.75rem',
+        50: '12.5rem',
+        76: '19rem',
         88: '22rem',
         92: '23rem',
         140: '35rem',
       },
 
       spacing: {
+        38: '9.5rem',
         112: '28rem',
         120: '30rem',
         128: '32rem',

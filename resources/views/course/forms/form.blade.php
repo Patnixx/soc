@@ -53,7 +53,7 @@
                     id="telephone"
                     value="{{$user->tel_number}}"
                     placeholder={{__('courses.tel')}}
-                    pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"
+                    pattern="[0-9]{4} [0-9]{3} [0-9]{3}"
                     class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
         </div>

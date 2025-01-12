@@ -50,7 +50,7 @@
         </div>
 
         <!-- Event Details Section -->
-        <form class="w-full md:w-2/3 bg-white dark:bg-gray-900 p-4 shadow-lg rounded-lg space-y-4 transition-all duration-300 ease-linear grid grid-cols-[0.9fr,0.1fr]" id="eventDetails">
+        <div class="w-full md:w-2/3 bg-white dark:bg-gray-900 p-4 shadow-lg rounded-lg space-y-4 transition-all duration-300 ease-linear grid grid-cols-[0.9fr,0.1fr]" id="eventDetails">
             <div class="">
                 <h1 id="eventName" class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">{{ __('occasions.select') }}</h1>
                 <div class="flex flex-col">
@@ -78,35 +78,38 @@
                     <h2 id="eventCourseSeason" class="text-gray-900 dark:text-gray-400"></h2>
                 </div>
             </div>
-            <div id="btns" class="flex-col justify-end hidden">
-                <a id="editHref" class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('events.edit', $event->id)}}">
-                    <i class="bi bi-pencil"></i>
-                    <span class="absolute w-auto p-2 m-2 min-w-max {{--right-14 /left-14 meni poziciu spanu--}} right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
-                        {{__('occasions.edit')}}
-                    </span>
-                </a>
-            </div>
-        </form>
+            @if($user->role == 'Teacher' || $user->role == 'Admin')
+                <div id="btns" class="flex-col justify-end hidden">
+                    <a id="editHref" class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('events.edit', $event->id)}}">
+                        <i class="bi bi-pencil"></i>
+                        <span class="absolute w-auto p-2 m-2 min-w-max {{--right-14 /left-14 meni poziciu spanu--}} right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
+                            {{__('occasions.edit')}}
+                        </span>
+                    </a>
+                </div>
+            @endif
+        </div>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="mt-6 flex flex-col md:flex-row justify-end gap-2">
-        <x-icon-div 
-            :route="'events.create.theory'"
-            :icon="'bi bi-plus-circle'"
-            :text="'create-theory'"
-            :class="'justify-self-start'"
-            :sclass="'right-14'"
-        />
-        <x-icon-div 
-            :route="'events.create.ride'"
-            :icon="'bi bi-arrow-repeat'"
-            :text="'create-ride'"
-            :class="'justify-self-start'"
-            :sclass="'left-14'"
-            class="hover:bg-blue-500 hover:text-white p-2 rounded-full transition-all duration-300 ease-linear"
-        />
-    </div>
+    @if($user->role == 'Teacher' || $user->role == 'Admin')
+        <div class="mt-6 flex flex-col md:flex-row justify-end gap-2">
+            <x-icon-div 
+                :route="'events.create.theory'"
+                :icon="'bi bi-plus-circle'"
+                :text="'create-theory'"
+                :class="'justify-self-start'"
+                :sclass="'right-14'"
+            />
+            <x-icon-div 
+                :route="'events.create.ride'"
+                :icon="'bi bi-arrow-repeat'"
+                :text="'create-ride'"
+                :class="'justify-self-start'"
+                :sclass="'left-14'"
+                class="hover:bg-blue-500 hover:text-white p-2 rounded-full transition-all duration-300 ease-linear"
+            />
+        </div>
+    @endif
 </div>
 
 

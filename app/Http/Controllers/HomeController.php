@@ -12,8 +12,7 @@ class HomeController extends Controller
     //
     public function homeIndex(){
         $user = Auth::user();
-        $teachers = User::where('role', 'teacher')->get();
         $cars = Car::inRandomOrder()->take(3)->get();
-        return view('home.home', compact('user', 'teachers', 'cars'));
+        return view('home.home', compact('user', 'cars'));
     }
 }

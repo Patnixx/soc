@@ -22,4 +22,5 @@ return [
     'inbox-new' => 'New Message',
     'inbox-deleted' => 'Deleted Messages',
     'inbox-detail' => 'Message Detail',
+    'credits' => 'Credits',
 ];

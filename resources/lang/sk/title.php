@@ -22,4 +22,5 @@ return [
     'inbox-new' => 'Nová správa',
     'inbox-deleted' => 'Vymazané správy',
     'inbox-detail' => 'Detail správy',
+    'credits' => 'Zdroje',
 ];

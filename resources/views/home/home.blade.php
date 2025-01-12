@@ -22,7 +22,7 @@
     <section id="about" class="flex flex-col md:flex-row items-center py-16 px-8 space-y-8 md:space-y-0 md:space-x-8">
         <img src="{{ asset('assets/img/motocycle.png') }}" alt="About Us" class="w-full md:w-1/2 rounded-lg shadow-lg bg-white-900 dark:bg-gray-900">
         <div class="bg-m-blue dark:bg-gray-900 p-4 rounded-2xl group transition-all duration-300 ease-linear border-r-4 border-b-4 border-m-red dark:border-m-darkblue">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">About Us</h2>
+            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">{{__('home.about-title')}}</h2>
             <p class="text-lg text-gray-800 dark:text-m-blue">{{__('home.about')}}</p>
         </div>
     </section>
@@ -30,41 +30,32 @@
     <!-- Personnel Section -->
     <section id="personnel" class="flex flex-col md:flex-row items-center py-16 px-8 space-y-8 md:space-y-0 md:space-x-8">
         <div class="bg-m-blue dark:bg-gray-900 p-4 rounded-2xl group transition-all duration-300 ease-linear border-r-4 border-b-4 border-m-red dark:border-m-darkblue">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">Our Personnel</h2>
+            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">{{__('home.personel-title')}}</h2>
             <p class="text-lg text-gray-800 dark:text-m-blue">{{__('home.personel')}}</p>
         </div>
         <img src="{{ asset('assets/img/gps.png') }}" alt="Personnel" class="w-full md:w-1/2 rounded-lg shadow-lg bg-white-900 dark:bg-gray-900">
     </section>
     <!-- Cars Section -->
     <section id="cars" class="py-16 px-8">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">Our Cars</h2>
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">{{__('home.cars-title')}}:</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($cars as $car)
                 <div class="bg-white shadow-lg rounded-lg p-4 bg-white-900 dark:bg-gray-900">
                     <img src="{{ asset('assets/img/motocycle.png') }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold text-gray-800 dark:text-m-blue">{{$car->brand}} {{$car->model}}</h3>
-                    <p class="text-gray-800 dark:text-m-blue">Year: {{$car->year}}</p>
+                    <p class="text-gray-800 dark:text-m-blue">{{__('home.year')}}: {{$car->year}}</p>
                 </div> 
             @endforeach
         </div>
         <h2 class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300 text-center pt-6"><a href="">Car Gallery</a></h2>
     </section>
 
-    <!-- Gallery Section 
-    <section id="gallery" class="py-16 px-8">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">Gallery</h2>
-        <div class="relative">
-            <img src="{{ asset('assets/img/gallery1.jpg') }}" alt="Gallery" class="w-full rounded-lg">
-            <button class="absolute bottom-4 right-4 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-green-600">View All</button>
-        </div>
-    </section>-->
-
     <!-- Contact Section -->
     <footer id="contact" class="bg-gray-900 text-white py-8 w-[100%] text-center">
-        <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
-        <p>Address: 123 Driving School Lane</p>
-        <p>Phone: +1 234 567 890</p>
-        <p>Email: contact@drivingschool.com</p>
+        <h2 class="text-3xl font-bold mb-4">{{__('home.contact')}}</h2>
+        <p>{{__('home.address-title')}}:  Slobody 43, 022 01 Čadca</p>
+        <p>{{__('home.phone')}}: 0904 924 562</p>
+        <p>{{__('home.email')}}: contact@drivingschool.com</p>
     </footer>
 </div>
 @endsection

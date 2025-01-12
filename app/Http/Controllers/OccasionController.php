@@ -33,17 +33,19 @@ class OccasionController extends Controller
             }
             if($user->role == 'Student')
             {
-                $course = CourseUser::where('user_id', $userId)->first();
-                $courseInfo = Course::where('id', $course->course_id)->get();
-                $events = Occasion::with('course')->where(function ($query) use ($course) {
-                    $query->where('course_id', $course->course_id)
-                        ->whereNull('user_id');
-                })->orWhere(function ($query) use ($course, $userId) {
-                    $query->where('course_id', $course->course_id)
-                        ->where('user_id', $userId);
-                })
-                ->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))')
-                ->simplePaginate(10);
+                $courseIds = CourseUser::where('user_id', $userId)->pluck('course_id');
+                $courseInfo = Course::whereIn('id', $courseIds)->get();
+                $events = Occasion::with('course')
+                    ->where(function ($query) use ($courseIds) {
+                        $query->whereIn('course_id', $courseIds)
+                            ->whereNull('user_id');
+                    })
+                    ->orWhere(function ($query) use ($courseIds, $userId) {
+                        $query->whereIn('course_id', $courseIds)
+                            ->where('user_id', '=', $userId);
+                    })
+                    ->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))') // Closest events first
+                    ->simplePaginate(5);
                 return view('occasion.index', compact('user', 'events', 'courseInfo'));
             }
         }

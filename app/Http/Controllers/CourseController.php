@@ -16,25 +16,23 @@ class CourseController extends Controller
         $user = Auth::user();
 
         if(Auth::user()->role == 'Admin'){
-            $courses = Course::with('teacher')->get();
-            $forms = Form::all();
+            $courses = Course::with('teacher')->simplePaginate(3);
+            $forms = Form::simplePaginate(3);
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
 
         if(Auth::user()->role == 'Teacher'){
-            $courses = Course::with('teacher')->where('teacher_id', $user->id)->get();
-            $forms = Form::all();
+            $courses = Course::with('teacher')->where('teacher_id', $user->id)->simplePaginate(3);
+            $forms = Form::simplePaginate(3);
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
         
         if(Auth::user()->role == 'Student'){
-            $forms = Form::where('user_id', $user->id)->get();
-            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
+            $forms = Form::where('user_id', $user->id)->simplePaginate(3);
+            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->simplePaginate(3);
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
-        if(Auth::user()->role == 'User'){
-            return redirect('/');
-        }
+        return redirect()->back();
     }
 
     public function courseForm(){
@@ -158,8 +156,12 @@ class CourseController extends Controller
     public function assignCourse($id){
         $user = Auth::user();
         if(Auth::user()->role == 'Teacher' || Auth::user()->role == 'Admin'){
-            $course = Course::where('id',$id)->first();
-            $forms = Form::where('approval', "Waiting")->get();
+            $course = Course::with('teacher')->where('id',$id)->first();
+            $forms = Form::where('approval', "Waiting")
+            ->where('season', $course->season)
+            ->where('length', $course->length)
+            ->where('class', $course->class)
+            ->simplePaginate(3);
             $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
             return view('course.courses.assign', compact('user', 'course', 'students', 'forms'));
         } 

@@ -1,5 +1,5 @@
 <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
-<a href="{{ $route }}" class="relative flex items-center justify-start px-4 py-2 mt-2 mb-2 mx-auto shadow-lg bg-m-darkblue hover:bg-m-red text-white hover:text-gray-900 rounded-lg transition-all duration-300 ease-linear">
-    <i class="{{ $icon }} text-white mr-3"></i>
-    <span class="font-bold">{{ $text }}</span>
+<a href="{{ route(''.$route.'') }}" class="flex flex-col items-center justify-center p-6 dark:bg-gray-900 bg-m-blue hover:bg-m-red dark:hover:bg-m-darkblue shadow-lg rounded-3xl transform hover:scale-105 transition-all duration-300 ease-linear w-64 h-64 group">
+    <i class="{{ $icon }} text-6xl mb-4 text-gray-800 dark:text-m-blue group-hover:text-white"></i>
+    <span class="text-lg font-semibold text-gray-800 dark:text-m-blue group-hover:text-white">{{ __('profile.'.$text.'') }}</span>
 </a>

@@ -43,6 +43,13 @@ Route::post('/email/verification-notification', [VerifyMailController::class, 'r
 
 //!SECTION Profile routes
 Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
+Route::get('/profile/personal', [ProfileController::class, 'personalIndex'])->name('personal');
+Route::get('/profile/personal/update', [ProfileController::class, 'personalUpdate'])->name('personal.update');
+Route::get('/profile/password', [ProfileController::class, 'passwordIndex'])->name('password');
+Route::get('/profile/password/update', [ProfileController::class, 'passwordUpdate'])->name('password.update');
+Route::get('/profile/email', [ProfileController::class, 'emailIndex'])->name('email');
+Route::get('/profile/email/update', [ProfileController::class, 'emailUpdate'])->name('email.update');
+Route::get('/credits', [ProfileController::class, 'creditsIndex'])->name('credits');
 
 //!SECTION Admin routes
 Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
