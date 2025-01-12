@@ -2,6 +2,7 @@
 
 return [
     'inbox' => 'Inbox',
+    'inbox-empty' => 'Inbox is empty',
     'send' => 'Send message',
     'email' => 'Email',
     'title' => 'Title',

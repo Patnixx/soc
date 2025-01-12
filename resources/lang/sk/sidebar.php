@@ -15,7 +15,6 @@ return [
     'calendar' => 'Kalendár',
     'courses' => 'Kurzy',
     'materials' => 'Materiály',
-
     'progress' => 'Pokrok',
     'inbox' => 'Schránka',
     'profile' => 'Profil',

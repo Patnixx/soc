@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
@@ -96,4 +97,6 @@ Route::post('/events/{id}/delete', [OccasionController::class, 'delete'])->name(
 Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->name('message.detail');
 Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
 Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
+
+Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('set.language');
 

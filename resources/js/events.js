@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     function showDetails(element) {
+        const id = element.getAttribute('data-id');
         const name = element.getAttribute('data-name');
         const start = element.getAttribute('data-start');
         const diff = element.getAttribute('data-diff');
@@ -7,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const courseClass = element.getAttribute('data-course-class');
         const courseLength = element.getAttribute('data-course-length');
         const courseSeason = element.getAttribute('data-course-season');
+        const btns = document.getElementById('btns');
+        const editHref = document.getElementById('editHref');
     
         document.getElementById('eventName').textContent = name;
 
@@ -27,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('eventCourseSeason').textContent = courseSeason;
         document.getElementById('eventCourseSeasonID').classList.remove('hidden');
+
+        editHref.href = `/events/${id}/edit`;
+        btns.classList.remove('hidden');
+        btns.classList.add('flex');
+
     }
 
     window.showDetails = showDetails;

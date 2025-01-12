@@ -17,6 +17,13 @@ return [
     'create-theory' => 'Create theory lesson',
     'create-ride' => 'Create ride',
 
+    'edit' => 'Edit event',
+    'edit-theory' => 'Edit theory lesson',
+    'edit-ride' => 'Edit ride lesson',
+
+    'delete-theory' => 'Delete theory lesson',
+    'delete-ride' => 'Delete ride lesson',
+
     'name' => 'Name',
     'start' => 'Start of lesson',
     'course' => 'Select a course',

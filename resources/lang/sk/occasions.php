@@ -17,6 +17,13 @@ return [
     'create-theory' => 'Vytvoriť teoretickú hodinu',
     'create-ride' => 'Vytvoriť jazdu',
 
+    'edit' => 'Upraviť udalosť',
+    'edit-theory' => 'Upraviť teoretickú hodinu',
+    'edit-ride' => 'Upraviť jazdu',
+
+    'delete-theory' => 'Vymazať teoretickú hodinu',
+    'delete-ride' => 'Vymazať jazdu',
+
     'name' => 'Meno',
     'start' => 'Začiatok hodiny',
     'course' => 'Vybrať kurz',

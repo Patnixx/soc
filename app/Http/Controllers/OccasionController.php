@@ -119,7 +119,7 @@ class OccasionController extends Controller
                 'course_id' => $request->course,
                 'name' => $request->name,
                 'start' => $request->start,
-                'type' => $type,
+                'type' => 'Theory',
             ]);
             
             $students = CourseUser::with('user')->where('course_id', $request->course)->get();
@@ -180,5 +180,91 @@ class OccasionController extends Controller
             
             return redirect()->route('events');
         }
+    }
+
+    public function edit($id)
+    {
+        $user = Auth::user();
+        $event = Occasion::where('id', $id)->first();
+        $course = Course::where('id', $event->course_id)->first();
+        $students = CourseUser::with('user')->where('course_id', $event->course_id)->get();
+        if($user->role != 'User' && $user->role != 'Student')
+        {
+            if($event->type == 'Theory')
+            {
+                if($user->role == 'Teacher')
+                {
+                    $courses = Course::where('teacher_id', $user->id)->get();
+                    return view('occasion.edit', compact('user', 'event', 'courses'));
+                }
+                if($user->role == 'Admin')
+                {
+                    $courses = Course::all();
+                    return view('occasion.edit', compact('user', 'event', 'courses'));
+                }
+            }
+            if($event->type == 'Ride')
+            {
+                if($user->role == 'Teacher' || $user->role == 'Admin')
+                {
+                    return view('occasion.edit', compact('user', 'event', 'students'));
+                }
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function update(Request $request, $id)
+    {
+        $event = Occasion::where('id', $id)->first();
+        $user = Auth::user();
+        if($user->role != 'User' && $user->role != 'Student')
+        {
+            if($event->type == 'Theory')
+            {
+                $request->validate([
+                    'course' => 'required',
+                    'name' => 'required',
+                    'start' => 'required',
+                ]);
+
+                $event = Occasion::where('id', $id)->update([
+                    'course_id' => $request->course,
+                    'name' => $request->name,
+                    'start' => $request->start,
+                ]);
+                return redirect()->route('events');
+            }
+            if($event->type == 'Ride')
+            {
+                $request->validate([
+                    'user' => 'required',
+                    'name' => 'required',
+                    'start' => 'required',
+                ]);
+
+                $event = Occasion::where('id', $id)->update([
+                    'user_id' => $request->user,
+                    'name' => $request->name,
+                    'start' => $request->start,
+                ]);
+                return redirect()->route('events');
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $user = Auth::user();
+        if($user->role != 'User' && $user->role != 'Student')
+        {
+            if($user->role == 'Teacher' || $user->role == 'Admin')
+            {
+                Occasion::where('id', $id)->delete();
+                return redirect()->route('events');
+            }
+        }
+        return redirect()->back();
     }
 }

@@ -12,18 +12,19 @@
                 @if((Auth::check()) && $user->role == 'Admin')
                     <x-auth-icon-div :icon="'bi bi-gear'" :text="'admin'" :route="'/admin'"/>
                     <x-auth-icon-div :icon="'bi bi-person'" :text="'users'" :route="'users'"/>
-                    <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-book'" :text="'courses'" :route="'/progress'"/>
+                    <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'materials'" :route="'/'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'Student')    
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'progress'" :route="'/progress'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
+                    <x-auth-icon-div :icon="'bi bi-journal'" :text="'materials'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'/inbox'"/>
                 @endif
                 @if(Auth::check() && $user->role == 'Teacher')
-                    <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'courses'" :route="'/progress'"/>
+                    <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'materials'" :route="'/'"/>
                     <x-auth-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'/inbox'"/>
                 @endif

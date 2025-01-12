@@ -50,33 +50,43 @@
         </div>
 
         <!-- Event Details Section -->
-        <div class="w-full md:w-2/3 bg-white dark:bg-gray-900 p-4 shadow-lg rounded-lg space-y-4 transition-all duration-300 ease-linear">
-            <h1 id="eventName" class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">{{ __('occasions.select') }}</h1>
-            <div class="flex flex-col">
-                <h2 id="eventStartID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.date')}}:</h2>
-                <h2 id="eventStart" class="text-gray-900 dark:text-gray-400">{{ __('occasions.select-desc') }}</h2>    
+        <form class="w-full md:w-2/3 bg-white dark:bg-gray-900 p-4 shadow-lg rounded-lg space-y-4 transition-all duration-300 ease-linear grid grid-cols-[0.9fr,0.1fr]" id="eventDetails">
+            <div class="">
+                <h1 id="eventName" class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">{{ __('occasions.select') }}</h1>
+                <div class="flex flex-col">
+                    <h2 id="eventStartID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.date')}}:</h2>
+                    <h2 id="eventStart" class="text-gray-900 dark:text-gray-400">{{ __('occasions.select-desc') }}</h2>    
+                </div>
+                <div class="flex flex-col">
+                    <h2 id="eventDiffID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.days-left')}}:</h2>
+                    <h2 id="eventDiff" class="text-gray-900 dark:text-gray-400"></h2>
+                </div>
+                <div class="flex flex-col">
+                    <h2 id="eventCourseNameID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.name')}}:</h2>
+                    <h2 id="eventCourseName" class="text-gray-900 dark:text-gray-400"></h2>
+                </div>
+                <div class="flex flex-col">
+                    <h2 id="eventCourseClassID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.class')}}:</h2>
+                    <h2 id="eventCourseClass" class="text-gray-900 dark:text-gray-400"></h2>
+                </div>
+                <div class="flex flex-col">
+                    <h2 id="eventCourseLengthID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.length')}}:</h2>
+                    <h2 id="eventCourseLength" class="text-gray-900 dark:text-gray-400"></h2>
+                </div>
+                <div class="flex flex-col">
+                    <h2 id="eventCourseSeasonID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.season')}}:</h2>
+                    <h2 id="eventCourseSeason" class="text-gray-900 dark:text-gray-400"></h2>
+                </div>
             </div>
-            <div class="flex flex-col">
-                <h2 id="eventDiffID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.days-left')}}:</h2>
-                <h2 id="eventDiff" class="text-gray-900 dark:text-gray-400"></h2>
+            <div id="btns" class="flex-col justify-end hidden">
+                <a id="editHref" class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('events.edit', $event->id)}}">
+                    <i class="bi bi-pencil"></i>
+                    <span class="absolute w-auto p-2 m-2 min-w-max {{--right-14 /left-14 meni poziciu spanu--}} right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
+                        {{__('occasions.edit')}}
+                    </span>
+                </a>
             </div>
-            <div class="flex flex-col">
-                <h2 id="eventCourseNameID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.name')}}:</h2>
-                <h2 id="eventCourseName" class="text-gray-900 dark:text-gray-400"></h2>
-            </div>
-            <div class="flex flex-col">
-                <h2 id="eventCourseClassID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.class')}}:</h2>
-                <h2 id="eventCourseClass" class="text-gray-900 dark:text-gray-400"></h2>
-            </div>
-            <div class="flex flex-col">
-                <h2 id="eventCourseLengthID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.length')}}:</h2>
-                <h2 id="eventCourseLength" class="text-gray-900 dark:text-gray-400"></h2>
-            </div>
-            <div class="flex flex-col">
-                <h2 id="eventCourseSeasonID" class="text-gray-900 dark:text-gray-400 hidden font-bold">{{__('occasions.season')}}:</h2>
-                <h2 id="eventCourseSeason" class="text-gray-900 dark:text-gray-400"></h2>
-            </div>
-        </div>
+        </form>
     </div>
 
     <!-- Action Buttons -->
@@ -87,7 +97,6 @@
             :text="'create-theory'"
             :class="'justify-self-start'"
             :sclass="'right-14'"
-            class="hover:bg-green-500 hover:text-white p-2 rounded-full transition-all duration-300 ease-linear" 
         />
         <x-icon-div 
             :route="'events.create.ride'"

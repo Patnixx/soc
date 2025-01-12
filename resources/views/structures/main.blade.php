@@ -6,5 +6,6 @@
         @include('partials.sidebar', ['profile' => 'Profile'])
     @endif
     @yield('content')
+    <x-language-popup />
 </body>
 @include('partials.footer')

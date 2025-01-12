@@ -28,17 +28,12 @@
     </section>
 
     <!-- Personnel Section -->
-    <section id="personnel" class="py-16 px-8 flex flex-col">
-        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">Our Personnel</h2>
-        <div class="flex flex-row items-center justify-center space-x-8">
-            @foreach($teachers as $teacher)
-                <div class="h-88 w-60 bg-white-900 dark:bg-gray-900 shadow-lg rounded-lg p-4 flex flex-col justify-end">
-                    <img src="{{ asset('assets/users/'.$teacher->f_name.'_'.$teacher->l_name.'.jpg') }}" alt="Teacher" class="w-full h-60 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-m-blue">{{ $teacher->f_name }} {{$teacher->l_name}}</h3>
-                    <p class="text-gray-800 dark:text-m-blue">{{ $teacher->role }}</p>
-                </div>
-            @endforeach
+    <section id="personnel" class="flex flex-col md:flex-row items-center py-16 px-8 space-y-8 md:space-y-0 md:space-x-8">
+        <div class="bg-m-blue dark:bg-gray-900 p-4 rounded-2xl group transition-all duration-300 ease-linear border-r-4 border-b-4 border-m-red dark:border-m-darkblue">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">Our Personnel</h2>
+            <p class="text-lg text-gray-800 dark:text-m-blue">{{__('home.personel')}}</p>
         </div>
+        <img src="{{ asset('assets/img/gps.png') }}" alt="Personnel" class="w-full md:w-1/2 rounded-lg shadow-lg bg-white-900 dark:bg-gray-900">
     </section>
     <!-- Cars Section -->
     <section id="cars" class="py-16 px-8">

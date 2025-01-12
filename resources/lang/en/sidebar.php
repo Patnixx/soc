@@ -17,6 +17,7 @@ return [
     'materials' => 'Materials',
     'progress' => 'Progress',
     'inbox' => 'Inbox',
+    'profile' => 'Profile',
 
     //auth icons
     'login' => 'Login', 
