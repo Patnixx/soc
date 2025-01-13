@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
@@ -106,4 +107,12 @@ Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name(
 Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
 
 Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('set.language');
+
+//!MATERIALS
+Route::middleware('auth')->group(function () {
+    Route::get('courses/{course}/materials', [MaterialController::class, 'index'])->name('materials.index');
+    Route::get('courses/{course}/materials/create', [MaterialController::class, 'create'])->name('materials.create');
+    Route::post('courses/{course}/materials', [MaterialController::class, 'store'])->name('materials.store');
+    Route::post('courses/{course}/materials/{material}/unlock', [MaterialController::class, 'unlock'])->name('materials.unlock');
+});
 

@@ -14,12 +14,18 @@ class InboxController extends Controller
     public function inboxIndex() {
         $user = Auth::user();
         $messages = Message::with('sender')->where('receiver_id',$user->id)->where('is_deleted', 0)->get();
-        return view('inbox.inbox', compact('user', 'messages'));
+        Message::where('receiver_id', $user->id)->where('is_read', 0)->update([
+            'is_read' => 1,
+            'updated_at' => now(),
+        ]);
+        $unread = $this->checkMails();
+        return view('inbox.inbox', compact('user', 'messages', 'unread'));
     }
 
     public function newIndex(){
         $user = Auth::user();
-        return view('inbox.write', compact('user'));
+        $unread = $this->checkMails();
+        return view('inbox.write', compact('user', 'unread'));
     }
 
     public function createMessage(Request $request){
@@ -46,7 +52,8 @@ class InboxController extends Controller
     public function detailMessage($id){
         $user = Auth::user();
         $message = Message::with('sender')->where('id', $id)->first();
-        return view('inbox.detail', compact('user', 'message'));
+        $unread = $this->checkMails();
+        return view('inbox.detail', compact('user', 'message', 'unread'));
     }
 
     public function deleteMessage($id){
@@ -60,7 +67,8 @@ class InboxController extends Controller
     public function deletedIndex(){
         $user = Auth::user();
         $messages = Message::with('sender')->where('receiver_id', $user->id)->where('is_deleted', 1)->get();
-        return view('inbox.deleted', compact('user', 'messages'));
+        $unread = $this->checkMails();
+        return view('inbox.deleted', compact('user', 'messages', 'unread'));
     }
 
     public function restoreMessage($id){

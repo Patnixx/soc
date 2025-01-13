@@ -10,14 +10,19 @@ class ProfileController extends Controller
     //
     public function profileIndex(){
         $user = Auth::user();
-        return view('profile.index', compact('user'));
+        if($user->role != 'Admin')
+        {
+            $unread = $this->checkMails();
+            return view('profile.index', compact('user', 'unread'));   ;
+        }
     }
 
     public function personalIndex(){
         $user = Auth::user();
-        if(Auth::check())
+        if($user->role != 'Admin')
         {
-            return view('profile.personal.index', compact('user'));
+            $unread = $this->checkMails();
+            return view('profile.personal.index', compact('user', 'unread'));
         }
         else
         {
@@ -31,9 +36,10 @@ class ProfileController extends Controller
 
     public function passwordIndex(){
         $user = Auth::user();
-        if(Auth::check())
+        if($user->role != 'Admin')
         {
-            return view('profile.password.index', compact('user'));
+            $unread = $this->checkMails();
+            return view('profile.password.index', compact('user', 'unread'));
         }
         else
         {
@@ -47,9 +53,10 @@ class ProfileController extends Controller
 
     public function emailIndex(){
         $user = Auth::user();
-        if(Auth::check())
+        if($user->role != 'Admin')
         {
-            return view('profile.email.index', compact('user'));
+            $unread = $this->checkMails();
+            return view('profile.email.index', compact('user', 'unread'));
         }
         else
         {
@@ -63,9 +70,10 @@ class ProfileController extends Controller
 
     public function creditsIndex(){
         $user = Auth::user();
-        if(Auth::check())
+        if($user->role != 'Admin')
         {
-            return view('profile.credits.index', compact('user'));
+            $unread = $this->checkMails();
+            return view('profile.credits.index', compact('user', 'unread'));
         }
         else
         {

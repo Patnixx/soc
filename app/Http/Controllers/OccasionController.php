@@ -29,7 +29,8 @@ class OccasionController extends Controller
                 $events = Occasion::with('course')->whereHas('course', function($q) use($user){
                     $q->where('teacher_id', $user->id);
                 })->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))')->simplePaginate(10);
-                return view('occasion.index', compact('user', 'events'));
+                $unread = $this->checkMails();
+                return view('occasion.index', compact('user', 'events', 'unread'));
             }
             if($user->role == 'Student')
             {
@@ -46,7 +47,8 @@ class OccasionController extends Controller
                     })
                     ->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))') // Closest events first
                     ->simplePaginate(5);
-                return view('occasion.index', compact('user', 'events', 'courseInfo'));
+                $unread = $this->checkMails();
+                return view('occasion.index', compact('user', 'events', 'courseInfo', 'unread'));
             }
         }
         return redirect()->back();
@@ -59,7 +61,8 @@ class OccasionController extends Controller
             if($user->role == 'Teacher' || $user->role == 'Admin')
             {
                 $courses = Course::where('teacher_id', $user->id)->get();
-                return view('occasion.create-theory', compact('user', 'courses'));
+                $unread = $this->checkMails();
+                return view('occasion.create-theory', compact('user', 'courses', 'unread'));
             }
             return redirect()->back();
         }
@@ -72,7 +75,8 @@ class OccasionController extends Controller
             if($user->role == 'Teacher' || $user->role == 'Admin')
             {
                 $courses = Course::where('teacher_id', $user->id)->get();
-                return view('occasion.create-ride', compact('user', 'courses'));
+                $unread = $this->checkMails();
+                return view('occasion.create-ride', compact('user', 'courses', 'unread'));
             }
             return redirect()->back();
         }
@@ -90,7 +94,8 @@ class OccasionController extends Controller
             $courseid = $request->course;
 
             $students = CourseUser::with('user')->where('course_id', $courseid)->get();
-            return view('occasion.assign-ride', compact('user', 'students', 'courseid'));
+            $unread = $this->checkMails();
+            return view('occasion.assign-ride', compact('user', 'students', 'courseid', 'unread'));
         }
         return redirect()->back();
     }
@@ -197,7 +202,8 @@ class OccasionController extends Controller
                 if($user->role == 'Teacher')
                 {
                     $courses = Course::where('teacher_id', $user->id)->get();
-                    return view('occasion.edit', compact('user', 'event', 'courses'));
+                    $unread = $this->checkMails();
+                    return view('occasion.edit', compact('user', 'event', 'courses', 'unread'));
                 }
                 if($user->role == 'Admin')
                 {
@@ -209,7 +215,8 @@ class OccasionController extends Controller
             {
                 if($user->role == 'Teacher' || $user->role == 'Admin')
                 {
-                    return view('occasion.edit', compact('user', 'event', 'students'));
+                    $unread = $this->checkMails();
+                    return view('occasion.edit', compact('user', 'event', 'students', 'unread'));
                 }
             }
         }

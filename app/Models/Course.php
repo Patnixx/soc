@@ -36,4 +36,10 @@ class Course extends Model
         return $this->hasMany(Occasion::class);
     }
 
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'course_material')
+                    ->withPivot('is_unlocked')
+                    ->withTimestamps();
+    }
 }

@@ -24,20 +24,23 @@ class CourseController extends Controller
         if(Auth::user()->role == 'Teacher'){
             $courses = Course::with('teacher')->where('teacher_id', $user->id)->simplePaginate(3);
             $forms = Form::simplePaginate(3);
-            return view('course.progress', compact('user', 'courses', 'forms'));
+            $unread = $this->checkMails();
+            return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
         
         if(Auth::user()->role == 'Student'){
             $forms = Form::where('user_id', $user->id)->simplePaginate(3);
             $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->simplePaginate(3);
-            return view('course.progress', compact('user', 'courses', 'forms'));
+            $unread = $this->checkMails();
+            return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
         return redirect()->back();
     }
 
     public function courseForm(){
         $user = Auth::user();
-        return view('course.forms.form', compact('user'));
+        $unread = $this->checkMails();
+        return view('course.forms.form', compact('user', 'unread'));
     }
 
     public function sendForm(Request $request){
@@ -71,13 +74,15 @@ class CourseController extends Controller
     public function detailForm($id){
         $user = Auth::user();
         $form = Form::where('id',$id)->first();
-        return view('course.forms.detail', compact('user', 'form'));
+        $unread = $this->checkMails();
+        return view('course.forms.detail', compact('user', 'form', 'unread'));
     }
 
     public function editForm($id){
         $user = Auth::user();
         $form = Form::where('id',$id)->first();
-        return view('course.forms.edit', compact('user', 'form'));
+        $unread = $this->checkMails();
+        return view('course.forms.edit', compact('user', 'form', 'unread'));
     }
 
     public function updateForm(Request $request, $id)
@@ -119,7 +124,8 @@ class CourseController extends Controller
     public function courseCreate(){
         $user = Auth::user();
         $teachers = User::where('role', 'teacher')->get();
-        return view('course.courses.course', compact('user', 'teachers'));
+        $unread = $this->checkMails();
+        return view('course.courses.course', compact('user', 'teachers', 'unread'));
     }
 
     public function sendCreate(Request $request){
@@ -163,7 +169,8 @@ class CourseController extends Controller
             ->where('class', $course->class)
             ->simplePaginate(3);
             $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
-            return view('course.courses.assign', compact('user', 'course', 'students', 'forms'));
+            $unread = $this->checkMails();
+            return view('course.courses.assign', compact('user', 'course', 'students', 'forms', 'unread'));
         } 
         else {
             return redirect()->route('progress');
@@ -191,7 +198,8 @@ class CourseController extends Controller
         $course = Course::where('id',$id)->first();
         $teacher = User::where('id', $course->teacher_id)->first();
         $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
-        return view('course.courses.detail', compact('user', 'course', 'students', 'teacher'));
+        $unread = $this->checkMails();
+        return view('course.courses.detail', compact('user', 'course', 'students', 'teacher', 'unread'));
     }
 
     public function editCourse($id){
@@ -199,7 +207,8 @@ class CourseController extends Controller
         $course = Course::where('id',$id)->first();
         $teacher = User::where('id', $course->teacher_id)->first();
         $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
-        return view('course.courses.edit', compact('user', 'course', 'teacher', 'students'));
+        $unread = $this->checkMails();
+        return view('course.courses.edit', compact('user', 'course', 'teacher', 'students', 'unread'));
     }
 
     public function updateCourse(Request $request, $id){

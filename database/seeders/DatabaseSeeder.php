@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        /*NORMAL*/ //$this->call([FormSeeder::class], [CourseSeeder::class], [UserSeeder::class], [CarSeeder::class], [OccasionSeeder::class]);
+        /*NORMAL*/ $this->call(/*[FormSeeder::class], [CourseSeeder::class], [UserSeeder::class], [CarSeeder::class], [OccasionSeeder::class],*/ [SyllabSeeder::class]);
         /*BLANK*/ //$this->call([BlankUserSeeder::class]);   
     }
 }

@@ -16,17 +16,17 @@
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'progress'" :route="'/progress'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'materials'" :route="'/'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'/inbox'"/>
+                    <x-mail-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'inbox'" :unread="''.$unread.''"/>
                 @endif
                 @if(Auth::check() && $user->role == 'Teacher')
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'courses'" :route="'/progress'"/>
                     <x-auth-icon-div :icon="'bi bi-calendar-check'" :text="'calendar'" :route="'/events'"/>
                     <x-auth-icon-div :icon="'bi bi-journal'" :text="'materials'" :route="'/'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'/inbox'"/>
+                    <x-mail-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'inbox'" :unread="''.$unread.''"/>
                 @endif
                 @if(Auth::check() && $user->role == 'User')
                     <x-auth-icon-div :icon="'bi bi-car-front'" :text="'progress'" :route="'/progress'"/>
-                    <x-auth-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'/inbox'"/>
+                    <x-mail-icon-div :icon="'bi bi-envelope'" :text="'inbox'" :route="'inbox'" :unread="''.$unread.''"/>
                 @endif
             </div>
                 <!-- //NOTE - Middle sidebar icons -->
