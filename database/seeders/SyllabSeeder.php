@@ -14,6 +14,6 @@ class SyllabSeeder extends Seeder
     public function run(): void
     {
         //
-        Syllab::create(['name' => 'Introduction', 'description' => 'Basic concepts and overview.']);
+        
     }
 }

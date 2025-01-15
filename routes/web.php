@@ -109,10 +109,10 @@ Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->na
 Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('set.language');
 
 //!MATERIALS
-Route::middleware('auth')->group(function () {
-    Route::get('courses/{course}/materials', [MaterialController::class, 'index'])->name('materials.index');
-    Route::get('courses/{course}/materials/create', [MaterialController::class, 'create'])->name('materials.create');
-    Route::post('courses/{course}/materials', [MaterialController::class, 'store'])->name('materials.store');
-    Route::post('courses/{course}/materials/{material}/unlock', [MaterialController::class, 'unlock'])->name('materials.unlock');
-});
+Route::get('/materials', [MaterialController::class, 'index'])->name('materials');
+Route::get('/materials/create-syllab', [MaterialController::class, 'create_syllab'])->name('materials.create.syllab');
+Route::post('/materials/store', [MaterialController::class, 'store'])->name('materials.store');
+Route::get('/materials/{id}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
+Route::post('/materials/{id}/update', [MaterialController::class, 'update'])->name('materials.update');
+Route::post('/materials/{id}/delete', [MaterialController::class, 'delete'])->name('materials.delete');
 

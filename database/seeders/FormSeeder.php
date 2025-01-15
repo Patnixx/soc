@@ -14,7 +14,7 @@ class FormSeeder extends Seeder
     public function run(): void
     {
         //
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             Form::create([
                 'user_id' => 4,
                 'f_name' => 'Josh',

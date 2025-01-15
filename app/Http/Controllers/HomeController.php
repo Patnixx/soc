@@ -12,9 +12,13 @@ class HomeController extends Controller
 {
     //
     public function homeIndex(){
-        $user = Auth::user();
-        $unread = $this->checkMails(); 
         $cars = Car::inRandomOrder()->take(3)->get();
-        return view('home.home', compact('user', 'cars', 'unread'));
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $unread = $this->checkMails(); 
+            return view('home.home', compact('user', 'cars', 'unread'));
+        }
+        return view('home.home', compact('cars'));
     }
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'content', 'syllab_id'];
+
+    public function syllab()
+    {
+        return $this->belongsTo(Syllab::class);
+    }
 }

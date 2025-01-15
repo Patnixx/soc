@@ -14,10 +14,16 @@ class OccasionSeeder extends Seeder
     public function run(): void
     {
         //
-        for($i =1; $i < 6; $i++){
+        for($i =1; $i < 3; $i++){
             Occasion::create([
                 'name' => 'Teória '.$i.'',
                 'start' => '2025-'.$i.'-27 14:00:00',
+            ]);
+        }
+        for($i =1; $i < 3; $i++){
+            Occasion::create([
+                'name' => 'Ride '.$i.'',
+                'start' => '2025-'.$i.'-28 11:00:00',
             ]);
         }
     }

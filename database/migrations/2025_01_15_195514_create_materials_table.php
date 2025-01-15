@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('syllab_materials', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('syllab_id');
+            $table->string('title');
+            $table->text('content');
             $table->timestamps();
+
+            $table->foreign('syllab_id')->references('id')->on('syllabs')->onDelete('cascade');
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('syllab_materials');
+        Schema::dropIfExists('materials');
     }
 };

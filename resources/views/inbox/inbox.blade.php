@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('title.inbox').'')
 @section('content')
-<div class="p-6 h-screen w-full flex flex-col items-center bg-gray-100 dark:bg-gray-800 transition-all duration-300 ease-linear pt-16 relative">
+<div class="p-6 h-screen w-full flex flex-col dark:bg-gray-800 transition-all duration-300 ease-linear pt-16 relative">
     <div class="flex justify-start w-full">
         <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{ __('inbox.inbox') }}</h1>
         @if($messages->isEmpty())
@@ -42,14 +42,21 @@
     </div>
 
     <!-- Responsive Window at Bottom-Right -->
-    <div class="fixed bottom-4 right-38 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-lg transition-all duration-300 ease-linear 
-                p-4 w-2/5 max-w-full overflow-auto 
-                md:w-[40%] md:h-[25vh]">
-        <h2 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2">Chat or Quick Notes</h2>
-        <div class="overflow-y-auto h-full">
-            <p class="text-sm text-gray-600 dark:text-gray-400">This is your responsive bottom-right window. Add any content you like here, such as chat or notifications!</p>
-        </div>
+    <div id="activeMail" class="fixed bottom-4 right-38 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-lg transition-all duration-300 ease-linear 
+                p-4 w-2/5 max-w-full overflow-auto hidden
+                md:w-[40%] md:h-[50vh]">
+    <!-- Exit Button -->
+    <button id="closeMail" class="absolute top-2 right-2 text-gray-800 dark:text-gray-200 hover:text-red-500 dark:hover:text-red-400 text-xl font-bold focus:outline-none transition-colors duration-200 ease-linear">
+        &times;
+    </button>
+    
+    <h2 id="mailTitle" class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2 border-b-2 border-gray-800 dark:border-gray-200"></h2>
+    <div class="overflow-y-auto h-full">
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-bold">From: <span id="mailSender" class="font-normal"></span></p>
+        <p id="mailDate" class="text-sm text-gray-600 dark:text-gray-400 font-bold"></p>
+        <p id="mailContent" class="text-md text-gray-600 dark:text-gray-400 mt-8"></p>
     </div>
+</div>
 </div>
 
 @endsection

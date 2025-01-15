@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Syllab extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title'];
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
 }

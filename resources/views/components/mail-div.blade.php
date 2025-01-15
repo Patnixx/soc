@@ -1,5 +1,5 @@
 <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
-<a class="grid grid-cols-[0.2fr,1.2fr,0.5fr,0.1fr] w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+<a data-sender="{{$sender}}" data-title="{{$title}}" data-date="{{$date}}" data-content="{{$content}}" class="grid grid-cols-[0.2fr,1.2fr,0.5fr,0.1fr] w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer" onclick="showMail(this)">
     <div class="flex items-center truncate">
         <span class="{{$sclass}} font-medium text-gray-900 dark:text-white">{{$sender}}</span>
     </div>
