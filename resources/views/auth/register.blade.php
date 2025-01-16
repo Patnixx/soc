@@ -24,12 +24,12 @@
                     <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'">
                     </x-input-div>
                     <div class="relative">                    
-                        <span id="strength-text" class="text-sm">Password</span>
-                        <div id="password-strength-bar" class="h-2 mt-2 dark:bg-gray-800 bg-slate-200 rounded-full overflow-hidden">
+                        <span id="strength-text" class="text-sm text-m-blue">Sila hesla</span>
+                        <div id="password-strength-bar" class="h-2 mt-4.75 dark:bg-gray-800 bg-slate-200 rounded-full overflow-hidden">
                             <div id="strength-level" class="h-full rounded-full transition-all" style="width: 0%;"></div>
                         </div>                
                     </div>
-                    <div class="flex justify-end items-end w-full text-sm text-gray-400 p-2 pt-4">
+                    <div class="flex justify-end items-end w-full text-sm text-gray-400 p-2 pt-4 mt-4">
                         <button type="submit" class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300">{{__('auth.register')}}</button>
                     </div>
                 </div>

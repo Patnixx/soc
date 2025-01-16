@@ -22,21 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateStrengthDisplay = (strength) => {
         const levels = [
-            { text: "", color: "-gray-200", width: "0%" },
-            { text: "Weak", color: "-red-500", width: "20%" },
-            { text: "Fair", color: "-yellow-400", width: "40%" },
-            { text: "Moderate", color: "-yellow-500", width: "60%" },
-            { text: "Strong", color: "-green-400", width: "80%" },
-            { text: "Very Strong", color: "-green-500", width: "100%" },
+            { text: "Sila hesla" ,color_bg: "bg-m-blue", color_txt: "text-m-blue" ,width: "0%" },
+            { text: "Veľmi slabé", color_bg: "bg-red-500", color_txt: "text-red-500" ,width: "20%" },
+            { text: "Slabé", color_bg: "bg-orange-500", color_txt: "text-orange-400" ,width: "40%" },
+            { text: "Dobré", color_bg: "bg-yellow-500", color_txt: "text-yellow-500" ,width: "60%" },
+            { text: "Silné", color_bg: "bg-green-400", color_txt: "text-green-400" ,width: "80%" },
+            { text: "Veľmi silné", color_bg: "bg-green-500", color_txt: "text-green-500" ,width: "100%" },
         ];
 
-        const { text, color, width } = levels[strength];
+        const { text, color_bg, color_txt ,width } = levels[strength];
 
-        strengthBar.className = `h-full bg${color} rounded-full transition-all`;
+        strengthBar.className = `h-full ${color_bg} rounded-full transition-all`;
         strengthBar.style.width = width;
 
         strengthText.textContent = text;
-        strengthText.className = `text-sm mt-2 text${color}`;
+        strengthText.className = `text-sm mt-2 ${color_txt}`;
     };
 
     passwordInput.addEventListener("input", (e) => {
