@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('title.users').'')
 @section('content')
-    <div class="p-6">
+    <div class="p-6 m-12">
         <div class="flex flex-row justify-between">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-start">{{__('users.users')}}</h1>
             <div class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-end flex flex-row space-x-2 mr-2">

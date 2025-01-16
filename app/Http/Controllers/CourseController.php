@@ -40,7 +40,8 @@ class CourseController extends Controller
     public function courseForm(){
         $user = Auth::user();
         $unread = $this->checkMails();
-        return view('course.forms.form', compact('user', 'unread'));
+        $user_wo_form = User::where('role', 'Student')->orWhere('role', 'User')->get();
+        return view('course.forms.form', compact('user', 'unread', 'user_wo_form'));
     }
 
     public function sendForm(Request $request){
@@ -52,15 +53,18 @@ class CourseController extends Controller
             'season' => 'required',
             'length' => 'required',
             'class' => 'required',
-            'reason' => 'required'
+            'reason' => 'required',
+            'user' => 'required',
         ]);
+
+        $email = User::where('id', $request->user)->first()->email;
 
         $id = Auth::id();
         Form::create([
-            'user_id' => $id,
+            'user_id' => $request->user,
             'f_name' => $request->f_name,
             'l_name' => $request->l_name,
-            'email' => $request->email,
+            'email' => $email,
             'birthday' => $request->birthday,
             'season' => $request->season,
             'length' => $request->length,

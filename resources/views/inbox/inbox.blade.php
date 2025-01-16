@@ -1,11 +1,11 @@
 @extends('structures.main')
 @section('title', ''.__('title.inbox').'')
 @section('content')
-<div class="p-6 h-screen w-full flex flex-col dark:bg-gray-800 transition-all duration-300 ease-linear pt-16 relative">
-    <div class="flex justify-start w-full">
+<div class="p-6 h-screen w-full flex flex-col transition-all duration-300 ease-linear pt-16 relative">
+    <div class="flex flex-col justify-start w-full">
         <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{ __('inbox.inbox') }}</h1>
         @if($messages->isEmpty())
-        <h2 class="text-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ease-linear">{{ __('inbox.inbox-empty') }}</h2>
+            <h2 class="text-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ease-linear">{{ __('inbox.inbox-empty') }}</h2>
         @else
     </div>
         <div id="mails" class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">

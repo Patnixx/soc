@@ -4,7 +4,10 @@ return [
 
     //courses
     'courses' => 'Kurzy',
-    'no-courses' => 'Žiadne kurzy neexistujú.',
+    'no-courses-click' => 'Žiadne kurzy neexistujú. Ak potrebujete vytvorte nový kurz kliknutím na ',
+    'no-courses-link' => 'vytvoriť',
+    'no-courses-end' => ' alebo kontaktujte administrátora.',
+    'no-courses-student' => 'Žiadne kurzy neexistujú. Ak potrebujete, pošliteformulár o pridanie ku kurzu alebo kontaktujte učiteľa.',
     'course-create' => 'Vytvoriť kurz',
     'course-edit' => 'Upraviť kurz',
     'course-detail' => 'Detial kurzu',
@@ -35,7 +38,13 @@ return [
     //forms
     'forms' => 'Formuláre',
     'form-create' => 'Vytvoriť formulár',
+    'empty-forms' => 'Žiadne formuláre neexistujú. Vráťte sa na hlavnú stránku a vytvorte nový formulár.',
     'no-forms' => 'Žiadne formuláre neexistujú.',
+    'no-forms-click' => 'Žiadne formuláre neexistujú. Ak potrebujete vytvorte nový formulár kliknutím na ',
+    'no-forms-link' => 'vytvoriť',
+    'no-forms-wait' => 'Počkajte na nové formuláre',
+    'no-forms-teacher' => ' alebo kontaktujte administrátora.',
+    'no-forms-student' => 'Žiadne formuláre neexistujú. Ak potrebujete, pošlite formulár učiteľovi alebo ho kontaktujte.',
     'form-edit' => 'Upraviť formulár',
     'form-detail' => 'Detail formulára',
     'form-send' => 'Odoslať formulár', 
@@ -44,6 +53,7 @@ return [
     'email' => 'Email',
     'birth' => 'Dátum narodenia',
     'tel' => 'Telefónne číslo',
+    'user' => 'Používateľ',
     'approval' => 'Schválenie',
     'approved' => 'Schválený',
     'waiting' => 'Čakajúci',

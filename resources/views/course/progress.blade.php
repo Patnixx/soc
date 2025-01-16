@@ -1,14 +1,13 @@
 @extends('structures.main')
 @section('title', ''.__('title.progress').'')
 @section('content')
-<div class="grid grid-cols-[1fr,1fr]">
+<div class="grid grid-cols-[1fr,1fr] mt-12">
     @if($user->role == 'Admin')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.courses')}}</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-courses')}}</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block">{{__('courses.no-courses')}}<a class="underline" href="{{route('course.create')}}">{{__('courses.no-courses-link')}}.</a></h1>
             @endif
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.create')}}">{{__('courses.course-create')}}</a>
             @foreach($courses as $course)
                 <x-course-div 
                 :name="''.$course->name.''" 
@@ -22,13 +21,14 @@
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
                 />                
-            @endforeach        </section>
+            @endforeach
+            <a href="{{route('course.create')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.course-create')}}</a>       
+        </section>
         <section id="right">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.forms')}}</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-forms')}}</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block">{{__('courses.no-forms-click')}}<span class="italic">{{__('courses.form-create')}}</span></h1>
             @endif
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-14 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">{{__('courses.form-send')}}</a>
             @foreach($forms as $form)
                 <x-form-div 
                 :fname="''.$form->f_name.''" 
@@ -46,14 +46,15 @@
                 :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
+            <a href="{{route('course.form')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.form-create')}}</a>       
         </section>
     @endif
 
     @if($user->role == 'Teacher')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.my-course')}}</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 text-xl dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-course')}}</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block ">{{__('courses.no-courses')}}<a class="underline" href="{{route('course.create')}}">{{__('courses.no-courses-link')}}.</a></h1>
             @endif
             @foreach($courses as $course)
                 <x-course-div 
@@ -68,12 +69,13 @@
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
-            @endforeach        
+            @endforeach
+            <a href="{{route('course.create')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.course-create')}}</a>
         </section>
         <section id="right">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">Forms</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No forms found</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear block">{{__('courses.no-forms')}} {{__('courses.no-forms-wait')}}{{__('courses.no-forms-teacher')}}</h1>
             @endif
             @foreach($forms as $form)
                 <x-form-div 
@@ -93,16 +95,16 @@
                 :sclass="'dark:text-m-blue text-gray-900'" />
             @endforeach
             @if($user->role == 'Student')
-                <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear hover:underline ml-14" href="{{route('course.form')}}">Send form</a>
+                <a href="{{route('course.form')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.form-create')}}</a>       
             @endif
         </section>
     @endif
 
     @if($user->role == 'Student')
         <section id="left">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.my-course')}}</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">{{__('courses.no-course')}}</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block">{{__('courses.no-courses-student')}}</h1>
             @endif
             @foreach($courses as $course)
                 <x-course-div 
@@ -119,11 +121,10 @@
             @endforeach
         </section>
         <section id="right">
-            <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">My Forms</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
-                <h1 class="text-red-500 dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear rounded-md inline-block">No forms found</h1>
+                <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block">{{__('courses.no-forms-student')}}</h1>
             @endif
-            <a class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block" href="{{route('course.form')}}">Send form</a>
             @foreach($forms as $form)
                 <x-form-div 
                 :fname="''.$form->f_name.''" 
@@ -141,6 +142,7 @@
                 :sclass="'dark:text-m-blue text-gray-900'"
                 :approval="''.$form->approval.''"></x-form-div>
             @endforeach
+            <a href="{{route('course.form')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.form-create')}}</a>       
         </section>
     @endif
 </div>

@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('title.inbox-deleted').'')
 @section('content')
-<div class="p-6">
+<div class="p-6 mt-12">
     <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('inbox.bin')}}</h1>
     @if($messages->isEmpty())
         <h2 class="text-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ease-linear">{{__('inbox.empty')}}</h2>

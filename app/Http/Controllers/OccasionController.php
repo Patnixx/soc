@@ -58,9 +58,15 @@ class OccasionController extends Controller
         $user = Auth::user();
         if($user->role != 'User')
         {
-            if($user->role == 'Teacher' || $user->role == 'Admin')
+            if($user->role == 'Teacher')
             {
                 $courses = Course::where('teacher_id', $user->id)->get();
+                $unread = $this->checkMails();
+                return view('occasion.create-theory', compact('user', 'courses', 'unread'));
+            }
+            if($user->role == 'Admin')
+            {
+                $courses = Course::all();
                 $unread = $this->checkMails();
                 return view('occasion.create-theory', compact('user', 'courses', 'unread'));
             }
@@ -72,9 +78,15 @@ class OccasionController extends Controller
         $user = Auth::user();
         if($user->role != 'User')
         {
-            if($user->role == 'Teacher' || $user->role == 'Admin')
+            if($user->role == 'Teacher')
             {
                 $courses = Course::where('teacher_id', $user->id)->get();
+                $unread = $this->checkMails();
+                return view('occasion.create-ride', compact('user', 'courses', 'unread'));
+            }
+            if($user->role == 'Admin')
+            {
+                $courses = Course::all();
                 $unread = $this->checkMails();
                 return view('occasion.create-ride', compact('user', 'courses', 'unread'));
             }
@@ -153,11 +165,6 @@ class OccasionController extends Controller
                 'user' => 'required',
             ]);
 
-            if($user->role == 'Admin')
-            {
-                return redirect()->route('events');
-            }
-
             $browserLocale = $request->getPreferredLanguage(['en', 'sk']); // Specify supported languages
             switch($browserLocale){
                 case('en'):
@@ -175,7 +182,7 @@ class OccasionController extends Controller
                 'user_id' => $request->user,
                 'name' => $request->name,
                 'start' => $request->start,
-                'type' => $type,
+                'type' => 'Ride',
             ]);
 
             Message::create([

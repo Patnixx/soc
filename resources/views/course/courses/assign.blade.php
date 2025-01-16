@@ -1,9 +1,9 @@
 @extends('structures.main')
 @section('title', ''.__('title.course-assign').'')
 @section('content')
-<div class="grid grid-cols-[1fr,1fr]">
+<div class="grid grid-cols-[1fr,1fr] mt-12">
     <section id="left">
-        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.course-current')}}:</h1>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.course-current')}}:</h1>
         <x-course-div 
         :name="''.$course->name.''" 
         :teacher="''.$course->teacher->f_name.' '.$course->teacher->l_name.''" 
@@ -19,9 +19,13 @@
         />
     </section>
     <section id="right">
-        <h1 class="text-m-blue dark:text-white bg-white dark:bg-gray-900 transition-all duration-300 ease-linear ml-12 px-4 py-2 rounded-md inline-block">{{__('courses.forms')}}</h1>
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.forms')}}</h1>
         @if($forms->isEmpty())
-            <h2 class="text-m-blue dark:text-white text-start mt-8">{{__('courses.no-forms')}}</h2>
+            @if($user->role == 'Admin')
+                <h2 class="text-lg text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear block">{{__('courses.empty-forms')}}</h2>
+            @else
+                <h2 class="text-lg text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear block">{{__('courses.no-forms')}} {{__('courses.no-forms-wait')}}{{__('courses.no-forms-teacher')}}</h2>
+            @endif
         @endif
         @foreach($forms as $form)
             <x-form-div 

@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('title.create-form').'')
 @section('content')
-<div class="container mx-auto max-w-[70%] rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear"> 
+<div class="container mx-auto max-w-[70%] rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear mt-36"> 
     <h2 class="text-2xl font-bold dark:text-white text-gray-900 mb-6">{{__('courses.form-create')}}:</h2>
     <form action="{{route('custom.form')}}" method="post" class="grid grid-cols-2 gap-6 mb-6">
         @csrf
@@ -45,16 +45,13 @@
                     value="{{$user->birthday}}"
                     class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
-            <div class="flex flex-col space-y-2 mb-2">
-                <label for="telephone" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.tel')}}</label>
-                <input 
-                    type="tel" 
-                    name="telephone" 
-                    id="telephone"
-                    value="{{$user->tel_number}}"
-                    placeholder={{__('courses.tel')}}
-                    pattern="[0-9]{4} [0-9]{3} [0-9]{3}"
-                    class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <div class="flex flex-col space-y-2  mb-2">
+                <label for="user" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.user')}}</label>
+                <select name="user" id="user" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 h-11">
+                    @foreach($user_wo_form as $acc)
+                        <option value="{{$acc->id}}">{{$acc->f_name}} {{$acc->l_name}} ({{$acc->email}})</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="right">

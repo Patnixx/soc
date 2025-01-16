@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email');
-            //$table->string('phone');
             $table->date('birthday');
 
             $table->string('season');

@@ -24,7 +24,8 @@
                 type="text" 
                 name="title" 
                 id="title" 
-                placeholder={{__('inbox.title')}} 
+                placeholder={{__('inbox.title')}}
+                maxlength="50" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
 

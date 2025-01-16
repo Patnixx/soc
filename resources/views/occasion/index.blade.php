@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('occasions.events').'')
 @section('content')
-<div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md transition-all duration-300 ease-linear">
+<div class="mt-12 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md transition-all duration-300 ease-linear">
     <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{ __('occasions.events') }}</h1>
     
     @if ($events->isEmpty())
@@ -50,6 +50,9 @@
         </div>
 
         <!-- Event Details Section -->
+        @if($events->isEmpty())
+            
+        @else
         <div class="w-full md:w-2/3 bg-white dark:bg-gray-900 p-4 shadow-lg rounded-lg space-y-4 transition-all duration-300 ease-linear grid grid-cols-[0.9fr,0.1fr]" id="eventDetails">
             <div class="">
                 <h1 id="eventName" class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">{{ __('occasions.select') }}</h1>
@@ -90,6 +93,7 @@
             @endif
         </div>
     </div>
+    @endif
 
     @if($user->role == 'Teacher' || $user->role == 'Admin')
         <div class="mt-6 flex flex-col md:flex-row justify-end gap-2">
