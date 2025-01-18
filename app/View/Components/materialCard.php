@@ -14,12 +14,14 @@ class materialCard extends Component
     public $icon;
     public $text;
     public $route;
+    public $syllab;
 
-    public function __construct($icon, $text, $route)
+    public function __construct($icon, $text, $route, $syllab)
     {
         $this->icon = $icon;
         $this->text = $text;
         $this->route = $route;
+        $this->syllab = $syllab;
     }
     /**
      * Get the view / contents that represent the component.

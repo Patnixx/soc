@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('syllabs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('route');
             $table->timestamps();
         });
     }

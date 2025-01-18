@@ -5,4 +5,7 @@ return [
     'password' => 'Heslo',
     'email' => 'Email',
     'credits' => 'Zdroje',
+
+    //materials add card
+    'new-syllab' => 'Vytvoriť novú sekciu',
 ];

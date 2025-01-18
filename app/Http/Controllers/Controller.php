@@ -28,4 +28,30 @@ class Controller extends BaseController
             return '9+';
         }
     }
+
+    function cleanString($text) {
+        $text = mb_strtolower($text, 'UTF-8');
+        $utf8 = array(
+            '/[áàâãªäÁÀÂÃÄ]/u'   => 'a',
+            '/[čČ]/u'             => 'c',
+            '/[ďĎ]/u'             => 'd',
+            '/[éèêëÉÈÊË]/u'       => 'e',
+            '/[íìîïÍÌÎÏ]/u'       => 'i',
+            '/[ĺľĹĽ]/u'           => 'l',
+            '/[ňñŇÑ]/u'           => 'n',
+            '/[óòôõºöÓÒÔÕÖ]/u'    => 'o',
+            '/[řŘ]/u'             => 'r',
+            '/[šŠ]/u'             => 's',
+            '/[ťŤ]/u'             => 't',
+            '/[úùûüÚÙÛÜ]/u'       => 'u',
+            '/[ýÿÝŸ]/u'           => 'y',
+            '/[žŽ]/u'             => 'z',
+            '/[–—]/u'             => '-', // dlhé pomlčky
+            '/[’‘‹›‚]/u'          => "'", // jednoduché úvodzovky
+            '/[“”«»„]/u'          => '"', // dvojité úvodzovky
+            '/\s+/u'              => ' ', // nahradenie viacerých medzier jednou
+        );
+        return preg_replace(array_keys($utf8), array_values($utf8), $text);
+    }
+    
 }

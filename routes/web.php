@@ -10,6 +10,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
+use App\Models\Material;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -116,8 +117,20 @@ Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('se
 //!MATERIALS
 Route::get('/materials', [MaterialController::class, 'index'])->name('materials');
 Route::get('/materials/create-syllab', [MaterialController::class, 'create_syllab'])->name('materials.create.syllab');
-Route::post('/materials/store', [MaterialController::class, 'store'])->name('materials.store');
+Route::post('/materials/store-syllab', [MaterialController::class, 'store_syllab'])->name('materials.store.syllab');
+Route::get('/materials/create-material', [MaterialController::class, 'create_material'])->name('materials.create.material');
+Route::post('/materials/store-material', [MaterialController::class, 'store_material'])->name('materials.store.material');
 Route::get('/materials/{id}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
 Route::post('/materials/{id}/update', [MaterialController::class, 'update'])->name('materials.update');
 Route::post('/materials/{id}/delete', [MaterialController::class, 'delete'])->name('materials.delete');
 
+//!SYLLABS
+Route::get('/materials/{syllab}', [MaterialController::class, 'lecture_index'])->name('lecture');
+Route::get('/materials/{syllab}/view', [MaterialController::class, 'lecture_view'])->name('lecture.view');
+Route::get('/materials/{syllab}/lecture-create', [MaterialController::class, 'lecture_create'])->name('lecture.create');
+Route::post('/materials/{syllab}/store-lecture', [MaterialController::class, 'store_lecture'])->name('lecture.store');
+Route::get('/materials/{syllab}/sublecture-create', [MaterialController::class, 'sublecture_create'])->name('sublecture.create');
+Route::post('/materials/{syllab}/store-sublecture', [MaterialController::class, 'store_sublecture'])->name('sublecture.store');
+Route::get('/materials/{syllab}/{id}/edit', [MaterialController::class, 'edit'])->name('lecture.edit');
+Route::post('/materials/{syllab}/{id}/update', [MaterialController::class, 'update'])->name('lecture.update');
+Route::post('/materials/{syllab}/{id}/delete', [MaterialController::class, 'delete'])->name('lecture.delete');
