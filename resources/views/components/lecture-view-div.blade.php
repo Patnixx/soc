@@ -1,9 +1,13 @@
 <!-- It is never too late to be what you might have been. - George Eliot -->
-<a class="{{$aclass}} grid grid-cols-5 w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all bg-gradient-to-br from-transparent via-transparent">
+<a class="{{$aclass}} grid grid-cols-6 w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all bg-gradient-to-br from-transparent via-transparent">
     <div class="flex items-center truncate">
         <span class="{{$sclass}} font-medium text-gray-900 dark:text-white">{{$id}}</span>
     </div>
     
+    <div class="flex items-center text-sm truncate">
+        <span class="{{$sclass}} text-gray-500 dark:text-gray-400">{{$parent}}</span>
+    </div>
+
     <div class="flex items-center text-sm truncate">
         <span class="{{$sclass}} text-gray-500 dark:text-gray-400">{{$parent}}</span>
     </div>

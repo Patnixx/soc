@@ -7,8 +7,8 @@
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{__('materials.create-sub-theme')}}</h2>
 
         <div class="flex flex-col space-y-2 mb-2">
-            <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
-            <select name="parent" id="parent" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <label for="elder" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
+            <select name="elder" id="elder" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 @foreach($main_lectures as $main_lecture)
                     <option value="{{$main_lecture->id}}">{{$main_lecture->title}}</option>
                 @endforeach
