@@ -1,5 +1,7 @@
-<div class="w-64 h-screen bg-white dark:bg-gray-900 text-white flex flex-col p-4 overflow-y-auto">
-    <h2 class="text-2xl font-bold mb-4 dark:text-m-blue text-gray-900 transition-all duration-300 ease-linear">{{$section->title}}</h2>
+<div class="w-64 h-full bg-white dark:bg-gray-900 text-white flex flex-col p-4 overflow-y-auto">
+    <h2 class="text-2xl font-bold mb-4 dark:text-m-blue text-gray-900 transition-all duration-300 ease-linear">
+        {{$section->title}}
+    </h2>
     <div>
         @foreach($lectures as $elderId => $data)
             <div x-data="{ open: false }" class="mb-2">
@@ -11,19 +13,9 @@
                 </button>
                 <div x-show="open" x-cloak class="pl-6 mt-2 space-y-1">
                     @foreach($data['parents'] as $parent)
-                        <div x-data="{ theoryOpen: false }">
-                            <button @click="theoryOpen = !theoryOpen" class="w-full flex justify-between items-center px-4 py-2 dark:bg-gray-800 dark:text-m-blue text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red bg-slate-200 rounded-md transition-all duration-300 ease-linear mt-2">
-                                <span>{{ $parent->title }}</span>
-                                <svg :class="{'rotate-180': theoryOpen}" class="w-4 h-4 transition-transform transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M6 9l6 6 6-6"></path>
-                                </svg>
-                            </button>
-                            <div x-show="theoryOpen" x-cloak class="pl-6 mt-2 space-y-1">
-                                @foreach($parent->children as $child)
-                                    <a href="#" class="block px-4 py-2 dark:bg-gray-800 dark:text-m-blue text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red bg-slate-200 rounded-md transition-all duration-300 ease-linear">{{ $child->title }}</a>
-                                @endforeach
-                            </div>
-                        </div>
+                        <button data-dropdown-button data-target="parent-{{ $parent->id }}" class="w-full flex justify-between items-center px-4 py-2 dark:bg-gray-800 dark:text-m-blue text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red bg-slate-200 rounded-md transition-all duration-300 ease-linear mt-2">
+                            <span>{{ $parent->title }}</span>
+                        </button>
                     @endforeach
                 </div>
             </div>

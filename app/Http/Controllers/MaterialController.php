@@ -61,16 +61,16 @@ class MaterialController extends Controller
         $user = Auth::user();
         $section = Syllab::where('title', $syllab)->first();
         $elders = Material::whereNull('elder_id')
-                        ->get(['id', 'title'])
+                        ->get(['id', 'title', 'content'])
                         ->keyBy('id');
 
         $parents = Material::whereNotNull('elder_id')
                         ->whereNull('parent_id')
-                        ->get(['id', 'title', 'elder_id'])
+                        ->get(['id', 'title', 'elder_id', 'content'])
                         ->groupBy('elder_id');
 
         $children = Material::whereNotNull('parent_id')
-                        ->get(['id', 'title', 'parent_id'])
+                        ->get(['id', 'title', 'parent_id', 'content', 'img_name'])
                         ->groupBy('parent_id');
 
         $lectures = [];
@@ -190,24 +190,34 @@ class MaterialController extends Controller
         return redirect()->back();
     }
 
-    public function store_childlecture($syllab ,Request $request) //SECTION - CHILD STORE
+    public function store_childlecture(Request $request) //SECTION - CHILD STORE
     {
         $user = Auth::user();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
-            
             $request->validate([
                 'title' => 'required',
                 'content' => 'required',
+                'file' => 'required',
             ]);
+            
 
             $parent_row = Material::where('id', $request->subtheme)->first();
+            $elder_row = Material::where('id', $parent_row->elder_id)->first();
+            $syllab = Syllab::where('id', $elder_row->syllab_id)->first()->route;
+            $img_name = $this->titleToImageName($request->title);
+
+            $file = $request->file('file');
+            $fileName = $img_name.'.'.$file->extension();
+            $filePath = public_path('assets/'.$syllab.'/');
+            $file->move(''.$filePath.'', $fileName);
 
             Material::create([
                 'title' => $request->title,
                 'content' => $request->content,
                 'parent_id' => $request->subtheme,
                 'elder_id' => $parent_row->elder_id,
+                'img_name' => $img_name,
             ]);
 
             return redirect()->route('lecture.view', $syllab);

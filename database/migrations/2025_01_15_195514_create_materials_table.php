@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('title');
             $table->text('content');
+            $table->string('img_name')->nullable();
             $table->timestamps();
 
             $table->foreign('syllab_id')->references('id')->on('syllabs')->onDelete('cascade');

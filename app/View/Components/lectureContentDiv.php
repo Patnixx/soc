@@ -11,9 +11,16 @@ class lectureContentDiv extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $title;
+    public $content;
+    public $image;
+    public $imgRoute;
+    public function __construct($title, $image = null, $content, $imgRoute = null)
     {
-        //
+        $this->title = $title;
+        $this->image = $image;
+        $this->imgRoute = $imgRoute;
+        $this->content = $content;
     }
 
     /**

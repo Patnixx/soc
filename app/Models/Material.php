@@ -10,7 +10,7 @@ class Material extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'syllab_id', 'parent_id', 'elder_id'];
+    protected $fillable = ['title', 'content', 'syllab_id', 'parent_id', 'elder_id', 'img_name'];
 
     public function syllab()
     {

@@ -50,8 +50,18 @@ class Controller extends BaseController
             '/[’‘‹›‚]/u'          => "'", // jednoduché úvodzovky
             '/[“”«»„]/u'          => '"', // dvojité úvodzovky
             '/\s+/u'              => ' ', // nahradenie viacerých medzier jednou
+
+            '/[(){}[]]/u'          => ' ', // zátvorky
         );
         return preg_replace(array_keys($utf8), array_values($utf8), $text);
     }
-    
+
+    public function titleToImageName($text)
+    {
+        $text = $this->cleanString($text);
+        $text = str_replace(' ', '_', $text);
+        $text = str_replace('(', '', $text);
+        $text = str_replace(')', '', $text);
+        return $text;
+    }
 }
