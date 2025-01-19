@@ -5,7 +5,7 @@
     </div>
     
     <div class="flex items-center text-sm truncate">
-        <span class="{{$sclass}} text-gray-500 dark:text-gray-400">{{$parent}}</span>
+        <span class="{{$sclass}} text-gray-500 dark:text-gray-400">{{$elder}}</span>
     </div>
 
     <div class="flex items-center text-sm truncate">

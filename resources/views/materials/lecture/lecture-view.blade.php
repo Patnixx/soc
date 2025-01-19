@@ -30,11 +30,12 @@
                     <div class="flex items-center justify-end text-sm truncate space-x-4">
                     </div>
                 </a>              
-                @foreach ($lectures as $lecture => $data)
+                {{--@foreach ($lectures as $lecture => $data)
                     <x-lecture-view-div 
                     :id="$data['elder']->id"
                     :syllab="''.$syllab.''"
-                    :parent="''.__('materials.is_main').''"
+                    :elder="''.__('materials.is_main').''"
+                    :parent="''"
                     :title="$data['elder']->title"
                     :content="$data['elder']->content"
                     :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
@@ -48,7 +49,8 @@
                         <x-lecture-view-div 
                         :id="$parent->id"
                         :syllab="''.$syllab.''"
-                        :parent="$parent->parent_id"
+                        :elder="''.$parent->elder_id.''"
+                        :parent="''.__('materials.is_main').''"
                         :title="$parent->title"
                         :content="$parent->content"
                         :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
@@ -63,6 +65,7 @@
                             <x-lecture-view-div 
                             :id="$child->id"
                             :syllab="''.$syllab.''"
+                            :elder="'X'"
                             :parent="$child->parent_id"
                             :title="$child->title"
                             :content="$child->content"
@@ -72,8 +75,38 @@
                             />
                         @endforeach
                     @endforeach
+                @endforeach--}}
+                @foreach($lectures as $lecture)
+                    <?php if($lecture->elder_id == null)
+                            {
+                                $elder = "-->";
+                            }
+                            else {
+                                $elder = $lecture->elder_id;
+                            }
+                            if($lecture->parent_id == null && $lecture->elder_id != null)
+                            {
+                                $parent = "-->";
+                            }
+                            else {
+                                $parent = $lecture->parent_id;
+                            }
+                    ?>
+                    <x-lecture-view-div 
+                    :id="$lecture->id"
+                    :syllab="''.$syllab.''"
+                    :elder="$elder"
+                    :parent="$parent"
+                    :title="$lecture->title"
+                    :content="$lecture->content"
+                    :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
+                    :iclass="'cursor-pointer'"
+                    :aclass="'user-card'"
+                    />
                 @endforeach
             </div>
+            <br>
+            {{$lectures->links()}}
             <div class="mt-6 flex flex-col md:flex-row justify-between">
                 <a href="{{route('lecture', $syllab)}}" class="justify-self-start relative flex items-center justify-center sm:h-4 sm:w-4 md:w-6 md:h-6 lg:h-8 lg:w-8 xl:h-10 xl:w-10 2xl:h-12 2xl:w-12 mt-2 mb-2 shadow-lg dark:bg-gray-800 dark:text-m-red text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer bg-m-blue">
                     <i class="bi bi-box-arrow-left text-xl"></i>

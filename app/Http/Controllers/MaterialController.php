@@ -93,30 +93,7 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $elders = Material::whereNull('elder_id')
-                        ->get(['id', 'title'])
-                        ->keyBy('id');
-
-        $parents = Material::whereNotNull('elder_id')
-                        ->whereNull('parent_id')
-                        ->get(['id', 'title', 'elder_id'])
-                        ->groupBy('elder_id');
-
-        $children = Material::whereNotNull('parent_id')
-                        ->get(['id', 'title', 'parent_id'])
-                        ->groupBy('parent_id');
-
-        $lectures = [];
-        foreach ($elders as $elderId => $elder) {
-            $eldersParents = $parents->get($elderId, []);
-            foreach ($eldersParents as $parent) {
-                $parent->children = $children->get($parent->id, []);
-            }
-            $lectures[$elderId] = [
-                'elder' => $elder,
-                'parents' => $eldersParents
-            ];
-        }
+            $lectures = Material::simplePaginate(8);
             return view('materials.lecture.lecture-view', compact('user', 'lectures', 'section', 'syllab'));
         }
         return redirect()->back();
@@ -207,31 +184,35 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $parent = Material::where('id', $request->parent)->first();
-            return view('materials.lecture.assign-child-theme', compact('user', 'section', 'syllab', 'parent'));
+            $parent_row = Material::where('id', $request->parent)->first();
+            return view('materials.lecture.assign-child-theme', compact('user', 'section', 'syllab', 'parent_row'));
         }
         return redirect()->back();
     }
 
-    public function store_childlecture($syllab, $parent, Request $request) //SECTION - CHILD STORE
+    public function store_childlecture($syllab ,Request $request) //SECTION - CHILD STORE
     {
         $user = Auth::user();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
+            
             $request->validate([
                 'title' => 'required',
                 'content' => 'required',
             ]);
 
+            $parent_row = Material::where('id', $request->subtheme)->first();
+
             Material::create([
                 'title' => $request->title,
                 'content' => $request->content,
-                'parent_id' => $request->parent,
-                'elder_id' => $parent,
+                'parent_id' => $request->subtheme,
+                'elder_id' => $parent_row->elder_id,
             ]);
 
             return redirect()->route('lecture.view', $syllab);
         }
+        return redirect()->back();
     }
 
 

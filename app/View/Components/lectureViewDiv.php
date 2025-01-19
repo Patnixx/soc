@@ -12,6 +12,7 @@ class lectureViewDiv extends Component
      * Create a new component instance.
      */
     public $id;
+    public $elder;
     public $parent;
     public $title;
     public $content;
@@ -19,7 +20,7 @@ class lectureViewDiv extends Component
     public $sclass;
     public $aclass;
     public $syllab;
-    public function __construct($id, $parent, $title, $content, $iclass="", $sclass="", $aclass="", $syllab)
+    public function __construct($id, $elder, $parent, $title, $content, $iclass="", $sclass="", $aclass="", $syllab)
     {
         $this->id = $id;
         $this->parent = $parent;
@@ -29,6 +30,7 @@ class lectureViewDiv extends Component
         $this->sclass = $sclass;
         $this->aclass = $aclass;
         $this->syllab = $syllab;
+        $this->elder = $elder;
     }
 
     /**

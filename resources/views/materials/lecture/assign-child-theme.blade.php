@@ -2,9 +2,16 @@
 @section('title', ''.__('materials.create-sub-theme').'')
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen p-6">
-    <form action="{{route('childlecture.assign', ['syllab' => $syllab, 'parent' => $parent])}}" method="post" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
+    <form action="{{route('childlecture.store', ['syllab' => $syllab, 'parent' => $parent_row->id])}}" method="POST" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">decko</h2>
+        <div class="flex flex-col space-y-2 mb-2">
+            <label for="subtheme" class="text-sm font-medium dark:text-white text-gray-900">titel:</label>
+            <select name="subtheme" id="subtheme" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                <option value="{{$parent_row->id}}">{{$parent_row->title}}</option>
+            </select>
+        </div>
+        
         <div class="flex flex-col space-y-2 mb-2">
             <label for="title" class="text-sm font-medium dark:text-white text-gray-900">titel:</label>
             <input 
@@ -17,11 +24,11 @@
         </div>
 
         <div class="flex flex-col space-y-2 mb-2">
-            <label for="description" class="text-sm font-medium dark:text-white text-gray-900">opis:</label>
+            <label for="content" class="text-sm font-medium dark:text-white text-gray-900">opis:</label>
             <textarea 
-                name="description" 
-                id="description" 
-                placeholder="{{__('materials.description')}}"
+                name="content" 
+                id="content" 
+                placeholder="{{__('materials.content')}}"
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300"></textarea>
         </div>
 

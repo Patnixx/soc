@@ -132,8 +132,8 @@ Route::post('/materials/{syllab}/store-lecture', [MaterialController::class, 'st
 Route::get('/materials/{syllab}/sublecture-create', [MaterialController::class, 'sublecture_create'])->name('sublecture.create');
 Route::post('/materials/{syllab}/store-sublecture', [MaterialController::class, 'store_sublecture'])->name('sublecture.store');
 Route::get('/materials/{syllab}/childlecture-create', [MaterialController::class, 'childlecture_create'])->name('childlecture.create');
-Route::post('/materials/{syllab}/childlecture-assign', [MaterialController::class, 'childlecture_assign'])->name('childlecture.assign');
-Route::post('/materials/{syllab}/{parent}/store-childlecture', [MaterialController::class, 'store_childlecture'])->name('childlecture.store');
+Route::post('/{syllab}/assign-childlecture', [MaterialController::class, 'childlecture_assign'])->name('childlecture.assign');
+Route::post('/{syllab}/{parent}/store-childlecture', [MaterialController::class, 'store_childlecture'])->name('childlecture.store');
 Route::get('/materials/{syllab}/{id}/edit', [MaterialController::class, 'edit'])->name('lecture.edit');
 Route::post('/materials/{syllab}/{id}/update', [MaterialController::class, 'update'])->name('lecture.update');
 Route::post('/materials/{syllab}/{id}/delete', [MaterialController::class, 'delete'])->name('lecture.delete');
