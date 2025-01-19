@@ -73,6 +73,7 @@ class MaterialController extends Controller
                         ->get(['id', 'title', 'parent_id', 'content', 'img_name'])
                         ->groupBy('parent_id');
 
+                        
         $lectures = [];
         foreach ($elders as $elderId => $elder) {
             $eldersParents = $parents->get($elderId, []);
