@@ -7,6 +7,7 @@ use App\Models\Material;
 use App\Models\Syllab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redis;
 
 class MaterialController extends Controller
@@ -234,7 +235,7 @@ class MaterialController extends Controller
         {
             $all_syllabs = Syllab::all();
             $main_lectures = Material::where('elder_id', null)->get();
-            $sub_lectures = Material::where('parent_id', null)->get();
+            $sub_lectures = Material::whereNull('parent_id')->whereNull('syllab_id')->get();
             $lecture = Material::where('id', $id)->first();
             return view('materials.lecture.edit', compact('user', 'lecture', 'all_syllabs', 'main_lectures', 'sub_lectures' ,'syllab', 'id'));
         }
@@ -251,10 +252,19 @@ class MaterialController extends Controller
                 'content' => 'required',
                 'elder' => 'nullable',
                 'parent' => 'nullable',
-                'syllab' => 'nullable',
+                'sylab' => 'nullable',
+                'sub' => 'nullable',
+                'file' => 'nullable',
             ]);
-
-            if($request->elder)
+            if($request->sylab)
+            {
+                Material::where('id', $id)->update([
+                    'title' => $request->title,
+                    'content' => $request->content,
+                    'syllab_id' => $request->sylab,
+                ]);
+            }
+            elseif($request->elder)
             {
                 Material::where('id', $id)->update([
                     'title' => $request->title,
@@ -262,22 +272,41 @@ class MaterialController extends Controller
                     'elder_id' => $request->elder,
                 ]);
             }
-
             elseif($request->parent)
             {
-                Material::where('id', $id)->update([
-                    'title' => $request->title,
-                    'content' => $request->content,
-                    'parent_id' => $request->parent,
-                ]);
-            }
-            elseif($request->syllab)
-            {
-                Material::where('id', $id)->update([
-                    'title' => $request->title,
-                    'content' => $request->content,
-                    'syllab_id' => $request->syllab,
-                ]);
+                if($request->file)
+                {
+                    $current_row = Material::where('id', $id)->first();
+                    $parent_row = Material::where('id', $request->parent)->first();
+                    $elder_row = Material::where('id', $parent_row->elder_id)->first();
+                    $syllab = Syllab::where('id', $elder_row->syllab_id)->first()->route;
+                    $img_name = $this->titleToImageName($request->title);
+                    $oldFilePath = public_path('assets/'.$syllab.'/'.$current_row->img_name.'.jpg');
+                    if(File::exists($oldFilePath))
+                    {
+                        File::delete($oldFilePath);
+                    }
+
+                    $file = $request->file('file');
+                    $fileName = $img_name.'.jpg';
+                    $filePath = public_path('assets/'.$syllab.'/');
+                    $file->move(''.$filePath.'', $fileName);
+
+                    Material::where('id', $id)->update([
+                        'title' => $request->title,
+                        'content' => $request->content,
+                        'parent_id' => $request->parent,
+                        'img_name' => $img_name,
+                    ]);  
+                }
+                else
+                {
+                    Material::where('id', $id)->update([
+                        'title' => $request->title,
+                        'content' => $request->content,
+                        'parent_id' => $request->parent,
+                    ]);
+                }
             }
 
             return redirect()->route('lecture.view', $syllab);

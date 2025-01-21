@@ -4,6 +4,12 @@
     <div class="p-6 m-12">
         <div class="flex flex-row justify-between">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-start">{{__('materials.themes', ['section' => $section->title])}}</h1>            
+            <div class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear self-end flex flex-row space-x-2 mr-2">
+                <button data-role="All" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">vsetky</button>
+                <button data-role="Theme" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">theme</button>
+                <button data-role="Subtheme" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">subtheme</button>
+                <button data-role="Childtheme" type="button" class="filter-btn dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white rounded-lg px-4 text-base transition-all duration-300 ease-linear">childtheme</button>
+            </div>
         </div>
             <div class="flex flex-col divide-y divide-gray-300 dark:divide-gray-800 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-all duration-300 ease-linear">
                 <a class="grid grid-cols-6 w-full h-auto px-4 py-2 border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all bg-gradient-to-br from-transparent via-transparent">
@@ -29,53 +35,6 @@
                 
                     <div class="flex items-center justify-end text-sm truncate space-x-4">
                     </div>
-                </a>              
-                {{--@foreach ($lectures as $lecture => $data)
-                    <x-lecture-view-div 
-                    :id="$data['elder']->id"
-                    :syllab="''.$syllab.''"
-                    :elder="''.__('materials.is_main').''"
-                    :parent="''"
-                    :title="$data['elder']->title"
-                    :content="$data['elder']->content"
-                    :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
-                    :iclass="'cursor-pointer'"
-                    :aclass="'user-card'"
-                    />
-                @endforeach
-                
-                @foreach($lectures as $lecture_child => $data_parent)
-                    @foreach($data_parent['parents'] as $parent)
-                        <x-lecture-view-div 
-                        :id="$parent->id"
-                        :syllab="''.$syllab.''"
-                        :elder="''.$parent->elder_id.''"
-                        :parent="''.__('materials.is_main').''"
-                        :title="$parent->title"
-                        :content="$parent->content"
-                        :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
-                        :iclass="'cursor-pointer'"
-                        :aclass="'user-card'"
-                        />
-                    @endforeach
-                @endforeach
-                @foreach($lectures as $lecture_child => $data_parent)
-                    @foreach($data_parent['parents'] as $parent)
-                        @foreach($parent->children as $child)
-                            <x-lecture-view-div 
-                            :id="$child->id"
-                            :syllab="''.$syllab.''"
-                            :elder="'X'"
-                            :parent="$child->parent_id"
-                            :title="$child->title"
-                            :content="$child->content"
-                            :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
-                            :iclass="'cursor-pointer'"
-                            :aclass="'user-card'"
-                            />
-                        @endforeach
-                    @endforeach
-                @endforeach--}}
                 @foreach($lectures as $lecture)
                     <?php if($lecture->elder_id == null)
                             {
@@ -101,7 +60,7 @@
                     :content="$lecture->content"
                     :sclass="'text-sm text-gray-700 dark:text-gray-300 truncate'" 
                     :iclass="'cursor-pointer'"
-                    :aclass="'user-card'"
+                    :aclass="'lecture-card'"
                     />
                 @endforeach
             </div>

@@ -4,7 +4,7 @@
 <div class="flex flex-col items-center justify-center min-h-screen p-6">
     <form action="{{route('childlecture.assign', $syllab)}}" method="post" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
-        <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{__('materials.create-sub-theme')}}</h2>
+        <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{__('materials.assign-sub-theme')}}</h2>
 
         <div class="flex flex-col space-y-2 mb-2">
             <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
@@ -18,7 +18,7 @@
         <button 
             type="submit" 
             class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue  text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
-            {{__('materials.create-sub-theme')}}
+            {{__('materials.assign-sub-theme')}}
         </button>
     </form>
 

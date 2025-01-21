@@ -1,8 +1,8 @@
 <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-<div class="w-full flex flex-col md:flex-row bg-gray-100 my-4 p-4 rounded-lg shadow-md">
+<div class="w-full flex flex-col md:flex-row bg-gray-100 dark:bg-gray-900 my-4 p-4 rounded-lg shadow-md">
     <div class="flex-1 p-4">
-        <h3 class="text-xl font-semibold">{{ $title }}</h3>
-        <div class="mt-2">
+        <h3 class="text-xl font-bold mb-4 dark:text-m-blue text-gray-900 transition-all duration-300 ease-linear">{{ $title }}</h3>
+        <div class="mt-2 dark:text-white text-gray-600">
             {{ $content }}
         </div>
     </div>

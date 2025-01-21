@@ -2,26 +2,35 @@
 @section('title', ''.__('materials.edit', ['title' => $lecture->title]).'')
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen p-6">
-    <form action="{{route('lecture.update', ['id' => $lecture->id, 'syllab' => $syllab])}}" method="post" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
+    <form action="{{route('lecture.update', ['id' => $lecture->id, 'syllab' => $syllab])}}" method="post" enctype="multipart/form-data" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{__('materials.edit', ['title' => $lecture->title])}}</h2>
-
-        @if($lecture->parent_id)
+        @if($lecture->syllab_id)
             <div class="flex flex-col space-y-2 mb-2">
-                <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
-                <select name="parent" id="parent" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                <label for="sylab" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.syllab')}}:</label>
+                <select name="sylab" id="sylab" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    @foreach($all_syllabs as $single_syllab)
+                        <option value="{{$single_syllab->id}}">{{$single_syllab->title}}</option>
+                    @endforeach
+                </select>
+            </div>
+        @endif
+        @if($lecture->elder_id && $lecture->parent_id == null)
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="elder" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
+                <select name="elder" id="elder" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                     @foreach($main_lectures as $main_lecture)
                         <option value="{{$main_lecture->id}}">{{$main_lecture->title}}</option>
                     @endforeach
                 </select>
             </div>
         @endif
-        @if($lecture->syllab_id)
+        @if($lecture->elder_id && $lecture->parent_id)
             <div class="flex flex-col space-y-2 mb-2">
-                <label for="syllab" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.syllab')}}:</label>
-                <select name="syllab" id="syllab" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                    @foreach($all_syllabs as $single_syllab)
-                        <option value="{{$single_syllab->id}}">{{$single_syllab->title}}</option>
+                <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.sub_theme')}}</label>
+                <select name="parent" id="parent" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    @foreach($sub_lectures as $sub_lecture)
+                        <option value="{{$sub_lecture->id}}">{{$sub_lecture->title}}</option>
                     @endforeach
                 </select>
             </div>
@@ -33,8 +42,8 @@
                 type="text" 
                 name="title" 
                 id="title" 
-                placeholder={{$lecture->title}}
-                value={{$lecture->title}}
+                placeholder="{{$lecture->title}}"
+                value="{{$lecture->title}}"
                 maxlength="50" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
@@ -48,6 +57,24 @@
                 placeholder={{$lecture->content}} 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$lecture->content}}</textarea>
         </div>
+
+        @if($lecture->elder_id && $lecture->parent_id)
+            <div class="flex flex-col space-y-2 mb-2 justify-center items-center">
+                <label for="image" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.image')}}</label>
+                <img id="image" src="{{asset('assets/'.$syllab.'/'.$lecture->img_name.'.jpg')}}" alt="{{$lecture->img_name}}" class="h-full max-w-16 object-cover rounded-lg">
+            </div>
+
+            <div class="flex flex-col space-y-2 mb-2">
+                <label for="file" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.select-image')}}</label>
+                <input 
+                    type="file" 
+                    name="file" 
+                    id="file" 
+                    placeholder="{{__('materials.file')}}"
+                    maxlength="50" 
+                    class="w-full px-4 py-2 border rounded-lg bg-white shadow-sm focus:ring focus:ring-blue-300">
+            </div>
+        @endif
 
         <button 
             type="submit" 

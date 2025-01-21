@@ -15,15 +15,23 @@ return [
     'themes' => 'Témy v sekcii - :section',
 
     'main-theme' => 'Hlavná téma',
+    'sub_theme' => 'Podtéma',
+    'lecture' => 'Téma',
+
     'syllab' => 'Sekcia',
     'theme-title' => 'Názov',
     'content' => 'Obsah',
+    'select-image' => 'Nahrať obrázok',
+    'image' => 'Obrázok',
 
     'add-main-theme' => 'Pridať hlavnú tému',
     'add-sub-theme' => 'Pridať podtému',
+    'add-lecture' => 'Pridať tému',
+    'assign-sub-theme' => 'Priradiť podtému',
 
     'create-main-theme' => 'Vytvoriť hlavnú tému',
     'create-sub-theme' => 'Vytvoriť podtému',
+    'create-lecture' => 'Vytvoriť tému',
 
     'create-title' => 'Názov',
     'create-content' => 'Obsah',

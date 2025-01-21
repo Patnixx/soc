@@ -15,15 +15,23 @@ return [
     'themes' => 'Themes in section - :section',
 
     'main-theme' => 'Main Theme',
+    'sub_theme' => 'Sub Theme',
+    'lecture' => 'Lecture',
+
     'syllab' => 'Section',
     'theme-title' => 'Title',
     'content' => 'Content',
+    'select-image' => 'Upload Image',
+    'image' => 'Image',
 
     'add-main-theme' => 'Add Main Theme',
     'add-sub-theme' => 'Add Sub Theme',
+    'add-lecture' => 'Add Lecture',
+    'assign-sub-theme' => 'Assign Sub Theme',
 
     'create-main-theme' => 'Create Main Theme',
     'create-sub-theme' => 'Create Sub Theme',
+    'create-lecture' => 'Create Lecture',
 
     'create-title' => 'Title',
     'create-content' => 'Content',
