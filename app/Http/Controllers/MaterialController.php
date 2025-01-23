@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseSyllab;
+use App\Models\CourseUser;
 use App\Models\Material;
 use App\Models\Syllab;
 use Illuminate\Http\Request;
@@ -19,7 +21,27 @@ class MaterialController extends Controller
         $unread = $this->checkMails();
         if(Auth::check())
         {
-            $syllabs = Syllab::all();
+            if($user->role == 'Admin')
+            {
+                $courses = Course::all();
+                $syllabs = Syllab::all();
+            }
+            elseif($user->role == 'Teacher')
+            {
+                $courses = Course::where('teacher_id', $user->id)->get();
+                $syllabs = Syllab::all();
+            }
+            else
+            {
+                $courses = CourseUser::whereHas('user', function($q) use ($user){
+                    $q->where('user_id', $user->id);
+                })->get();
+                
+                $syllabs = CourseSyllab::with(['course', 'syllab'])->whereHas('course', function($q) use ($courses) {
+                    $q->where('course_id', $courses->pluck('course_id'));
+                })
+                ->get();
+            }
             return view('materials.index', compact('user', 'unread', 'syllabs'));
         }
         return redirect()->back();
@@ -92,11 +114,12 @@ class MaterialController extends Controller
     public function lecture_view($syllab)
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
             $lectures = Material::simplePaginate(8);
-            return view('materials.lecture.lecture-view', compact('user', 'lectures', 'section', 'syllab'));
+            return view('materials.lecture.lecture-view', compact('user', 'lectures', 'section', 'syllab', 'unread'));
         }
         return redirect()->back();
     }
@@ -104,10 +127,11 @@ class MaterialController extends Controller
     public function lecture_create($syllab) //SECTION - ELDER CREATE
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            return view('materials.lecture.create-main-theme', compact('user', 'section', 'syllab'));
+            return view('materials.lecture.create-main-theme', compact('user', 'section', 'syllab', 'unread'));
         }
         return redirect()->back();
     }
@@ -137,11 +161,12 @@ class MaterialController extends Controller
     public function sublecture_create($syllab)  //SECTION - PARENT CREATE
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
             $main_lectures = Material::where('elder_id', null)->get();
-            return view('materials.lecture.create-sub-theme', compact('user', 'section', 'syllab', 'main_lectures'));
+            return view('materials.lecture.create-sub-theme', compact('user', 'section', 'syllab', 'main_lectures', 'unread'));
         }
         return redirect()->back();
     }
@@ -171,11 +196,12 @@ class MaterialController extends Controller
     public function childlecture_create($syllab) //SECTION - CHILD CREATE
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
             $sub_lectures = Material::whereNull('parent_id')->whereNull('syllab_id')->get();
-            return view('materials.lecture.create-child-theme', compact('user', 'section', 'syllab', 'sub_lectures'));
+            return view('materials.lecture.create-child-theme', compact('user', 'section', 'syllab', 'sub_lectures', 'unread'));
         }
         return redirect()->back();
     }
@@ -183,11 +209,12 @@ class MaterialController extends Controller
     public function childlecture_assign($syllab, Request $request)
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
             $parent_row = Material::where('id', $request->parent)->first();
-            return view('materials.lecture.assign-child-theme', compact('user', 'section', 'syllab', 'parent_row'));
+            return view('materials.lecture.assign-child-theme', compact('user', 'section', 'syllab', 'parent_row', 'unread'));
         }
         return redirect()->back();
     }
@@ -231,13 +258,14 @@ class MaterialController extends Controller
     public function edit($syllab, $id)
     {
         $user = Auth::user();
+        $unread = $this->checkMails();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $all_syllabs = Syllab::all();
             $main_lectures = Material::where('elder_id', null)->get();
             $sub_lectures = Material::whereNull('parent_id')->whereNull('syllab_id')->get();
             $lecture = Material::where('id', $id)->first();
-            return view('materials.lecture.edit', compact('user', 'lecture', 'all_syllabs', 'main_lectures', 'sub_lectures' ,'syllab', 'id'));
+            return view('materials.lecture.edit', compact('user', 'lecture', 'all_syllabs', 'main_lectures', 'sub_lectures' ,'syllab', 'id', 'unread'));
         }
         return redirect()->back();
     }

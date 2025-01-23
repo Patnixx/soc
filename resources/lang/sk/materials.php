@@ -38,4 +38,6 @@ return [
     'update' => 'Upraviť',
 
     'edit' => 'Upraviť - :title',
+
+    'info' => 'Ak je materiál vo farbách stránky, znamená to že je pre vás dostupný. Ak je v sivých farbách, daný materiál nebol pre váš kurz odomknutý učiteľom/administrátorom.'
 ];

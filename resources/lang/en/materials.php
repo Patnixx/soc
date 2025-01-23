@@ -38,4 +38,6 @@ return [
     'update' => 'Update',
 
     'edit' => 'Edit - :title',
+
+    'info' => "If the material is in the web page's colors, it is accesible to you. If its in gray colors, it's locked by the teacher/admin and needs to be unlocked for your course."
 ];

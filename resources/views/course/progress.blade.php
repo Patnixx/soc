@@ -1,7 +1,7 @@
 @extends('structures.main')
 @section('title', ''.__('title.progress').'')
 @section('content')
-<div class="grid grid-cols-[1fr,1fr] mt-12">
+<div class="grid grid-cols-[1fr,1fr] my-12">
     @if($user->role == 'Admin')
         <section id="left">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>

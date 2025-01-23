@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Controller extends BaseController
 {
@@ -59,7 +60,10 @@ class Controller extends BaseController
     public function titleToImageName($text)
     {
         $text = $this->cleanString($text);
+        $text = Str::limit($text, 30);
+        $text = str_replace('...', '', $text);
         $text = str_replace(' ', '_', $text);
+        $text = str_replace(',', '', $text);
         $text = str_replace('(', '', $text);
         $text = str_replace(')', '', $text);
         return $text;

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_users', function (Blueprint $table) {
+        Schema::create('course_syllabs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->foreignId('syllab_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_locked')->default(true);
             $table->timestamps();
-
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_user');
+        Schema::dropIfExists('course_syllabs');
     }
 };

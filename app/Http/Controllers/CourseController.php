@@ -16,21 +16,21 @@ class CourseController extends Controller
         $user = Auth::user();
 
         if(Auth::user()->role == 'Admin'){
-            $courses = Course::with('teacher')->simplePaginate(3);
-            $forms = Form::simplePaginate(3);
+            $courses = Course::with('teacher')->simplePaginate(3, '*', 'courses');
+            $forms = Form::simplePaginate(3, '*', 'forms');
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
 
         if(Auth::user()->role == 'Teacher'){
-            $courses = Course::with('teacher')->where('teacher_id', $user->id)->simplePaginate(3);
-            $forms = Form::simplePaginate(3);
+            $courses = Course::with('teacher')->where('teacher_id', $user->id)->simplePaginate(3, '*', 'courses');
+            $forms = Form::simplePaginate(3, '*', 'forms');
             $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
         
         if(Auth::user()->role == 'Student'){
-            $forms = Form::where('user_id', $user->id)->simplePaginate(3);
-            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->simplePaginate(3);
+            $forms = Form::where('user_id', $user->id)->simplePaginate(3, '*', 'forms');
+            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->simplePaginate(3, '*', 'courses');
             $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }

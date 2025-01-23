@@ -80,22 +80,10 @@
                 <label for="class" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.class')}}</label>
                 <select name="class" id="class" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                     <option value="{{$class}}">{{__('courses.current')}}: {{$class}}</option>
-                    <option value="AM">AM</option>
-                    <option value="A1">A1</option>
-                    <option value="A2">A2</option>
+                    {{--<option value="A1">A1</option>
+                    <option value="A2">A2</option>--}}
                     <option value="A">A</option>
-                    <option value="B1">B1</option>
                     <option value="B">B</option>
-                    <option value="BE">BE</option>
-                    <option value="C1">C1</option>
-                    <option value="C1E">C1E</option>
-                    <option value="C">C</option>
-                    <option value="CE">CE</option>
-                    <option value="D1">D1</option>
-                    <option value="D1E">D1E</option>
-                    <option value="D">D</option>
-                    <option value="DE">DE</option>
-                    <option value="T">T</option>
                 </select>
             </div>
             <div class="flex flex-col space-y-2  mb-2">

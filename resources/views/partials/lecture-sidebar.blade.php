@@ -1,4 +1,4 @@
-<div class="w-64 min-h-screen h-full bg-white dark:bg-gray-900 text-white flex flex-col p-4 overflow-y-auto">
+<div class="w-64 h-screen fixed bg-white dark:bg-gray-900 text-white flex flex-col p-4 overflow-y-auto">
     <h2 class="text-2xl font-bold mb-4 dark:text-m-blue text-gray-900 transition-all duration-300 ease-linear">
         {{$section->title}}
     </h2>

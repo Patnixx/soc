@@ -1,6 +1,6 @@
 @extends('structures.lecture')
 @section('content')
-    <div class="mt-12">
+    <div class="mt-12 col-start-2">
         @foreach($lectures as $lecture => $data)
             @foreach($data['parents'] as $parent)
                 <div data-dropdown-content data-content-id="parent-{{ $parent->id }}" class="px-8 pt-6 pb-8 mb-4 hidden">

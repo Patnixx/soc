@@ -15,4 +15,9 @@ class Syllab extends Model
     {
         return $this->hasMany(Material::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class)->withPivot('is_locked')->withTimestamps();
+    }
 }

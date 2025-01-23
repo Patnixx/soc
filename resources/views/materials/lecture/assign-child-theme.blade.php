@@ -19,7 +19,7 @@
                 name="title" 
                 id="title" 
                 placeholder="{{__('materials.title')}}"
-                maxlength="75" 
+                maxlength="100" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
 
