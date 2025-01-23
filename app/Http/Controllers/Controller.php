@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
