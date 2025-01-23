@@ -63,6 +63,7 @@ class Controller extends BaseController
         $text = $this->cleanString($text);
         $text = Str::limit($text, 30);
         $text = str_replace('...', '', $text);
+        $text = str_replace('+', '', $text);
         $text = str_replace(' ', '_', $text);
         $text = str_replace(',', '', $text);
         $text = str_replace('(', '', $text);
