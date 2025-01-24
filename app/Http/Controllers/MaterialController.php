@@ -47,6 +47,17 @@ class MaterialController extends Controller
         return redirect()->back();
     }
 
+    public function syllab_dash()
+    {
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            $syllabs = Syllab::simplePaginate(10);
+            return view('materials.syllab.dashboard', compact('user', 'unread', 'syllabs'));
+        }
+    }
+
     public function create_syllab()
     {
         $user = Auth::user();
@@ -74,16 +85,78 @@ class MaterialController extends Controller
                 'route' => $route,
             ]);
 
-            return redirect()->route('materials');
+            return redirect()->route('syllab.dash');
         }
         return redirect()->back();
     }
+
+    public function edit_syllab($id)
+    {
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            $syllab = Syllab::where('id', $id)->first();
+            return view('materials.syllab.edit-syllab', compact('user', 'unread', 'syllab'));
+        }
+    }
+
+    public function update_syllab($id, Request $request)
+    {
+        $user = Auth::user();
+        {
+            if($user->role == 'Admin' || $user->role == 'Teacher')
+            {
+                $request->validate([
+                    'title' => 'required',
+                ]);
+
+                $route = $this->cleanString($request->title);
+
+                Syllab::where('id', $id)->update([
+                    'title' => $request->title,
+                    'route' => $route,
+                ]);
+
+                return redirect()->route('syllab.dash');
+            }
+            return redirect()->back();
+        }
+    }
+
+
+    public function delete_syllab($id)
+    {
+        $user = Auth::user();
+        if($user->role == 'Admin')
+        {
+            Syllab::where('id', $id)->delete();
+            return redirect()->back();
+        }
+    }
+
+    public function lock_syllab($id)
+    {
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        $section = Syllab::where('id', $id)->first();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            $syllab = CourseSyllab::with(['course', 'syllab'])->where('syllab_id', $id)->get();
+            return view('materials.syllab.lock-syllab', compact('user', 'unread', 'syllab', 'section'));
+        }
+        return redirect()->back();
+    }
+
+
+    /* --------------- */
 
     public function lecture_index($syllab)
     {
         $user = Auth::user();
         $section = Syllab::where('title', $syllab)->first();
         $elders = Material::whereNull('elder_id')
+                        ->where('syllab_id', $section->id)
                         ->get(['id', 'title', 'content'])
                         ->keyBy('id');
 

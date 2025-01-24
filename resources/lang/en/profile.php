@@ -7,5 +7,5 @@ return [
     'credits' => 'Credits',
 
     //materials add card
-    'new-syllab' => 'Create new secttion',
+    'syllab-dash' => 'Manage sections',
 ];

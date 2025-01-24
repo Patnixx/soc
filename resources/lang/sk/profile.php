@@ -7,5 +7,5 @@ return [
     'credits' => 'Zdroje',
 
     //materials add card
-    'new-syllab' => 'Vytvoriť novú sekciu',
+    'syllab-dash' => 'Upravovať sekcie',
 ];

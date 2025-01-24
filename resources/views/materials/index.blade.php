@@ -40,7 +40,7 @@
                 @endif
             @endforeach
             @if($user->role == 'Admin' || $user->role == 'Teacher')
-                <x-profile-bubble :icon="'bi bi-person-plus-fill'" :text="'new-syllab'" :route="'materials.create.syllab'"/>
+                <x-profile-bubble :icon="'bi bi-person-plus-fill'" :text="'syllab-dash'" :route="'syllab.dash'"/>
             @endif
         </div>
     </div>

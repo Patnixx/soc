@@ -114,17 +114,18 @@ Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->na
 
 Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('set.language');
 
-//!MATERIALS
+//!SYLLABS
 Route::get('/materials', [MaterialController::class, 'index'])->name('materials');
+Route::get('/materials/dash', [MaterialController::class, 'syllab_dash'])->name('syllab.dash');
 Route::get('/materials/create-syllab', [MaterialController::class, 'create_syllab'])->name('materials.create.syllab');
 Route::post('/materials/store-syllab', [MaterialController::class, 'store_syllab'])->name('materials.store.syllab');
-Route::get('/materials/create-material', [MaterialController::class, 'create_material'])->name('materials.create.material');
-Route::post('/materials/store-material', [MaterialController::class, 'store_material'])->name('materials.store.material');
-Route::get('/materials/{id}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
-Route::post('/materials/{id}/update', [MaterialController::class, 'update'])->name('materials.update');
-Route::post('/materials/{id}/delete', [MaterialController::class, 'delete'])->name('materials.delete');
+Route::get('/materials/edit-syllab/{id}', [MaterialController::class, 'edit_syllab'])->name('syllab.edit');
+Route::post('/materials/update-syllab/{id}', [MaterialController::class, 'update_syllab'])->name('syllab.update');
+Route::post('/materials/delete-syllab/{id}', [MaterialController::class, 'delete_syllab'])->name('syllab.delete');
+Route::get('/materials/lock-syllab/{id}', [MaterialController::class, 'lock_syllab'])->name('syllab.lock');
+Route::post('/materials/unlock-syllab/{id}', [MaterialController::class, 'unlock_syllab'])->name('syllab.unlock');
 
-//!SYLLABS
+//!LECTURES
 Route::get('/materials/{syllab}', [MaterialController::class, 'lecture_index'])->name('lecture');
 Route::get('/materials/{syllab}/view', [MaterialController::class, 'lecture_view'])->name('lecture.view');
 Route::get('/materials/{syllab}/lecture-create', [MaterialController::class, 'lecture_create'])->name('lecture.create');
