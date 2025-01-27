@@ -148,7 +148,51 @@ class MaterialController extends Controller
         return redirect()->back();
     }
 
+    public function unlock_syllab(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'courses' => 'nullable|array',
+            'courses.*' => 'boolean',
+        ]);
 
+        $relations = CourseSyllab::where('syllab_id', $id)->get();
+
+        foreach ($relations as $relation) {
+            $relation->is_locked = isset($validated['courses'][$relation->course_id]) ? 1 : 0;
+            $relation->save();
+        }
+        return redirect()->route('syllab.dash')->with('success', __('materials.updated_success'));
+    }
+
+    public function assign_syllab($id)
+    {
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        $section = Syllab::where('id', $id)->first();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            $syllab = CourseSyllab::with(['course', 'syllab'])->where('syllab_id', $id)->get();
+            $courses = Course::with('teacher')->whereNotIn('id', $syllab->pluck('course_id'))->get();
+            return view('materials.syllab.assign-syllab', compact('user', 'unread', 'syllab', 'section', 'courses', 'id'));
+        }
+        return redirect()->back();
+    }
+
+    public function addCourseToSyllab(Request $request, $id)
+    {
+        $courseId = $request->input('course_id');
+        $user = Auth::user();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            CourseSyllab::create([
+                'course_id' => $courseId,
+                'syllab_id' => $id,
+            ]);
+            return redirect()->route('syllab.lock', $id);
+        }
+        
+        return redirect()->back();
+    }
     /* --------------- */
 
     public function lecture_index($syllab)

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerifyMailController;
 use App\Models\Material;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\Match_;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,7 +124,9 @@ Route::get('/materials/edit-syllab/{id}', [MaterialController::class, 'edit_syll
 Route::post('/materials/update-syllab/{id}', [MaterialController::class, 'update_syllab'])->name('syllab.update');
 Route::post('/materials/delete-syllab/{id}', [MaterialController::class, 'delete_syllab'])->name('syllab.delete');
 Route::get('/materials/lock-syllab/{id}', [MaterialController::class, 'lock_syllab'])->name('syllab.lock');
-Route::post('/materials/unlock-syllab/{id}', [MaterialController::class, 'unlock_syllab'])->name('syllab.unlock');
+Route::patch('/materials/unlock-syllab/{id}', [MaterialController::class, 'unlock_syllab'])->name('syllab.unlock');
+Route::get('/materials/{id}/assign', [MaterialController::class, 'assign_syllab'])->name('syllab.assign');
+Route::post('/materials/{id}/add-course', [MaterialController::class, 'addCourseToSyllab'])->name('syllab.addCourse');
 
 //!LECTURES
 Route::get('/materials/{syllab}', [MaterialController::class, 'lecture_index'])->name('lecture');

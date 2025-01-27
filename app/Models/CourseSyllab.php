@@ -9,6 +9,8 @@ class CourseSyllab extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['is_locked', 'course_id', 'syllab_id'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
