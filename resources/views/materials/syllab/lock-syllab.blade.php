@@ -1,5 +1,5 @@
 @extends('structures.main')
-@section('title', 'zamok')
+@section('title', ''.__('materials.lock-courses').'')
 @section('content')
     <div class="flex flex-col items-center justify-center min-h-screen p-6">
         <form 
@@ -15,11 +15,11 @@
 
             <div class="space-y-4">
                 @foreach ($syllab as $relation)
-                    <div class="flex items-center justify-between border-b pb-2">
+                    <div class="items-center justify-end border-b pb-2 grid grid-cols-3">
                         <span class="text-sm font-medium dark:text-white text-gray-900">
                             {{ $relation->course->name }}
                         </span>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center justify-end space-x-2">
                             <input 
                                 type="checkbox" 
                                 name="courses[{{ $relation->course->id }}]"
@@ -31,15 +31,19 @@
                                 {{ ($relation->is_locked == 1) ? __('Locked') : __('Unlocked') }}
                             </span>
                         </label>
+                        <a class="flex items-center justify-center" href="{{route('syllab.removeCourse', ['courseId' => $relation->id, 'syllabId' => $section->id])}}">
+                            <i class="bi bi-trash hover:text-gray-500 text-red-600 dark:hover:text-gray-400 dark:text-red-500"></i>
+                        </a>
                     </div>
                 @endforeach
-            </div>
-
-            <button 
+                <button 
                 type="submit" 
                 class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
-                {{ __('syllabs.unlock') }}
-            </button>
+                {{ __('materials.save-courses') }}
+                </button>
+            </div>
+
+            
         </form>
 
         <div class="flex flex-row items-center justify-center mt-4 space-x-2">
@@ -56,7 +60,7 @@
                 href="{{ route('syllab.assign', ['id' => $section->id]) }}">
                 <i class="bi bi-plus-circle"></i>
                 <span class="absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
-                    {{ __('sidebar.back') }}
+                    {{ __('sidebar.assign-course') }}
                 </span>
             </a>
         </div>

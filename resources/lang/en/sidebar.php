@@ -39,4 +39,8 @@ return [
     'msg-del' => 'Deleted messages',
     'msg-back' => 'Back to inbox',
     'msg-bin' => 'Clear bin',
+
+    //materials icons
+    'create-syllab' => 'Create new section',
+    'assign-course' => 'Assign course'
 ];

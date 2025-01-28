@@ -127,6 +127,7 @@ Route::get('/materials/lock-syllab/{id}', [MaterialController::class, 'lock_syll
 Route::patch('/materials/unlock-syllab/{id}', [MaterialController::class, 'unlock_syllab'])->name('syllab.unlock');
 Route::get('/materials/{id}/assign', [MaterialController::class, 'assign_syllab'])->name('syllab.assign');
 Route::post('/materials/{id}/add-course', [MaterialController::class, 'addCourseToSyllab'])->name('syllab.addCourse');
+Route::get('/materials/{courseId}/{syllabId}/remove-course', [MaterialController::class, 'deleteCourseFromSyllab'])->name('syllab.removeCourse');
 
 //!LECTURES
 Route::get('/materials/{syllab}', [MaterialController::class, 'lecture_index'])->name('lecture');

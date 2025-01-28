@@ -7,6 +7,10 @@ return [
     'delete' => 'Delete Material',
 
     'create-syllab' => 'Create new section',
+    'syllab-dash' => 'Sections',
+    'syllab-name' => 'Section Name',
+    'save-courses' => 'Save Courses',
+    'lock-courses' => 'Lock Courses',
 
     'all-lectures' => 'All Lectures',
 

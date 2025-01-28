@@ -172,7 +172,14 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $syllab = CourseSyllab::with(['course', 'syllab'])->where('syllab_id', $id)->get();
-            $courses = Course::with('teacher')->whereNotIn('id', $syllab->pluck('course_id'))->get();
+            if($user->role == 'Teacher')
+            {
+                $courses = Course::with('teacher')->where('teacher_id', $user->id)->whereNotIn('id', $syllab->pluck('course_id'))->get();
+            }
+            if($user->role == 'Admin')
+            {
+                $courses = Course::with('teacher')->whereNotIn('id', $syllab->pluck('course_id'))->get();
+            }
             return view('materials.syllab.assign-syllab', compact('user', 'unread', 'syllab', 'section', 'courses', 'id'));
         }
         return redirect()->back();
@@ -180,12 +187,15 @@ class MaterialController extends Controller
 
     public function addCourseToSyllab(Request $request, $id)
     {
-        $courseId = $request->input('course_id');
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+        ]);
+
         $user = Auth::user();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             CourseSyllab::create([
-                'course_id' => $courseId,
+                'course_id' => $request->course_id,
                 'syllab_id' => $id,
             ]);
             return redirect()->route('syllab.lock', $id);
@@ -194,6 +204,17 @@ class MaterialController extends Controller
         return redirect()->back();
     }
     /* --------------- */
+
+    public function deleteCourseFromSyllab($courseId, $syllabId)
+    {
+        $user = Auth::user();
+        if($user->role == 'Admin' || $user->role == 'Teacher')
+        {
+            CourseSyllab::where('course_id', $courseId)->where('syllab_id', $syllabId)->delete();
+            return redirect()->route('syllab.dash');
+        }
+        return redirect()->back();
+    }
 
     public function lecture_index($syllab)
     {

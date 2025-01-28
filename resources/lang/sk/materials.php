@@ -7,6 +7,10 @@ return [
     'delete' => 'Vymazať materiál',
 
     'create-syllab' => 'Vytvoriť novú sekciu',
+    'syllab-dash' => 'Sekcie',
+    'syllab-name' => 'Názov sekcie',
+    'save-courses' => 'Uložiť kurzy',
+    'lock-courses' => 'Zamknúť kurzy',
 
     'all-lectures' => 'Všetky témy',
 

@@ -39,4 +39,8 @@ return [
     'msg-del' => 'Vymazané správy',
     'msg-back' => 'Späť do schránky',
     'msg-bin' => 'Vyčistiť koš',
+
+    //materials icons
+    'create-syllab' => 'Vytvoriť novú sekciu',
+    'assign-course' => 'Priradiť kurz'
 ];
