@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -17,55 +19,76 @@ class ProfileController extends Controller
         }
     }
 
-    public function personalIndex(){
-        $user = Auth::user();
-        if($user->role != 'Admin')
+    public function updatePersonal(Request $request)
+    {
+        $request->validate([
+            'f_name' => 'nullable|string|max:75',
+            'l_name' => 'nullable|string|max:75',
+            'email' => 'nullable|email',
+            'birthday' => 'nullable|date',
+            'phone' => 'nullable|string|max:12',
+        ]);
+
+        $userId = Auth::id();
+        User::where('id', $userId)->update([
+            'f_name' => $request->f_name,
+            'l_name' => $request->l_name,
+            'email' => $request->email,
+            'birthday' => $request->birthday,
+            'tel_number' => $request->phone,
+        ]);
+
+        return redirect()->route('profile');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
+            'cpass' => 'required|same:password',
+        ]);
+
+        if($request->current_password == $request->password)
         {
-            $unread = $this->checkMails();
-            return view('profile.personal.index', compact('user', 'unread'));
+           return redirect()->route('profile')->withErrors(['password' => 'New password cannot be the same as the current password']);
+        }
+
+        $pass = Hash::make($request->password);
+        $userId = Auth::id();
+        if(Hash::check($request->cpass, $pass))
+        {
+            User::where('id', $userId)->update([
+                'password' => bcrypt($request->password),
+            ]);
         }
         else
         {
-            return redirect()->route('home');
+            return redirect()->route('profile')->withErrors(['cpass' => 'Current password is incorrect']);
         }
+        
+
+        return redirect()->route('profile');
     }
 
-    public function personalUpdate(){
+    public function deleteAccount(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+        ]);
 
-    }
-
-    public function passwordIndex(){
-        $user = Auth::user();
-        if($user->role != 'Admin')
+        $userId = Auth::id();
+        $pass = Hash::make($request->password);
+        if(Hash::check($request->password, $pass))
         {
-            $unread = $this->checkMails();
-            return view('profile.password.index', compact('user', 'unread'));
+            Auth::logout();
+            User::where('id', $userId)->delete();
+            return redirect()->route('home');
         }
         else
         {
-            return redirect()->route('home');
+            return redirect()->route('profile')->withErrors(['password' => 'Password is incorrect']);
         }
-    }
-
-    public function passwordUpdate(){
-
-    }
-
-    public function emailIndex(){
-        $user = Auth::user();
-        if($user->role != 'Admin')
-        {
-            $unread = $this->checkMails();
-            return view('profile.email.index', compact('user', 'unread'));
-        }
-        else
-        {
-            return redirect()->route('home');
-        }
-    }
-
-    public function emailUpdate(){
-
     }
 
     public function creditsIndex(){

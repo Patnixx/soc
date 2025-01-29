@@ -25,7 +25,7 @@
                     </x-input-div>
                     <div class="relative">                    
                         <span id="strength-text" class="text-sm text-m-blue">Sila hesla</span>
-                        <div id="password-strength-bar" class="h-2 mt-4.75 dark:bg-gray-800 bg-slate-200 rounded-full overflow-hidden">
+                        <div id="password-strength-bar" class="h-2 mt-4.75 dark:bg-gray-900 bg-slate-200 rounded-full overflow-hidden">
                             <div id="strength-level" class="h-full rounded-full transition-all" style="width: 0%;"></div>
                         </div>                
                     </div>
