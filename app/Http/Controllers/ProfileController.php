@@ -21,13 +21,35 @@ class ProfileController extends Controller
 
     public function updatePersonal(Request $request)
     {
+        $user = Auth::user();
         $request->validate([
             'f_name' => 'nullable|string|max:75',
             'l_name' => 'nullable|string|max:75',
             'email' => 'nullable|email',
             'birthday' => 'nullable|date',
             'phone' => 'nullable|string|max:12',
+            /*'fileInput' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',*/
         ]);
+
+        /*if ($request->hasFile('fileInput')) {
+            $file = $request->file('fileInput');
+            $name = $user->f_name . ' ' . $user->l_name;
+            $cleanName = $this->cleanString($name);
+            $cleanName = $this->titleToImageName($cleanName);
+            $fileName = time() . '_' . $cleanName . '_pfp.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('public/profile', $fileName, 'public'); //nefunguje pridavanie do storage
+            $userId = Auth::id();
+            User::where('id', $userId)->update([
+                'f_name' => $request->f_name,
+                'l_name' => $request->l_name,
+                'email' => $request->email,
+                'birthday' => $request->birthday,
+                'tel_number' => $request->phone,
+                'php_path' => $fileName,
+            ]);
+
+            return redirect()->route('profile');
+        }*/
 
         $userId = Auth::id();
         User::where('id', $userId)->update([

@@ -19,12 +19,12 @@
                             </p>
                         </header>
 
-                        <form method="post" action="{{route('profile.update.personal')}}" class="mt-6 space-y-6">
+                        <form method="post" action="{{route('profile.update.personal')}}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
                             <div class="flex justify-center mb-6">
-                                <img src="{{ auth()->user()->profile_picture_url ?? asset('images/default-avatar.png') }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                <img id="profilePicture" src="{{ auth()->user()->profile_picture_url ?? asset('assets/pfp/default-pfp.png') }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
                             </div>
 
                             <div class="flex flex-col md:grid grid-col-1 md:grid-cols-2 md:grid-rows-3 gap-4">
@@ -51,7 +51,20 @@
                                 <div>
                                     <label for="phone" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.tel') }}</label>
                                     <input type="tel" id="phone" name="phone" value="{{ auth()->user()->tel_number }}" class="border-gray-300 dark:border-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-3/4 h-8 pl-2 transition-all ease-linear duration-300" required>
-                            </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="fileInput" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                                        Change profile picture
+                                    </label>
+                                    <label for="fileInput" class="inline-flex items-center px-6 py-2 rounded-lg cursor-pointer text-center border-gray-300 dark:border-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 space-x-2 mt-1 w-3/4 h-8 pl-2 transition-all ease-linear duration-300">
+                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                        <span id="fileName">Upload file</span>
+                                        <input type="file" accept=".png, .jpg, .jpeg" id="fileInput" name=fileInput class="hidden" onchange="previewImage(event)"/>
+                                    </label>
+                                </div>
                             <div class="flex items-center gap-4">
                                 <button type="submit" class="px-4 py-2 bg-m-blue text-gray-900 hover:bg-m-red hover:text-white dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue dark:hover:text-white rounded-md transition-all ease-linear duration-300">
                                     {{ __('profile.save') }}
