@@ -44,6 +44,14 @@ return [
             'throw' => false,
         ],
 
+        'pfp' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/pfp'), // This is where your files will be stored
+            'url' => env('APP_URL') . '/storage/pfp', // This is the URL to access the files
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

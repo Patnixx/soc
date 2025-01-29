@@ -15,7 +15,13 @@ class Car extends Model
         'year',
         'horsepower',
         'cubage',
+        'drive',
         'gearbox',
         'mileage',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(CarImage::class);
+    }
 }

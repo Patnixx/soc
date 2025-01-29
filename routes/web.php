@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InboxController;
@@ -140,3 +141,6 @@ Route::post('/{syllab}/{parent}/store-childlecture', [MaterialController::class,
 Route::get('/materials/{syllab}/{id}/edit', [MaterialController::class, 'edit'])->name('lecture.edit');
 Route::post('/materials/{syllab}/{id}/update', [MaterialController::class, 'update'])->name('lecture.update');
 Route::post('/materials/{syllab}/{id}/delete', [MaterialController::class, 'delete'])->name('lecture.delete');
+
+//!CARS
+Route::resource('/cars', CarController::class);

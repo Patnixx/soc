@@ -28,16 +28,16 @@ class ProfileController extends Controller
             'email' => 'nullable|email',
             'birthday' => 'nullable|date',
             'phone' => 'nullable|string|max:12',
-            /*'fileInput' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',*/
+            'fileInput' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        /*if ($request->hasFile('fileInput')) {
+        if ($request->hasFile('fileInput')) {
             $file = $request->file('fileInput');
             $name = $user->f_name . ' ' . $user->l_name;
             $cleanName = $this->cleanString($name);
             $cleanName = $this->titleToImageName($cleanName);
             $fileName = time() . '_' . $cleanName . '_pfp.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('public/profile', $fileName, 'public'); //nefunguje pridavanie do storage
+            $filePath = $file->storeAs('', $fileName, 'pfp');
             $userId = Auth::id();
             User::where('id', $userId)->update([
                 'f_name' => $request->f_name,
@@ -45,11 +45,11 @@ class ProfileController extends Controller
                 'email' => $request->email,
                 'birthday' => $request->birthday,
                 'tel_number' => $request->phone,
-                'php_path' => $fileName,
+                'pfp_path' => $filePath,
             ]);
 
             return redirect()->route('profile');
-        }*/
+        }
 
         $userId = Auth::id();
         User::where('id', $userId)->update([

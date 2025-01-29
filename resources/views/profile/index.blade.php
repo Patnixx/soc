@@ -6,7 +6,6 @@
     <main>
         <div class="py-12">
             <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-6 flex flex-col justify-center items-center">
-                
                 <!-- Profile Information Section -->
                 <div class="w-full md:w-3/4 lg:w-2/3 p-6 sm:p-8 bg-white dark:bg-gray-800 shadow rounded-lg border-x-2 border-b-2 border-gray-800 dark:border-slate-200 transition-all ease-linear duration-300">
                     <section>
@@ -22,9 +21,9 @@
                         <form method="post" action="{{route('profile.update.personal')}}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
-
+                            {{dd(Storage::disk('pfp')->url($user->pfp_path))}}
                             <div class="flex justify-center mb-6">
-                                <img id="profilePicture" src="{{ auth()->user()->profile_picture_url ?? asset('assets/pfp/default-pfp.png') }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                <img id="profilePicture" src="{{ Storage::disk('pfp')->url($user->pfp_path)}}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
                             </div>
 
                             <div class="flex flex-col md:grid grid-col-1 md:grid-cols-2 md:grid-rows-3 gap-4">
