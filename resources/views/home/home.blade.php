@@ -41,7 +41,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($cars as $car)
                 <div class="bg-white shadow-lg rounded-lg p-4 bg-white-900 dark:bg-gray-900">
-                    <img src="{{ asset('assets/img/motocycle.png') }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="{{ asset('storage/car_images/'.$car->images[1]->image_name) }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-bold text-gray-800 dark:text-m-blue">{{$car->brand}} {{$car->model}}</h3>
                     <p class="text-gray-800 dark:text-m-blue">{{__('home.year')}}: {{$car->year}}</p>
                 </div> 
@@ -51,7 +51,7 @@
     </section>
 
     <!-- Contact Section -->
-    <footer id="contact" class="bg-gray-900 text-white py-8 w-[100%] text-center">
+    <footer id="contact" class="dark:bg-gray-900 bg-white dark:text-white text-gray-800 py-8 w-[100%] text-center duration-300 transition-all ease-linear">
         <h2 class="text-3xl font-bold mb-4">{{__('home.contact')}}</h2>
         <p>{{__('home.address-title')}}:  Slobody 43, 022 01 Čadca</p>
         <p>{{__('home.phone')}}: 0904 924 562</p>

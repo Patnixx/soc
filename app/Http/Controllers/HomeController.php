@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     //
     public function homeIndex(){
-        $cars = Car::inRandomOrder()->take(3)->get();
+        $cars = Car::with('images')->inRandomOrder()->take(3)->get();
         if(Auth::check())
         {
             $user = Auth::user();

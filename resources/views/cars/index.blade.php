@@ -12,7 +12,7 @@
     <!-- Cars List -->
     <div class="flex flex-col gap-4">
         @foreach($cars as $car)
-            <div class="w-full max-h-64 flex gap-4 border rounded-lg p-4 bg-white dark:bg-gray-800 duration-300 transition-all ease-linear">
+            <div class="w-full max-h-64 flex gap-4 shadow-2xl rounded-lg p-4 bg-white dark:bg-gray-800 duration-300 transition-all ease-linear">
                 
                 <!-- Carousel for Car Images -->
                 <div class="flex-1 relative overflow-hidden rounded-lg">
@@ -25,11 +25,11 @@
                     </div>
                 
                     <!-- Carousel Navigation Buttons -->
-                    <button onclick="moveCarousel({{ $loop->index }}, -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-2">
+                    <button onclick="moveCarousel({{ $loop->index }}, -1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-m-blue dark:bg-m-blue hover:bg-m-red dark:hover:bg-m-darkblue text-white rounded-full p-2 duration-300 transition-all ease-linear">
                         <svg class="w-4 h-4 transition-transform transform rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M6 9l6 6 6-6"></path>
                         </svg>                    </button>
-                    <button onclick="moveCarousel({{ $loop->index }}, 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-500 text-white rounded-full p-2">
+                    <button onclick="moveCarousel({{ $loop->index }}, 1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-m-blue dark:bg-m-blue hover:bg-m-red dark:hover:bg-m-darkblue text-white rounded-full p-2 duration-300 transition-all ease-linear">
                         <svg class="w-4 h-4 transition-transform transform -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M6 9l6 6 6-6"></path>
                         </svg>                    </button>
@@ -41,35 +41,35 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-300">
                         <tbody>
                             <tr>
-                                <td class="font-bold">Brand</td>
+                                <td class="font-bold">{{__('car.brand')}}</td>
                                 <td>{{ $car->brand }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Model</td>
+                                <td class="font-bold">{{__('car.model')}}</td>
                                 <td>{{ $car->model }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Year</td>
+                                <td class="font-bold">{{__('car.year')}}</td>
                                 <td>{{ $car->year }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Horsepower</td>
+                                <td class="font-bold">{{__('car.hp')}}r</td>
                                 <td>{{ $car->horsepower }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Cubage</td>
+                                <td class="font-bold">{{__('car.engine')}}</td>
                                 <td>{{ $car->cubage }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Gearbox</td>
+                                <td class="font-bold">{{__('car.gearbox')}}</td>
                                 <td>{{ $car->gearbox }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Drive</td>
+                                <td class="font-bold">{{__('car.drive')}}</td>
                                 <td>{{ $car->drive }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold">Mileage</td>
+                                <td class="font-bold">{{__('car.mileage')}}</td>
                                 <td>{{ $car->mileage }}</td>
                             </tr>
                         </tbody>
