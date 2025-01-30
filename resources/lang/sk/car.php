@@ -9,4 +9,11 @@ return [
     'gearbox' => 'Prevodovka',
     'engine' => 'Objem motora',
     'mileage' => 'Najazdené km',
+
+    'add' => 'Pridať auto',
+    'edit' => 'Upraviť auto',
+    'update' => 'Aktualizovať auto',
+    'back' => 'Späť',
+    'upload' => 'Nahrať obrázky',
+    'cars' => 'Naše autá',
 ];

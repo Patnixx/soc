@@ -63,6 +63,7 @@ return [
 
     //icons
     'assign' => 'Assign',
+    'unasign' => 'Unassign',
     'detail' => 'Detail',
     'edit' => 'Edit',
     'delete' => 'Delete',

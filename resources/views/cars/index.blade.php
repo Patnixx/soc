@@ -2,24 +2,22 @@
 @section('title', 'chasmakar buzerant')
 @section('content')
 <div class="container px-4 py-6 mt-12">
+    <div class="w-full flex justify-between py-4">
+        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{ __('car.cars') }}:</h1>
+        @if(Auth::check() && ($user->role == 'Admin' || $user->role == 'Teacher'))
+        <a href="{{ route('cars.create') }}" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300 ease-linear">Add New Car</a>
+        @endif
+    </div>
 
-    <!-- Add New Car Button -->
-    @if($user->role == 'Admin' || $user->role == 'Teacher')
-        <div class="w-full flex justify-end py-4">
-            <a href="{{ route('cars.create') }}" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300 ease-linear">Add New Car</a>
-        </div>
-    @endif
-    <!-- Cars List -->
     <div class="flex flex-col gap-4">
         @foreach($cars as $car)
             <div class="w-full max-h-64 flex gap-4 shadow-2xl rounded-lg p-4 bg-white dark:bg-gray-800 duration-300 transition-all ease-linear">
                 
-                <!-- Carousel for Car Images -->
+
                 <div class="flex-1 relative overflow-hidden rounded-lg">
                     <div class="carousel flex">
                         @foreach($car->images as $index => $image)
-                            <!-- Set object-contain for image to avoid cropping and maintain aspect ratio -->
-                            <img src="{{ asset('storage/car_images/' . $image->image_name) }}" alt="Car Image"
+                        <img src="{{ asset('storage/car_images/' . $image->image_name) }}" alt="Car Image"
                                 class="w-full h-64 object-scale-down carousel-item {{ $index == 0 ? 'block' : 'hidden' }}">
                         @endforeach
                     </div>
@@ -76,7 +74,7 @@
                     </table>
                 </div>
 
-                @if($user->role == 'Admin' || $user->role == 'Teacher')
+                @if(Auth::check() && ($user->role == 'Admin' || $user->role == 'Teacher'))
                     <div class="flex flex-col mt-4 items-center justify-end">
                         <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-yellow-500 hover:bg-yellow-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('cars.edit',$car)}}"">
                             <i class="bi bi-pencil"></i>

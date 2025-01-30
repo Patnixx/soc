@@ -16,21 +16,21 @@ class CourseController extends Controller
         $user = Auth::user();
 
         if(Auth::user()->role == 'Admin'){
-            $courses = Course::with('teacher')->simplePaginate(3, '*', 'courses');
-            $forms = Form::simplePaginate(3, '*', 'forms');
+            $courses = Course::with('teacher')->get();
+            $forms = Form::all();
             return view('course.progress', compact('user', 'courses', 'forms'));
         }
 
         if(Auth::user()->role == 'Teacher'){
-            $courses = Course::with('teacher')->where('teacher_id', $user->id)->simplePaginate(3, '*', 'courses');
-            $forms = Form::simplePaginate(3, '*', 'forms');
+            $courses = Course::with('teacher')->where('teacher_id', $user->id)->get();
+            $forms = Form::all();
             $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
         
         if(Auth::user()->role == 'Student'){
-            $forms = Form::where('user_id', $user->id)->simplePaginate(3, '*', 'forms');
-            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->simplePaginate(3, '*', 'courses');
+            $forms = Form::where('user_id', $user->id)->get();
+            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
             $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
@@ -194,6 +194,25 @@ class CourseController extends Controller
         ]);
 
         return redirect('/progress');
+    }
+
+    public function unassignCourse($courseId){
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        if($user->role == 'Admin' || $user->role == 'Teacher') {
+            $courseUsers = CourseUser::where('course_id', $courseId)->get();
+            return view('course.courses.unassign', compact('user', 'unread', 'courseUsers'));
+        }
+        return redirect()->back();
+    }
+
+    public function removeUserFromCourse($courseId, $userId){
+        $user = Auth::user();
+        if($user->role == 'Admin' || $user->role == 'Teacher') {
+            CourseUser::where('course_id', $courseId)->where('user_id', $userId)->delete();
+            return redirect()->route('progress');
+        }
+        return redirect()->back();
     }
     
 

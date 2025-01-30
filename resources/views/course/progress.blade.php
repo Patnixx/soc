@@ -52,10 +52,7 @@
 
     @if($user->role == 'Teacher')
         <section id="left">
-            <div class="flex flex-row justify-between items-center mb-4 pr-32">
-                <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>
-                <a href="{{route('course.create')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.course-create')}}</a>
-            </div>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
                 <h1 class="text-lg text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear block ">{{__('courses.no-courses')}}<a class="underline" href="{{route('course.create')}}">{{__('courses.no-courses-link')}}.</a></h1>
             @endif
@@ -73,7 +70,7 @@
                 :sclass="'dark:text-m-blue text-gray-900'" 
                 :id="''.$course->id.''"/>                
             @endforeach
-            {{ $courses->links() }}
+            <a href="{{route('course.create')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.course-create')}}</a>
         </section>
         <section id="right">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 transition-all duration-300 ease-linear">{{__('courses.forms')}}:</h1>
@@ -97,9 +94,6 @@
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" />
             @endforeach
-            @if($user->role == 'Student')
-                <a href="{{route('course.form')}}" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">{{__('courses.form-create')}}</a>       
-            @endif
         </section>
     @endif
 

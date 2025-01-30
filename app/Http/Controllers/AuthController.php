@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +72,7 @@ class AuthController extends Controller
 
     public function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'f_name' => $data['f_name'],
             'l_name' => $data['l_name'],
             'email' => $data['email'],
@@ -79,6 +80,10 @@ class AuthController extends Controller
             'birthday' => $data['birthday'],
             'tel_number' => $data['telephone'],
         ]);
+
+        event(new Registered($user));
+
+        return $user;
 
     }
 

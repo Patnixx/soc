@@ -9,4 +9,11 @@ return [
     'gearbox' => 'Gearbox',
     'engine' => 'Engine volume',
     'mileage' => 'Mileage',
+
+    'add' => 'Add car',
+    'edit' => 'Edit car',
+    'update' => 'Update car',
+    'back' => 'Back',
+    'upload' => 'Upload images',
+    'cars' => 'Our cars',
 ];

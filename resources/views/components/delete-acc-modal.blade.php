@@ -1,4 +1,3 @@
-
 <!-- Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. - Marie Curie -->
 <div id="delete-account-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center">

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -32,20 +33,37 @@ class ProfileController extends Controller
         ]);
 
         if ($request->hasFile('fileInput')) {
+
+            Storage::delete('public/pfp' . $user->pfp_path);
+
             $file = $request->file('fileInput');
-            $name = $user->f_name . ' ' . $user->l_name;
-            $cleanName = $this->cleanString($name);
-            $cleanName = $this->titleToImageName($cleanName);
-            $fileName = time() . '_' . $cleanName . '_pfp.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('', $fileName, 'pfp');
-            $userId = Auth::id();
-            User::where('id', $userId)->update([
+            $imageHash = Hash::make(time());
+            $imageHash = str_replace('/', '_', $imageHash);
+            $imageName = $imageHash . '.' . $file->getClientOriginalExtension();
+
+            if($user->pfp_path)
+            {
+                Storage::delete('public/pfp' . $user->pfp_path);
+                $cesta = $file->storeAs('public/pfp', $imageName);
+                User::where('id', $user->id)->update([
+                    'f_name' => $request->f_name,
+                    'l_name' => $request->l_name,
+                    'email' => $request->email,
+                    'birthday' => $request->birthday,
+                    'tel_number' => $request->phone,
+                    'pfp_path' => $imageName,
+                ]);
+                return redirect()->route('profile');
+            }
+
+            $cesta = $file->storeAs('public/pfp', $imageName);
+            User::where('id', $user->id)->update([
                 'f_name' => $request->f_name,
                 'l_name' => $request->l_name,
                 'email' => $request->email,
                 'birthday' => $request->birthday,
                 'tel_number' => $request->phone,
-                'pfp_path' => $filePath,
+                'pfp_path' => $imageName,
             ]);
 
             return redirect()->route('profile');

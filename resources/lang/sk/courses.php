@@ -62,6 +62,7 @@ return [
 
     //icons
     'assign' => 'Priradiť',
+    'unassign' => 'Vyradiť',
     'detail' => 'Detail',
     'edit' => 'Upraviť',
     'delete' => 'Vymazať',

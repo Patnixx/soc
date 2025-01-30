@@ -21,9 +21,12 @@
                         <form method="post" action="{{route('profile.update.personal')}}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
-                            {{dd(Storage::disk('pfp')->url($user->pfp_path))}}
                             <div class="flex justify-center mb-6">
-                                <img id="profilePicture" src="{{ Storage::disk('pfp')->url($user->pfp_path)}}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                @if($user->pfp_path == null)
+                                <img id="profilePicture" src="{{ asset('assets/pfp/default-pfp.png')}}" alt="" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                @elseif($user->pfp_path != null)
+                                <img id="profilePicture" src="{{ asset('storage/pfp/'.$user->pfp_path)}}" alt="" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                @endif
                             </div>
 
                             <div class="flex flex-col md:grid grid-col-1 md:grid-cols-2 md:grid-rows-3 gap-4">
@@ -38,7 +41,7 @@
                                 </div>
     
                                 <div>
-                                    <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.email') }}</label>
+                                    <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.email') }} @if(!($user->email_verified_at)) <form action="{{route('verification.send')}}" method="POST">@csrf @method('POST') <button type="submit" class="text-m-red">-> Verify </button></form> @else <span class="text-green-500">-> Verified</span> @endif</label>
                                     <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="border-gray-300 dark:border-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-3/4 h-8 pl-2 transition-all ease-linear duration-300" required>
                                 </div>
 

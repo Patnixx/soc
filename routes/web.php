@@ -10,10 +10,9 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OccasionController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\VerifyMailController;
-use App\Models\Material;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Expr\Match_;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +45,22 @@ Route::post('/custom-register', [AuthController::class, 'registerAuth'])->name('
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //!SECTION Email verify routes
-Route::get('/email/verify', [VerifyMailController::class, 'verifyNotice'])->middleware('auth')->name('verify.notice');
-Route::get('/email/verify/{id}/{hash}', [VerifyMailController::class, 'verifyNotice'])->middleware(['auth', 'singed'])->name('verification.verify');
-Route::post('/email/verification-notification', [VerifyMailController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 
 //!SECTION Profile routes
 Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
@@ -81,6 +93,7 @@ Route::post('/custom-form', [CourseController::class, 'sendForm'])->name('custom
 route::get('/course/create', [CourseController::class, 'courseCreate'])->name('course.create');
 route::get('/course/{id}/detail', [CourseController::class, 'detailCourse'])->name('course.detail');
 route::get('/course/{id}/assign', [CourseController::class, 'assignCourse'])->name('course.assign');
+route::get('/course/{id}/unassign', [CourseController::class, 'unassignCourse'])->name('course.unassign');
 route::post('/course/custom-assign/{id}/{courseid}', [CourseController::class, 'userAssign'])->name('custom.assign');
 route::get('/course/{id}/edit', [CourseController::class, 'editCourse'])->name('course.edit');
 route::post('/course/{id}/update', [CourseController::class, 'updateCourse'])->name('course.update');

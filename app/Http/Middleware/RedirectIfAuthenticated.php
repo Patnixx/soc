@@ -23,6 +23,9 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+            if (! $request->user()->hasVerifiedEmail()) {
+                return redirect('/email/verify');
+            }
         }
 
         return $next($request);
