@@ -21,7 +21,7 @@
             </div>
         @endforeach
     </div>
-    <div class="btns flex flex-col justify-start items-start border-t-2 border-gray-900 dark:border-m-blue transition-all duration-300 ease-linear mt-4 pt-4">
+    <div class="btns flex flex-col justify-start items-center border-t-2 border-gray-900 dark:border-m-blue transition-all duration-300 ease-linear mt-4 pt-4">
         <div class="">
             @if($user->role == 'Admin' || $user->role == 'Teacher')
                 <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-green-500 hover:bg-green-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('lecture.view', $syllab)}}"">

@@ -11,7 +11,6 @@
             <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300">Log In</button>
             <div class="flex justify-between items-center w-full text-sm text-gray-400 pr-2 pl-2">
                 <x-auth-href :route="'register'" :text="'create-acc'"/>
-                <x-auth-href :route="'/'" :text="'forgot-password'"/>
             </div>
         </form>
         <div class="flex flex-row space-x-8 pt-8 pl-4">

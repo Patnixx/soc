@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -69,7 +70,7 @@ class AdminController extends Controller
                     'pass.min' => 'Password must be at least 8 characters long.',
                 ]);
 
-                User::create([
+                $user = User::create([
                     'f_name' => $request->f_name,
                     'l_name' => $request->l_name,
                     'email' => $request->email,
@@ -78,6 +79,8 @@ class AdminController extends Controller
                     'birthday' => $request->birthday,
                     'tel_number' => $request->telephone,
                 ]);
+
+                event(new Registered($user));
 
                 return redirect()->route('users');
             }
