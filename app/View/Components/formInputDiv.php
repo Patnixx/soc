@@ -28,8 +28,9 @@ class formInputDiv extends Component
     public $sclass;
     public $selclass;
     public $iptclass;
+    public $user; 
     
-    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='', $selclass='', $iptclass='')
+    public function __construct($fname, $lname, $email, $birthday, $season, $length, $class, $reason, $approval, $id, $courseid='', $divclass='', $hclass='', $pclass='', $sclass='', $selclass='', $iptclass='', $user)
     {
         $this->fname = $fname;
         $this->lname = $lname;
@@ -47,6 +48,7 @@ class formInputDiv extends Component
         $this->sclass = $sclass;
         $this->selclass = $selclass;
         $this->iptclass = $iptclass;
+        $this->user = $user;
     }
 
     /**

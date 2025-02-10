@@ -21,7 +21,7 @@ return [
 
     //edit
     'edit' => 'Upraviť používateľa',
-    'password' => 'Heslo (aspoň 8 znakov)',
+    'password' => 'Heslo',
     'c-pass' => 'Potvrdenie hesla',
     'save' => 'Uložiť',
 ];

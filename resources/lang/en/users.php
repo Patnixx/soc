@@ -21,7 +21,7 @@ return [
 
     //edit
     'edit' => 'Edit user',
-    'password' => 'Password (at least 8 characters)',
+    'password' => 'Password',
     'c-pass' => 'Confirm password',
     'save' => 'Save',
 ];

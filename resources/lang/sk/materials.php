@@ -19,7 +19,7 @@ return [
     'themes' => 'Témy v sekcii - :section',
 
     'main-theme' => 'Hlavná téma',
-    'sub_theme' => 'Podtéma',
+    'sub-theme' => 'Podtéma',
     'lecture' => 'Téma',
 
     'syllab' => 'Sekcia',
@@ -43,5 +43,11 @@ return [
 
     'edit' => 'Upraviť - :title',
 
-    'info' => 'Ak je materiál vo farbách stránky, znamená to že je pre vás dostupný. Ak je v sivých farbách, daný materiál nebol pre váš kurz odomknutý učiteľom/administrátorom.'
+    'info' => 'Ak je materiál vo farbách stránky, znamená to že je pre vás dostupný. Ak je v sivých farbách, daný materiál nebol pre váš kurz odomknutý učiteľom/administrátorom.',
+
+    'all' => 'Všetky',
+    'themes' => 'Témy',
+    'sub-themes' => 'Podtémy',
+    'child-themes' => 'Lekcie',
+
 ];

@@ -20,7 +20,7 @@ class OccasionController extends Controller
         {   
             if($user->role == 'Admin')
             {
-                $events = Occasion::with('course')->simplePaginate(10);
+                $events = Occasion::with('course')->simplePaginate(5);
                 return view('occasion.index', compact('user', 'events'));
             }
 
@@ -28,7 +28,7 @@ class OccasionController extends Controller
             {
                 $events = Occasion::with('course')->whereHas('course', function($q) use($user){
                     $q->where('teacher_id', $user->id);
-                })->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))')->simplePaginate(10);
+                })->orderByRaw('ABS(TIMESTAMPDIFF(SECOND, start, NOW()))')->simplePaginate(5);
                 $unread = $this->checkMails();
                 return view('occasion.index', compact('user', 'events', 'unread'));
             }

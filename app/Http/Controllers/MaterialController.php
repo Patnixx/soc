@@ -256,7 +256,7 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $lectures = Material::simplePaginate(8);
+            $lectures = Material::simplePaginate(20);
             return view('materials.lecture.lecture-view', compact('user', 'lectures', 'section', 'syllab', 'unread'));
         }
         return redirect()->back();

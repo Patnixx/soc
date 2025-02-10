@@ -121,7 +121,6 @@ Route::post('/events/{id}/update', [OccasionController::class, 'update'])->name(
 Route::post('/events/{id}/delete', [OccasionController::class, 'delete'])->name('events.delete');
 
 //FIXME - Add this functions
-Route::get('/inbox/{id}/detail', [InboxController::class, 'detailMessage'])->name('message.detail');
 Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
 Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
 

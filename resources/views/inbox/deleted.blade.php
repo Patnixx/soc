@@ -30,7 +30,7 @@
         :sclass="'right-14'"
         />
         <div class="w-4"></div>
-        <form action="{{route('clear.bin')}}" method="POST" class="justify-self-end relative flex items-center justify-center sm:h-4 sm:w-4 md:w-6 md:h-6 lg:h-8 lg:w-8 xl:h-10 xl:w-10 2xl:h-12 2xl:w-12 mt-2 mb-2 shadow-lg dark:bg-gray-800 dark:text-m-blue text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer bg-m-blue">
+        <form action="{{route('clear.bin')}}" method="POST" class="justify-self-end relative flex items-center justify-center w-12 h-12 mt-2 mb-2 shadow-lg dark:bg-gray-800 dark:text-m-blue text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer bg-m-blue">
             @csrf
             <button type="submit">
                 <i class="bi bi-trash text-xl"></i>

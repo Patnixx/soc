@@ -7,6 +7,7 @@ use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
+use App\Models\Message;
 use App\Models\User;
 
 class CourseController extends Controller
@@ -14,7 +15,7 @@ class CourseController extends Controller
     //
     public function progressIndex(){
         $user = Auth::user();
-
+        $unread = $this->checkMails();
         if(Auth::user()->role == 'Admin'){
             $courses = Course::with('teacher')->get();
             $forms = Form::all();
@@ -24,17 +25,14 @@ class CourseController extends Controller
         if(Auth::user()->role == 'Teacher'){
             $courses = Course::with('teacher')->where('teacher_id', $user->id)->get();
             $forms = Form::all();
-            $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
         
-        if(Auth::user()->role == 'Student'){
+        if(Auth::user()->role == 'Student' || Auth::user()->role == 'User'){
             $forms = Form::where('user_id', $user->id)->get();
             $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
-            $unread = $this->checkMails();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
-        return redirect()->back();
     }
 
     public function courseForm(){
@@ -193,7 +191,17 @@ class CourseController extends Controller
             'approval' => 'Approved',
         ]);
 
-        return redirect('/progress');
+        User::where('id', $id)->update([
+            'role' => 'Student',
+        ]);
+
+        /*Message::create([ //!SECTION Send message to user via their lang
+            'sender_id' => '1',
+            'receiver_id' => $id,
+            'message' => 'Your application has been approved. You are now a student.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);*/
     }
 
     public function unassignCourse($courseId){

@@ -19,7 +19,7 @@ return [
     'themes' => 'Themes in section - :section',
 
     'main-theme' => 'Main Theme',
-    'sub_theme' => 'Sub Theme',
+    'sub-theme' => 'Sub Theme',
     'lecture' => 'Lecture',
 
     'syllab' => 'Section',
@@ -43,5 +43,10 @@ return [
 
     'edit' => 'Edit - :title',
 
-    'info' => "If the material is in the web page's colors, it is accesible to you. If its in gray colors, it's locked by the teacher/admin and needs to be unlocked for your course."
+    'info' => "If the material is in the web page's colors, it is accesible to you. If its in gray colors, it's locked by the teacher/admin and needs to be unlocked for your course.",
+
+    'all' => 'All',
+    'themes' => 'Themes',
+    'sub-themes' => 'Sub Themes',
+    'child-themes' => 'Lectures',
 ];

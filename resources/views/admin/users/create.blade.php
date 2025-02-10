@@ -1,9 +1,9 @@
 @extends('structures.main')
 @section('title', ''.__('title.users-create').'')
 @section('content')
-<div class="container mx-auto max-w-[70%] mt-32 rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear"> 
+<div class="container mx-auto max-w-[70%] mt-16 rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear">
     <h2 class="text-2xl font-bold dark:text-white text-gray-900 mb-6">{{__('users.create')}}:</h2>
-    <form action="{{route('users.store')}}" method="POST" class="grid grid-cols-2 gap-6 mb-6">
+    <form action="{{route('users.store')}}" method="POST" class="sm:grid sm:grid-cols-2 sm:gap-6 mb-6 flex flex-col gap-4">
         @csrf
         <div class="left">
             <div class="flex flex-col space-y-2 mb-2">
@@ -46,7 +46,7 @@
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="c_pass" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.c-pass')}}</label>
-            <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'"/>
+                <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'"/>
             </div>
         </div>
         <div class="flex justify-center items-center space-x-4 col-span-2">
@@ -65,4 +65,5 @@
         </div>
     </form>
 </div>
+
 @endsection

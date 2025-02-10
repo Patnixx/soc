@@ -15,7 +15,7 @@ return [
 
     //login
     'email' => 'E-mail',
-    'pass' => 'Heslo', //NOTE - Platí aj pre register
+    'pass' => '8 znakov, 1 veľké písmeno, 1 číslo, 1 špeciálny znak', //NOTE - Platí aj pre register
     'create-acc' => 'Vytvoriť účet',
     'login' => 'Prihlásiť sa',
     'forgot-password' => 'Zabudli ste heslo?',
