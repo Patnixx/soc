@@ -180,44 +180,54 @@ class CourseController extends Controller
     }
 
     public function userAssign($id, $courseid){
-        CourseUser::create([
-            'user_id' => $id,
-            'course_id' => $courseid,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        Form::where('user_id', $id)->update([
-            'approval' => 'Approved',
-        ]);
-
-        User::where('id', $id)->update([
-            'role' => 'Student',
-        ]);
-
-        /*Message::create([ //!SECTION Send message to user via their lang
-            'sender_id' => '1',
-            'receiver_id' => $id,
-            'message' => 'Your application has been approved. You are now a student.',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);*/
-    }
-
-    public function unassignCourse($courseId){
         $user = Auth::user();
-        $unread = $this->checkMails();
-        if($user->role == 'Admin' || $user->role == 'Teacher') {
-            $courseUsers = CourseUser::where('course_id', $courseId)->get();
-            return view('course.courses.unassign', compact('user', 'unread', 'courseUsers'));
+        if($user->role == 'Teacher' || $user->role == 'Admin')
+        {
+            CourseUser::create([
+                'user_id' => $id,
+                'course_id' => $courseid,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            Form::where('user_id', $id)->update([
+                'approval' => 'Approved',
+            ]);
+
+            User::where('id', $id)->update([
+                'role' => 'Student',
+            ]);
+
+            /*Message::create([ //!SECTION Send message to user via their lang
+                'sender_id' => '1',
+                'receiver_id' => $id,
+                'message' => 'Your application has been approved. You are now a student.',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);*/
+            return redirect()->route('progress');
         }
         return redirect()->back();
     }
 
-    public function removeUserFromCourse($courseId, $userId){
+    public function unassignCourse($id){
+        $user = Auth::user();
+        $unread = $this->checkMails();
+        if($user->role == 'Admin' || $user->role == 'Teacher') {
+            $course = Course::with('teacher')->where('id',$id)->first();
+            $course_users = CourseUser::with(['course', 'user'])->where('course_id', $id)->get();
+            $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
+            
+            return view('course.courses.unassign', compact('user', 'unread', 'course', 'students', 'course_users'));
+        }
+        return redirect()->back();
+    }
+
+    public function userUnassign($id, $courseId){
         $user = Auth::user();
         if($user->role == 'Admin' || $user->role == 'Teacher') {
-            CourseUser::where('course_id', $courseId)->where('user_id', $userId)->delete();
+            $course = Course::where('id', $courseId)->first();
+            CourseUser::where('course_id', $courseId)->where('user_id', $id)->delete();
             return redirect()->route('progress');
         }
         return redirect()->back();

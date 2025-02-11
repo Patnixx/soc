@@ -36,6 +36,14 @@
                     </span>
                 </a>
             @endif
+            @if(request()->routeIs('course.unassign'))
+                <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-red-500 hover:bg-red-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('progress')}}"">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="absolute w-auto p-2 m-2 min-w-max {{--right-14 /left-14 meni poziciu spanu--}} right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100">
+                        {{__('courses.back')}}
+                    </span>
+                </a>
+            @endif
             @if(request()->routeIs('progress'))
                 <a class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-blue-500 hover:bg-blue-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" href="{{route('course.assign', $id)}}"">
                     <i class="bi bi-person-plus"></i>

@@ -12,6 +12,7 @@ return [
     'course-edit' => 'Upraviť kurz',
     'course-detail' => 'Detial kurzu',
     'course-assign' => 'Priradiť ku kurzu',
+    'course-unassign' => 'Vyradiť z kurzu',
     'course-current' => 'Aktuálny kurz',
     'my-course' => 'Moje kurzy',
     'no-course' => 'Nemáte žiadne kurzy.',
@@ -52,6 +53,7 @@ return [
     'l-name' => 'Priezvisko',
     'email' => 'Email',
     'birth' => 'Dátum narodenia',
+    'assigned-since' => 'Študent od',
     'tel' => 'Telefónne číslo',
     'user' => 'Používateľ',
     'approval' => 'Schválenie',
@@ -59,6 +61,11 @@ return [
     'waiting' => 'Čakajúci',
     'rejected' => 'Zamietnutý',
     'reason' => 'Dôvod',
+
+    //students
+    'students' => 'Študenti',
+    'no-students-admin' => 'Žiadni študenti neexistujú. Ak potrebujete, vytvorte nový formulár alebo priraďte už existujúci ku kurzu.',
+    'no-students-teacher' => 'Žiadni študenti neexistujú. Ak potrebujete, počkajte na nové formuláre alebo kontaktujte administrátora.',
 
     //icons
     'assign' => 'Priradiť',

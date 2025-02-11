@@ -13,6 +13,7 @@ return [
     'course-edit' => 'Edit course',
     'course-detail' => 'Course detail',
     'course-assign' => 'Assign to course',
+    'course-unassign' => 'Unassign from course',
     'course-current' => 'Current course',
     'my-course' => 'My courses',
     'no-course' => 'You have no courses.',
@@ -53,6 +54,7 @@ return [
     'l-name' => 'Last name',
     'email' => 'Email',
     'birth' => 'Date of birth',
+    'assigned-since' => 'Student since',
     'tel' => 'Phone number',
     'user' => 'User',
     'approval' => 'Approval',
@@ -60,6 +62,12 @@ return [
     'waiting' => 'Waiting',
     'rejected' => 'Rejected',
     'reason' => 'Reason',
+    
+
+    //students
+    'students' => 'Students',
+    'no-students-admin' => 'No students exist. If you need one, create a new form or assign an existing one to the course.',
+    'no-students-teacher' => 'No students exist. If you need one, wait for new forms or contact the administrator.',
 
     //icons
     'assign' => 'Assign',

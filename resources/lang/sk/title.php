@@ -17,7 +17,7 @@ return [
     'course-edit' => 'Upraviť kurz',
     'course-detail' => 'Detail kurzu',
     'course-assign' => 'Prideliť ku kurzu',
-    'course-unassign' => 'Odstrániť z kurzu',
+    'course-unassign' => 'Vyradiť z kurzu',
     'inbox' => 'Schránka',
     'inbox-new' => 'Nová správa',
     'inbox-deleted' => 'Vymazané správy',

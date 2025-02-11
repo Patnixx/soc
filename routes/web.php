@@ -95,6 +95,7 @@ route::get('/course/{id}/detail', [CourseController::class, 'detailCourse'])->na
 route::get('/course/{id}/assign', [CourseController::class, 'assignCourse'])->name('course.assign');
 route::get('/course/{id}/unassign', [CourseController::class, 'unassignCourse'])->name('course.unassign');
 route::post('/course/custom-assign/{id}/{courseid}', [CourseController::class, 'userAssign'])->name('custom.assign');
+Route::post('/course/custom-unassign/{id}/{courseid}', [CourseController::class, 'userUnassign'])->name('custom.unassign');
 route::get('/course/{id}/edit', [CourseController::class, 'editCourse'])->name('course.edit');
 route::post('/course/{id}/update', [CourseController::class, 'updateCourse'])->name('course.update');
 route::post('/course/{id}/delete', [CourseController::class, 'deleteCourse'])->name('course.delete');
