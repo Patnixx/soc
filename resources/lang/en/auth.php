@@ -13,14 +13,19 @@ return [
     |
     */
 
+    //login
     'email' => 'E-Mail Address',
     'pass' => 'Password', //NOTE - Platí aj pre register
+    'pass-placeholder' => 'Password',
     'create-acc' => 'Create Account',
     'login' => 'Login',
     'forgot-password' => 'Forgot Your Password?',
     'show-password' => 'Show Password',
     'hide-password' => 'Hide Password',
     'remember-me' => 'Remember Me',
+    'reset-password' => 'Reset Password',
+    'send-link' => 'Send Password Reset Link',
+    'pass-strength' => 'Password Strength',
     
     //register
     'f-name' => 'First Name',

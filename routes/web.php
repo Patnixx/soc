@@ -45,7 +45,7 @@ Route::post('/custom-register', [AuthController::class, 'registerAuth'])->name('
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //!SECTION Email verify routes
-Route::get('/email/verify', function () {
+/*Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
@@ -59,8 +59,13 @@ Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     
     return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send'); */
 
+//!SECTION Forgot password routes
+Route::get('/forgot-password', [AuthController::class, 'forgotPasswordIndex'])->name('password.request');
+Route::post('/forgot-password', [AuthController::class, 'forgotPasswordAuth'])->name('password.email');
+Route::get('/reset-password/{token}', [AuthController::class, 'resetPasswordIndex'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 //!SECTION Profile routes
 Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');

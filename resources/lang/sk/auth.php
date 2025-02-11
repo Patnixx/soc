@@ -16,12 +16,16 @@ return [
     //login
     'email' => 'E-mail',
     'pass' => '8 znakov, 1 veľké písmeno, 1 číslo, 1 špeciálny znak', //NOTE - Platí aj pre register
+    'pass-placeholder' => 'Heslo',
     'create-acc' => 'Vytvoriť účet',
     'login' => 'Prihlásiť sa',
     'forgot-password' => 'Zabudli ste heslo?',
     'show-password' => 'Odkryť heslo',
     'hide-password' => 'Skryť heslo',
     'remember-me' => 'Zapamätať si ma',
+    'reset-password' => 'Obnoviť heslo',
+    'send-link' => 'Odoslať odkaz na obnovenie hesla',
+    'pass-strength' => 'Sila hesla',
 
     //register
     'f-name' => 'Krstné meno',
