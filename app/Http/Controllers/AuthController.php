@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -121,6 +122,31 @@ class AuthController extends Controller
         }
 
         return redirect('/')->withSuccess('You have signed-in');
+    }
+
+    public function notice()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            $unread = $this->checkMails();
+            return view('auth.verify-email', compact('user', 'unread'));
+        }
+        return view('auth.verify-email');
+    }
+
+    public function verify(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+        return redirect()->route('/')->with('success', 'Email verified');
+    }
+
+    public function resend(Request $request)
+    {
+        if(!($request->user()->hasVerifiedEmail())){
+            $request->user()->sendEmailVerificationNotification();
+            $msg = ($request->user()->language == 'sk') ? 'Overovací odkaz bol zaslaný!' : 'Verification link sent!';
+            return back()->with('message', $msg);
+        }
     }
 
     public function create(array $data)

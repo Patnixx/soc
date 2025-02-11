@@ -61,6 +61,10 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send'); */
 
+Route::get('/email/verify', [AuthController::class, 'notice'])->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [AuthController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 //!SECTION Forgot password routes
 Route::get('/forgot-password', [AuthController::class, 'forgotPasswordIndex'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'forgotPasswordAuth'])->name('password.email');
@@ -88,7 +92,7 @@ Route::get('/admin', [AdminController::class, 'adminIndex'])->name('admin');
 //!SECTION Course/Progress routes for CRUD courses & forms
 Route::get('/progress', [CourseController::class, 'progressIndex'])->name('progress');
 //NOTE - Form
-Route::get('/form', [CourseController::class, 'courseForm'])->name('course.form');
+Route::get('/form', [CourseController::class, 'courseForm'])->middleware(['auth', 'verified'])->name('course.form');
 Route::get('/form/{id}/detail', [CourseController::class, 'detailForm'])->name('form.detail');
 Route::get('/form/{id}/edit', [CourseController::class, 'editForm'])->name('form.edit');
 Route::post('/form/{id}/update', [CourseController::class, 'updateForm'])->name('form.update');

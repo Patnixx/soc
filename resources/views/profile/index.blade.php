@@ -39,7 +39,7 @@
                                 </div>
     
                                 <div>
-                                    <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.email') }} @if(!($user->email_verified_at)) <form action="{{route('verification.send')}}" method="POST">@csrf @method('POST') <button type="submit" class="text-m-red">-> Verify </button></form> @else <span class="text-green-500">-> Verified</span> @endif</label>
+                                    <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.email') }} @if(!($user->email_verified_at)) <a href="{{route('verification.notice')}}" class="text-m-red">-> Verify </a> @else <span class="text-green-500">-> Verified</span> @endif</label>
                                     <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="border-gray-300 dark:border-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full sm:w-3/4 h-8 pl-2 transition-all ease-linear duration-300" required>
                                 </div>
 

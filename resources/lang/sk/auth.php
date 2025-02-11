@@ -26,6 +26,10 @@ return [
     'reset-password' => 'Obnoviť heslo',
     'send-link' => 'Odoslať odkaz na obnovenie hesla',
     'pass-strength' => 'Sila hesla',
+    'verify-email' => 'Overte svoj e-mail',
+    'verify-info' => 'Pred pokračovaním skontrolujte svoj e-mail na overovací odkaz. Ak ste žiaden nedostali, vieme Vám zaslať ďalší.',
+    'resend-link' => 'Znova zaslať odkaz',
+    'logout' => 'Odhlásiť sa',
 
     //register
     'f-name' => 'Krstné meno',

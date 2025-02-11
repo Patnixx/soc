@@ -26,6 +26,10 @@ return [
     'reset-password' => 'Reset Password',
     'send-link' => 'Send Password Reset Link',
     'pass-strength' => 'Password Strength',
+    'verify-email' => 'Verify Your Email Address',
+    'verify-info' => "Before accessing this feature, please verify your email address. If you haven't received the email, we can send another.",
+    'resend-link' => 'Resend Verification Link',
+    'logout' => 'Logout',
     
     //register
     'f-name' => 'First Name',

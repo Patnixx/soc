@@ -23,4 +23,5 @@ return [
     'inbox-deleted' => 'Vymazané správy',
     'inbox-detail' => 'Detail správy',
     'credits' => 'Zdroje',
+    'verify-email' => 'Overte svoju e-mailovú adresu',
 ];

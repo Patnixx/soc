@@ -23,4 +23,5 @@ return [
     'inbox-deleted' => 'Deleted Messages',
     'inbox-detail' => 'Message Detail',
     'credits' => 'Credits',
+    'verify-email' => 'Verify Your Email Address',
 ];

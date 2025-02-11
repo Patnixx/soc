@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('language')->nullable()->after('remember_token');
+            $table->string('language')->default('sk')->nullable()->after('remember_token');
         });
     }
 

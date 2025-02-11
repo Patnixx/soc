@@ -25,7 +25,7 @@
                 <label for="remember" class="text-sm">{{ __('Remember Me') }}</label>
             </div>
 
-            <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300">Log In</button>
+            <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300">{{__('auth.login')}}</button>
             <div class="flex justify-between items-center w-full text-sm text-gray-400 pr-2 pl-2">
                 <x-auth-href :route="'register'" :text="'create-acc'"/>
                 <x-auth-href :route="'password.request'" :text="'forgot-password'"/>
