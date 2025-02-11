@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    function showPass() {
-        var pass = document.getElementById('pass');
-        var text = document.getElementById('show_pass_txt');
-        if (pass.type === 'password') {
-            pass.type = 'text';
-            text.textContent="Zakryť heslo";
+    function togglePasswordVisibility(inputId, icon) {
+        let input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.replace("bi-eye-slash", "bi-eye");
         } else {
-            pass.type = 'password';
-            text.textContent="Odkryť heslo";
+            input.type = "password";
+            icon.classList.replace("bi-eye", "bi-eye-slash");
         }
     }
-
-    window.showPass = showPass;
+    window.togglePasswordVisibility = togglePasswordVisibility;    
 });
