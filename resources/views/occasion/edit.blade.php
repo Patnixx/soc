@@ -16,7 +16,8 @@
                     <input 
                         type="text" 
                         name="name" 
-                        id="name" 
+                        id="name"
+                        required 
                         placeholder="{{$event->name}}"
                         value="{{$event->name}}" 
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -26,13 +27,14 @@
                     <input 
                         type="datetime-local" 
                         name="start" 
-                        id="start" 
+                        id="start"
+                        required 
                         placeholder="{{$event->start}}"
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
                 <div class="flex flex-col space-y-2">
                     <label for="course" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.course') }}:</label>
-                    <select name="course" id="course" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    <select required name="course" id="course" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                         @foreach($courses as $course)
                             <option value="{{$course->id}}">{{$course->name}}</option>
                         @endforeach
@@ -74,7 +76,8 @@
                     <input 
                         type="text" 
                         name="name" 
-                        id="name" 
+                        id="name"
+                        required 
                         placeholder="{{$event->name}}" 
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
@@ -83,13 +86,14 @@
                     <input 
                         type="datetime-local" 
                         name="start" 
-                        id="start" 
+                        id="start"
+                        required 
                         placeholder="{{$event->start}}"
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
                 <div class="flex flex-col space-y-2">
                     <label for="user" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.student') }}:</label>
-                    <select name="user" id="user" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                    <select required name="user" id="user" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                         @foreach($students as $student)
                             <option value="{{$student->id}}">{{$student->user->f_name}} {{$student->user->l_name}}</option>
                         @endforeach

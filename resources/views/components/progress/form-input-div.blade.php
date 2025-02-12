@@ -20,13 +20,14 @@
                     id="{{$name}}" 
                     placeholder="{{$label}}" 
                     value="{{$value}}"
+                    required
                     class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
             </div>
             @endforeach
             @if($user->role == 'Admin' || $user->role == 'Teacher')
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="approval" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.approval')}}</label>
-                <select name="approval" id="approval" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                <select required name="approval" id="approval" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                     <option value="{{$approval}}">{{__('courses.current')}}: {{$approval}}</option>
                     <option value="Approved">{{__('courses.approved')}}</option>
                     <option value="Waiting">{{__('courses.waiting')}}</option>
@@ -43,7 +44,7 @@
             ] as [$name, $label, $value, $options])
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="{{$name}}" class="text-sm font-medium dark:text-white text-gray-900">{{$label}}</label>
-                <select name="{{$name}}" id="{{$name}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                <select required name="{{$name}}" id="{{$name}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                     <option value="{{$value}}">{{__('courses.current')}}: {{$value}}</option>
                     @foreach ($options as $option)
                         <option value="{{$option}}">{{$option}}</option>
@@ -56,6 +57,7 @@
                 <textarea 
                     name="reason" 
                     id="reason" 
+                    required
                     placeholder="{{__('courses.reason')}}"
                     class="w-full h-24 sm:h-32 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$reason}}</textarea>
             </div>

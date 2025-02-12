@@ -10,7 +10,8 @@
             <input 
                 type="email" 
                 name="email" 
-                id="email" 
+                id="email"
+                required 
                 placeholder="{{__('inbox.email')}}" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
@@ -19,7 +20,8 @@
             <input 
                 type="text" 
                 name="title" 
-                id="title" 
+                id="title"
+                required 
                 placeholder="{{__('inbox.title')}}" 
                 maxlength="50" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -28,7 +30,8 @@
             <label for="content" class="text-sm font-medium dark:text-white text-gray-900">{{__('inbox.content')}}:</label>
             <textarea 
                 name="content" 
-                id="content" 
+                id="content"
+                required 
                 placeholder="{{__('inbox.content')}}" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
         </div>

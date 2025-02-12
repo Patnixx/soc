@@ -62,7 +62,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                         </svg>
                                         <span id="fileName">Upload file</span>
-                                        <input type="file" accept=".png, .jpg, .jpeg" id="fileInput" name=fileInput class="hidden" onchange="previewImage(event)"/>
+                                        <input type="file" accept=".png, .jpg, .jpeg" id="fileInput" name=fileInput class="hidden" onchange="previewImage(event)" required/>
                                     </label>
                                 </div>
                                 <div class="flex items-center gap-4">

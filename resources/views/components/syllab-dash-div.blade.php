@@ -21,13 +21,11 @@
                 <i class="{{$iclass}} bi bi-pencil hover:text-gray-500 text-yellow-600 dark:hover:text-gray-400 dark:text-yellow-500"></i>
             </button>
         </form>
-        @if($user->role == 'Admin')
-            <form action="{{route('syllab.delete', $id)}}" method="POST" class="flex items-center justify-center">
-                @csrf
-                <button type="submit">
-                    <i class="{{$iclass}} bi bi-trash hover:text-gray-500 text-red-600 dark:hover:text-gray-400 dark:text-red-500"></i>
-                </button>
-            </form>
-        @endif
+        <form action="{{route('syllab.delete', $id)}}" method="POST" class="flex items-center justify-center">
+            @csrf
+            <button type="submit">
+                <i class="{{$iclass}} bi bi-trash hover:text-gray-500 text-red-600 dark:hover:text-gray-400 dark:text-red-500"></i>
+            </button>
+        </form>
     </div>
 </a>

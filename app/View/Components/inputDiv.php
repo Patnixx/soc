@@ -19,8 +19,9 @@ class inputDiv extends Component
     public $value;
     public $icon;
     public $divclass;
+    public $iptclass;
 
-    public function __construct($name, $type, $placeholder, $id, $value, $icon, $divclass="")
+    public function __construct($name, $type, $placeholder, $id, $value, $icon, $divclass="", $iptclass="")
     {
         $this->name = $name;
         $this->type = $type;
@@ -29,6 +30,7 @@ class inputDiv extends Component
         $this->value = $value;
         $this->icon = $icon;
         $this->divclass = $divclass;
+        $this->iptclass = $iptclass;
     }
 
     /**

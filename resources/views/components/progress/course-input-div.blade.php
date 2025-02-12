@@ -6,7 +6,7 @@
         <div class="flex flex-col space-y-2">
             <label for="name" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.name')}}</label>
             <input 
-                type="text" name="name" id="name" placeholder="{{__('courses.name')}}" 
+                type="text" name="name" id="name" placeholder="{{__('courses.name')}}" required
                 value="{{$name}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
 
@@ -15,12 +15,6 @@
             <input 
                 type="text" name="teacher" id="teacher" placeholder="{{__('courses.teacher')}}" 
                 value="{{$teacher}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-        </div>
-
-        <div class="flex flex-col space-y-2 md:col-span-2">
-            <label for="desc" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.description')}}</label>
-            <textarea name="desc" id="desc" placeholder="{{__('courses.description')}}" 
-                class="w-full h-24 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$description}}</textarea>
         </div>
 
         <div class="flex flex-col space-y-2">
@@ -60,6 +54,12 @@
                 <option value="Autumn">{{__('courses.autumn')}}</option>
                 <option value="Winter">{{__('courses.winter')}}</option>
             </select>
+        </div>
+
+        <div class="flex flex-col space-y-2 md:col-span-2">
+            <label for="desc" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.description')}}</label>
+            <textarea name="desc" id="desc" placeholder="{{__('courses.description')}}" 
+                class="w-full h-24 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none" required>{{$description}}</textarea>
         </div>
 
         <div class="flex justify-center items-center space-x-4 md:col-span-2">

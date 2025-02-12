@@ -11,7 +11,7 @@
             <label for="elder" class="text-sm font-medium dark:text-white text-gray-900">
                 {{__('materials.main-theme')}}
             </label>
-            <select name="elder" id="elder" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 dark:bg-gray-800 dark:text-white">
+            <select required name="elder" id="elder" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 dark:bg-gray-800 dark:text-white">
                 @foreach($main_lectures as $main_lecture)
                     <option value="{{$main_lecture->id}}">{{$main_lecture->title}}</option>
                 @endforeach
@@ -21,13 +21,13 @@
             <label for="title" class="text-sm font-medium dark:text-white text-gray-900">
                 {{__('materials.create-title')}}:
             </label>
-            <input type="text" name="title" id="title" placeholder="{{__('materials.create-title')}}" maxlength="50" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 dark:bg-gray-800 dark:text-white">
+            <input required type="text" name="title" id="title" placeholder="{{__('materials.create-title')}}" maxlength="50" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 dark:bg-gray-800 dark:text-white">
         </div>
         <div class="flex flex-col space-y-2">
             <label for="content" class="text-sm font-medium dark:text-white text-gray-900">
                 {{__('materials.create-content')}}:
             </label>
-            <textarea name="content" id="content" placeholder="{{__('materials.create-content')}}" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none dark:bg-gray-800 dark:text-white"></textarea>
+            <textarea required name="content" id="content" placeholder="{{__('materials.create-content')}}" class="w-full px-3 sm:px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none dark:bg-gray-800 dark:text-white"></textarea>
         </div>
 
         <button type="submit" class="w-full bg-m-blue dark:bg-m-blue text-white font-semibold py-2 rounded-lg hover:bg-m-red dark:hover:bg-m-darkblue transition-all duration-300 ease-linear">

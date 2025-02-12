@@ -15,14 +15,23 @@
                     {{__('auth.email')}}
                 </label>
                 <input type="email" name="email" id="email" placeholder="Email" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300" required autofocus>
+                @error('email')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div>
                 <label for="password" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.n-pass') }}</label>
                 <input type="password" id="password" name="password" placeholder="{{__('auth.pass-placeholder')}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300" required autofocus>
+                @error('password')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div>
                 <label for="password_confirmation" class="block font-medium text-sm text-gray-700 dark:text-gray-300">{{ __('profile.c-pass') }}</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="{{__('auth.c-pass')}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300" required autofocus>
+                @error('password_confirmation')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div class="relative pb-4">                    
                 <span id="strength-text" class="text-sm text-m-blue">{{__('auth.pass-strength')}}</span>

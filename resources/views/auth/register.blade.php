@@ -14,14 +14,35 @@
                 @csrf
                 <div class="flex flex-col space-y-4 sm:space-y-6">
                     <x-input-div :name="'f_name'" :type="'text'" :placeholder="'f-name'" :id="'f_name'" :value="''" :icon="'bi bi-1-circle-fill'"/>
+                    @error('f_name')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <x-input-div :name="'l_name'" :type="'text'" :placeholder="'l-name'" :id="'l_name'" :value="''" :icon="'bi bi-2-circle-fill'"/>
+                    @error('l_name')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <x-input-div :name="'email'" :type="'email'" :placeholder="'email'" :id="'email'" :value="''" :icon="'bi bi-envelope'"/>
+                    @error('email')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <x-input-div :name="'birthday'" :type="'date'" :placeholder="'birth'" :id="'birthday'" :value="''" :icon="'bi bi-cake'" :divclass="'mt-4'"/>
+                    @error('birthday')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col space-y-4 sm:space-y-6">
                     <x-input-div :name="'telephone'" :type="'tel'" :placeholder="'tel'" :id="'telephone'" :value="''" :icon="'bi bi-telephone'"/>
+                    @error('telephone')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <x-input-div :name="'password'" :type="'password'" :placeholder="'pass'" :id="'password'" :value="''" :icon="'bi bi-hash'"/>
+                    @error('password')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'"/>
+                    @error('c_pass')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                     <div class="relative">                    
                         <span id="strength-text" class="text-sm text-m-blue">Sila hesla</span>
                         <div id="password-strength-bar" class="h-2 mt-2 dark:bg-gray-800 bg-slate-200 rounded-full overflow-hidden">

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
-    // Show all cars
     public function index()
     {
         if(Auth::check()) {
@@ -23,7 +22,6 @@ class CarController extends Controller
         return view('cars.index', compact('cars'));
     }
 
-    // Show create form
     public function create()
     {
         $user = Auth::user();
@@ -35,7 +33,6 @@ class CarController extends Controller
         return redirect()->route('cars.index');
     }
 
-    // Store a new car and its images
     public function store(Request $request)
     {
         $request->validate([
@@ -52,15 +49,12 @@ class CarController extends Controller
 
         $car = Car::create($request->all());
 
-        // Store images correctly
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
                 $imageName = time() . '_' . $imageFile->getClientOriginalName();
-                
-                // Store image in the correct storage path
+
                 $imageFile->storeAs('public/car_images', $imageName);
 
-                // Save image reference in database
                 CarImage::create([
                     'car_id' => $car->id,
                     'image_name' => $imageName
@@ -71,7 +65,6 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('success', 'Car created successfully!');
     }
 
-    // Show edit form
     public function edit(Car $car)
     {
         if(Auth::check()) {
@@ -86,7 +79,6 @@ class CarController extends Controller
         return redirect()->route('cars.index');
     }
 
-    // Update car details
     public function update(Request $request, $id)
     {
         $car = Car::findOrFail($id);
@@ -104,20 +96,14 @@ class CarController extends Controller
         ]);
 
         $car->update($request->all());
-
-        // Delete old images from storage
         foreach ($car->images as $image) {
             Storage::delete('public/car_images/' . $image->image_name);
-            $image->delete(); // Remove from DB
+            $image->delete();
         }
-
-        // Store new images
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
                 $imageName = time() . '_' . $imageFile->getClientOriginalName();
                 $imageFile->storeAs('public/car_images', $imageName);
-
-                // Save in database
                 CarImage::create([
                     'car_id' => $car->id,
                     'image_name' => $imageName
@@ -127,26 +113,19 @@ class CarController extends Controller
 
         return redirect()->route('cars.index')->with('success', 'Car updated successfully!');
     }
-
-    // Delete car and its images
+     
     public function destroy($id)
     {
         $car = Car::findOrFail($id);
-
-        // Delete all associated images
         foreach ($car->images as $image) {
             $imagePath = 'public/car_images/' . $image->image_name;
-
-            // Check if file exists before deleting
             if (Storage::exists($imagePath)) {
                 Storage::delete($imagePath);
             }
 
-            // Remove image record from DB
             $image->delete();
         }
 
-        // Delete the car itself
         $car->delete();
 
         return redirect()->route('cars.index')->with('success', 'Car and images deleted successfully!');

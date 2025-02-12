@@ -36,9 +36,8 @@ class AuthController extends Controller
             }
             return redirect()->route('/')->withSuccess('Signed in');
         }
-        $validator['email'] = 'Email is missing or incorrect!';
-        $validator['password'] = 'Password is missing or incorrect!';
-        $validator['emailPassword'] = 'Email address or password is incorrect';
+        $validator['email'] = __('validation.custom.email.email');
+        $validator['password'] = __('validation.custom.password.password');
         return redirect('login')->withErrors($validator);
 
     }
@@ -74,6 +73,12 @@ class AuthController extends Controller
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/|confirmed',
+        ], [
+            'password.required' => __('validation.custom.pass.required'),
+            'password.min' => __('validation.custom.pass.min'),
+            'password.regex' => __('validation.custom.pass.regex'),
+            'email.required' => __('validation.custom.email.required'),
+            'email.email' => __('validation.custom.email.email'),
         ]);
 
         $status = Password::reset(
@@ -109,9 +114,21 @@ class AuthController extends Controller
             'telephone' => 'required',
         ], 
         [
-            'pass.regex' => 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
-            'c_pass.same' => 'Passwords do not match.',
-            'pass.min' => 'Password must be at least 8 characters long.',
+            'f_name.required' => __('validation.custom.f_name.required'),
+            'l_name.required' => __('validation.custom.l_name.required'),
+            'email.required' => __('validation.custom.email.required'),
+            'email.email' => __('validation.custom.email.email'),
+            'email.unique' => __('validation.custom.email.unique'),
+            'pass.required' => __('validation.custom.pass.required'),
+            'pass.min' => __('validation.custom.pass.min'),
+            'pass.regex' => __('validation.custom.pass.regex'),
+            'c_pass.required' => __('validation.custom.c_pass.required'),
+            'c_pass.same' => __('validation.custom.c_pass.same'),
+            'role.required' => __('validation.custom.role.required'),
+            'birthday.required' => __('validation.custom.birthday.required'),
+            'birthday.date' => __('validation.custom.birthday.date'),
+            'telephone.required' => __('validation.custom.telephone.required'),
+            'telephone.max' => __('validation.custom.telephone.max'),
         ]);
 
         $data = $request->all();

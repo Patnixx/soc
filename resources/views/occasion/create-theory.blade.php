@@ -10,7 +10,8 @@
             <input 
                 type="text" 
                 name="name" 
-                id="name" 
+                id="name"
+                required 
                 placeholder="Name" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
@@ -19,7 +20,8 @@
             <input 
                 type="datetime-local" 
                 name="start" 
-                id="start" 
+                id="start"
+                required 
                 placeholder="Start"
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>

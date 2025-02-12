@@ -170,8 +170,36 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'f_name' => [
+            'required' => 'First name is required.',
+        ],
+        'l_name' => [
+            'required' => 'Last name is required.',
+        ],
+        'email' => [
+            'unique' => 'This email is already in use.',
+            'required' => 'Email is required.',
+            'email' => 'Email must be a valid email address.',
+        ],
+        'pass' => [
+            'required' => 'Password is required.',
+            'min' => 'Password must be at least 8 characters long.',
+            'regex' => 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
+        ],
+        'c_pass' => [
+            'required' => 'Password confirmation is required.',
+            'same' => 'Passwords do not match.',
+        ],
+        'role' => [
+            'required' => 'Role is required.',
+        ],
+        'birthday' => [
+            'required' => 'Birthday is required.',
+            'date' => 'Birthday must be a valid date.',
+        ],
+        'telephone' => [
+            'required' => 'Telephone number is required.',
+            'max' => 'Telephone number should not exceed 15 characters.',
         ],
     ],
 

@@ -7,7 +7,7 @@
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{ __('occasions.create-ride') }}</h2>
         <div class="flex flex-col space-y-2">
             <label for="course" class="text-sm font-medium dark:text-white text-gray-900">{{__('occasions.course')}}:</label>
-            <select name="course" id="course" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="course" id="course" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 @foreach($courses as $course)
                     <option value="{{$course->id}}">{{$course->name}}</option>
                 @endforeach

@@ -13,7 +13,8 @@
                 id="title" 
                 placeholder="{{$syllab->title}}"
                 value="{{$syllab->title}}"
-                maxlength="50" 
+                maxlength="50"
+                required 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
         <button 

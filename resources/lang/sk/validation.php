@@ -170,8 +170,36 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'f_name' => [
+            'required' => 'Krstné meno je povinné.',
+        ],
+        'l_name' => [
+            'required' => 'Priezvisko je povinné.',
+        ],
+        'email' => [
+            'required' => 'Email je povinný.',
+            'email' => 'Email musí byť platný.',
+            'unique' => 'Email už existuje.',
+        ],
+        'pass' => [
+            'required' => 'Heslo je povinné.',
+            'min' => 'Heslo musí mať aspoň 8 znakov.',
+            'regex' => 'Heslo musí obsahovať aspoň jedno veľké písmeno, jedno mal= písmeno, jedno číslo a jeden špeciálny znak.',
+        ],
+        'c_pass' => [
+            'required' => 'Potvrdenie hesla je povinné.',
+            'same' => 'Heslá sa nezhodujú.',
+        ],
+        'role' => [
+            'required' => 'Rola je povinná.',
+        ],
+        'birthday' => [
+            'required' => 'Dátum narodenia je povinný.',
+            'date' => 'Dátum narodenia musí byť platný.',
+        ],
+        'telephone' => [
+            'required' => 'Telefónne číslo je povinné.',
+            'max' => 'Telefónne číslo môže mať maximálne 15 znakov.',
         ],
     ],
 

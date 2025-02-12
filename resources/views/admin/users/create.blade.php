@@ -8,25 +8,40 @@
         <div class="left">
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="f_name" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.f-name')}}</label>
-                <x-input-div :name="'f_name'" :type="'text'" :placeholder="'f-name'" :id="'f_name'" :value="''" :icon="'bi bi-1-circle-fill'"/> 
+                <x-input-div :name="'f_name'" :type="'text'" :placeholder="'f-name'" :id="'f_name'" :value="''.old('f_name').''" :icon="'bi bi-1-circle-fill'"/> 
+                @error('f_name')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="l_name" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.l-name')}}</label>
-                <x-input-div :name="'l_name'" :type="'text'" :placeholder="'l-name'" :id="'l_name'" :value="''" :icon="'bi bi-2-circle-fill'"/>
+                <x-input-div :name="'l_name'" :type="'text'" :placeholder="'l-name'" :id="'l_name'" :value="''.old('l_name').''" :icon="'bi bi-2-circle-fill'"/>
+                @error('l_name')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="email" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.email')}}</label>
-                <x-input-div :name="'email'" :type="'email'" :placeholder="'email'" :id="'email'" :value="''" :icon="'bi bi-envelope'"/>
+                <x-input-div :name="'email'" :type="'email'" :placeholder="'email'" :id="'email'" :value="''.old('email').''" :icon="'bi bi-envelope'"/>
+                @error('email')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="birthday" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.birth')}}</label>
-                <x-input-div :name="'birthday'" :type="'date'" :placeholder="'birth'" :id="'birthday'" :value="''" :icon="'bi bi-cake'"/>
+                <x-input-div :name="'birthday'" :type="'date'" :placeholder="'birth'" :id="'birthday'" :value="''.old('birthday').''" :icon="'bi bi-cake'"/>
+                @error('birthday')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
         </div>
         <div class="right">
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="telephone" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.tel')}}</label>
-                <x-input-div :name="'telephone'" :type="'tel'" :placeholder="'tel'" :id="'telephone'" :value="''" :icon="'bi bi-telephone'"/>
+                <x-input-div :name="'telephone'" :type="'tel'" :placeholder="'tel'" :id="'telephone'" :value="''.old('telephone').''" :icon="'bi bi-telephone'"/>
+                @error('telephone')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="role" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.role')}}</label>
@@ -39,14 +54,23 @@
                     </select>
                     <i class="absolute left-3 top-1/2 transform -translate-y-1/2 bi bi-award text-gray-900 dark:text-m-blue text"></i>
                 </div>
+                @error('role')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="pass" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.password')}}</label>
-                <x-input-div :name="'pass'" :type="'password'" :placeholder="'pass'" :id="'pass'" :value="''" :icon="'bi bi-hash'"/>
+                <x-input-div :name="'pass'" :type="'password'" :placeholder="'pass-placeholder'" :id="'pass'" :value="''" :icon="'bi bi-hash'"/>
+                @error('pass')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="c_pass" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.c-pass')}}</label>
                 <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'"/>
+                @error('c_pass')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
             </div>
         </div>
         <div class="flex justify-center items-center space-x-4 col-span-2">

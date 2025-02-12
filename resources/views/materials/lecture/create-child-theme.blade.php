@@ -12,7 +12,7 @@
             <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">
                 {{ __('materials.main-theme') }}
             </label>
-            <select name="parent" id="parent" 
+            <select required name="parent" id="parent" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 @foreach($sub_lectures as $sub_lecture)
                     <option value="{{ $sub_lecture->id }}">{{ $sub_lecture->title }}</option>

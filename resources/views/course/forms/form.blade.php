@@ -7,23 +7,23 @@
         @csrf
         <div class="flex flex-col space-y-2">
             <label for="f_name" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.f-name')}}</label>
-            <input type="text" name="f_name" id="f_name" placeholder="{{__('courses.f-name')}}" value="{{$user->f_name}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <input required type="text" name="f_name" id="f_name" placeholder="{{__('courses.f-name')}}" value="{{$user->f_name}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
         <div class="flex flex-col space-y-2">
             <label for="l_name" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.l-name')}}</label>
-            <input type="text" name="l_name" id="l_name" placeholder="{{__('courses.l-name')}}" value="{{$user->l_name}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <input required type="text" name="l_name" id="l_name" placeholder="{{__('courses.l-name')}}" value="{{$user->l_name}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
         <div class="flex flex-col space-y-2">
             <label for="email" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.email')}}</label>
-            <input type="email" name="email" id="email" placeholder="{{__('courses.email')}}" value="{{$user->email}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <input required type="email" name="email" id="email" placeholder="{{__('courses.email')}}" value="{{$user->email}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
         <div class="flex flex-col space-y-2">
             <label for="birthday" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.birth')}}</label>
-            <input type="date" name="birthday" id="birthday" value="{{$user->birthday}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <input required type="date" name="birthday" id="birthday" value="{{$user->birthday}}" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
         <div class="flex flex-col space-y-2">
             <label for="user" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.user')}}</label>
-            <select name="user" id="user" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="user" id="user" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 @if($user->role == 'Admin' || $user->role == 'Teacher')
                     @foreach($user_wo_form as $acc)
                         <option value="{{$acc->id}}">{{$acc->f_name}} {{$acc->l_name}} ({{$acc->email}})</option>
@@ -35,7 +35,7 @@
         </div>
         <div class="flex flex-col space-y-2">
             <label for="season" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.season')}}</label>
-            <select name="season" id="season" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="season" id="season" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 <option value="Spring">{{__('courses.spring')}}</option>
                 <option value="Summer">{{__('courses.summer')}}</option>
                 <option value="Autumn">{{__('courses.autumn')}}</option>
@@ -44,21 +44,21 @@
         </div>
         <div class="flex flex-col space-y-2">
             <label for="length" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.length')}}</label>
-            <select name="length" id="length" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="length" id="length" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 <option value="Classic">{{__('courses.classic')}}</option>
                 <option value="Turbo">{{__('courses.turbo')}}</option>
             </select>
         </div>
         <div class="flex flex-col space-y-2">
             <label for="class" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.class')}}</label>
-            <select name="class" id="class" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="class" id="class" class="w-full h-11 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 <option value="A">A</option>
                 <option value="B">B</option>
             </select>
         </div>
         <div class="flex flex-col space-y-2 md:col-span-2">
             <label for="reason" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.reason')}}</label>
-            <textarea name="reason" id="reason" placeholder="{{__('courses.reason')}}" class="w-full px-4 py-2 h-31 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
+            <textarea required name="reason" id="reason" placeholder="{{__('courses.reason')}}" class="w-full px-4 py-2 h-31 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
         </div>
         <div class="flex justify-center items-center space-x-4 col-span-1 md:col-span-2">
             <button type="submit" class="relative flex items-center justify-center h-10 w-10 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">

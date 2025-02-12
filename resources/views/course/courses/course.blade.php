@@ -13,6 +13,7 @@
                         type="text" 
                         name="name" 
                         id="name"
+                        required
                         placeholder={{__('courses.name')}} 
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
@@ -29,6 +30,7 @@
                     <textarea 
                         name="desc" 
                         id="desc"
+                        required
                         placeholder={{__('courses.description')}}  
                         class="w-full h-28 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none"></textarea>
                 </div>

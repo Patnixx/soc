@@ -38,6 +38,7 @@ return new class extends Migration
                 'tel_number' => '0123 456 789',
                 'email' => 'admin@nixxy.com',
                 'password' => Hash::make('Jebemboha'),
+                'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

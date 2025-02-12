@@ -10,7 +10,8 @@
             <input 
                 type="text" 
                 name="title" 
-                id="title" 
+                id="title"
+                required 
                 placeholder={{__('materials.create-title')}} 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>

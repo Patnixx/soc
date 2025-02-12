@@ -7,7 +7,7 @@
         <h2 class="text-xl sm:text-2xl font-semibold dark:text-white text-gray-900 text-center">{{__('materials.create-lecture')}}</h2>
         <div class="flex flex-col space-y-2 mb-2">
             <label for="subtheme" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.sub-theme')}}</label>
-            <select name="subtheme" id="subtheme" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+            <select required name="subtheme" id="subtheme" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 <option value="{{$parent_row->id}}">{{$parent_row->title}}</option>
             </select>
         </div>
@@ -16,7 +16,8 @@
             <input 
                 type="text" 
                 name="title" 
-                id="title" 
+                id="title"
+                required 
                 placeholder="{{__('materials.title')}}"
                 maxlength="100" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -25,7 +26,8 @@
             <label for="content" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.content')}}</label>
             <textarea 
                 name="content" 
-                id="content" 
+                id="content"
+                required 
                 placeholder="{{__('materials.content')}}"
                 class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300"></textarea>
         </div>
@@ -34,7 +36,8 @@
             <input 
                 type="file" 
                 name="file" 
-                id="file" 
+                id="file"
+                required 
                 placeholder="{{__('materials.file')}}"
                 maxlength="50" 
                 class="w-full px-4 py-2 border rounded-lg shadow-sm bg-white transition-all duration-300 ease-linear focus:ring focus:ring-blue-300">
