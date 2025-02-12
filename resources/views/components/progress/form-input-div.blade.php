@@ -1,6 +1,5 @@
 <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
 <div class="container mx-auto w-full max-w-2xl sm:max-w-[80%] rounded-lg shadow-lg bg-white dark:bg-gray-900 p-4 sm:p-6 my-4 sm:my-8 transition-all duration-300 ease-linear"> 
-    <!-- Heading -->
     <h2 class="text-xl sm:text-2xl font-bold dark:text-white text-gray-900 mb-4 sm:mb-6">
         {{__('courses.form-edit')}}:
     </h2>
@@ -36,7 +35,6 @@
             </div>
             @endif
         </div>
-
         <div class="right">
             @foreach ([
                 ['season', __('courses.season'), $season, ['Spring', 'Summer', 'Autumn', 'Winter']],
@@ -53,8 +51,6 @@
                 </select>
             </div>
             @endforeach
-
-            <!-- Reason -->
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="reason" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.reason')}}</label>
                 <textarea 
@@ -64,8 +60,6 @@
                     class="w-full h-24 sm:h-32 px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300 resize-none">{{$reason}}</textarea>
             </div>
         </div>
-
-        <!-- Buttons -->
         <div class="flex justify-center items-center space-x-4 col-span-1 sm:col-span-2">
             <button type="submit" class="relative flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">
                 <i class="bi bi-floppy"></i>

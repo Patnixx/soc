@@ -47,7 +47,7 @@
                             else {
                                 $elder = $lecture->elder_id;
                             }
-                            if($lecture->parent_id == null && $lecture->elder_id != null && $lecture->syllab_id == null)
+                            if($lecture->parent_id == null && $lecture->elder_id != null && $lecture->syllab_id != null)
                             {
                                 $parent = "-->";
                                 $parentid = $lecture->id;
@@ -58,7 +58,7 @@
                             else {
                                 $parent = $lecture->parent_id;
                             }
-                            if($lecture->elder_id != null && $lecture->parent_id != null && $lecture->syllab_id == null)
+                            if($lecture->elder_id != null && $lecture->parent_id != null && $lecture->syllab_id != null)
                             {
                                 $child = "-->";
                                 $childid = $lecture->id;

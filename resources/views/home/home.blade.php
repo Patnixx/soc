@@ -17,7 +17,6 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="flex flex-col md:flex-row items-center py-16 px-6 space-y-8 md:space-y-0 md:space-x-8">
         <img src="{{ asset('assets/img/motocycle.png') }}" alt="About Us" class="w-full md:w-1/2 rounded-lg shadow-lg">
         <div class="bg-m-blue dark:bg-gray-900 p-6 rounded-2xl border-r-4 border-b-4 border-m-red dark:border-m-darkblue transition-all duration-300">
@@ -25,7 +24,6 @@
             <p class="text-base sm:text-lg text-gray-800 dark:text-m-blue">{{__('home.about')}}</p>
         </div>
     </section>
-
     <section id="personnel" class="flex flex-col md:flex-row items-center py-16 px-6 space-y-8 md:space-y-0 md:space-x-8">
         <div class="bg-m-blue dark:bg-gray-900 p-6 rounded-2xl border-r-4 border-b-4 border-m-red dark:border-m-darkblue transition-all duration-300">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 dark:text-m-blue">{{__('home.personel-title')}}</h2>
@@ -33,7 +31,6 @@
         </div>
         <img src="{{ asset('assets/img/gps.png') }}" alt="Personnel" class="w-full md:w-1/2 rounded-lg shadow-lg">
     </section>
-
     <section id="cars" class="py-16 px-6">
         <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">{{__('home.cars-title')}}:</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -49,7 +46,6 @@
             <a href="{{route('cars.index')}}">Car Gallery</a>
         </h2>
     </section>
-
     <footer id="contact" class="dark:bg-gray-900 bg-white dark:text-white text-gray-800 py-8 text-center">
         <h2 class="text-2xl sm:text-3xl font-bold mb-4">{{__('home.contact')}}</h2>
         <p>{{__('home.address-title')}}: Slobody 43, 022 01 Čadca</p>
@@ -57,5 +53,4 @@
         <p>{{__('home.email')}}: contact@drivingschool.com</p>
     </footer>
 </div>
-
 @endsection

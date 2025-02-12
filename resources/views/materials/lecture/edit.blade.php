@@ -2,17 +2,12 @@
 @section('title', ''.__('materials.edit', ['title' => $lecture->title]).'')
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
-    <form action="{{route('lecture.update', ['id' => $lecture->id, 'syllab' => $syllab])}}" 
-        method="post" 
-        enctype="multipart/form-data" 
-        class="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-4 sm:p-6 space-y-4 transition-all duration-300 ease-linear">
-        
+    <form action="{{route('lecture.update', ['id' => $lecture->id, 'syllab' => $syllab])}}" method="post" enctype="multipart/form-data" class="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-4 sm:p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
         <h2 class="text-lg sm:text-2xl font-semibold dark:text-white text-gray-900 text-center">
             {{__('materials.edit', ['title' => $lecture->title])}}
         </h2>
-
-        @if($lecture->syllab_id)
+        @if($lecture->syllab_id && $lecture->elder_id == null && $lecture->parent_id == null)
             <div class="flex flex-col space-y-2">
                 <label for="sylab" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.syllab')}}:</label>
                 <select name="sylab" id="sylab" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -22,8 +17,7 @@
                 </select>
             </div>
         @endif
-
-        @if($lecture->elder_id && $lecture->parent_id == null)
+        @if($lecture->elder_id && $lecture->syllab_id && $lecture->parent_id == null)
             <div class="flex flex-col space-y-2">
                 <label for="elder" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.main-theme')}}</label>
                 <select name="elder" id="elder" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -33,10 +27,9 @@
                 </select>
             </div>
         @endif
-
-        @if($lecture->elder_id && $lecture->parent_id)
+        @if($lecture->elder_id && $lecture->parent_id && $lecture->syllab_id)
             <div class="flex flex-col space-y-2">
-                <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.sub_theme')}}</label>
+                <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.sub-theme')}}</label>
                 <select name="parent" id="parent" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                     @foreach($sub_lectures as $sub_lecture)
                         <option value="{{$sub_lecture->id}}">{{$sub_lecture->title}}</option>
@@ -44,7 +37,6 @@
                 </select>
             </div>
         @endif
-
         <div class="flex flex-col space-y-2">
             <label for="title" class="text-sm font-medium dark:text-white text-gray-900">{{__('materials.create-title')}}:</label>
             <input 

@@ -29,8 +29,6 @@
                         </div>                
                     </div>
                 </div>
-
-                <!-- Buttons moved inside the form -->
                 <div class="flex justify-between w-full text-sm text-gray-400 mt-4 col-span-2">
                     <x-auth-href :route="'login'" :text="'login'"/>
                     <button type="submit" class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300">
@@ -38,7 +36,6 @@
                     </button>
                 </div>
             </form>
-
             <div class="flex flex-row space-x-6 sm:space-x-8 pt-6">
                 <x-theme-div :spanSide="'right-14'"/>
                 <x-icon-div :icon="'bi bi-house'" :text="'home'" :route="'home'" class="absolute right-4" :sclass="'left-14'"/>

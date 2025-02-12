@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:delete-expired-occasions')->everyMinute();
+        $schedule->command('app:remove-deleted-messages')->monthly();
+        $schedule->command('app:reset-password-tokens')->everyMinute();
     }
 
     /**

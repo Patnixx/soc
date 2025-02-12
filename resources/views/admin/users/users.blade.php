@@ -54,7 +54,6 @@
                 />
             @endforeach
         </div>
-
         <div class="mt-6 flex justify-end">
             <x-icon-div 
                 :route="'users.create'"
@@ -64,7 +63,6 @@
                 :sclass="'right-14'"
             />
         </div>
-
         <br>
         {{$accounts->links()}}
     </div>

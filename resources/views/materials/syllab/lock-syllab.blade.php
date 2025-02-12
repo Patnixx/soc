@@ -2,17 +2,12 @@
 @section('title', ''.__('materials.lock-courses').'')
 @section('content')
 <div class="flex flex-col items-center justify-center min-h-screen p-6">
-    <form 
-        action="{{ route('syllab.unlock',['id' => $section->id]) }}" 
-        method="POST" 
-        class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
+    <form action="{{ route('syllab.unlock',['id' => $section->id]) }}" method="POST" class="w-full max-w-lg bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
         @csrf
         @method('PATCH')
-        
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">
             {{ __('materials.edit', ['title' => $section->title]) }}
         </h2>
-
         <div class="space-y-4">
             @foreach ($syllab as $relation)
                 <div class="items-center justify-between border-b pb-2 flex flex-col sm:flex-row sm:items-center sm:space-x-4 gap-4">
@@ -36,14 +31,11 @@
                     </a>
                 </div>            
             @endforeach
-            <button 
-            type="submit" 
-            class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
-            {{ __('materials.save-courses') }}
+            <button type="submit" class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
+                {{ __('materials.save-courses') }}
             </button>
         </div>
     </form>
-
     <div class="flex flex-row items-center justify-center mt-4 space-x-2 flex-wrap">
         <a 
             class="relative flex items-center justify-center h-12 w-12 mt-2 mb-2 shadow-lg bg-slate-200 dark:bg-gray-800 text-red-500 hover:bg-red-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer" 

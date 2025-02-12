@@ -256,7 +256,8 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $lectures = Material::simplePaginate(20);
+            $syllab_id = $section->id;
+            $lectures = Material::where('syllab_id', $syllab_id)->simplePaginate(20);
             return view('materials.lecture.lecture-view', compact('user', 'lectures', 'section', 'syllab', 'unread'));
         }
         return redirect()->back();
@@ -303,7 +304,7 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $main_lectures = Material::where('elder_id', null)->get();
+            $main_lectures = Material::where('elder_id', null)->where('parent_id', null)->whereNotNull('syllab_id')->get();
             return view('materials.lecture.create-sub-theme', compact('user', 'section', 'syllab', 'main_lectures', 'unread'));
         }
         return redirect()->back();
@@ -338,7 +339,7 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $section = Syllab::where('title', $syllab)->first();
-            $sub_lectures = Material::whereNull('parent_id')->whereNull('syllab_id')->get();
+            $sub_lectures = Material::whereNull('parent_id')->whereNotNull('syllab_id')->whereNotNull('elder_id')->get();
             return view('materials.lecture.create-child-theme', compact('user', 'section', 'syllab', 'sub_lectures', 'unread'));
         }
         return redirect()->back();
@@ -400,8 +401,8 @@ class MaterialController extends Controller
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
             $all_syllabs = Syllab::all();
-            $main_lectures = Material::where('elder_id', null)->get();
-            $sub_lectures = Material::whereNull('parent_id')->whereNull('syllab_id')->get();
+            $main_lectures = Material::where('elder_id', null)->where('parent_id', null)->get();
+            $sub_lectures = Material::whereNull('parent_id')->whereNotNull('syllab_id')->whereNotNull('elder_id')->get();
             $lecture = Material::where('id', $id)->first();
             return view('materials.lecture.edit', compact('user', 'lecture', 'all_syllabs', 'main_lectures', 'sub_lectures' ,'syllab', 'id', 'unread'));
         }

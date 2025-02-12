@@ -2,14 +2,15 @@
 @if($event->type == 'Theory')
     @section('title', ''.__('occasions.edit-theory').'')
 @endif
-@section('title', ''.__('occasions.edit-ride').'')
+@if($event->type == 'Ride')
+    @section('title', ''.__('occasions.edit-ride').'')
+@endif
 @section('content')
     @if($event->type == 'Theory')
         <div class="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
             <form action="{{ route('events.update', $event->id) }}" method="post" class="w-full max-w-xl bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
                 @csrf
                 <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{ __('occasions.edit-theory') }}</h2>
-
                 <div class="flex flex-col space-y-2">
                     <label for="name" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.name') }}:</label>
                     <input 
@@ -20,7 +21,6 @@
                         value="{{$event->name}}" 
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
-
                 <div class="flex flex-col space-y-2">
                     <label for="start" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.start') }}:</label>
                     <input 
@@ -30,7 +30,6 @@
                         placeholder="{{$event->start}}"
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
-
                 <div class="flex flex-col space-y-2">
                     <label for="course" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.course') }}:</label>
                     <select name="course" id="course" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -39,14 +38,12 @@
                         @endforeach
                     </select>
                 </div>
-
                 <button 
                     type="submit" 
                     class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
                     {{ __('occasions.edit-theory') }}
                 </button>
             </form>
-
             <div class="mt-2 flex justify-center w-full space-x-4">
                 <x-icon-div 
                     :route="'events'"
@@ -72,7 +69,6 @@
             <form action="{{ route('events.update', $event->id) }}" method="post" class="w-full max-w-xl bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 space-y-4 transition-all duration-300 ease-linear">
                 @csrf
                 <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">{{ __('occasions.edit-ride') }}</h2>
-
                 <div class="flex flex-col space-y-2">
                     <label for="name" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.name') }}:</label>
                     <input 
@@ -82,7 +78,6 @@
                         placeholder="{{$event->name}}" 
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
-
                 <div class="flex flex-col space-y-2">
                     <label for="start" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.start') }}:</label>
                     <input 
@@ -92,7 +87,6 @@
                         placeholder="{{$event->start}}"
                         class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
                 </div>
-
                 <div class="flex flex-col space-y-2">
                     <label for="user" class="text-sm font-medium dark:text-white text-gray-900">{{ __('occasions.student') }}:</label>
                     <select name="user" id="user" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
@@ -101,14 +95,12 @@
                         @endforeach
                     </select>
                 </div>
-
                 <button 
                     type="submit" 
                     class="w-full dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue bg-m-blue text-gray-900 hover:bg-m-red hover:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear">
                     {{ __('occasions.edit-ride') }}
                 </button>
             </form>
-
             <div class="mt-2 flex justify-center w-full space-x-4">
                 <x-icon-div 
                     :route="'events'"

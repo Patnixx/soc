@@ -8,7 +8,6 @@
         <h2 class="text-2xl font-semibold dark:text-white text-gray-900 text-center">
             {{ __('materials.assign-sub-theme') }}
         </h2>
-
         <div class="flex flex-col space-y-2 mb-2">
             <label for="parent" class="text-sm font-medium dark:text-white text-gray-900">
                 {{ __('materials.main-theme') }}
@@ -20,7 +19,6 @@
                 @endforeach
             </select>
         </div>
-
         <button 
             type="submit" 
             class="w-full bg-m-blue text-gray-900 dark:bg-m-blue dark:text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-linear 
@@ -28,7 +26,6 @@
             {{ __('materials.assign-sub-theme') }}
         </button>
     </form>
-
     <a href="{{ route('lecture.view', $syllab) }}" 
         class="relative flex items-center justify-center h-12 w-12 mt-4 sm:mt-2 mb-2 mx-auto shadow-lg bg-slate-200 dark:bg-gray-800 text-red-500 
         hover:bg-red-500 hover:text-gray-800 dark:hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear group cursor-pointer">
