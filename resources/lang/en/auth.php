@@ -40,6 +40,16 @@ return [
     'birth' => 'dd. mm. yyyy',
     'c-pass' => 'Confirm Password',
 
+    //cars
+    'brand' => 'Brand',
+    'model' => 'Model',
+    'year' => 'Year',
+    'hp' => 'Horsepower',
+    'drive' => 'Drive',
+    'gearbox' => 'Gearbox',
+    'engine' => 'Engine volume',
+    'mileage' => 'Mileage',
+
     //errors
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',

@@ -6,9 +6,7 @@
         <section id="left" class="space-y-6">
             <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
-                <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses')}} 
-                    <a class="underline" href="{{route('course.create')}}">{{__('courses.no-courses-link')}}.</a>
-                </p>
+                <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses-click')}} <span class="italic">{{__('courses.course-create')}}</span> </p>
             @endif
             @foreach($courses as $course)
                 <x-course-div 
@@ -61,9 +59,7 @@
         <section id="left" class="space-y-6">
             <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
-                <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses')}} 
-                    <a class="underline" href="{{route('course.create')}}">{{__('courses.no-courses-link')}}.</a>
-                </p>
+                <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses-click')}} <span class="italic">{{__('courses.course-create')}}</span> </p>
             @endif
             @foreach($courses as $course)
                 <x-course-div 

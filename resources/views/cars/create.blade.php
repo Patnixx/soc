@@ -9,13 +9,13 @@
             <x-input-div :name="'brand'" :type="'text'" :placeholder="'brand'" :id="'brand'" :value="''" :icon="'bi bi-car-front'"/>
             <x-input-div :name="'model'" :type="'text'" :placeholder="'model'" :id="'model'" :value="''" :icon="'bi bi-car-front'"/>
             <x-input-div :name="'year'" :type="'text'" :placeholder="'year'" :id="'year'" :value="''" :icon="'bi bi-calendar'"/>
-            <x-input-div :name="'horsepower'" :type="'text'" :placeholder="'horsepower'" :id="'horsepower'" :value="''" :icon="'bi bi-speedometer'"/>
+            <x-input-div :name="'horsepower'" :type="'text'" :placeholder="'hp'" :id="'horsepower'" :value="''" :icon="'bi bi-rocket-takeoff'"/>
         </div>
         <div class="flex flex-col space-y-4">
-            <x-input-div :name="'cubage'" :type="'text'" :placeholder="'cubage'" :id="'cubage'" :value="''" :icon="'bi bi-gear-wide-connected'"/>
+            <x-input-div :name="'cubage'" :type="'text'" :placeholder="'engine'" :id="'cubage'" :value="''" :icon="'bi bi-gear-wide-connected'"/>
             <x-input-div :name="'gearbox'" :type="'text'" :placeholder="'gearbox'" :id="'gearbox'" :value="''" :icon="'bi bi-gear'"/>
             <x-input-div :name="'drive'" :type="'text'" :placeholder="'drive'" :id="'drive'" :value="''" :icon="'bi bi-arrow-repeat'"/>
-            <x-input-div :name="'mileage'" :type="'text'" :placeholder="'mileage'" :id="'mileage'" :value="''" :icon="'bi bi-tachometer'"/>
+            <x-input-div :name="'mileage'" :type="'text'" :placeholder="'mileage'" :id="'mileage'" :value="''" :icon="'bi bi-speedometer'"/>
         </div>
         <div class="flex flex-col space-y-2 col-span-1 md:col-span-2">
             <label for="images" class="text-sm font-medium dark:text-white text-gray-900">{{__('car.upload')}}</label>

@@ -9,43 +9,43 @@
         <div class="space-y-4">
             <div>
                 <label for="brand" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.brand') }}</label>
-                <x-input-div name="brand" type="text" placeholder="Brand" id="brand" :value="$car->brand" icon="bi bi-car-front"/>
+                <x-input-div name="brand" type="text" placeholder="brand" id="brand" :value="$car->brand" icon="bi bi-car-front"/>
             </div>
             <div>
                 <label for="model" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.model') }}</label>
-                <x-input-div name="model" type="text" placeholder="Model" id="model" :value="$car->model" icon="bi bi-car-front"/>
+                <x-input-div name="model" type="text" placeholder="model" id="model" :value="$car->model" icon="bi bi-car-front"/>
             </div>
             <div>
                 <label for="year" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.year') }}</label>
-                <x-input-div name="year" type="text" placeholder="Year" id="year" :value="$car->year" icon="bi bi-calendar"/>
+                <x-input-div name="year" type="text" placeholder="year" id="year" :value="$car->year" icon="bi bi-calendar"/>
             </div>
             <div>
                 <label for="horsepower" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.hp') }}</label>
-                <x-input-div name="horsepower" type="text" placeholder="Horsepower" id="horsepower" :value="$car->horsepower" icon="bi bi-speedometer"/>
+                <x-input-div name="horsepower" type="text" placeholder="hp" id="horsepower" :value="$car->horsepower" icon="bi bi-rocket-takeoff"/>
             </div>
         </div>
         <div class="space-y-4">
             <div>
                 <label for="cubage" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.engine') }}</label>
-                <x-input-div name="cubage" type="text" placeholder="Cubage" id="cubage" :value="$car->cubage" icon="bi bi-gear-wide-connected"/>
+                <x-input-div name="cubage" type="text" placeholder="engine" id="cubage" :value="$car->cubage" icon="bi bi-gear-wide-connected"/>
             </div>
             <div>
                 <label for="gearbox" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.gearbox') }}</label>
-                <x-input-div name="gearbox" type="text" placeholder="Gearbox" id="gearbox" :value="$car->gearbox" icon="bi bi-gear"/>
+                <x-input-div name="gearbox" type="text" placeholder="gearbox" id="gearbox" :value="$car->gearbox" icon="bi bi-gear"/>
             </div>
             <div>
                 <label for="drive" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.drive') }}</label>
-                <x-input-div name="drive" type="text" placeholder="Drive" id="drive" :value="$car->drive" icon="bi bi-arrow-repeat"/>
+                <x-input-div name="drive" type="text" placeholder="drive" id="drive" :value="$car->drive" icon="bi bi-arrow-repeat"/>
             </div>
             <div>
                 <label for="mileage" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.mileage') }}</label>
-                <x-input-div name="mileage" type="text" placeholder="Mileage" id="mileage" :value="$car->mileage" icon="bi bi-tachometer"/>
+                <x-input-div name="mileage" type="text" placeholder="mileage" id="mileage" :value="$car->mileage" icon="bi bi-speedometer"/>
             </div>
         </div>
         <div class="col-span-1 sm:col-span-2">
             <label for="images" class="text-sm font-medium text-gray-900 dark:text-white">{{ __('car.upload') }}</label>
-            <input 
-        <div class="flex justify-center items-center space-x-4 col-span-1 sm:col-span-2">
+            <input type="file" name="images[]" multiple class="w-full h-12 py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear">
+        <div class="flex justify-center items-center space-x-4 col-span-1 sm:col-span-2 mt-12">
             <button type="submit" class="relative flex items-center justify-center h-12 w-12 shadow-lg dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white bg-m-blue dark:bg-gray-800 text-gray-900 hover:bg-m-red hover:text-white rounded-full transition-all duration-300 ease-linear group">
                 <i class="bi bi-floppy"></i>
                 <span class="absolute w-auto p-2 m-2 min-w-max right-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-300 scale-0 origin-left group-hover:scale-100">

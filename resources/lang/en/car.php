@@ -10,7 +10,7 @@ return [
     'engine' => 'Engine volume',
     'mileage' => 'Mileage',
 
-    'add' => 'Add car',
+    'add' => 'Add new car',
     'edit' => 'Edit car',
     'update' => 'Update car',
     'back' => 'Back',

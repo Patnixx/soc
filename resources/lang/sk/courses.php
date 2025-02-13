@@ -4,10 +4,11 @@ return [
 
     //courses
     'courses' => 'Kurzy',
+    'no-courses' => 'Žiadne kurzy neexistujú.',
     'no-courses-click' => 'Žiadne kurzy neexistujú. Ak potrebujete vytvorte nový kurz kliknutím na ',
     'no-courses-link' => 'vytvoriť',
     'no-courses-end' => ' alebo kontaktujte administrátora.',
-    'no-courses-student' => 'Žiadne kurzy neexistujú. Ak potrebujete, pošliteformulár o pridanie ku kurzu alebo kontaktujte učiteľa.',
+    'no-courses-student' => 'Žiadne kurzy neexistujú. Ak potrebujete, pošlite formulár o priradenie do kurzu alebo kontaktujte učiteľa.',
     'course-create' => 'Vytvoriť kurz',
     'course-edit' => 'Upraviť kurz',
     'course-detail' => 'Detial kurzu',

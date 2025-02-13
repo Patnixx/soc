@@ -1,5 +1,5 @@
 @extends('structures.main')
-@section('title', 'chasmakar buzerant')
+@section('title', ''.__('car.cars').'')
 @section('content')
 <div class="container px-4 py-6 mt-12">
     <div class="w-full flex flex-col sm:flex-row justify-between py-4">
@@ -7,7 +7,7 @@
             {{ __('car.cars') }}:
         </h1>
         @if(Auth::check() && ($user->role == 'Admin' || $user->role == 'Teacher'))
-        <a href="{{ route('cars.create') }}" class="dark:bg-gray-900 dark:text-m-blue bg-white text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red px-6 py-2 rounded-md transition duration-300 ease-linear">Add New Car</a>
+        <a href="{{ route('cars.create') }}" class="dark:bg-gray-900 dark:text-m-blue bg-white text-gray-900 dark:hover:bg-m-darkblue dark:hover:text-white hover:text-white hover:bg-m-red px-6 py-2 rounded-md transition duration-300 ease-linear">{{__('car.add')}}</a>
         @endif
     </div>
     <div class="flex flex-col gap-6">
@@ -72,4 +72,20 @@
         @endforeach
     </div>
 </div>
+<script>
+    function moveCarousel(carIndex, direction) {
+        const carousel = document.querySelectorAll('.carousel')[carIndex];
+        const items = carousel.querySelectorAll('.carousel-item');
+        let currentIndex = [...items].findIndex(item => item.classList.contains('block'));
+
+        items[currentIndex].classList.remove('block');
+        items[currentIndex].classList.add('hidden');
+
+        const nextIndex = (currentIndex + direction + items.length) % items.length;
+        items[nextIndex].classList.remove('hidden');
+        items[nextIndex].classList.add('block');
+    }
+
+    window.moveCarousel = moveCarousel;
+</script>
 @endsection

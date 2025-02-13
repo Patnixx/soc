@@ -40,6 +40,16 @@ return [
     'birth' => 'dd. mm. rrrr',
     'c-pass' => 'Potvrďte heslo',
 
+    //cars
+    'brand' => 'Značka',
+    'model' => 'Model',
+    'year' => 'Rok výroby',
+    'hp' => 'Výkon',
+    'drive' => 'Pohon',
+    'gearbox' => 'Prevodovka',
+    'engine' => 'Objem motora',
+    'mileage' => 'Najazdené km',
+
     //errors
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',

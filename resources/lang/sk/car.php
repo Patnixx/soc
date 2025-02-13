@@ -10,7 +10,7 @@ return [
     'engine' => 'Objem motora',
     'mileage' => 'Najazdené km',
 
-    'add' => 'Pridať auto',
+    'add' => 'Pridať nové auto',
     'edit' => 'Upraviť auto',
     'update' => 'Aktualizovať auto',
     'back' => 'Späť',
