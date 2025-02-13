@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const dropdownButtons = document.querySelectorAll('[data-dropdown-button]'); // Buttons in dropdown
     const dropdownContents = document.querySelectorAll('[data-dropdown-content]'); // Corresponding content
 
@@ -18,4 +18,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
+}); */

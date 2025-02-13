@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     function showMail(element){
         const sender = element.getAttribute('data-sender');
         const title = element.getAttribute('data-title');
@@ -19,4 +19,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.showMail = showMail;
-});
+});*/

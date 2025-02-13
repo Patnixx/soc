@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const userCards = document.querySelectorAll('.user-card');
 
@@ -27,4 +27,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-});
+}); */

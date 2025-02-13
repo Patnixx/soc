@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     function moveCarousel(carIndex, direction) {
         const carousel = document.querySelectorAll('.carousel')[carIndex];
         const items = carousel.querySelectorAll('.carousel-item');
@@ -13,4 +13,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.moveCarousel = moveCarousel;
-});
+});*/

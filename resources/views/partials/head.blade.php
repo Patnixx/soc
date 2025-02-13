@@ -11,5 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['public/build/assets/app-CLuxSHrw.css', 'public/build/assets/app-B2_J8pL4.js'])
+        {{--<link rel="stylesheet" href="{{asset('build/assets/app-CLuxSHrw.css')}}">
+        <script src="{{asset('build/assets/app-B2_J8pL4.js')}}"></script>--}}
     </head>

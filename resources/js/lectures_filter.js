@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const lectureCards = document.querySelectorAll('.lecture-card');
 
@@ -21,4 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         });
     });
-});
+}); */

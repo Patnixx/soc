@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     const passwordInput = document.getElementById("password");
     const strengthBar = document.getElementById("strength-level");
     const strengthText = document.getElementById("strength-text");
@@ -44,4 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
         const strength = evaluateStrength(password);
         updateStrengthDisplay(strength);
     });
-});
+}); */

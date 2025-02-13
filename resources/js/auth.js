@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     function togglePasswordVisibility(inputId, icon) {
         let input = document.getElementById(inputId);
         if (input.type === "password") {
@@ -10,4 +10,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     window.togglePasswordVisibility = togglePasswordVisibility;    
-});
+}); */

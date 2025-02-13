@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     function showDetails(element) {
         const id = element.getAttribute('data-id');
         const name = element.getAttribute('data-name');
@@ -38,4 +38,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.showDetails = showDetails;
-});
+}); */

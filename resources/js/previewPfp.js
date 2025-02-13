@@ -1,4 +1,4 @@
-function previewImage(event) {
+/*function previewImage(event) {
     const file = event.target.files[0]; // Get the uploaded file
     const reader = new FileReader(); // Create a new FileReader instance
     const fileNameSpan = document.getElementById('fileName'); // Get the span element that displays the file name
@@ -15,4 +15,4 @@ function previewImage(event) {
     }
 }
 
-window.previewImage = previewImage;
+window.previewImage = previewImage; */

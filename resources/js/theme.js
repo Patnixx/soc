@@ -1,5 +1,5 @@
 //Icons
-const sunIcon = document.querySelector(".sun");
+/*const sunIcon = document.querySelector(".sun");
 const moonIcon = document.querySelector(".moon");
 
 //Theme vars
@@ -45,4 +45,4 @@ moonIcon.addEventListener("click", () => {
 });
 
 //Theme check on init load
-themeCheck();
+themeCheck();*/

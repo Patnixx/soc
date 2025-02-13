@@ -1,6 +1,6 @@
 <div class="flex">
     <div x-data="{ open: true }">
-        <div class="fixed top-0 left-0 h-full w-16 bg-white dark:bg-gray-900 text-white shadow-lg transition-transform duration-300 ease-in-out"
+        <div class="fixed z-50 top-0 left-0 h-full w-16 bg-white dark:bg-gray-900 text-white shadow-lg transition-all duration-300 ease-linear"
             :class="{ '-translate-x-full': open === false }">
             <div class="flex flex-col md:justify-between h-full pt-6 overflow-scroll md:overflow-visible">
                 <div class="flex flex-col items-center justify-center justify-self-start">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <button @click="open = !open" class="fixed top-4 right-4 w-12 h-12 rounded-full bg-m-blue text-gray-900 hover:bg-m-red hover:text-white dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white flex items-center justify-center shadow-lg transition-all duration-300 ease-linear">
+        <button @click="open = !open" class="fixed z-50 top-4 right-4 w-12 h-12 rounded-full bg-m-blue text-gray-900 hover:bg-m-red hover:text-white dark:bg-gray-900 dark:text-m-blue dark:hover:bg-m-darkblue dark:hover:text-white flex items-center justify-center shadow-lg transition-all duration-300 ease-linear">
             <i class="bi bi-list text-2xl"></i>
         </button>
     </div>        
