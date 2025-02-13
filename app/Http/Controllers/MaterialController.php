@@ -315,6 +315,7 @@ class MaterialController extends Controller
         $user = Auth::user();
         if($user->role == 'Admin' || $user->role == 'Teacher')
         {
+            $section = Syllab::where('title', $syllab)->first();
             $request->validate([
                 'title' => 'required',
                 'content' => 'required',
@@ -325,6 +326,7 @@ class MaterialController extends Controller
                 'title' => $request->title,
                 'content' => $request->content,
                 'elder_id' => $request->elder,
+                'syllab_id' => $section->id,
             ]);
 
             return redirect()->route('lecture.view', $syllab);
@@ -366,13 +368,14 @@ class MaterialController extends Controller
             $request->validate([
                 'title' => 'required',
                 'content' => 'required',
-                'file' => 'required',
+                'file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
             
 
             $parent_row = Material::where('id', $request->subtheme)->first();
             $elder_row = Material::where('id', $parent_row->elder_id)->first();
             $syllab = Syllab::where('id', $elder_row->syllab_id)->first()->route;
+            $syllab_id = Syllab::where('id', $elder_row->syllab_id)->first()->id;
             $img_name = $this->titleToImageName($request->title);
 
             $file = $request->file('file');
@@ -386,6 +389,7 @@ class MaterialController extends Controller
                 'parent_id' => $request->subtheme,
                 'elder_id' => $parent_row->elder_id,
                 'img_name' => $img_name,
+                'syllab_id' => $syllab_id,
             ]);
 
             return redirect()->route('lecture.view', $syllab);

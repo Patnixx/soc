@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,17 +35,16 @@ class ProfileController extends Controller
 
         if ($request->hasFile('fileInput')) {
 
-            Storage::delete('public/pfp' . $user->pfp_path);
-
             $file = $request->file('fileInput');
             $imageHash = Hash::make(time());
             $imageHash = str_replace('/', '_', $imageHash);
             $imageName = $imageHash . '.' . $file->getClientOriginalExtension();
+            $imagePath = public_path('assets/pfp/');
 
             if($user->pfp_path)
             {
-                Storage::delete('public/pfp' . $user->pfp_path);
-                $cesta = $file->storeAs('public/pfp', $imageName);
+                File::delete($imagePath . $user->pfp_path);
+                $file->move($imagePath, $imageName);
                 User::where('id', $user->id)->update([
                     'f_name' => $request->f_name,
                     'l_name' => $request->l_name,
@@ -56,7 +56,7 @@ class ProfileController extends Controller
                 return redirect()->route('profile');
             }
 
-            $cesta = $file->storeAs('public/pfp', $imageName);
+            $file->move($imagePath, $imageName);
             User::where('id', $user->id)->update([
                 'f_name' => $request->f_name,
                 'l_name' => $request->l_name,

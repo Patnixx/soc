@@ -16,4 +16,8 @@ return [
     'back' => 'Späť',
     'upload' => 'Nahrať obrázky',
     'cars' => 'Naše autá',
+
+    'no-cars-admin' => 'Žiadne autá neboli nájdené. Ak chcete pridať nové auto, kliknite na tlačidlo ',
+    'no-cars-admin-link' => 'Pridať nové auto',
+    'no-cars-user' => 'Žiadne autá neboli nájdené. Ak si myslíte, že by tu mali byť autá, kontaktujte prosím administrátora.',
 ];

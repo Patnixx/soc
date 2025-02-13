@@ -11,12 +11,19 @@
         @endif
     </div>
     <div class="flex flex-col gap-6">
+        @if($cars->isEmpty())
+            @if(Auth::check() && ($user->role == 'Admin' || $user->role == 'Teacher'))
+                <p class="text-lg text-start text-gray-800 dark:text-gray-200">{{__('car.no-cars-admin')}} <span class="italic">{{__('car.no-cars-admin-link')}}.</span> </p>
+            @else
+                <p class="text-lg text-start text-gray-800 dark:text-gray-200">{{__('car.no-cars-user')}}</p>
+            @endif
+        @endif
         @foreach($cars as $car)
             <div class="w-full flex flex-col lg:flex-row gap-6 shadow-2xl rounded-lg p-6 bg-white dark:bg-gray-800 transition-all duration-300 ease-linear">
                 <div class="w-full lg:w-1/2 relative rounded-lg overflow-hidden">
                     <div class="carousel flex">
                         @foreach($car->images as $index => $image)
-                        <img src="{{ asset('storage/car_images/' . $image->image_name) }}" alt="Car Image"
+                        <img src="{{ asset('assets/car_images/' . $image->image_name) }}" alt="Car Image"
                             class="w-full h-auto max-h-64 object-contain carousel-item {{ $index == 0 ? 'block' : 'hidden' }}">
                         @endforeach
                     </div>

@@ -10,8 +10,18 @@
     </div>
     @if(isset($image))
         <div class="lg:w-1/5 h-full flex justify-center items-center p-4">
+            @php
+                $extensions = ['jpg', 'jpeg', 'png'];
+                $imgPath = '';
+                foreach ($extensions as $ext) {
+                    if (file_exists(public_path('assets/znacky/' . $imgRoute . '.' . $ext))) {
+                        $imgPath = asset('assets/znacky/' . $imgRoute . '.' . $ext);
+                        break;
+                    }
+                }
+            @endphp
             <img 
-                src="{{ asset('assets/znacky/' . $imgRoute . '.jpg') }}" 
+                src="{{$imgPath}}" 
                 alt="Image" 
                 class="h-24 md:h-32 lg:h-auto w-full max-w-full object-fill rounded-lg transition-all duration-300 ease-linear"
             >

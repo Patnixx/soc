@@ -36,7 +36,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($cars as $car)
                 <div class="bg-white shadow-lg rounded-lg p-4 dark:bg-gray-900">
-                    <img src="{{ asset('storage/car_images/'.$car->images[1]->image_name) }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="{{ asset('assets/car_images/'.$car->images[0]->image_name) }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-m-blue">{{$car->brand}} {{$car->model}}</h3>
                     <p class="text-gray-800 dark:text-m-blue">{{__('home.year')}}: {{$car->year}}</p>
                 </div> 

@@ -23,7 +23,7 @@
                                 @if($user->pfp_path == null)
                                 <img id="profilePicture" src="{{ asset('assets/pfp/default-pfp.png')}}" alt="" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
                                 @elseif($user->pfp_path != null)
-                                <img id="profilePicture" src="{{ asset('storage/pfp/'.$user->pfp_path)}}" alt="" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
+                                <img id="profilePicture" src="{{ asset('assets/pfp/'.$user->pfp_path)}}" alt="" class="w-28 h-28 rounded-full object-cover border-x-2 border-b-2 border-gray-800 dark:border-slate-200">
                                 @endif
                             </div>
 

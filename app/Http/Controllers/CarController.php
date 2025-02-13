@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\CarImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
@@ -52,9 +53,10 @@ class CarController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
                 $imageName = time() . '_' . $imageFile->getClientOriginalName();
-
-                $imageFile->storeAs('public/car_images', $imageName);
-
+                
+                //$imageFile->storeAs('public/car_images', $imageName);
+                $imagePath = public_path('assets/car_images');
+                $imageFile->move(''.$imagePath.'', $imageName);
                 CarImage::create([
                     'car_id' => $car->id,
                     'image_name' => $imageName
@@ -97,13 +99,16 @@ class CarController extends Controller
 
         $car->update($request->all());
         foreach ($car->images as $image) {
-            Storage::delete('public/car_images/' . $image->image_name);
+            $imagePath = public_path('assets/car_images');
+            File::delete($imagePath . '/' . $image->image_name);
             $image->delete();
         }
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
                 $imageName = time() . '_' . $imageFile->getClientOriginalName();
-                $imageFile->storeAs('public/car_images', $imageName);
+                //$imageFile->storeAs('public/car_images', $imageName);
+                $imagePath = public_path('assets/car_images');
+                $imageFile->move(''.$imagePath.'', $imageName);
                 CarImage::create([
                     'car_id' => $car->id,
                     'image_name' => $imageName
