@@ -17,6 +17,7 @@
                     if (file_exists(public_path('assets/znacky/' . $imgRoute . '.' . $ext))) {
                         $imgPath = asset('assets/znacky/' . $imgRoute . '.' . $ext);
                         break;
+                        
                     }
                 }
             @endphp
