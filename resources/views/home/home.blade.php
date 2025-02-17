@@ -32,10 +32,10 @@
         <img src="{{ asset('assets/img/gps.png') }}" alt="Personnel" class="w-full md:w-1/2 rounded-lg shadow-lg">
     </section>
     <section id="cars" class="py-16 px-6">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue">{{__('home.cars-title')}}:</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-gray-800 dark:text-m-blue transition-all duration-300 ease-linear">{{__('home.cars-title')}}:</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($cars as $car)
-                <div class="bg-white shadow-lg rounded-lg p-4 dark:bg-gray-900">
+                <div class="bg-white shadow-lg rounded-lg p-4 dark:bg-gray-900 transition-all duration-300 ease-linear">
                     <img src="{{ asset('assets/car_images/'.$car->images[0]->image_name) }}" alt="Car" class="w-full h-48 object-cover rounded-lg mb-4">
                     <h3 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-m-blue">{{$car->brand}} {{$car->model}}</h3>
                     <p class="text-gray-800 dark:text-m-blue">{{__('home.year')}}: {{$car->year}}</p>

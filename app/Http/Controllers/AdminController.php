@@ -170,7 +170,6 @@ class AdminController extends Controller
                     'f_name' => $request->f_name,
                     'l_name' => $request->l_name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->pass),
                     'role' => $request->role,
                     'birthday' => $request->birthday,
                     'tel_number' => $request->telephone,
@@ -179,6 +178,12 @@ class AdminController extends Controller
                 if($request->has('email_verify')){
                     User::where('id', $id)->update([
                         'email_verified_at' => now(),
+                    ]);
+                }
+
+                if($request->has('pass')){
+                    User::where('id', $id)->update([
+                        'password' => Hash::make($request->pass),
                     ]);
                 }
 
