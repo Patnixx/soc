@@ -24,4 +24,5 @@ return [
     'password' => 'Password',
     'c-pass' => 'Confirm password',
     'save' => 'Save',
+    'checkbox-label' => 'Verify email',
 ];

@@ -1,18 +1,20 @@
 @extends('structures.auth')
 @section('title', ''.__('title.register').'')
 @section('form')
-<div class="w-full min-h-screen flex items-center justify-center dark:bg-gray-900 bg-white p-4">
+<div class="w-full min-h-screen flex items-center justify-center dark:bg-gray-800 bg-white p-4">
     <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-[0.4fr,0.6fr] items-center justify-center gap-6">
+        <!-- Image Section -->
         <div class="hidden md:flex items-center justify-start">
-            <img src="{{ asset('assets/img/register.png') }}" alt="Registration Image" class="md:w-full">
+            <img src="{{ asset('assets/img/register.png') }}" alt="Registration Image" class="w-full h-auto object-cover rounded-lg">
         </div>
+        <!-- Form Section -->
         <div class="w-full max-w-3xl dark:bg-gray-900 bg-white shadow-lg p-6 sm:p-8 rounded-3xl flex flex-col items-center transition-all duration-300">
             <h2 class="dark:text-m-blue text-gray-900 text-3xl sm:text-4xl font-serif mb-4 sm:mb-6">
                 {{ __('auth.register') }}
             </h2>
-            <form action="{{ route('custom.register') }}" method="post" class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative">
+            <form action="{{ route('custom.register') }}" method="post" class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 @csrf
-                <div class="flex flex-col space-y-4 sm:space-y-6">
+                <div class="flex flex-col space-y-4">
                     <x-input-div :name="'f_name'" :type="'text'" :placeholder="'f-name'" :id="'f_name'" :value="''" :icon="'bi bi-1-circle-fill'"/>
                     @error('f_name')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -30,7 +32,7 @@
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col space-y-4 sm:space-y-6">
+                <div class="flex flex-col space-y-4">
                     <x-input-div :name="'telephone'" :type="'tel'" :placeholder="'tel'" :id="'telephone'" :value="''" :icon="'bi bi-telephone'"/>
                     @error('telephone')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -50,9 +52,9 @@
                         </div>                
                     </div>
                 </div>
-                <div class="flex justify-between w-full text-sm text-gray-400 mt-4 col-span-2">
+                <div class="flex justify-between w-full text-sm text-gray-400 mt-4 col-span-1 md:col-span-2">
                     <x-auth-href :route="'login'" :text="'login'"/>
-                    <button type="submit" class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300">
+                    <button type="submit" class="px-4 py-2 rounded-md dark:bg-m-blue bg-m-blue text-white hover:bg-m-dark-blue transition duration-300">
                         {{ __('auth.register') }}
                     </button>
                 </div>

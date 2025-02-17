@@ -21,8 +21,17 @@
                 @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
-                <label for="email" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.email')}}</label>
-                <x-input-div :name="'email'" :type="'email'" :placeholder="'email'" :id="'email'" :value="''.$account->email.''" :icon="'bi bi-envelope'"/>    
+                <div class="flex flex-col sm:flex-row items-center justify-between">
+                    <label for="email" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.email')}}</label>
+                    <div class="flex items-center justify-end space-x-2">
+                        <label for="email_verify" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.checkbox-label')}}</label>
+                        <input name="email_verify" type="checkbox" id="email_verify" class="rounded border-gray-300 dark:bg-gray-800 dark:border-gray-700 text-m-blue focus:ring-m-blue" {{($account->email_verified_at != null) ? 'checked' : ''}}>
+                    </div>
+                </div>
+                <div class="form-group relative w-full">
+                    <input type="email" name="email" id="email" class="w-full py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear" placeholder="{{__('auth.email')}}" @error('email') value="{{old('email')}}" @enderror value="{{$account->email}}" required>
+                    <i class="absolute left-3 top-1/2 transform -translate-y-1/2 bi bi-envelope text-gray-900 dark:text-m-blue"></i>
+                </div> 
                 @error('email')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror
@@ -60,14 +69,20 @@
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="pass" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.password')}}</label>
-                <x-input-div :name="'pass'" :type="'password'" :placeholder="'pass-placeholder'" :id="'pass'" :value="''" :icon="'bi bi-hash'"/>
+                <div class="form-group relative w-full">
+                    <input type="password" name="pass" id="pass" class="w-full py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear" placeholder="{{__('auth.pass-placeholder')}}" @error('pass') value="{{old('pass')}}" @enderror value="">
+                    <i class="absolute left-3 top-1/2 transform -translate-y-1/2 bi bi-hash text-gray-900 dark:text-m-blue"></i>
+                </div>
                 @error('pass')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror
             </div>
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="c_pass" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.c-pass')}}</label>
-                <x-input-div :name="'c_pass'" :type="'password'" :placeholder="'c-pass'" :id="'c_pass'" :value="''" :icon="'bi bi-incognito'"/>
+                <div class="form-group relative w-full">
+                    <input type="password" name="c_pass" id="c_pass" class="w-full py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear" placeholder="{{__('auth.c-pass')}}" @error('pass') value="{{old('pass')}}" @enderror value="">
+                    <i class="absolute left-3 top-1/2 transform -translate-y-1/2 bi bi-incognito text-gray-900 dark:text-m-blue"></i>
+                </div>
                 @error('c_pass')
                     <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror

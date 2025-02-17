@@ -46,11 +46,6 @@
             <a href="{{route('cars.index')}}">Car Gallery</a>
         </h2>
     </section>
-    <footer id="contact" class="dark:bg-gray-900 bg-white dark:text-white text-gray-800 py-8 text-center">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4">{{__('home.contact')}}</h2>
-        <p>{{__('home.address-title')}}: Slobody 43, 022 01 Čadca</p>
-        <p>{{__('home.phone')}}: 0904 924 562</p>
-        <p>{{__('home.email')}}: contact@drivingschool.com</p>
-    </footer>
+    @include('partials.homepage-footer')
 </div>
 @endsection

@@ -63,6 +63,7 @@ class AdminController extends Controller
                     'role' => 'required',
                     'birthday' => 'required|date',
                     'telephone' => 'required|max:15',
+                    'email_verify' => 'nullable',
                 ], 
                 [
                     'f_name.required' => __('validation.custom.f_name.required'),
@@ -82,19 +83,34 @@ class AdminController extends Controller
                     'telephone.max' => __('validation.custom.telephone.max'),
                 ]);
 
-                $user = User::create([
-                    'f_name' => $request->f_name,
-                    'l_name' => $request->l_name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->pass),
-                    'role' => $request->role,
-                    'birthday' => $request->birthday,
-                    'tel_number' => $request->telephone,
-                ]);
+                if($request->has('email_verify')){
+                    $user = User::create([
+                        'f_name' => $request->f_name,
+                        'l_name' => $request->l_name,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->pass),
+                        'role' => $request->role,
+                        'birthday' => $request->birthday,
+                        'tel_number' => $request->telephone,
+                        'email_verified_at' => now(),
+                    ]);
 
-                event(new Registered($user));
+                    return redirect()->route('users');
+                }
+                else{
+                    $user = User::create([
+                        'f_name' => $request->f_name,
+                        'l_name' => $request->l_name,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->pass),
+                        'role' => $request->role,
+                        'birthday' => $request->birthday,
+                        'tel_number' => $request->telephone,
+                    ]);
+                    event(new Registered($user));
 
-                return redirect()->route('users');
+                    return redirect()->route('users');
+                }
             }
             else{
                 return redirect()->route('home');
@@ -125,11 +141,12 @@ class AdminController extends Controller
                     'f_name' => 'required',
                     'l_name' => 'required',
                     'email' => 'required',
-                    'pass' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
-                    'c_pass' => 'required|same:pass',
+                    'pass' => 'nullable|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
+                    'c_pass' => 'nullable|same:pass',
                     'role' => 'required',
                     'birthday' => 'required',
                     'telephone' => 'required',
+                    'email_verify' => 'nullable',
                 ], 
                 [
                     'f_name.required' => __('validation.custom.f_name.required'),
@@ -158,6 +175,12 @@ class AdminController extends Controller
                     'birthday' => $request->birthday,
                     'tel_number' => $request->telephone,
                 ]);
+
+                if($request->has('email_verify')){
+                    User::where('id', $id)->update([
+                        'email_verified_at' => now(),
+                    ]);
+                }
 
                 return redirect()->route('users');
             }

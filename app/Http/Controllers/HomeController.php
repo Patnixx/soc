@@ -21,4 +21,14 @@ class HomeController extends Controller
         }
         return view('home.home', compact('cars'));
     }
+
+    public function credits(){
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $unread = $this->checkMails(); 
+            return view('credits.index', compact('user', 'unread'));
+        }
+        return view('credits.index');
+    }
 }

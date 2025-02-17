@@ -45,22 +45,6 @@ Route::post('/custom-register', [AuthController::class, 'registerAuth'])->name('
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //!SECTION Email verify routes
-/*Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send'); */
-
 Route::get('/email/verify', [AuthController::class, 'notice'])->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [AuthController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
@@ -130,10 +114,11 @@ Route::get('/events/{id}/edit', [OccasionController::class, 'edit'])->name('even
 Route::post('/events/{id}/update', [OccasionController::class, 'update'])->name('events.update');
 Route::post('/events/{id}/delete', [OccasionController::class, 'delete'])->name('events.delete');
 
-//FIXME - Add this functions
+/*FIXME - Add this functions
 Route::get('/inbox/{id}/reply', [InboxController::class, 'replyMessage'])->name('message.reply');
-Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply');
+Route::post('/inbox/{id}/reply/send', [InboxController::class, 'sendReply'])->name('custom.reply'); */
 
+//!SECTION Locale
 Route::post('/set-language', [LocaleController::class, 'setLanguage'])->name('set.language');
 
 //!SYLLABS
@@ -166,3 +151,6 @@ Route::post('/materials/{syllab}/{id}/delete', [MaterialController::class, 'dele
 
 //!CARS
 Route::resource('/cars', CarController::class);
+
+//!CREDITS
+Route::get('/credits', [HomeController::class, 'credits'])->name('credits');

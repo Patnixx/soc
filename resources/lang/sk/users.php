@@ -24,4 +24,5 @@ return [
     'password' => 'Heslo',
     'c-pass' => 'Potvrdenie hesla',
     'save' => 'Uložiť',
+    'checkbox-label' => 'Overiť email',
 ];

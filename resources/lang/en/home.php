@@ -14,4 +14,10 @@ return [
     'address-title' => 'Address',
     'phone' => 'Phone contact',
     'email' => 'Email',
+
+    'credits' => 'Credits',
+    'styling' => 'Styling',
+    'icons' => 'Icons',
+    'hosting' => 'Webhosting',
+    'developed-by' => 'Developed by',
 ];

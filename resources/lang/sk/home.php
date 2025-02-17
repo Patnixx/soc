@@ -14,4 +14,10 @@ return [
     'address-title' => 'Adresa',
     'phone' => 'Telefónny kontakt',
     'email' => 'Email',
+
+    'credits' => 'Zdroje',
+    'styling' => 'Štýlovanie',
+    'icons' => 'Ikony',
+    'hosting' => 'Webhosting',
+    'developed-by' => 'Vytvoril',
 ];
