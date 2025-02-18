@@ -1,5 +1,5 @@
 @extends('structures.main')
-@section('title', 'chasmakar buzerant create')
+@section('title', ''.__('car.add'))
 @section('content')
 <div class="container mx-auto max-w-[90%] md:max-w-[70%] mt-20 md:mt-32 rounded-lg shadow-lg bg-white dark:bg-gray-900 p-6 my-8 transition-all duration-300 ease-linear">
     <h2 class="text-2xl font-bold dark:text-white text-gray-900 mb-6">{{__('car.add')}}:</h2>

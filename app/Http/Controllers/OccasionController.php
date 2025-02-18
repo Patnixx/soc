@@ -15,9 +15,10 @@ class OccasionController extends Controller
     //
     public function index(){
         $user = Auth::user();
-        $userId = $user->id;
-        if($user->role != 'User')
-        {   
+        
+        if(Auth::check() && $user->role != 'User')
+        {
+            $userId = $user->id;
             if($user->role == 'Admin')
             {
                 $events = Occasion::with('course')->simplePaginate(5);
@@ -51,12 +52,12 @@ class OccasionController extends Controller
                 return view('occasion.index', compact('user', 'events', 'courseInfo', 'unread'));
             }
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function create_theory(){
         $user = Auth::user();
-        if($user->role != 'User')
+        if(Auth::check() && $user->role != 'User')
         {
             if($user->role == 'Teacher')
             {
@@ -70,13 +71,14 @@ class OccasionController extends Controller
                 $unread = $this->checkMails();
                 return view('occasion.create-theory', compact('user', 'courses', 'unread'));
             }
-            return redirect()->back();
+            return view('errors.403');
         }
+        return view('errors.403');
     }
 
     public function create_ride(){
         $user = Auth::user();
-        if($user->role != 'User')
+        if(Auth::check() && $user->role != 'User')
         {
             if($user->role == 'Teacher')
             {
@@ -90,31 +92,35 @@ class OccasionController extends Controller
                 $unread = $this->checkMails();
                 return view('occasion.create-ride', compact('user', 'courses', 'unread'));
             }
-            return redirect()->back();
+            return view('errors.403');
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function assign_ride(Request $request){
         $user = Auth::user();
-        if($user->role == 'Teacher' || $user->role == 'Admin')
+        if(Auth::check())
         {
-            $request->validate([
-                'course' => 'required',
-            ]);
+            if($user->role == 'Teacher' || $user->role == 'Admin')
+            {
+                $request->validate([
+                    'course' => 'required',
+                ]);
 
-            $courseid = $request->course;
+                $courseid = $request->course;
 
-            $students = CourseUser::with('user')->where('course_id', $courseid)->get();
-            $unread = $this->checkMails();
-            return view('occasion.assign-ride', compact('user', 'students', 'courseid', 'unread'));
+                $students = CourseUser::with('user')->where('course_id', $courseid)->get();
+                $unread = $this->checkMails();
+                return view('occasion.assign-ride', compact('user', 'students', 'courseid', 'unread'));
+            }
+            return view('errors.403');
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function store_theory(Request $request){
         $user = Auth::user();
-        if($user->role != 'User')
+        if(Auth::check() && ($user->role != 'User' || $user->role != 'Student'))
         {
             $request->validate([
                 'course' => 'required',
@@ -153,11 +159,12 @@ class OccasionController extends Controller
             }  
             return redirect()->route('events');
         }
+        return view('errors.403');
     }
 
     public function store_ride(Request $request, $courseid){
         $user = Auth::user();
-        if($user->role != 'User')
+        if(Auth::check() && ($user->role != 'User' || $user->role != 'Student'))
         {
             $request->validate([
                 'name' => 'required',
@@ -194,6 +201,8 @@ class OccasionController extends Controller
             
             return redirect()->route('events');
         }
+        return view('errors.403');
+
     }
 
     public function edit($id)
@@ -202,7 +211,7 @@ class OccasionController extends Controller
         $event = Occasion::where('id', $id)->first();
         $course = Course::where('id', $event->course_id)->first();
         $students = CourseUser::with('user')->where('course_id', $event->course_id)->get();
-        if($user->role != 'User' && $user->role != 'Student')
+        if(Auth::check() && ($user->role != 'User' || $user->role != 'Student'))
         {
             if($event->type == 'Theory')
             {
@@ -227,14 +236,14 @@ class OccasionController extends Controller
                 }
             }
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function update(Request $request, $id)
     {
         $event = Occasion::where('id', $id)->first();
         $user = Auth::user();
-        if($user->role != 'User' && $user->role != 'Student')
+        if(Auth::check() && ($user->role != 'User' && $user->role != 'Student'))
         {
             if($event->type == 'Theory')
             {
@@ -267,13 +276,13 @@ class OccasionController extends Controller
                 return redirect()->route('events');
             }
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function delete($id)
     {
         $user = Auth::user();
-        if($user->role != 'User' && $user->role != 'Student')
+        if(Auth::check() && ($user->role != 'User' && $user->role != 'Student'))
         {
             if($user->role == 'Teacher' || $user->role == 'Admin')
             {
@@ -281,6 +290,6 @@ class OccasionController extends Controller
                 return redirect()->route('events');
             }
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 }

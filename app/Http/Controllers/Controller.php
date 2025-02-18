@@ -17,18 +17,22 @@ class Controller extends BaseController
     public function checkMails()
     {
         $user = Auth::user();
-        $unread = Message::where('receiver_id', $user->id)->where('is_read', 0)->count();
-        if($unread == 0){
-            return 0;
-        }
-        elseif($unread > 0 && $unread <= 9)
+        if(Auth::check())
         {
-            return $unread;
+            $unread = Message::where('receiver_id', $user->id)->where('is_read', 0)->count();
+            if($unread == 0){
+                return 0;
+            }
+            elseif($unread > 0 && $unread <= 9)
+            {
+                return $unread;
+            }
+            elseif($unread > 9)
+            {
+                return '9+';
+            }
         }
-        elseif($unread > 9)
-        {
-            return '9+';
-        }
+        return redirect()->back();
     }
 
     function cleanString($text) {

@@ -1,5 +1,5 @@
 @extends('structures.main')
-@section('title', 'chasmakar buzerant edit')
+@section('title', ''.__('car.edit'))
 @section('content')
 <div class="container mx-auto max-w-4xl sm:max-w-1/2 mt-20 p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg transition-all duration-300 ease-linear">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Edit Car:</h2>

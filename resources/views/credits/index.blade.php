@@ -16,6 +16,10 @@
             <li><a href="https://storyset.com/transport" target="_blank" title="transport illustrations" class="text-m-blue hover:underline">Transport illustrations by Storyset</a></li>
             <li><a href="https://storyset.com/people" target="_blank" title="people illustrations" class="text-m-blue hover:underline">People illustrations by Storyset</a></li>
             <li><a href="https://storyset.com/car" target="_blank" title="car illustrations" class="text-m-blue hover:underline">Car illustrations by Storyset</a></li>
+            <li><a href="https://storyset.com/web" target="_blank" title="web illustrations" class="text-m-blue hover:underline">Web illustrations by Storyset</a></li>
+            <li><a href="https://storyset.com/internet" target="_blank" title="internet illustrations" class="text-m-blue hover:underline">Internet illustrations by Storyset</a></li>
+            <li><a href="https://storyset.com/work" target="_blank" title="internet illustrations" class="text-m-blue hover:underline">Work illustrations by Storyset</a></li>
+            <li><a href="https://storyset.com/worker" target="_blank" title="internet illustrations" class="text-m-blue hover:underline">Worker illustrations by Storyset</a></li>
         </ul>
         <div class="flex flex-row space-x-8 pt-8">
             <x-theme-div :spanSide="'right-14'"/>

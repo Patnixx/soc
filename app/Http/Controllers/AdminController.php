@@ -17,10 +17,10 @@ class AdminController extends Controller
                 return view('admin.admin', compact('user'));
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
-        return redirect('/');
+        return view('errors.403');
     }
 
     //*SECTION User CRUD methods
@@ -32,10 +32,10 @@ class AdminController extends Controller
                 return view('admin.users.users', compact('user', 'accounts'));
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
-        return redirect('/');
+        return view('errors.403');
     }
 
     public function usersCreate(){
@@ -45,10 +45,10 @@ class AdminController extends Controller
                 return view('admin.users.create', compact('user'));
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
-        return redirect('/');
+        return view('errors.403');
     }
 
     public function usersStore(Request $request){
@@ -113,10 +113,10 @@ class AdminController extends Controller
                 }
             }
             else{
-                return redirect()->route('home');
+                return view('errors.403');
             }
         }
-        return redirect()->route('home');
+        return view('errors.403');
     }
 
     public function usersEdit($id){
@@ -127,7 +127,7 @@ class AdminController extends Controller
                 return view('admin.users.edit', compact('user', 'account'));
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
         return redirect('/');
@@ -190,10 +190,10 @@ class AdminController extends Controller
                 return redirect()->route('users');
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
-        return redirect('/');
+        return view('errors.403');
     }
 
     public function usersDelete($id){
@@ -203,9 +203,9 @@ class AdminController extends Controller
                 return redirect()->route('users');
             }
             else{
-                return redirect('/');
+                return view('errors.403');
             }
         }
-        return redirect('/');
+        return view('errors.403');
     }
 }

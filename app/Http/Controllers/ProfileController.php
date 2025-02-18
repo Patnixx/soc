@@ -19,6 +19,7 @@ class ProfileController extends Controller
             $unread = $this->checkMails();
             return view('profile.index', compact('user', 'unread'));   ;
         }
+        return redirect()->route('home');
     }
 
     public function updatePersonal(Request $request)
@@ -91,7 +92,7 @@ class ProfileController extends Controller
 
         if($request->current_password == $request->password)
         {
-           return redirect()->route('profile')->withErrors(['password' => 'New password cannot be the same as the current password']);
+            return redirect()->route('profile')->withErrors(['password' => 'New password cannot be the same as the current password']);
         }
 
         $pass = Hash::make($request->password);
@@ -128,19 +129,6 @@ class ProfileController extends Controller
         else
         {
             return redirect()->route('profile')->withErrors(['password' => 'Password is incorrect']);
-        }
-    }
-
-    public function creditsIndex(){
-        $user = Auth::user();
-        if($user->role != 'Admin')
-        {
-            $unread = $this->checkMails();
-            return view('profile.credits.index', compact('user', 'unread'));
-        }
-        else
-        {
-            return redirect()->route('home');
         }
     }
 }

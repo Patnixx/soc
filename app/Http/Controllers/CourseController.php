@@ -125,12 +125,19 @@ class CourseController extends Controller
 
     public function courseCreate(){
         $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         $teachers = User::where('role', 'teacher')->get();
         $unread = $this->checkMails();
         return view('course.courses.course', compact('user', 'teachers', 'unread'));
     }
 
     public function sendCreate(Request $request){
+        $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         $request->validate([
             'name' => 'required',
             'teacher' => 'required',
@@ -140,11 +147,6 @@ class CourseController extends Controller
             'class' => 'required',
         ]);
 
-        if(Auth::user()->role == 'Teacher'){
-            $id = Auth::id();
-        } else {
-            $id = null;
-        }
         Course::create([
             'teacher_id' => $request->teacher,
             'name' => $request->name,
@@ -163,7 +165,10 @@ class CourseController extends Controller
 
     public function assignCourse($id){
         $user = Auth::user();
-        if(Auth::user()->role == 'Teacher' || Auth::user()->role == 'Admin'){
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
+        if($user->role == 'Teacher' || $user->role == 'Admin'){
             $course = Course::with('teacher')->where('id',$id)->first();
             $forms = Form::where('approval', "Waiting")
             ->where('season', $course->season)
@@ -175,12 +180,15 @@ class CourseController extends Controller
             return view('course.courses.assign', compact('user', 'course', 'students', 'forms', 'unread'));
         } 
         else {
-            return redirect()->route('progress');
+            return view('errors.403');
         }
     }
 
     public function userAssign($id, $courseid){
         $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         if($user->role == 'Teacher' || $user->role == 'Admin')
         {
             CourseUser::create([
@@ -207,12 +215,15 @@ class CourseController extends Controller
             ]);*/
             return redirect()->route('progress');
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function unassignCourse($id){
         $user = Auth::user();
         $unread = $this->checkMails();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         if($user->role == 'Admin' || $user->role == 'Teacher') {
             $course = Course::with('teacher')->where('id',$id)->first();
             $course_users = CourseUser::with(['course', 'user'])->where('course_id', $id)->get();
@@ -220,17 +231,19 @@ class CourseController extends Controller
             
             return view('course.courses.unassign', compact('user', 'unread', 'course', 'students', 'course_users'));
         }
-        return redirect()->back();
+        return view('errors.403');
     }
 
     public function userUnassign($id, $courseId){
         $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         if($user->role == 'Admin' || $user->role == 'Teacher') {
-            $course = Course::where('id', $courseId)->first();
             CourseUser::where('course_id', $courseId)->where('user_id', $id)->delete();
             return redirect()->route('progress');
         }
-        return redirect()->back();
+        return view('errors.403');
     }
     
 
@@ -245,6 +258,9 @@ class CourseController extends Controller
 
     public function editCourse($id){
         $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         $course = Course::where('id',$id)->first();
         $teacher = User::where('id', $course->teacher_id)->first();
         $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
@@ -253,6 +269,10 @@ class CourseController extends Controller
     }
 
     public function updateCourse(Request $request, $id){
+        $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         $request->validate([
             'name' => 'required',
             'desc' => 'required',
@@ -276,6 +296,10 @@ class CourseController extends Controller
     }
 
     public function deleteCourse($id){
+        $user = Auth::user();
+        if(!(Auth::check()) || ($user->role == 'Student' || $user->role == 'User')){
+            return view('errors.403');
+        }
         Course::where('id',$id)->delete();
         CourseUser::where('course_id',$id)->delete();
         return redirect()->route('progress');
