@@ -41,7 +41,7 @@ class CarController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        if(!(Auth::check()) || ($user->role != 'Admin' || $user->role != 'Teacher'))
+        if(!(Auth::check()) && ($user->role != 'Admin' || $user->role != 'Teacher'))
         {
             return view('errors.403');
         }
@@ -93,7 +93,7 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        if(!(Auth::check()) || ($user->role != 'Admin' || $user->role != 'Teacher'))
+        if(!(Auth::check()) && ($user->role != 'Admin' || $user->role != 'Teacher'))
         {
             return view('errors.403');
         }
@@ -108,7 +108,7 @@ class CarController extends Controller
             'gearbox' => 'required|string|max:255',
             'drive' => 'required|string|max:255',
             'mileage' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $car->update($request->all());
@@ -135,17 +135,14 @@ class CarController extends Controller
     public function destroy($id)
     {
         $user = Auth::user();
-        if(!(Auth::check()) || ($user->role != 'Admin' || $user->role != 'Teacher'))
+        if(!(Auth::check()) && ($user->role != 'Admin' || $user->role != 'Teacher'))
         {
             return view('errors.403');
         }
         $car = Car::findOrFail($id);
         foreach ($car->images as $image) {
-            $imagePath = 'public/car_images/' . $image->image_name;
-            if (Storage::exists($imagePath)) {
-                Storage::delete($imagePath);
-            }
-
+            $imagePath = public_path('assets/car_images/');
+            File::delete($imagePath . $image->image_name);
             $image->delete();
         }
         $car->delete();

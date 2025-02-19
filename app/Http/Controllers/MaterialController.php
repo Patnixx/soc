@@ -183,7 +183,7 @@ class MaterialController extends Controller
     public function unlock_syllab(Request $request, $id)
     {
         $user = Auth::user();
-        if(!(Auth::check()) || $user->role != 'Admin' || $user->role != 'Teacher')
+        if(!(Auth::check()) && ($user->role != 'Admin' || $user->role != 'Teacher'))
         {
             return view('errors.403');
         }
@@ -588,8 +588,66 @@ class MaterialController extends Controller
         {
             if($user->role == 'Admin' || $user->role == 'Teacher')
             {
-                Material::where('id', $id)->delete();
-                return redirect()->route('lecture.view', $syllab);
+                $material = Material::where('id', $id)->first();
+                //NOTE - This is a final child
+                if($material->syllab_id != null && $material->elder_id != null && $material->parent_id != null)
+                {
+                    $imgName = $material->img_name;
+                    $extensions = ['jpg', 'jpeg', 'png'];
+                    $imgPath = '';
+                    foreach ($extensions as $ext) {
+                        if (file_exists(public_path('assets/'.$syllab . '/' . $imgName . '.' . $ext))) {
+                            $imgPath = public_path('assets/'. $syllab . '/' . $imgName . '.' . $ext);
+                            File::delete($imgPath);
+                        }
+                    }
+                    Material::where('id', $id)->delete();
+                    return redirect()->route('lecture.view', $syllab);
+                }
+
+                //NOTE - This is a parent
+                if($material->syllab_id != null && $material->elder_id != null && $material->parent_id == null)
+                {
+                    $children = Material::where('parent_id', $id)->get();
+                    foreach ($children as $child) {
+                        $imgName = $child->img_name;
+                        $extensions = ['jpg', 'jpeg', 'png'];
+                        $imgPath = '';
+                        foreach ($extensions as $ext) {
+                            if (file_exists(public_path('assets/'.$syllab . '/' . $imgName . '.' . $ext))) {
+                                $imgPath = public_path('assets/'. $syllab . '/' . $imgName . '.' . $ext);
+                                File::delete($imgPath);
+                                Material::where('id', $child->id)->delete();
+                            }
+                        }
+                    }
+                    Material::where('id', $id)->delete();
+                    return redirect()->route('lecture.view', $syllab);
+                }
+
+                //NOTE - This is a main theme
+                if($material->syllab_id != null && $material->elder_id == null && $material->parent_id == null)
+                {
+                    $children = Material::where('elder_id', $id)->get();
+                    foreach ($children as $child) {
+                        if($child->img_name)
+                        {
+                            $imgName = $child->img_name;
+                            $extensions = ['jpg', 'jpeg', 'png'];
+                            $imgPath = '';
+                            foreach ($extensions as $ext) {
+                                if (file_exists(public_path('assets/'.$syllab . '/' . $imgName . '.' . $ext))) {
+                                    $imgPath = public_path('assets/'. $syllab . '/' . $imgName . '.' . $ext);
+                                    File::delete($imgPath);
+                                    Material::where('id', $child->id)->delete();
+                                }
+                            }
+                        }
+                        Material::where('id', $child->id)->delete();
+                    }
+                    Material::where('id', $id)->delete();
+                    return redirect()->route('lecture.view', $syllab);
+                }
             }
             return view('errors.403');
         }

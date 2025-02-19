@@ -37,7 +37,7 @@ return new class extends Migration
                 'birthday' => '2006-01-23',
                 'tel_number' => '0123 456 789',
                 'email' => 'admin@nixxy.com',
-                'password' => Hash::make('Jebemboha'),
+                'password' => Hash::make('Wkq612ub2v*'),
                 'email_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
