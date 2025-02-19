@@ -26,8 +26,9 @@ class courseDiv extends Component
     public $pclass;
     public $sclass;
     public $tclass;
+    public $course;
     
-    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id, $students="", $divclass="", $hclass="", $pclass="", $sclass="", $tclass="")
+    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id, $students="", $divclass="", $hclass="", $pclass="", $sclass="", $tclass="", $course)
     {
         //
         $this->name = $name;
@@ -44,7 +45,7 @@ class courseDiv extends Component
         $this->pclass = $pclass;
         $this->sclass = $sclass;
         $this->tclass = $tclass;
-        
+        $this->course = $course;
     }
 
     /**

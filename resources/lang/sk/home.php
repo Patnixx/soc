@@ -9,6 +9,7 @@ return [
     'personel-title' => 'Náš personál',
     'personel' => 'Inštruktori v Autoškole Nixxy sú skúsení profesionáli s trpezlivým a priateľským prístupom. Svojich študentov vedú s dôrazom na bezpečnosť, sebaistotu a zvládnutie všetkých dôležitých pravidiel cestnej premávky. Ich cieľom je naučiť vás jazdiť nielen pre vodičský preukaz, ale aj pre každodennú bezpečnú jazdu.',
     'cars-title' => 'Naše autá',
+    'gallery' => 'Galéria áut',
     'year' => 'Ročník',
     'contact' => 'Kontakt',
     'address-title' => 'Adresa',

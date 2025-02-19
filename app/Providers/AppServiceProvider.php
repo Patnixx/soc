@@ -9,6 +9,7 @@ use App\View\Components\authHref;
 use App\View\Components\authIconDiv;
 use App\View\Components\courseDiv;
 use App\View\Components\courseInputDiv;
+use App\View\Components\courseUserDiv;
 use App\View\Components\formDiv;
 use App\View\Components\formInputDiv;
 use App\View\Components\inputDiv;
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('form-input-div', formInputDiv::class);
         Blade::component('course-input-div', courseInputDiv::class);
         Blade::component('input-div', inputDiv::class);
+        Blade::component('course-user-div', courseUserDiv::class);
         if(Auth::check())
         {
             $lang = Auth::user()->language;

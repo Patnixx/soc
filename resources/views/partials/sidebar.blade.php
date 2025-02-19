@@ -1,7 +1,7 @@
 <div class="flex">
     <div x-data="{ open: true }">
         <div class="fixed z-50 top-0 left-0 h-full w-16 bg-white dark:bg-gray-900 text-white shadow-lg transition-all duration-300 ease-linear"
-            :class="{ '-translate-x-full': open === false }">
+            :class="{ '-translate-x-full': open === true }">
             <div class="flex flex-col md:justify-between h-full pt-6 overflow-scroll md:overflow-visible">
                 <div class="flex flex-col items-center justify-center justify-self-start">
                     <x-icon-div :icon="'bi bi-house'" :text="'home'" :route="'/'" :sclass="'left-14'"/>        

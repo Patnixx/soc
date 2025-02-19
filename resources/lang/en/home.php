@@ -9,6 +9,7 @@ return [
     'personel-title' => 'Our staff',
     'personel' => 'The instructors at Nixxy Driving School are experienced professionals with a patient and friendly approach. They guide their students with a focus on safety, confidence, and mastering all essential traffic rules. Their goal is to teach you to drive not just to pass your license test but to ensure safe driving in everyday life.',
     'cars-title' => 'Our cars',
+    'gallery' => 'Car gallery',
     'year' => 'Year',
     'contact' => 'Contact',
     'address-title' => 'Address',

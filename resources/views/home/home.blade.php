@@ -43,7 +43,7 @@
             @endforeach
         </div>
         <h2 class="dark:text-gray-400 dark:hover:text-m-blue text-m-blue hover:text-gray-900 transition duration-300 text-center pt-6">
-            <a href="{{route('cars.index')}}">Car Gallery</a>
+            <a href="{{route('cars.index')}}">{{__('home.gallery')}}</a>
         </h2>
     </section>
     @include('partials.homepage-footer')

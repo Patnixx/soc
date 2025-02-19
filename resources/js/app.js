@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 /[a-z]/, // Lowercase letters
                 /[A-Z]/, // Uppercase letters
                 /\d/,    // Numbers
-                /[@$!%*?&#]/, // Special characters
+                /[@$!%*?&#€]/, // Special characters
                 /.{8,}/, // Minimum length
             ];
     

@@ -8,6 +8,8 @@ return [
     'email' => 'E-mail',
     'tel' => 'Telefónne číslo',
     'birth' => 'Dátum narodenia',
+    'pfp-title' => 'Zmeniť profilovú fotku',
+    'file' => 'Nahrať súbor',
     'save' => 'Uložiť',
     'cancel' => 'Zrušiť',
 

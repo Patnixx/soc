@@ -18,6 +18,7 @@
         :pclass="'dark:text-white text-m-blue'"
         :sclass="'dark:text-m-blue text-gray-900'"
         :tclass="'text-lg md:text-xl font-semibold mb-4 text-m-blue dark:text-white'"
+        :course="$course"
         />
     </section>
 </div>

@@ -22,6 +22,8 @@
             :students="''.$students.''"
             :pclass="'dark:text-white text-m-blue'"
             :sclass="'dark:text-m-blue text-gray-900'"
+            :divclass="''" :hclass="''" :tclass="''"
+            :course="$course"
             />
         </section>
         <section id="right">

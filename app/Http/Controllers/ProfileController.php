@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseUser;
+use App\Models\Form;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -123,6 +126,18 @@ class ProfileController extends Controller
         if(Hash::check($request->password, $pass))
         {
             Auth::logout();
+            $forms = Form::where('user_id', $userId)->get();
+            foreach($forms as $form){
+                Form::where('id', $form->id)->delete();
+            }
+            $messages = Message::where('sender_id', $userId)->orWhere('receiver_id', $userId)->get();
+            foreach($messages as $message){
+                Message::where('id', $message->id)->delete();
+            }
+            $courses = CourseUser::where('user_id', $userId)->get();
+            foreach($courses as $course){
+                CourseUser::where('id', $course->id)->delete();
+            }
             User::where('id', $userId)->delete();
             return redirect()->route('home');
         }

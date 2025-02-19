@@ -8,6 +8,8 @@ return [
     'email' => 'Email',
     'tel' => 'Phone number',
     'birth' => 'Date of birth',
+    'pfp-title' => 'Change profile picture',
+    'file' => 'Upload file',
     'save' => 'Save',
     'cancel' => 'Cancel',
 

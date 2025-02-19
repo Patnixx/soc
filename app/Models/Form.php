@@ -18,7 +18,8 @@ class Form extends Model
         'season',
         'length',
         'class',
-        'reason'
+        'reason',
+        'approval',
     ];
 
     public function user()

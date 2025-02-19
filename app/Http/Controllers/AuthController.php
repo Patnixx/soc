@@ -72,7 +72,7 @@ class AuthController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/|confirmed',
+            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&€]/|confirmed',
         ], [
             'password.required' => __('validation.custom.pass.required'),
             'password.min' => __('validation.custom.pass.min'),
@@ -108,7 +108,7 @@ class AuthController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/',
+            'password' => 'required|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*#?&]€/',
             'c_pass' => 'required|same:password',
             'birthday' => 'required',
             'telephone' => 'required',

@@ -89,31 +89,63 @@ class CourseController extends Controller
 
     public function updateForm(Request $request, $id)
     {
-        $request->validate([
-            'f_name' => 'required',
-            'l_name' => 'required',
-            'email' => 'required',
-            'birthday' => 'required',
-            'season' => 'required',
-            'length' => 'required',
-            'class' => 'required',
-            'reason' => 'required',
-            'approval' => 'required',
-        ]);
+        $user = Auth::user();
+        if(Auth::check())
+        {
+            if($user->role == 'Admin' || $user->role == 'Teacher')
+            {
+                dd('Admin or Teacher');
+                $request->validate([
+                    'f_name' => 'required',
+                    'l_name' => 'required',
+                    'email' => 'required',
+                    'birthday' => 'required',
+                    'season' => 'required',
+                    'length' => 'required',
+                    'class' => 'required',
+                    'reason' => 'required',
+                    'approval' => 'required',
+                ]);
 
-        Form::where('id', $id)->update([
-            'f_name' => $request->f_name,
-            'l_name' => $request->l_name,
-            'email' => $request->email,
-            'birthday' => $request->birthday,
-            'season' => $request->season,
-            'length' => $request->length,
-            'class' => $request->class,
-            'reason' => $request->reason,
-            'approval' => $request->approval,
-        ]);
+                Form::where('id', $id)->update([
+                    'f_name' => $request->f_name,
+                    'l_name' => $request->l_name,
+                    'email' => $request->email,
+                    'birthday' => $request->birthday,
+                    'season' => $request->season,
+                    'length' => $request->length,
+                    'class' => $request->class,
+                    'reason' => $request->reason,
+                    'approval' => $request->approval,
+                ]);
 
-        return redirect()->route('progress');
+                return redirect()->route('progress');
+            }
+            $request->validate([
+                'f_name' => 'required',
+                'l_name' => 'required',
+                'email' => 'required',
+                'birthday' => 'required',
+                'season' => 'required',
+                'length' => 'required',
+                'class' => 'required',
+                'reason' => 'required',
+            ]);
+
+            Form::where('id', $id)->update([
+                'f_name' => $request->f_name,
+                'l_name' => $request->l_name,
+                'email' => $request->email,
+                'birthday' => $request->birthday,
+                'season' => $request->season,
+                'length' => $request->length,
+                'class' => $request->class,
+                'reason' => $request->reason,
+                'approval' => 'Waiting',
+            ]);
+
+            return redirect()->route('progress');
+        }
     }
 
     public function deleteForm($id){
@@ -145,6 +177,7 @@ class CourseController extends Controller
             'season' => 'required',
             'length' => 'required',
             'class' => 'required',
+            'status' => 'required',
         ]);
 
         Course::create([
@@ -154,7 +187,7 @@ class CourseController extends Controller
             'season' => $request->season,
             'length' => $request->length,
             'class' => $request->class,
-            'status' => 'Open',
+            'status' => $request->status,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

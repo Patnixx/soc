@@ -5,6 +5,7 @@
     </h2>
     <form method="POST" action="{{route('form.update', $id)}}" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
         @csrf
+        @method('PUT')
         <div class="left">
             @foreach ([
                 ['f_name', __('courses.f-name'), $fname],

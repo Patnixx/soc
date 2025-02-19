@@ -71,7 +71,7 @@ return [
 
     //icons
     'assign' => 'Assign',
-    'unasign' => 'Unassign',
+    'unassign' => 'Unassign',
     'detail' => 'Detail',
     'edit' => 'Edit',
     'delete' => 'Delete',

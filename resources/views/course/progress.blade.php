@@ -4,7 +4,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-12 px-4 md:px-8">
     @if($user->role == 'Admin')
         <section id="left" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.courses')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses-click')}} <span class="italic">{{__('courses.course-create')}}</span> </p>
             @endif
@@ -16,19 +16,22 @@
                 :class="$course->class" 
                 :length="$course->length" 
                 :status="$course->status" 
-                :season="$course->season" 
+                :season="$course->season"
+                :students="$course->students"
+                :divclass="''" :hclass="''" :tclass="''" 
                 :id="$course->id"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
+                :course="$course"
                 />                
             @endforeach
             <div class="flex flex-row justify-center items-center">
-                <a href="{{route('course.create')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition">{{__('courses.course-create')}}</a>       
+                <a href="{{route('course.create')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition-all duration-300 ease-linear">{{__('courses.course-create')}}</a>       
             </div>
         </section>
 
         <section id="right" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.forms')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-forms-click')}} <span class="italic">{{__('courses.form-create')}}</span></p>
             @endif
@@ -50,14 +53,14 @@
                 :sclass="'dark:text-m-blue text-gray-900'"></x-form-div>
             @endforeach
             <div class="flex flex-row justify-center items-center">
-                <a href="{{route('course.form')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition">{{__('courses.form-create')}}</a>       
+                <a href="{{route('course.form')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition-all duration-300 ease-linear">{{__('courses.form-create')}}</a>       
             </div>
         </section>
     @endif
 
     @if($user->role == 'Teacher')
         <section id="left" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.courses')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses-click')}} <span class="italic">{{__('courses.course-create')}}</span> </p>
             @endif
@@ -73,14 +76,17 @@
                 :students="$course->students"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'" 
-                :id="$course->id"/>                
+                :id="$course->id"
+                :divclass="''" :hclass="''" :tclass="''" 
+                :course="$course"
+                />                
             @endforeach
             <div class="flex flex-row justify-center items-center">
-                <a href="{{route('course.create')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition">{{__('courses.course-create')}}</a>       
+                <a href="{{route('course.create')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition-all duration-300 ease-linear">{{__('courses.course-create')}}</a>       
             </div>        
         </section>
         <section id="right" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.forms')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-forms')}} {{__('courses.no-forms-wait')}} {{__('courses.no-forms-teacher')}}</p>
             @endif
@@ -106,7 +112,7 @@
 
     @if($user->role == 'Student' || $user->role == 'User')
         <section id="left" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.courses')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.courses')}}:</h1>
             @if($courses->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-courses-student')}}</p>
             @endif
@@ -121,12 +127,14 @@
                 :season="$course->course->season"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
-                :id="$course->id"/>                
+                :id="$course->id"
+                :divclass="''" :hclass="''" :tclass="''"
+                :course="$course->course"/>                
             @endforeach
         </section>
 
         <section id="right" class="space-y-6">
-            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all">{{__('courses.forms')}}:</h1>
+            <h1 class="text-2xl text-center underline font-bold text-gray-800 dark:text-gray-200 transition-all duration-300 ease-linear-all">{{__('courses.forms')}}:</h1>
             @if($forms->isEmpty())
                 <p class="text-lg text-center text-gray-800 dark:text-gray-200">{{__('courses.no-forms-student')}}</p>
             @endif
@@ -148,7 +156,7 @@
                 :approval="$form->approval"></x-form-div>
             @endforeach
             <div class="flex flex-row justify-center items-center">
-                <a href="{{route('course.form')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition">{{__('courses.form-create')}}</a>       
+                <a href="{{route('course.form')}}" class="block h-12 w-48 text-center dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition-all duration-300 ease-linear">{{__('courses.form-create')}}</a>       
             </div>
         </section>
     @endif

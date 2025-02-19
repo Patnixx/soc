@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseUser;
+use App\Models\Form;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -199,6 +202,18 @@ class AdminController extends Controller
     public function usersDelete($id){
         if(Auth::check()){
             if(Auth::user()->role=="Admin"){
+                $forms = Form::where('user_id', $id)->get();
+                foreach($forms as $form){
+                    Form::where('id', $form->id)->delete();
+                }
+                $messages = Message::where('sender_id', $id)->orWhere('receiver_id', $id)->get();
+                foreach($messages as $message){
+                    Message::where('id', $message->id)->delete();
+                }
+                $courses = CourseUser::where('user_id', $id)->get();
+                foreach($courses as $course){
+                    CourseUser::where('id', $course->id)->delete();
+                }
                 User::where('id', $id)->delete();
                 return redirect()->route('users');
             }

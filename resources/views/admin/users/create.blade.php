@@ -25,11 +25,11 @@
                     <label for="email" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.email')}}</label>
                     <div class="flex items-center justify-end space-x-2">
                         <label for="email_verify" class="text-sm font-medium dark:text-white text-gray-900">{{__('users.checkbox-label')}}</label>
-                        <input name="email_verify" type="checkbox" id="email_verify" class="rounded border-gray-300 dark:bg-gray-800 dark:border-gray-700 text-m-blue focus:ring-m-blue">
+                        <input name="email_verify" type="checkbox" id="email_verify" value="" class="rounded border-gray-300 dark:bg-gray-800 dark:border-gray-700 text-m-blue focus:ring-m-blue">
                     </div>
                 </div>
                 <div class="form-group relative w-full">
-                    <input type="email" name="email" id="email" class="w-full py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear" placeholder="{{__('auth.email')}}" @error('email') value="{{old('email')}}" @enderror value="" required>
+                    <input type="email" name="email" id="email" class="w-full py-3 pl-10 pr-4 dark:bg-gray-800 dark:text-white bg-slate-200 rounded-lg focus:ring-1 dark:focus:ring-m-blue focus:ring-gray-900 transition-all duration-300 ease-linear" placeholder="{{__('auth.email')}}" @error('email') value="{{old('email')}}" @enderror value="{{ old('email')}}" required>
                     <i class="absolute left-3 top-1/2 transform -translate-y-1/2 bi bi-envelope text-gray-900 dark:text-m-blue"></i>
                 </div> 
                 @error('email')

@@ -55,13 +55,13 @@
                                 
                                 <div>
                                     <label for="fileInput" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
-                                        Change profile picture
+                                        {{__('profile.pfp-title')}}
                                     </label>
                                     <label for="fileInput" class="inline-flex items-center px-6 py-2 rounded-lg cursor-pointer text-center border-gray-300 dark:border-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 space-x-2 mt-1 w-full sm:w-3/4 h-8 pl-2 transition-all ease-linear duration-300">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                         </svg>
-                                        <span id="fileName">Upload file</span>
+                                        <span id="fileName">{{__('profile.file')}}</span>
                                         <input type="file" accept=".png, .jpg, .jpeg" id="fileInput" name=fileInput class="hidden" onchange="previewImage(event)" required/>
                                     </label>
                                 </div>
