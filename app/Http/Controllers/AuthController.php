@@ -37,7 +37,7 @@ class AuthController extends Controller
             return redirect()->route('/')->withSuccess('Signed in');
         }
         $validator['email'] = __('validation.custom.email.email');
-        $validator['password'] = __('validation.custom.password.password');
+        $validator['password'] = __('validation.custom.pass.pass');
         return redirect('login')->withErrors($validator);
 
     }

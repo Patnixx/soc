@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CourseUser;
 use App\Models\Form;
 use App\Models\Message;
+use App\Models\Stat;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -98,6 +99,29 @@ class AdminController extends Controller
                         'email_verified_at' => now(),
                     ]);
 
+                    if($request->role == 'Student')
+                    {
+                        Stat::create([
+                            'user_id' => $user->id,
+                            'theory_count' => 0,
+                            'virtual_practice_count' => 0,
+                            'practice_count' => 0,
+                            'kpp_count' => 0,
+                            'exam_count' => 0,
+                        ]);
+                    }
+                    elseif($request->role == 'Teacher')
+                    {
+                        Stat::create([
+                            'user_id' => $user->id,
+                            'ended_courses_count' => 0,
+                            'ended_theory_count' => 0,
+                            'ended_virtual_practice_count' => 0,
+                            'ended_practice_count' => 0,
+                            'ended_exam_count' => 0,
+                        ]);
+                    }
+
                     return redirect()->route('users');
                 }
                 else{
@@ -188,6 +212,14 @@ class AdminController extends Controller
                     User::where('id', $id)->update([
                         'password' => Hash::make($request->pass),
                     ]);
+                }
+
+                if($acc->role == 'Student' && ($request->role != 'Student' || $request->role != 'Teacher')){
+                    Stat::where('user_id', $id)->delete();
+                }
+
+                if($acc->role == 'Teacher' && ($request->role != 'Student' || $request->role != 'Teacher')){
+                    Stat::where('user_id', $id)->delete();
                 }
 
                 return redirect()->route('users');

@@ -12,7 +12,7 @@ class courseInputDiv extends Component
      * Create a new component instance.
      */
     public $name;
-    public $teacher;
+    public $teachers;
     public $description;
     public $class;
     public $length;
@@ -20,11 +20,11 @@ class courseInputDiv extends Component
     public $season;
     public $id;
     
-    public function __construct($name, $teacher, $description, $class, $length, $status, $season, $id)
+    public function __construct($name, $teachers, $description, $class, $length, $status, $season, $id)
     {
         //
         $this->name = $name;
-        $this->teacher = $teacher;
+        $this->teachers = $teachers;
         $this->description = $description;
         $this->class = $class;
         $this->length = $length;

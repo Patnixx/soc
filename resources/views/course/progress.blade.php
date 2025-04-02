@@ -119,7 +119,7 @@
             @foreach($courses as $course)
                 <x-course-div 
                 :name="$course->course->name" 
-                :teacher="$course->course->teacher_id" 
+                :teacher="$course->course->teacher->f_name.' '.$course->course->teacher->l_name" 
                 :description="$course->course->description" 
                 :class="$course->course->class" 
                 :length="$course->course->length" 
@@ -127,8 +127,9 @@
                 :season="$course->course->season"
                 :pclass="'dark:text-white text-m-blue'"
                 :sclass="'dark:text-m-blue text-gray-900'"
-                :id="$course->id"
+                :id="$course->course->id"
                 :divclass="''" :hclass="''" :tclass="''"
+                :students="$course->course->students"
                 :course="$course->course"/>                
             @endforeach
         </section>

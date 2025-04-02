@@ -12,7 +12,7 @@ return [
     //personel icons
     'admin' => 'Admin panel',
     'users' => 'Užívatelia',
-    'calendar' => 'Kalendár',
+    'calendar' => 'Udalosti',
     'courses' => 'Kurzy',
     'materials' => 'Materiály',
     'progress' => 'Pokrok',

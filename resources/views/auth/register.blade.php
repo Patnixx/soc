@@ -52,6 +52,11 @@
                         </div>                
                     </div>
                 </div>
+                <div class="form-group relative w-full">
+                    @error('g-recaptcha-response')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
                 <div class="flex justify-between w-full text-sm text-gray-400 mt-4 col-span-1 md:col-span-2">
                     <x-auth-href :route="'login'" :text="'login'"/>
                     <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-2 px-4 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">

@@ -33,8 +33,8 @@
                         data-diff="{{ $dayDifference }}"
                         data-course-name="{{ $event->course->name }}"
                         data-course-class="{{ $event->course->class }}"
-                        data-course-length="{{ $event->course->length }}"
-                        data-course-season="{{ $event->course->season }}"
+                        data-course-length="{{ __('occasions.'.$event->course->length) }}"
+                        data-course-season="{{ __('occasions.'.$event->course->season) }}"
                         onclick="showDetails(this)">
                         <h3 class="text-lg font-semibold text-gray-200 transition-all duration-300 ease-linear group-hover:text-gray-800 dark:group-hover:text-gray-200">{{ $event->name }}</h3>
                         <p class="text-sm text-gray-400 transition-all duration-300 ease-linear group-hover:text-gray-800 dark:group-hover:text-gray-200">{{ __('occasions.date') }}: {{ $event->start }}</p>
@@ -91,20 +91,20 @@
     @if($user->role == 'Teacher' || $user->role == 'Admin')
         <div class="mt-6 flex flex-col md:flex-row justify-end gap-2">
             <x-icon-div 
-                :route="'events.create.theory'"
+                :route="'events.select'"
                 :icon="'bi bi-plus-circle'"
                 :text="'create-theory'"
                 :class="'justify-self-start'"
                 :sclass="'right-14'"
             />
-            <x-icon-div 
+            {{--<x-icon-div 
                 :route="'events.create.ride'"
                 :icon="'bi bi-arrow-repeat'"
                 :text="'create-ride'"
                 :class="'justify-self-start'"
                 :sclass="'left-14'"
                 class="hover:bg-blue-500 hover:text-white p-2 rounded-full transition-all duration-300 ease-linear"
-            />
+            />--}}
         </div>
     @endif
 </div>

@@ -61,6 +61,7 @@ Route::patch('/profile/update-personal', [ProfileController::class, 'updatePerso
 Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update.password');
 Route::post('/profile/update-avatar', [ProfileController::class, 'updateAvatar'])->name('profile.update.avatar');
 Route::delete('/profile/delete-account', [ProfileController::class, 'deleteAccount'])->name('profile.delete.account');
+Route::get('/profile/progress', [ProfileController::class, 'progressIndex'])->name('profile.progress');
 Route::get('/credits', [ProfileController::class, 'creditsIndex'])->name('credits');
 
 //!SECTION Admin routes
@@ -105,7 +106,15 @@ Route::post('/inbox/bin', [InboxController::class, 'binClear'])->name('clear.bin
 
 //!EVENTS
 Route::get('/events', [OccasionController::class, 'index'])->name('events');
+Route::get('/events/select-type', [OccasionController::class, 'select'])->name('events.select');
 Route::get('/events/create-theory', [OccasionController::class, 'create_theory'])->name('events.create.theory');
+Route::get('/events/create-vp', [OccasionController::class, 'create_vp'])->name('events.create.vp');
+Route::post('/events/assign-vp', [OccasionController::class, 'assign_vp'])->name('events.assign.vp');
+Route::post('/events/{id}/store-vp', [OccasionController::class, 'store_vp'])->name('events.store.vp');
+Route::get('/events/create-kpp', [OccasionController::class, 'create_kpp'])->name('events.create.kpp');
+Route::post('/events/store-kpp', [OccasionController::class, 'store_kpp'])->name('events.store.kpp');
+Route::get('/events/create-exam', [OccasionController::class, 'create_exam'])->name('events.create.exam');
+Route::post('/events/store-exam', [OccasionController::class, 'store_exam'])->name('events.store.exam');
 Route::get('/events/create-ride', [OccasionController::class, 'create_ride'])->name('events.create.ride');
 Route::post('/events/assign-ride', [OccasionController::class, 'assign_ride'])->name('events.assign.ride');
 Route::post('/events/store-theory', [OccasionController::class, 'store_theory'])->name('events.store.theory');

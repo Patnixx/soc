@@ -13,6 +13,10 @@ return [
     'save' => 'Save',
     'cancel' => 'Cancel',
 
+    'progress' => 'Progress',
+    'progress-info' => 'View your progress on your journey to a driver\'s license!',
+    'progress-btn' => 'View progress',
+
     'update-pass' => 'Update password',
     'update-pass-info' => 'Ensure your account is using a long, random password to stay secure.',
     'old-pass' => 'Old password',

@@ -74,6 +74,26 @@
                         </form>
                     </section>
                 </div>
+
+                @if($user->role == 'Teacher' || $user->role == 'Student')
+                <div class="w-full md:w-3/4 lg:w-2/3 p-6 sm:p-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg border-x-2 border-b-2 border-gray-800 dark:border-slate-200 duration-300 ease-linear transition-all">
+                    <section class="space-y-6">
+                        <header>
+                            <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                                {{ __('profile.progress') }}
+                            </h2>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                {{ __('profile.progress-info') }}
+                            </p>
+                        </header>
+                        <br>
+                        <a href="{{route('profile.progress')}}" class="px-4 py-2 bg-m-blue text-gray-900 hover:bg-m-red hover:text-white dark:bg-m-blue dark:text-white dark:hover:bg-m-darkblue dark:hover:text-white rounded-md transition-all ease-linear duration-300">
+                            {{ __('profile.progress-btn') }}
+                        </a>
+                    </section>
+                </div>
+                @endif
+
                 <div class="w-full md:w-3/4 lg:w-2/3 p-6 sm:p-8 bg-white dark:bg-gray-800 shadow rounded-lg border-x-2 border-b-2 border-gray-800 dark:border-slate-200 transition-all ease-linear duration-300">
                     <section>
                         <header>

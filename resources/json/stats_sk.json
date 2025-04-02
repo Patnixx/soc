@@ -1,0 +1,155 @@
+{
+    "theory": [
+        {
+            "min": 0,
+            "max": 2,
+            "title": "Bronzový brzdič",
+            "color": "#CE8946"
+        },
+        {
+            "min": 3,
+            "max": 4,
+            "title": "Strieborný strachoputník",
+            "color": "#C0C0C0"
+        },
+        {
+            "min": 5,
+            "max": 6,
+            "title": "Zlatý zdržovač",
+            "color": "#FFD700"
+        },
+        {
+            "min": 7,
+            "max": 8,
+            "title": "Platínový Parkovač",
+            "color": "#05DBFF"
+        },
+        {
+            "min": 9,
+            "max": 10,
+            "title": "Diamantový vodič",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "virtual_practice": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "Neskorý preradzovač",
+            "color": "#CE8946"
+        },
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Značkový ignorant",
+            "color": "#FFD700"
+        },
+        {
+            "min": 2,
+            "max": 2,
+            "title": "Virtuálny taxikár",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "practice": [
+        {
+            "min": 0,
+            "max": 4,
+            "title": "Bronzový brzdič",
+            "color": "#CE8946"
+        },
+        {
+            "min": 5,
+            "max": 7,
+            "title":"Strieborný strachoputník",
+            "color": "#C0C0C0"
+        },
+        {
+            "min": 8,
+            "max": 11,
+            "title": "Zlatý zdržovač",
+            "color": "#FFD700"
+        },
+        {
+            "min": 12,
+            "max": 14,
+            "title": "Platínový Parkovač",
+            "color": "#05DBFF"
+        },
+        {
+            "min": 15,
+            "max": 18,
+            "title": "Diamantový vodič",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "kpp": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "Milovník 112",
+            "color": "#CE8946"
+        },
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Anjel Strážny",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "exam": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "Nezákonný vodič",
+            "color": "#CE8946"
+        },
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Zodpovedný vodič",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "ended": [
+        {
+            "min": 0,
+            "max": 4,
+            "title": "Začiatočný pomocník",
+            "color": "#CE8946"
+        },
+
+        {
+            "min": 5,
+            "max": 8,
+            "title": "Pokročilý inštruktor",
+            "color": "#C0C0C0"
+        },
+
+        {
+            "min": 9,
+            "max": 12,
+            "title": "Profesionálny lektor",
+            "color": "#FFD700"
+        },
+
+        {
+            "min": 13,
+            "max": 16,
+            "title": "Majster Mentor",
+            "color": "#05DBFF"
+        },
+
+        {
+            "min": 17,
+            "max": 99999,
+            "title": "Vodičský Guru",
+            "color": "#EDA6FF"
+        }
+    ]
+}

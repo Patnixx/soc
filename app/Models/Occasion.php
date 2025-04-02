@@ -13,6 +13,7 @@ class Occasion extends Model
         'name',
         'start',
         'type',
+        'creator_id',
     ];
 
     use HasFactory;

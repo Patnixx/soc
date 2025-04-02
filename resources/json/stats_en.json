@@ -1,0 +1,157 @@
+{
+    "theory": [
+        {
+            "min": 0,
+            "max": 2,
+            "title": "Bronze Braker",
+            "color": "#CE8946"
+        },
+        {
+            "min": 3,
+            "max": 4,
+            "title": "Silver Speedster",
+            "color": "#C0C0C0"
+        },
+        {
+            "min": 5,
+            "max": 6,
+            "title": "Golden G",
+            "color": "#FFD700"
+        },
+        {
+            "min": 7,
+            "max": 8,
+            "title": "Platinum Parker",
+            "color": "#05DBFF"
+        },
+        {
+            "min": 9,
+            "max": 10,
+            "title": "Diamond Driver",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "virtual_practice": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "Late Shifter",
+            "color": "#CE8946"
+        },
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Sign Skipper",
+            "color": "#FFD700"
+        },
+        {
+            "min": 2,
+            "max": 2,
+            "title": "Virtual Roadster",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "practice": [
+        {
+            "min": 0,
+            "max": 4,
+            "title": "Bronze Braker",
+            "color": "#CE8946"
+        },
+        {
+            "min": 5,
+            "max": 7,
+            "title":"Silver Speedster",
+            "color": "#C0C0C0"
+        },
+        {
+            "min": 8,
+            "max": 11,
+            "title": "Golden G",
+            "color": "#FFD700"
+        },
+        {
+            "min": 12,
+            "max": 14,
+            "title": "Platinum Parker",
+            "color": "#05DBFF"
+        },
+        {
+            "min": 15,
+            "max": 18,
+            "title": "Diamond Driver",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "kpp": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "911 Caller",
+            "color": "#CE8946"
+        },
+
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Life Saviour",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "exam": [
+        {
+            "min": 0,
+            "max": 0,
+            "title": "Illegal Driver",
+            "color": "#CE8946"
+        },
+
+        {
+            "min": 1,
+            "max": 1,
+            "title": "Licenced Driver",
+            "color": "#EDA6FF"
+        }
+    ],
+
+    "ended": [
+        {
+            "min": 0,
+            "max": 4,
+            "title": "Beginner Guardian",
+            "color": "#CE8946"
+        },
+
+        {
+            "min": 5,
+            "max": 8,
+            "title": "Intermediate Instructor",
+            "color": "#C0C0C0"
+        },
+
+        {
+            "min": 9,
+            "max": 12,
+            "title": "Pro Lector",
+            "color": "#FFD700"
+        },
+
+        {
+            "min": 13,
+            "max": 16,
+            "title": "Master Mentor",
+            "color": "#05DBFF"
+        },
+
+        {
+            "min": 17,
+            "max": 99999,
+            "title": "Supreme Sensei",
+            "color": "#EDA6FF"
+        }
+    ]
+}

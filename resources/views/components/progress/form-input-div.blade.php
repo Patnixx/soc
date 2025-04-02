@@ -5,7 +5,7 @@
     </h2>
     <form method="POST" action="{{route('form.update', $id)}}" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
         @csrf
-        @method('PUT')
+        @method('POST')
         <div class="left">
             @foreach ([
                 ['f_name', __('courses.f-name'), $fname],
@@ -29,7 +29,7 @@
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="approval" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.approval')}}</label>
                 <select required name="approval" id="approval" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                    <option value="{{$approval}}">{{__('courses.current')}}: {{$approval}}</option>
+                    <option value="{{$approval}}">{{__('courses.current')}}: {{__('courses.'.$approval)}}</option>
                     <option value="Approved">{{__('courses.approved')}}</option>
                     <option value="Waiting">{{__('courses.waiting')}}</option>
                     <option value="Rejected">{{__('courses.rejected')}}</option>
@@ -46,7 +46,7 @@
             <div class="flex flex-col space-y-2 mb-2">
                 <label for="{{$name}}" class="text-sm font-medium dark:text-white text-gray-900">{{$label}}</label>
                 <select required name="{{$name}}" id="{{$name}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                    <option value="{{$value}}">{{__('courses.current')}}: {{$value}}</option>
+                    <option value="{{$value}}">{{__('courses.current')}}: {{__('courses.'.$value)}}</option>
                     @foreach ($options as $option)
                         <option value="{{$option}}">{{$option}}</option>
                     @endforeach

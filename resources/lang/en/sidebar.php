@@ -12,7 +12,7 @@ return [
     //personel icons
     'admin' => 'Admin panel',
     'users' => 'Users',
-    'calendar' => 'Calendar',
+    'calendar' => 'Events',
     'courses' => 'Courses',
     'materials' => 'Materials',
     'progress' => 'Progress',

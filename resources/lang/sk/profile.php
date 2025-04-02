@@ -13,6 +13,10 @@ return [
     'save' => 'Uložiť',
     'cancel' => 'Zrušiť',
 
+    'progress' => 'Pokrok',
+    'progress-info' => 'Zobraziť pokrok vo vašej ceste k vodičskému preukazu!.',
+    'progress-btn' => 'Zobraziť pokrok',
+
     'update-pass' => 'Aktualizovať heslo',
     'update-pass-info' => 'Uistite sa, že váš účet používa dlhé, náhodné heslo, aby bol zabezpečený.',
     'old-pass' => 'Staré heslo',

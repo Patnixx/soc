@@ -185,6 +185,7 @@ return [
             'required' => 'Heslo je povinné.',
             'min' => 'Heslo musí mať aspoň 8 znakov.',
             'regex' => 'Heslo musí obsahovať aspoň jedno veľké písmeno, jedno mal= písmeno, jedno číslo a jeden špeciálny znak.',
+            'pass' => 'Chyba v hesle alebo v emaili.',
         ],
         'c_pass' => [
             'required' => 'Potvrdenie hesla je povinné.',

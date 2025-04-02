@@ -6,11 +6,11 @@
         @if(!(request()->routeIs('progress')))
             <p class="{{$pclass}}">{{__('courses.birth')}}: <span class="{{$sclass}}">{{$birthday}}</span></p>
         @endif
-        <p class="{{$pclass}}">{{__('courses.length')}}: <span class="{{$sclass}}">{{$length}}</span></p>
+        <p class="{{$pclass}}">{{__('courses.length')}}: <span class="{{$sclass}}">{{__('courses.'.$length)}}</span></p>
         <p class="{{$pclass}}">{{__('courses.class')}}: <span class="{{$sclass}}">{{$class}}</span></p>
-        <p class="{{$pclass}}">{{__('courses.season')}}: <span class="{{$sclass}}">{{$season}}</span></p>
+        <p class="{{$pclass}}">{{__('courses.season')}}: <span class="{{$sclass}}">{{__('courses.'.$season)}}</span></p>
         @if(!(request()->routeIs('course.assign')))
-            <p class="{{$pclass}}">{{__('courses.approval')}}: <span class="{{$sclass}}">{{$approval}}</span></p>
+            <p class="{{$pclass}}">{{__('courses.approval')}}: <span class="{{$sclass}}">{{__('courses.'.$approval)}}</span></p>
         @endif
         @if(!(request()->routeIs('progress')))
             <p class="{{$pclass}}">{{__('courses.reason')}}: <span class="{{$sclass}}">{{$reason}}</span></p>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
 use App\Models\Message;
+use App\Models\Stat;
 use App\Models\User;
 
 class CourseController extends Controller
@@ -30,7 +31,7 @@ class CourseController extends Controller
         
         if(Auth::user()->role == 'Student' || Auth::user()->role == 'User'){
             $forms = Form::where('user_id', $user->id)->get();
-            $courses = CourseUser::with(['course', 'user'])->where('user_id', $user->id)->get();
+            $courses = CourseUser::with(['course.teacher', 'user',])->where('user_id', $user->id)->get();
             return view('course.progress', compact('user', 'courses', 'forms', 'unread'));
         }
     }
@@ -94,7 +95,6 @@ class CourseController extends Controller
         {
             if($user->role == 'Admin' || $user->role == 'Teacher')
             {
-                dd('Admin or Teacher');
                 $request->validate([
                     'f_name' => 'required',
                     'l_name' => 'required',
@@ -157,12 +157,19 @@ class CourseController extends Controller
 
     public function courseCreate(){
         $user = Auth::user();
+        $unread = $this->checkMails();
         if(!(Auth::check()) && ($user->role == 'Student' || $user->role == 'User')){
             return view('errors.403');
         }
-        $teachers = User::where('role', 'teacher')->get();
-        $unread = $this->checkMails();
-        return view('course.courses.course', compact('user', 'teachers', 'unread'));
+        if($user->role == 'Admin')
+        {
+            $teachers = User::where('role', 'teacher')->get();
+            return view('course.courses.course', compact('user', 'teachers', 'unread'));
+        }
+        if(Auth::user()->role == 'Teacher'){
+            $teachers = User::where('id', $user->id)->get();
+            return view('course.courses.course', compact('user', 'teachers', 'unread'));
+        }
     }
 
     public function sendCreate(Request $request){
@@ -239,6 +246,15 @@ class CourseController extends Controller
                 'role' => 'Student',
             ]);
 
+            Stat::create([
+                'user_id' => $id,
+                'theory_count' => 0,
+                'virtual_practice_count' => 0,
+                'practice_count' => 0,
+                'kpp_count' => 0,
+                'exam_count' => 0,
+            ]);
+
             /*Message::create([ //!SECTION Send message to user via their lang
                 'sender_id' => '1',
                 'receiver_id' => $id,
@@ -295,10 +311,15 @@ class CourseController extends Controller
             return view('errors.403');
         }
         $course = Course::where('id',$id)->first();
-        $teacher = User::where('id', $course->teacher_id)->first();
+        if($user->role == 'Admin'){
+            $teachers = User::where('role', 'teacher')->get();
+        }
+        elseif($user->role == 'Teacher'){
+            $teachers = User::where('id', $user->id)->get();
+        }
         $students = CourseUser::with(['course', 'user'])->where('course_id', $id)->count();
         $unread = $this->checkMails();
-        return view('course.courses.edit', compact('user', 'course', 'teacher', 'students', 'unread'));
+        return view('course.courses.edit', compact('user', 'course', 'teachers', 'students', 'unread'));
     }
 
     public function updateCourse(Request $request, $id){

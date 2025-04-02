@@ -10,11 +10,20 @@
                 value="{{$name}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
         </div>
 
-        <div class="flex flex-col space-y-2">
+        {{--<div class="flex flex-col space-y-2">
             <label for="teacher" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.teacher')}}</label>
             <input 
                 type="text" name="teacher" id="teacher" placeholder="{{__('courses.teacher')}}" 
                 value="{{$teacher}}" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+        </div>--}}
+
+        <div class="flex flex-col space-y-2">
+            <label for="class" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.class')}}</label>
+            <select name="class" id="class" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
+                @foreach($teachers as $teacher)
+                    <option value="{{$teacher->id}}">{{$teacher->f_name.' '.$teacher->l_name}}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="flex flex-col space-y-2">
@@ -29,7 +38,7 @@
         <div class="flex flex-col space-y-2">
             <label for="length" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.length')}}</label>
             <select name="length" id="length" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                <option value="{{$length}}">{{__('courses.current')}}: {{$length}}</option>
+                <option value="{{$length}}">{{__('courses.current')}}: {{__('courses.'.$length)}}</option>
                 <option value="Classic">{{__('courses.classic')}}</option>
                 <option value="Turbo">{{__('courses.turbo')}}</option>
             </select>
@@ -38,7 +47,7 @@
         <div class="flex flex-col space-y-2">
             <label for="status" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.status')}}</label>
             <select name="status" id="status" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                <option value="{{$status}}">{{__('courses.current')}}: {{$status}}</option>
+                <option value="{{$status}}">{{__('courses.current')}}: {{__('courses.'.$status)}}</option>
                 <option value="Open">{{__('courses.open')}}</option>
                 <option value="Active">{{__('courses.active')}}</option>
                 <option value="Finished">{{__('courses.finished')}}</option>
@@ -48,7 +57,7 @@
         <div class="flex flex-col space-y-2">
             <label for="season" class="text-sm font-medium dark:text-white text-gray-900">{{__('courses.season')}}</label>
             <select name="season" id="season" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300">
-                <option value="{{$season}}">{{__('courses.current')}}: {{$season}}</option>
+                <option value="{{$season}}">{{__('courses.current')}}: {{__('courses.'.$season)}}</option>
                 <option value="Spring">{{__('courses.spring')}}</option>
                 <option value="Summer">{{__('courses.summer')}}</option>
                 <option value="Autumn">{{__('courses.autumn')}}</option>

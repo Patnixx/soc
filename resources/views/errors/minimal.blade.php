@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>@yield('title')</title>
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        @vite(['public/build/assets/app-BHsjz7Ut.css'])
-    </head>
+@include('partials.head')
     <body class="font-sans">
         <div class="relative flex flex-col items-center justify-center min-h-screen bg-gray-600">
             <div id="logo" class="flex justify-center">
@@ -23,7 +9,7 @@
                     <div class="px-4 text-lg text-gray-500 hover:text-white border-r border-gray-900 tracking-wider transition-all duration-300 ease-linear">
                         @yield('code')
                     </div>
-                    <div class="ml-4 text-lg text-gray-500 hover:text-white border-l border-gray-900 uppercase tracking-wider transition-all duration-300 ease-linear">
+                    <div class="ml-4 text-lg text-gray-500 hover:text-white uppercase tracking-wider transition-all duration-300 ease-linear">
                         @yield('message')
                     </div>
                 </div>
