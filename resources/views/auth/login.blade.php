@@ -22,13 +22,6 @@
                 <input type="checkbox" name="remember" id="remember" class="form-checkbox w-5 h-5 text-m-blue">
                 <label for="remember" class="text-sm">{{ __('Zapamätať si ma?') }}</label>
             </div>
-            <div class="w-full flex flex-col items-center">
-                {!! NoCaptcha::renderJs() !!}
-                {!! NoCaptcha::display() !!}
-            </div>
-            @error('g-recaptcha-response')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror
             <button type="submit" class="dark:bg-m-blue dark:text-white bg-m-blue text-gray-900 hover:bg-m-red hover:text-white py-3 px-6 rounded-lg font-bold dark:hover:bg-m-darkblue transition duration-300 ease-linear">
                 {{ __('auth.login') }}
             </button>

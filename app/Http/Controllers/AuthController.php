@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 class AuthController extends Controller
 {
     //
@@ -26,7 +25,6 @@ class AuthController extends Controller
         $validator = $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $credentials = $request->only('email', 'password');
@@ -113,7 +111,6 @@ class AuthController extends Controller
             'c_pass' => 'required|same:password',
             'birthday' => 'required',
             'telephone' => 'required',
-            'g-recaptcha-response' => 'required|captcha',
         ], 
         [
             'f_name.required' => __('validation.custom.f_name.required'),
