@@ -43,7 +43,7 @@
                     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 flex flex-col items-center ease-linear transition-all duration-300">
                         @php
                             if($stat['value'] == 0) $percentage = 0;
-                            if($stat['max'] > 17) $percentage = $stat['value'];
+                            elseif($stat['max'] > 17) $percentage = $stat['value'];
                             else
                             $percentage = $stat['value'] / $stat['max'] * 100;
                         @endphp
